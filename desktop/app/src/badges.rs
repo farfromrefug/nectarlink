@@ -209,7 +209,7 @@ pub fn refresh(device: DeviceId) {
             save(b);
         });
         tracing::info!(
-            %device,
+            device = %device.short(),
             conversations = threads.as_ref().map(Vec::len),
             missed = missed.as_ref().map(Vec::len),
             "read what's waiting on a phone"
