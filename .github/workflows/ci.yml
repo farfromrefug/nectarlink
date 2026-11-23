@@ -1,10 +1,9 @@
 # SPDX-License-Identifier: GPL-3.0-or-later
 name: CI
 
+# Fork only: run by hand (Actions > CI > Run workflow), not on every push and
+# pull request. Upstream runs it on both.
 on:
-  push:
-    branches: [main]
-  pull_request:
   workflow_dispatch:
 
 permissions:
