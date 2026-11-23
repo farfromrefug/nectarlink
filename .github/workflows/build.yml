@@ -18,8 +18,7 @@ on:
         required: true
       ANDROID_KEYSTORE_PASSWORD:
         required: true
-      # The Mac app is signed and notarized when all five are set, and only
-      # ad-hoc signed otherwise (forks have none).
+      # The Mac app is signed and notarized when all five are set, else ad-hoc.
       APPLE_CERT_P12:
         description: "Base64 of the Developer ID Application certificate and its key (.p12)"
         required: false
@@ -347,7 +346,7 @@ jobs:
           arch: clang_64
           cache: true
           aqtsource: git+https://github.com/miurahr/aqtinstall.git@5a49f2b391ae8ee1d3c0dd87f8b33c1d49a4deb7
-      # A throwaway keychain holds the certificate for this job only.
+      # A throwaway keychain, for this job only.
       - name: Import the signing certificate and notarization key
         if: env.APPLE_CERT_P12 != '' && env.APPLE_API_KEY != ''
         run: |

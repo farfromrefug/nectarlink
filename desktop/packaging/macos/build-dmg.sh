@@ -3,20 +3,16 @@
 # Builds a macOS .app bundle and compressed .dmg installer for NectarLink Desktop:
 #   dist/Nectarlink-<version>-macos-<arch>.dmg
 #
-# ARCH picks the build: universal (the default: Apple silicon + Intel in one
-# app), arm64 or x86_64. A universal build needs a universal Qt (the one
-# from the Qt installer is; Homebrew's is for the Mac's own architecture).
+# ARCH: universal (default), arm64 or x86_64. Universal needs a universal Qt
+# (the Qt installer's; Homebrew's is for your Mac's chip only).
 #
-# Signing and notarization are optional; without them the bundle is ad-hoc
-# signed, which only runs on the Mac that built it or after "Open Anyway".
-#   SIGN_IDENTITY   a "Developer ID Application: ..." name or SHA-1 hash in a
-#                   keychain codesign can reach (KEYCHAIN_PATH names one)
-#   NOTARY_PROFILE  a `xcrun notarytool store-credentials` profile, or
-#   APPLE_API_KEY_PATH, APPLE_API_KEY_ID, APPLE_API_ISSUER  an App Store
-#                   Connect API key (.p8) with its key ID and issuer ID
-# With SIGN_IDENTITY and notary credentials the app and the DMG are submitted
-# to Apple and the tickets stapled, so Gatekeeper opens them without a prompt.
-# REQUIRE_SIGNING=1 turns a missing identity or credentials into an error.
+# Signing is optional; without it the bundle is ad-hoc signed ("Open Anyway").
+#   SIGN_IDENTITY   "Developer ID Application: ..." name or hash
+#                   (KEYCHAIN_PATH: the keychain holding it)
+#   NOTARY_PROFILE  a `notarytool store-credentials` profile, or
+#   APPLE_API_KEY_PATH, APPLE_API_KEY_ID, APPLE_API_ISSUER  an App Store Connect key
+# With both, the app and the DMG are notarized and stapled.
+# REQUIRE_SIGNING=1 makes missing credentials an error.
 
 set -euo pipefail
 
@@ -105,10 +101,8 @@ if [[ -z "${SIGN_IDENTITY}" ]]; then
     echo "warning: no SIGN_IDENTITY; the bundle is only ad-hoc signed" >&2
 fi
 
-# sign_path <path> [entitlements]: Developer ID with the hardened runtime and a
-# secure timestamp, or ad-hoc. The hardened runtime is left off for ad-hoc
-# builds: it would refuse to load the bundled Qt frameworks, whose ad-hoc
-# signatures all differ.
+# sign_path <path> [entitlements]: Developer ID with the hardened runtime, or
+# ad-hoc without it (it would refuse the bundled Qt frameworks).
 sign_path() {
     local target="$1" entitlements="${2:-}"
     local args=(--force --sign "${SIGN_IDENTITY:--}")
@@ -121,7 +115,7 @@ sign_path() {
     codesign "${args[@]}" "${target}"
 }
 
-# notarize <path>: submits and waits; a rejection prints Apple's log and fails.
+# notarize <path>: waits; a rejection prints Apple's log and fails.
 notarize() {
     local path="$1" out
     echo "Notarizing $(basename "${path}")..."
@@ -166,8 +160,8 @@ RESOURCES_DIR="${CONTENTS_DIR}/Resources"
 
 mkdir -p "${MACOS_DIR}" "${RESOURCES_DIR}"
 
-# install_binary <name> <destination> <required|optional>: the one binary of a
-# single-architecture build, or the per-target ones joined with lipo.
+# install_binary <name> <destination> <required|optional>: copies the binary,
+# or joins the per-target ones with lipo.
 install_binary() {
     local name="$1" dest="$2" required="$3" sources=() target source
     for target in "${RUST_TARGETS[@]}"; do
@@ -252,9 +246,7 @@ echo "Bundling Qt frameworks via ${MACDEPLOYQT}..."
 
 # --- Signing -----------------------------------------------------------------
 
-# Inside out: codesign seals what a bundle contains, so every library,
-# framework and helper is signed before the app that holds them. Signing the
-# app with --deep would give them all the app's entitlements and is deprecated.
+# Inside out: libraries and frameworks before the app (--deep is deprecated).
 echo "Signing ${SIGN_IDENTITY:+with ${SIGN_IDENTITY}}${SIGN_IDENTITY:-ad-hoc}..."
 while IFS= read -r -d '' lib; do
     sign_path "${lib}"
@@ -276,8 +268,7 @@ if [[ "${ACTUAL_ARCHS}" != "${EXPECTED_ARCHS}" ]]; then
 fi
 
 if [[ -n "${SIGN_IDENTITY}" && "${#NOTARY_ARGS[@]}" -gt 0 ]]; then
-    # The app is notarized on its own and stapled so it still opens offline
-    # after it's dragged out of the DMG.
+    # Notarize and staple the app too, so it opens offline once dragged out.
     ditto -c -k --keepParent "${APP_DIR}" "${STAGE_DIR}/NectarLink.zip"
     notarize "${STAGE_DIR}/NectarLink.zip"
     rm -f "${STAGE_DIR}/NectarLink.zip"
