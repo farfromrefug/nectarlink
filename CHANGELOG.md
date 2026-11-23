@@ -19,6 +19,14 @@ change things that need a step from you, and its notes say so.
   the device button shows their total, and the list that opens shows each device's own number. Only what arrives after a phone first
   shows here counts, so a phone's older unread texts, which only its own messaging app can
   clear, don't leave a number up.
+- **Mark texts read on the phone.** **Settings › General › Mark texts read on the phone** (off
+  by default) marks an SMS conversation read on the phone too when you read it on the PC, so
+  the phone's unread count and notification match instead of keeping texts you've already read
+  as unread. It presses the messaging app's own **Mark as read** button on the conversation's
+  notification (so the app's own state and notification follow), and dismisses the notification
+  when the app has no such button. With **Elevated** it also marks the texts read in the phone's
+  messages directly: its helper allows itself the SMS write app-op for that one change and puts
+  it back.
 - **Report a problem.** **Settings › Connection & About › Report a problem** on the PC (and at
   the bottom of the Connection Doctor) puts what you say went wrong together with what helps
   find the cause: versions, the Doctor's checks, how features have been doing, recent crashes
