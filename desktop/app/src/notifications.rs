@@ -176,6 +176,27 @@ pub fn copy_otp(code: &str) {
     }
 }
 
+/// Copies a notification's text, with its title on the line before when
+/// there is one (#526).
+pub fn copy_text(title: &str, text: &str) {
+    let copied = notification_text(title, text);
+    if copied.is_empty() {
+        return;
+    }
+    if crate::win::clipboard::write(&copied).is_ok() {
+        crate::bridge::app::show_message(tr!("Notifications", "Copied"));
+    }
+}
+
+/// `title` and `text` as copied: each trimmed, the title on its own line.
+pub(crate) fn notification_text(title: &str, text: &str) -> String {
+    match (title.trim(), text.trim()) {
+        ("", text) => text.to_owned(),
+        (title, "") => title.to_owned(),
+        (title, text) => format!("{title}\n{text}"),
+    }
+}
+
 /// Automatically copies `code` when the "Copy codes automatically" setting is
 /// enabled, deduplicating identical codes within 10 seconds.
 pub fn maybe_auto_copy_otp(code: &str) {
@@ -521,6 +542,15 @@ pub fn on_toast(event: ToastEvent) {
             return crate::calls::on_toast(key, action);
         }
         ToastEvent::Dismissed { device, .. } if device == crate::calls::TOAST_GROUP => return,
+        // A folder sync's progress: opening shows Files & Sync's list.
+        ToastEvent::Dismissed { device, .. } | ToastEvent::Action { device, .. }
+            if device == crate::folder_sync::TOAST_GROUP =>
+        {
+            return;
+        }
+        ToastEvent::Opened { device, .. } if device == crate::folder_sync::TOAST_GROUP => {
+            return crate::bridge::app::request_activation();
+        }
         ToastEvent::Dismissed { device, .. } | ToastEvent::Action { device, .. }
             if device == crate::battery::TOAST_GROUP =>
         {
@@ -533,6 +563,16 @@ pub fn on_toast(event: ToastEvent) {
             return;
         }
         ToastEvent::Dismissed { device, .. } if device == crate::clipboard::TOAST_GROUP => return,
+        // A phone asks for this PC's log: Share, or not.
+        ToastEvent::Action { device, key, action } if device == crate::report_requests::TOAST_GROUP => {
+            return crate::report_requests::on_toast(key, Some(action.as_str()));
+        }
+        ToastEvent::Dismissed { device, key } if device == crate::report_requests::TOAST_GROUP => {
+            return crate::report_requests::on_toast(key, None);
+        }
+        ToastEvent::Opened { device, key } if device == crate::report_requests::TOAST_GROUP => {
+            return crate::report_requests::on_opened(key);
+        }
         _ => {}
     }
     match event {
@@ -658,6 +698,14 @@ mod tests {
     use nectarlink_core::NotificationLive;
 
     use super::*;
+
+    #[test]
+    fn copies_the_text_with_or_without_its_title() {
+        assert_eq!(notification_text("", " See you at 6 "), "See you at 6");
+        assert_eq!(notification_text("Mum", "See you at 6"), "Mum\nSee you at 6");
+        assert_eq!(notification_text(" Mum ", ""), "Mum");
+        assert_eq!(notification_text("  ", "  "), "");
+    }
 
     #[test]
     fn phones_are_told_only_when_the_hold_changes() {

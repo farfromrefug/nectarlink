@@ -172,214 +172,288 @@
         <translation>%1. Abra o NectarLink para permitir ou negar.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="9"/>
         <source>Claude Code isn&apos;t installed on this PC.</source>
-        <translation>O Claude Code não está instalado neste PC.</translation>
+        <translation type="vanished">O Claude Code não está instalado neste PC.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="10"/>
         <source>Its settings file has comments or something NectarLink can&apos;t safely change. Paste the lines below into it instead.</source>
-        <translation>O arquivo de configurações tem comentários ou algo que o NectarLink não consegue mudar com segurança. Cole as linhas abaixo nele.</translation>
+        <translation type="vanished">O arquivo de configurações tem comentários ou algo que o NectarLink não consegue mudar com segurança. Cole as linhas abaixo nele.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="11"/>
         <source>The app doesn&apos;t seem to be installed on this PC.</source>
-        <translation>O app não parece estar instalado neste PC.</translation>
+        <translation type="vanished">O app não parece estar instalado neste PC.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="12"/>
         <source>This app has to be set up by hand.</source>
-        <translation>Este app precisa ser configurado manualmente.</translation>
+        <translation type="vanished">Este app precisa ser configurado manualmente.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="13"/>
         <source>Your user folders couldn&apos;t be found.</source>
-        <translation>Não foi possível encontrar suas pastas de usuário.</translation>
+        <translation type="vanished">Não foi possível encontrar suas pastas de usuário.</translation>
     </message>
 </context>
 <context>
     <name>AgentsSection</name>
     <message>
-        <location filename="../qml/components/AgentsSection.qml" line="23"/>
         <source>Script or CLI</source>
-        <translation>Script ou CLI</translation>
+        <translation type="vanished">Script ou CLI</translation>
     </message>
     <message>
-        <location filename="../qml/components/AgentsSection.qml" line="27"/>
+        <location filename="../qml/components/AgentsSection.qml" line="15"/>
         <source>Devices</source>
         <translation>Dispositivos</translation>
     </message>
     <message>
-        <location filename="../qml/components/AgentsSection.qml" line="28"/>
+        <location filename="../qml/components/AgentsSection.qml" line="16"/>
         <source>Notifications</source>
         <translation>Notificações</translation>
     </message>
     <message>
-        <location filename="../qml/components/AgentsSection.qml" line="29"/>
+        <location filename="../qml/components/AgentsSection.qml" line="17"/>
         <source>One-time codes and private notifications</source>
         <translation>Códigos de uso único e notificações privadas</translation>
     </message>
     <message>
-        <location filename="../qml/components/AgentsSection.qml" line="30"/>
+        <location filename="../qml/components/AgentsSection.qml" line="18"/>
         <source>Messages</source>
         <translation>Mensagens</translation>
     </message>
     <message>
-        <location filename="../qml/components/AgentsSection.qml" line="31"/>
+        <location filename="../qml/components/AgentsSection.qml" line="19"/>
         <source>Calls</source>
         <translation>Chamadas</translation>
     </message>
     <message>
-        <location filename="../qml/components/AgentsSection.qml" line="32"/>
+        <location filename="../qml/components/AgentsSection.qml" line="20"/>
         <source>Contacts</source>
         <translation>Contatos</translation>
     </message>
     <message>
-        <location filename="../qml/components/AgentsSection.qml" line="33"/>
+        <location filename="../qml/components/AgentsSection.qml" line="21"/>
         <source>Clipboard</source>
         <translation>Área de transferência</translation>
     </message>
     <message>
-        <location filename="../qml/components/AgentsSection.qml" line="34"/>
+        <location filename="../qml/components/AgentsSection.qml" line="22"/>
         <source>Files and Timeline</source>
         <translation>Arquivos e Linha do tempo</translation>
     </message>
     <message>
-        <location filename="../qml/components/AgentsSection.qml" line="35"/>
+        <location filename="../qml/components/AgentsSection.qml" line="23"/>
         <source>Media</source>
         <translation>Mídia</translation>
     </message>
     <message>
-        <location filename="../qml/components/AgentsSection.qml" line="36"/>
+        <location filename="../qml/components/AgentsSection.qml" line="24"/>
         <source>Photos</source>
         <translation>Fotos</translation>
     </message>
     <message>
-        <location filename="../qml/components/AgentsSection.qml" line="37"/>
+        <location filename="../qml/components/AgentsSection.qml" line="25"/>
         <source>Phone storage</source>
         <translation>Armazenamento do celular</translation>
     </message>
     <message>
-        <location filename="../qml/components/AgentsSection.qml" line="38"/>
+        <location filename="../qml/components/AgentsSection.qml" line="26"/>
         <source>Phone quick settings</source>
         <translation>Configurações rápidas do celular</translation>
     </message>
     <message>
-        <location filename="../qml/components/AgentsSection.qml" line="39"/>
+        <location filename="../qml/components/AgentsSection.qml" line="27"/>
         <source>Phone app windows</source>
         <translation>Janelas de apps do celular</translation>
     </message>
     <message>
-        <location filename="../qml/components/AgentsSection.qml" line="40"/>
+        <location filename="../qml/components/AgentsSection.qml" line="28"/>
         <source>Deck</source>
         <translation>Deck</translation>
     </message>
     <message>
-        <location filename="../qml/components/AgentsSection.qml" line="41"/>
+        <location filename="../qml/components/AgentsSection.qml" line="29"/>
         <source>Lock, sleep, shut down and wake PCs</source>
         <translation>Bloquear, suspender, desligar e despertar PCs</translation>
     </message>
     <message>
-        <location filename="../qml/components/AgentsSection.qml" line="79"/>
-        <location filename="../qml/components/AgentsSection.qml" line="152"/>
+        <location filename="../qml/components/AgentsSection.qml" line="82"/>
+        <location filename="../qml/components/AgentsSection.qml" line="175"/>
         <source>Everyday</source>
         <translation>Dia a dia</translation>
     </message>
     <message>
-        <location filename="../qml/components/AgentsSection.qml" line="79"/>
-        <location filename="../qml/components/AgentsSection.qml" line="151"/>
+        <location filename="../qml/components/AgentsSection.qml" line="82"/>
+        <location filename="../qml/components/AgentsSection.qml" line="174"/>
         <source>Read only</source>
         <translation>Somente leitura</translation>
     </message>
     <message>
-        <location filename="../qml/components/AgentsSection.qml" line="79"/>
+        <location filename="../qml/components/AgentsSection.qml" line="82"/>
         <source>Custom</source>
         <translation>Personalizado</translation>
     </message>
     <message>
-        <location filename="../qml/components/AgentsSection.qml" line="83"/>
+        <location filename="../qml/components/AgentsSection.qml" line="86"/>
         <source>done</source>
         <translation>feito</translation>
     </message>
     <message>
-        <location filename="../qml/components/AgentsSection.qml" line="84"/>
+        <location filename="../qml/components/AgentsSection.qml" line="87"/>
         <source>denied by you</source>
         <translation>negado por você</translation>
     </message>
     <message>
-        <location filename="../qml/components/AgentsSection.qml" line="85"/>
+        <location filename="../qml/components/AgentsSection.qml" line="88"/>
         <source>not approved in time</source>
         <translation>não aprovado a tempo</translation>
     </message>
     <message>
-        <location filename="../qml/components/AgentsSection.qml" line="86"/>
+        <location filename="../qml/components/AgentsSection.qml" line="89"/>
         <source>waiting for you</source>
         <translation>esperando você</translation>
     </message>
     <message>
-        <location filename="../qml/components/AgentsSection.qml" line="87"/>
+        <location filename="../qml/components/AgentsSection.qml" line="90"/>
         <source>not permitted</source>
         <translation>sem permissão</translation>
     </message>
     <message>
-        <location filename="../qml/components/AgentsSection.qml" line="88"/>
+        <location filename="../qml/components/AgentsSection.qml" line="91"/>
         <source>blocked, read-only</source>
         <translation>bloqueado, somente leitura</translation>
     </message>
     <message>
-        <location filename="../qml/components/AgentsSection.qml" line="89"/>
+        <location filename="../qml/components/AgentsSection.qml" line="92"/>
         <source>off for that device</source>
         <translation>desativado para esse dispositivo</translation>
     </message>
     <message>
-        <location filename="../qml/components/AgentsSection.qml" line="90"/>
+        <location filename="../qml/components/AgentsSection.qml" line="93"/>
         <source>too many requests</source>
         <translation>pedidos demais</translation>
     </message>
     <message>
-        <location filename="../qml/components/AgentsSection.qml" line="91"/>
+        <location filename="../qml/components/AgentsSection.qml" line="94"/>
         <source>failed</source>
         <translation>falhou</translation>
     </message>
     <message>
-        <location filename="../qml/components/AgentsSection.qml" line="102"/>
-        <location filename="../qml/components/AgentsSection.qml" line="107"/>
+        <location filename="../qml/components/AgentsSection.qml" line="105"/>
+        <location filename="../qml/components/AgentsSection.qml" line="110"/>
         <source>Let AI agents use NectarLink</source>
         <translation>Deixar agentes de IA usarem o NectarLink</translation>
     </message>
     <message>
-        <location filename="../qml/components/AgentsSection.qml" line="104"/>
+        <location filename="../qml/components/AgentsSection.qml" line="107"/>
         <source>On. Agents only get the permissions you give each one, and sensitive actions always ask you first.</source>
         <translation>Ativado. Os agentes só têm as permissões que você dá a cada um, e ações sensíveis sempre perguntam antes.</translation>
     </message>
     <message>
-        <location filename="../qml/components/AgentsSection.qml" line="105"/>
-        <source>Claude Code, Codex, Cursor and other AI assistants on this PC can read and act through NectarLink, with your approval.</source>
-        <translation>Claude Code, Codex, Cursor e outros assistentes de IA neste PC podem ler e agir pelo NectarLink, com a sua aprovação.</translation>
+        <location filename="../qml/components/AgentsSection.qml" line="108"/>
+        <source>AI assistants on this PC can read and act through NectarLink, with your approval.</source>
+        <translation>Assistentes de IA neste PC podem ler e agir pelo NectarLink, com a sua aprovação.</translation>
     </message>
     <message>
-        <location filename="../qml/components/AgentsSection.qml" line="117"/>
+        <location filename="../qml/components/AgentsSection.qml" line="193"/>
+        <source>Create</source>
+        <translation>Criar</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/AgentsSection.qml" line="233"/>
+        <source>Paste this into your agent. It sets itself up and checks that it works.</source>
+        <translation>Cole isto no seu agente. Ele se configura sozinho e confere se funciona.</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/AgentsSection.qml" line="262"/>
+        <source>Copy prompt</source>
+        <translation>Copiar prompt</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/AgentsSection.qml" line="277"/>
+        <source>Connected</source>
+        <translation>Conectado</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/AgentsSection.qml" line="277"/>
+        <source>Waiting for the agent…</source>
+        <translation>Esperando o agente…</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/AgentsSection.qml" line="285"/>
+        <source>Set up by hand</source>
+        <translation>Configurar manualmente</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/AgentsSection.qml" line="294"/>
+        <source>MCP</source>
+        <translation>MCP</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/AgentsSection.qml" line="295"/>
+        <source>Command line</source>
+        <translation>Linha de comando</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/AgentsSection.qml" line="296"/>
+        <source>HTTP</source>
+        <translation>HTTP</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/AgentsSection.qml" line="307"/>
+        <source>Run commands like these. The first lists everything the agent may do.</source>
+        <translation>Rode comandos como estes. O primeiro lista tudo o que o agente pode fazer.</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/AgentsSection.qml" line="309"/>
+        <source>For your own scripts. Read the token from that file each time; never paste it anywhere.</source>
+        <translation>Para seus próprios scripts. Leia o token desse arquivo a cada vez; nunca o cole em lugar nenhum.</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/AgentsSection.qml" line="310"/>
+        <source>Add this to the agent&apos;s MCP settings.</source>
+        <translation>Adicione isto às configurações MCP do agente.</translation>
+    </message>
+    <message>
+        <source>Claude Code, Codex, Cursor and other AI assistants on this PC can read and act through NectarLink, with your approval.</source>
+        <translation type="vanished">Claude Code, Codex, Cursor e outros assistentes de IA neste PC podem ler e agir pelo NectarLink, com a sua aprovação.</translation>
+    </message>
+    <message>
         <location filename="../qml/components/AgentsSection.qml" line="120"/>
+        <location filename="../qml/components/AgentsSection.qml" line="123"/>
         <source>Read-only for every agent</source>
         <translation>Somente leitura para todos os agentes</translation>
     </message>
     <message>
-        <location filename="../qml/components/AgentsSection.qml" line="118"/>
+        <location filename="../qml/components/AgentsSection.qml" line="121"/>
         <source>Agents can look, but can&apos;t send, change or delete anything.</source>
         <translation>Os agentes podem olhar, mas não podem enviar, mudar nem apagar nada.</translation>
     </message>
     <message>
-        <location filename="../qml/components/AgentsSection.qml" line="134"/>
+        <location filename="../qml/components/AgentsSection.qml" line="137"/>
         <source>Add an agent</source>
         <translation>Adicionar um agente</translation>
     </message>
     <message>
-        <location filename="../qml/components/AgentsSection.qml" line="163"/>
+        <location filename="../qml/components/AgentsSection.qml" line="143"/>
+        <source>Works with any assistant that runs on this PC. Name it, choose what it may do, then paste one prompt into it.</source>
+        <translation>Funciona com qualquer assistente neste PC. Dê um nome, escolha o que ele pode fazer e cole um único prompt.</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/AgentsSection.qml" line="155"/>
+        <location filename="../qml/components/AgentsSection.qml" line="195"/>
+        <source>My agent</source>
+        <translation>Meu agente</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/AgentsSection.qml" line="168"/>
+        <source>Agent name</source>
+        <translation>Nome do agente</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/AgentsSection.qml" line="186"/>
         <source>Reads everything except the clipboard and one-time codes. Can send messages, files and notifications, control media, copy photos, open phone apps on this PC and change the phone&apos;s quick settings. Sending a text, replying, calling or deleting always asks you first.</source>
         <translation>Lê tudo, menos a área de transferência e os códigos de uso único. Pode enviar mensagens, arquivos e notificações, controlar mídia, copiar fotos, abrir apps do celular neste PC e mudar as configurações rápidas do celular. Enviar um SMS, responder, ligar ou apagar sempre pergunta antes.</translation>
     </message>
     <message>
-        <location filename="../qml/components/AgentsSection.qml" line="164"/>
+        <location filename="../qml/components/AgentsSection.qml" line="187"/>
         <source>Reads devices, notifications, messages, calls, contacts, photos, files and media. Can&apos;t change anything. The clipboard and one-time codes stay private.</source>
         <translation>Lê dispositivos, notificações, mensagens, chamadas, contatos, fotos, arquivos e mídia. Não pode mudar nada. A área de transferência e os códigos de uso único continuam privados.</translation>
     </message>
@@ -392,144 +466,136 @@
         <translation type="vanished">Lê dispositivos, notificações, mensagens, chamadas, contatos, arquivos e mídia. Não pode mudar nada. A área de transferência e os códigos de uso único continuam privados.</translation>
     </message>
     <message>
-        <location filename="../qml/components/AgentsSection.qml" line="169"/>
         <source>Add %1</source>
-        <translation>Adicionar %1</translation>
+        <translation type="vanished">Adicionar %1</translation>
     </message>
     <message>
-        <location filename="../qml/components/AgentsSection.qml" line="197"/>
+        <location filename="../qml/components/AgentsSection.qml" line="226"/>
         <source>Connect %1</source>
         <translation>Conectar %1</translation>
     </message>
     <message>
-        <location filename="../qml/components/AgentsSection.qml" line="203"/>
         <source>Add to %1</source>
-        <translation>Adicionar ao %1</translation>
+        <translation type="vanished">Adicionar ao %1</translation>
     </message>
     <message>
-        <location filename="../qml/components/AgentsSection.qml" line="223"/>
         <source>Done. Restart %1 so it picks up NectarLink.</source>
-        <translation>Pronto. Reinicie o %1 para ele carregar o NectarLink.</translation>
+        <translation type="vanished">Pronto. Reinicie o %1 para ele carregar o NectarLink.</translation>
     </message>
     <message>
-        <location filename="../qml/components/AgentsSection.qml" line="231"/>
         <source>Or add it yourself:</source>
-        <translation>Ou adicione você mesmo:</translation>
+        <translation type="vanished">Ou adicione você mesmo:</translation>
     </message>
     <message>
-        <location filename="../qml/components/AgentsSection.qml" line="233"/>
         <source>Run this in a terminal:</source>
-        <translation>Rode isto em um terminal:</translation>
+        <translation type="vanished">Rode isto em um terminal:</translation>
     </message>
     <message>
-        <location filename="../qml/components/AgentsSection.qml" line="234"/>
         <source>Add this to ~/.codex/config.toml:</source>
-        <translation>Adicione isto ao ~/.codex/config.toml:</translation>
+        <translation type="vanished">Adicione isto ao ~/.codex/config.toml:</translation>
     </message>
     <message>
-        <location filename="../qml/components/AgentsSection.qml" line="235"/>
         <source>Run commands like this one. `nectarlink-agent actions` lists the rest.</source>
-        <translation>Rode comandos como este. `nectarlink-agent actions` mostra o resto.</translation>
+        <translation type="vanished">Rode comandos como este. `nectarlink-agent actions` mostra o resto.</translation>
     </message>
     <message>
-        <location filename="../qml/components/AgentsSection.qml" line="236"/>
         <source>Add this to the app&apos;s MCP settings:</source>
-        <translation>Adicione isto às configurações de MCP do app:</translation>
+        <translation type="vanished">Adicione isto às configurações de MCP do app:</translation>
     </message>
     <message>
-        <location filename="../qml/components/AgentsSection.qml" line="258"/>
+        <location filename="../qml/components/AgentsSection.qml" line="331"/>
         <source>Copy</source>
         <translation>Copiar</translation>
     </message>
     <message>
-        <location filename="../qml/components/AgentsSection.qml" line="264"/>
+        <location filename="../qml/components/AgentsSection.qml" line="338"/>
         <source>Done</source>
         <translation>Pronto</translation>
     </message>
     <message>
-        <location filename="../qml/components/AgentsSection.qml" line="279"/>
+        <location filename="../qml/components/AgentsSection.qml" line="349"/>
         <source>Agents</source>
         <translation>Agentes</translation>
     </message>
     <message>
-        <location filename="../qml/components/AgentsSection.qml" line="290"/>
+        <location filename="../qml/components/AgentsSection.qml" line="360"/>
         <source>paused</source>
         <translation>pausado</translation>
     </message>
     <message>
-        <location filename="../qml/components/AgentsSection.qml" line="292"/>
+        <location filename="../qml/components/AgentsSection.qml" line="362"/>
         <source>read-only</source>
         <translation>somente leitura</translation>
     </message>
     <message>
-        <location filename="../qml/components/AgentsSection.qml" line="294"/>
+        <location filename="../qml/components/AgentsSection.qml" line="364"/>
         <source>last used %1</source>
         <translation>usado por último %1</translation>
     </message>
     <message>
-        <location filename="../qml/components/AgentsSection.qml" line="295"/>
+        <location filename="../qml/components/AgentsSection.qml" line="365"/>
         <source>not connected yet</source>
         <translation>ainda não conectado</translation>
     </message>
     <message>
-        <location filename="../qml/components/AgentsSection.qml" line="301"/>
+        <location filename="../qml/components/AgentsSection.qml" line="371"/>
         <source>Connect</source>
         <translation>Conectar</translation>
     </message>
     <message>
-        <location filename="../qml/components/AgentsSection.qml" line="307"/>
+        <location filename="../qml/components/AgentsSection.qml" line="377"/>
         <source>Permissions</source>
         <translation>Permissões</translation>
     </message>
     <message>
-        <location filename="../qml/components/AgentsSection.qml" line="313"/>
+        <location filename="../qml/components/AgentsSection.qml" line="383"/>
         <source>Resume</source>
         <translation>Retomar</translation>
     </message>
     <message>
-        <location filename="../qml/components/AgentsSection.qml" line="313"/>
+        <location filename="../qml/components/AgentsSection.qml" line="383"/>
         <source>Pause</source>
         <translation>Pausar</translation>
     </message>
     <message>
-        <location filename="../qml/components/AgentsSection.qml" line="319"/>
+        <location filename="../qml/components/AgentsSection.qml" line="389"/>
         <source>Remove</source>
         <translation>Remover</translation>
     </message>
     <message>
-        <location filename="../qml/components/AgentsSection.qml" line="337"/>
+        <location filename="../qml/components/AgentsSection.qml" line="407"/>
         <source>Each area can only narrow what a device&apos;s own permissions allow. Sensitive actions still ask you every time.</source>
         <translation>Cada área só pode restringir o que as permissões do próprio dispositivo já permitem. Ações sensíveis continuam perguntando toda vez.</translation>
     </message>
     <message>
-        <location filename="../qml/components/AgentsSection.qml" line="359"/>
-        <location filename="../qml/components/AgentsSection.qml" line="360"/>
+        <location filename="../qml/components/AgentsSection.qml" line="429"/>
+        <location filename="../qml/components/AgentsSection.qml" line="430"/>
         <source>Off</source>
         <translation>Desativado</translation>
     </message>
     <message>
-        <location filename="../qml/components/AgentsSection.qml" line="359"/>
-        <location filename="../qml/components/AgentsSection.qml" line="360"/>
+        <location filename="../qml/components/AgentsSection.qml" line="429"/>
+        <location filename="../qml/components/AgentsSection.qml" line="430"/>
         <source>Read</source>
         <translation>Ler</translation>
     </message>
     <message>
-        <location filename="../qml/components/AgentsSection.qml" line="359"/>
+        <location filename="../qml/components/AgentsSection.qml" line="429"/>
         <source>Read and act</source>
         <translation>Ler e agir</translation>
     </message>
     <message>
-        <location filename="../qml/components/AgentsSection.qml" line="380"/>
+        <location filename="../qml/components/AgentsSection.qml" line="450"/>
         <source>Activity</source>
         <translation>Atividade</translation>
     </message>
     <message>
-        <location filename="../qml/components/AgentsSection.qml" line="386"/>
+        <location filename="../qml/components/AgentsSection.qml" line="456"/>
         <source>Clear</source>
         <translation>Limpar</translation>
     </message>
     <message>
-        <location filename="../qml/components/AgentsSection.qml" line="393"/>
+        <location filename="../qml/components/AgentsSection.qml" line="463"/>
         <source>Nothing yet.</source>
         <translation>Nada ainda.</translation>
     </message>
@@ -537,177 +603,177 @@
 <context>
     <name>App</name>
     <message>
-        <location filename="rust_strings.h" line="14"/>
+        <location filename="rust_strings.h" line="9"/>
         <source>Already on clipboard.</source>
         <translation>Esse item já está na área de transferência.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="15"/>
+        <location filename="rust_strings.h" line="10"/>
         <source>Command palette</source>
         <translation>Paleta de comandos</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="16"/>
+        <location filename="rust_strings.h" line="11"/>
         <source>Copied to clipboard.</source>
         <translation>Copiado para a área de transferência.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="17"/>
+        <location filename="rust_strings.h" line="12"/>
         <source>Could not copy to the clipboard.</source>
         <translation>Não foi possível copiar para a área de transferência.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="18"/>
+        <location filename="rust_strings.h" line="13"/>
         <source>Couldn&apos;t check for updates. Try again.</source>
         <translation>Não foi possível verificar se há atualizações. Tente de novo.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="19"/>
+        <location filename="rust_strings.h" line="14"/>
         <source>Downloading the update · %1 of %2</source>
         <translation>Baixando a atualização · %1 de %2</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="20"/>
+        <location filename="rust_strings.h" line="15"/>
         <source>Downloading the update…</source>
         <translation>Baixando a atualização…</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="21"/>
+        <location filename="rust_strings.h" line="16"/>
         <source>Find my phone</source>
         <translation>Localizar meu celular</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="22"/>
+        <location filename="rust_strings.h" line="17"/>
         <source>My phone&apos;s colors</source>
         <translation>Cores do meu celular</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="23"/>
+        <location filename="rust_strings.h" line="18"/>
         <source>My phone&apos;s colors (%1)</source>
         <translation>Cores do meu celular (%1)</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="24"/>
+        <location filename="rust_strings.h" line="19"/>
         <source>NectarLink · %1</source>
         <translation>NectarLink · %1</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="25"/>
+        <location filename="rust_strings.h" line="20"/>
         <source>NectarLink · %1 devices connected</source>
         <translation>NectarLink · %1 dispositivos conectados</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="26"/>
+        <location filename="rust_strings.h" line="21"/>
         <source>NectarLink · 1 device connected</source>
         <translation>NectarLink · 1 dispositivo conectado</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="27"/>
+        <location filename="rust_strings.h" line="22"/>
         <source>NectarLink · no devices paired</source>
         <translation>NectarLink · nenhum dispositivo pareado</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="28"/>
+        <location filename="rust_strings.h" line="23"/>
         <source>NectarLink · not connected</source>
         <translation>NectarLink · desconectado</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="29"/>
+        <location filename="rust_strings.h" line="24"/>
         <source>No phone is paired yet.</source>
         <translation>Nenhum celular pareado ainda.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="30"/>
+        <location filename="rust_strings.h" line="25"/>
         <source>Open NectarLink</source>
         <translation>Abrir o NectarLink</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="31"/>
+        <location filename="rust_strings.h" line="26"/>
         <source>Open copied link on phone</source>
         <translation>Abrir link copiado no celular</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="32"/>
+        <location filename="rust_strings.h" line="27"/>
         <source>Pause phone notifications</source>
         <translation>Pausar notificações do celular</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="33"/>
+        <location filename="rust_strings.h" line="28"/>
         <source>Quit NectarLink</source>
         <translation>Sair do NectarLink</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="34"/>
+        <location filename="rust_strings.h" line="29"/>
         <source>Resume phone notifications</source>
         <translation>Retomar notificações do celular</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="35"/>
+        <location filename="rust_strings.h" line="30"/>
         <source>Scan document with phone</source>
         <translation>Digitalizar documento com o celular</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="36"/>
+        <location filename="rust_strings.h" line="31"/>
         <source>Send cancelled</source>
         <translation>Envio cancelado</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="37"/>
+        <location filename="rust_strings.h" line="32"/>
         <source>Sending to %1…</source>
         <translation>Enviando para %1…</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="38"/>
+        <location filename="rust_strings.h" line="33"/>
         <source>Sent text to %1.</source>
         <translation>Texto enviado para %1.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="39"/>
+        <location filename="rust_strings.h" line="34"/>
         <source>Some history couldn&apos;t be cleared. Try again.</source>
         <translation>Não foi possível limpar parte do histórico. Tente de novo.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="40"/>
+        <location filename="rust_strings.h" line="35"/>
         <source>Some messages couldn&apos;t be cleared. Try again.</source>
         <translation>Não foi possível limpar algumas mensagens. Tente de novo.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="41"/>
+        <location filename="rust_strings.h" line="36"/>
         <source>Take photo with phone</source>
         <translation>Tirar foto com o celular</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="42"/>
+        <location filename="rust_strings.h" line="37"/>
         <source>That file is no longer in its saved location.</source>
         <translation>Esse arquivo não está mais no local onde foi salvo.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="43"/>
+        <location filename="rust_strings.h" line="38"/>
         <source>The photo couldn&apos;t be copied to the clipboard.</source>
         <translation>Não foi possível copiar a foto para a área de transferência.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="44"/>
+        <location filename="rust_strings.h" line="39"/>
         <source>The received file history couldn&apos;t be cleared. Try again.</source>
         <translation>Não foi possível limpar o histórico de arquivos recebidos. Tente de novo.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="45"/>
+        <location filename="rust_strings.h" line="40"/>
         <source>The update couldn&apos;t be installed. Try again.</source>
         <translation>Não foi possível instalar a atualização. Tente de novo.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="46"/>
+        <location filename="rust_strings.h" line="41"/>
         <source>Toggle Shelf</source>
         <translation>Mostrar ou ocultar a Bandeja de arquivos</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="47"/>
+        <location filename="rust_strings.h" line="42"/>
         <source>Wi-Fi %1/4</source>
         <translation>Wi-Fi %1/4</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="48"/>
+        <location filename="rust_strings.h" line="43"/>
         <source>Your phone</source>
         <translation>Seu celular</translation>
     </message>
@@ -715,27 +781,42 @@
 <context>
     <name>Apps</name>
     <message>
-        <location filename="rust_strings.h" line="49"/>
+        <location filename="rust_strings.h" line="44"/>
         <source>Added %1 to your app menu.</source>
         <translation>%1 foi adicionado ao menu de aplicativos.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="50"/>
+        <location filename="rust_strings.h" line="45"/>
         <source>Added %1 to your desktop.</source>
         <translation>%1 foi adicionado à área de trabalho.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="51"/>
+        <location filename="rust_strings.h" line="46"/>
         <source>Couldn&apos;t add a shortcut for %1.</source>
         <translation>Não foi possível criar um atalho para %1.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="52"/>
+        <location filename="rust_strings.h" line="47"/>
+        <source>Couldn&apos;t remove the shortcut for %1.</source>
+        <translation>Não foi possível remover o atalho de %1.</translation>
+    </message>
+    <message>
+        <location filename="rust_strings.h" line="48"/>
         <source>Couldn&apos;t uninstall %1.</source>
         <translation>Não foi possível desinstalar %1.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="53"/>
+        <location filename="rust_strings.h" line="49"/>
+        <source>Removed %1 from your app menu.</source>
+        <translation>%1 foi removido do menu de apps.</translation>
+    </message>
+    <message>
+        <location filename="rust_strings.h" line="50"/>
+        <source>Removed %1 from your desktop.</source>
+        <translation>%1 foi removido da área de trabalho.</translation>
+    </message>
+    <message>
+        <location filename="rust_strings.h" line="51"/>
         <source>Uninstalled %1.</source>
         <translation>%1 foi desinstalado.</translation>
     </message>
@@ -743,107 +824,147 @@
 <context>
     <name>AppsPage</name>
     <message>
-        <location filename="../qml/pages/AppsPage.qml" line="91"/>
+        <location filename="../qml/pages/AppsPage.qml" line="88"/>
+        <source>Install an app on %1</source>
+        <translation>Instalar um app em %1</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AppsPage.qml" line="90"/>
+        <source>Android apps (*.apk)</source>
+        <translation>Apps Android (*.apk)</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AppsPage.qml" line="114"/>
         <source>Phone apps</source>
         <translation>Apps do celular</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AppsPage.qml" line="92"/>
+        <location filename="../qml/pages/AppsPage.qml" line="115"/>
         <source>Open %1&apos;s apps here</source>
         <translation>Abra aqui os apps de %1</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AppsPage.qml" line="101"/>
+        <location filename="../qml/pages/AppsPage.qml" line="124"/>
         <source>Pair your phone to open its apps in windows on this PC.</source>
         <translation>Pareie seu celular para abrir os apps em janelas neste PC.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AppsPage.qml" line="103"/>
+        <location filename="../qml/pages/AppsPage.qml" line="126"/>
         <source>Opening apps in windows isn&apos;t supported on this phone.</source>
         <translation>Este celular não permite abrir apps em janelas.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AppsPage.qml" line="105"/>
+        <location filename="../qml/pages/AppsPage.qml" line="128"/>
         <source>Opening apps in windows needs Android %1 or newer on the phone.</source>
         <translation>Para abrir apps em janelas, o celular precisa ter Android %1 ou posterior.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AppsPage.qml" line="106"/>
+        <location filename="../qml/pages/AppsPage.qml" line="129"/>
         <source>Set up Wireless debugging in NectarLink on the phone to open its apps here.</source>
         <translation>Configure a Depuração por Wi-Fi no NectarLink do celular para abrir os apps aqui.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AppsPage.qml" line="159"/>
+        <location filename="../qml/pages/AppsPage.qml" line="182"/>
         <source>Search apps</source>
         <translation>Buscar apps</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AppsPage.qml" line="168"/>
+        <location filename="../qml/pages/AppsPage.qml" line="191"/>
         <source>Search %1&apos;s apps</source>
         <translation>Buscar apps de %1</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AppsPage.qml" line="176"/>
+        <location filename="../qml/pages/AppsPage.qml" line="199"/>
+        <source>Install an app (.apk) on %1</source>
+        <translation>Instalar um app (.apk) em %1</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AppsPage.qml" line="206"/>
         <source>Refresh</source>
         <translation>Atualizar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AppsPage.qml" line="201"/>
+        <location filename="../qml/pages/AppsPage.qml" line="231"/>
         <source>No apps match.</source>
         <translation>Nenhum app encontrado.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AppsPage.qml" line="201"/>
+        <location filename="../qml/pages/AppsPage.qml" line="231"/>
         <source>No apps to open.</source>
         <translation>Nenhum app para abrir.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AppsPage.qml" line="202"/>
+        <location filename="../qml/pages/AppsPage.qml" line="232"/>
         <source>Getting the phone&apos;s apps…</source>
         <translation>Carregando os apps do celular…</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AppsPage.qml" line="209"/>
+        <location filename="../qml/pages/AppsPage.qml" line="239"/>
         <source>Try again</source>
         <translation>Tentar de novo</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AppsPage.qml" line="240"/>
+        <location filename="../qml/pages/AppsPage.qml" line="271"/>
+        <source>Pinned</source>
+        <translation>Fixados</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AppsPage.qml" line="290"/>
         <source>Recent</source>
         <translation>Recentes</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AppsPage.qml" line="260"/>
+        <location filename="../qml/pages/AppsPage.qml" line="311"/>
         <source>All apps</source>
         <translation>Todos os apps</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AppsPage.qml" line="279"/>
+        <location filename="../qml/pages/AppsPage.qml" line="330"/>
         <source>%1, open</source>
         <translation>%1, aberto</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AppsPage.qml" line="366"/>
+        <location filename="../qml/pages/AppsPage.qml" line="417"/>
         <source>Open in a window</source>
         <translation>Abrir em uma janela</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AppsPage.qml" line="378"/>
+        <location filename="../qml/pages/AppsPage.qml" line="427"/>
+        <source>Unpin</source>
+        <translation>Desafixar</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AppsPage.qml" line="427"/>
+        <source>Pin to the top</source>
+        <translation>Fixar no topo</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AppsPage.qml" line="441"/>
+        <source>Remove from desktop</source>
+        <translation>Remover da área de trabalho</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AppsPage.qml" line="441"/>
+        <source>Remove from app menu</source>
+        <translation>Remover do menu de apps</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/AppsPage.qml" line="442"/>
         <source>Add to desktop</source>
         <translation>Adicionar à área de trabalho</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AppsPage.qml" line="378"/>
+        <location filename="../qml/pages/AppsPage.qml" line="442"/>
         <source>Add to app menu</source>
         <translation>Adicionar ao menu de aplicativos</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AppsPage.qml" line="391"/>
+        <location filename="../qml/pages/AppsPage.qml" line="458"/>
         <source>Uninstall it from %1</source>
         <translation>Desinstalar de %1</translation>
     </message>
     <message>
-        <location filename="../qml/pages/AppsPage.qml" line="392"/>
+        <location filename="../qml/pages/AppsPage.qml" line="459"/>
         <source>Uninstall</source>
         <translation>Desinstalar</translation>
     </message>
@@ -895,7 +1016,7 @@
 <context>
     <name>Automations</name>
     <message>
-        <location filename="rust_strings.h" line="54"/>
+        <location filename="rust_strings.h" line="52"/>
         <source>Triggered by %1</source>
         <translation>Acionado por %1</translation>
     </message>
@@ -903,32 +1024,32 @@
 <context>
     <name>Battery</name>
     <message>
-        <location filename="rust_strings.h" line="56"/>
+        <location filename="rust_strings.h" line="54"/>
         <source>%1 is fully charged</source>
         <translation>A bateria de %1 está totalmente carregada</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="59"/>
+        <location filename="rust_strings.h" line="57"/>
         <source>You can unplug it.</source>
         <translation>Já pode tirar da tomada.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="60"/>
+        <location filename="rust_strings.h" line="58"/>
         <source>Your phone</source>
         <translation>Seu celular</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="55"/>
+        <location filename="rust_strings.h" line="53"/>
         <source>%1 has reached %2% charge</source>
         <translation>A bateria de %1 chegou a %2%</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="58"/>
+        <location filename="rust_strings.h" line="56"/>
         <source>%1&apos;s battery is low</source>
         <translation>A bateria de %1 está fraca</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="57"/>
+        <location filename="rust_strings.h" line="55"/>
         <source>%1% left. Charge it soon.</source>
         <translation>Restam %1% de bateria. Carregue em breve.</translation>
     </message>
@@ -1019,42 +1140,42 @@
 <context>
     <name>Calls</name>
     <message>
-        <location filename="rust_strings.h" line="61"/>
+        <location filename="rust_strings.h" line="59"/>
         <source>%1 call on %2</source>
         <translation>Chamada do %1 no %2</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="62"/>
+        <location filename="rust_strings.h" line="60"/>
         <source>Calling %1</source>
         <translation>Chamando %1</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="63"/>
+        <location filename="rust_strings.h" line="61"/>
         <source>Missed call from %1</source>
         <translation>Chamada perdida de %1</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="64"/>
+        <location filename="rust_strings.h" line="62"/>
         <source>No microphone on this PC to talk with.</source>
         <translation>Este PC não tem microfone para falar.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="65"/>
+        <location filename="rust_strings.h" line="63"/>
         <source>On a call with %1</source>
         <translation>Em chamada com %1</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="66"/>
+        <location filename="rust_strings.h" line="64"/>
         <source>That call is over.</source>
         <translation>Essa chamada terminou.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="67"/>
+        <location filename="rust_strings.h" line="65"/>
         <source>This phone doesn&apos;t let NectarLink reach its calls&apos; sound.</source>
         <translation>Este celular não deixa o NectarLink acessar o som das chamadas.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="68"/>
+        <location filename="rust_strings.h" line="66"/>
         <source>Unknown caller</source>
         <translation>Número desconhecido</translation>
     </message>
@@ -1374,67 +1495,67 @@
 <context>
     <name>Clipboard</name>
     <message>
-        <location filename="rust_strings.h" line="69"/>
+        <location filename="rust_strings.h" line="67"/>
         <source>Copied from %1</source>
         <translation>Copiado de %1</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="70"/>
+        <location filename="rust_strings.h" line="68"/>
         <source>Copied from %1.</source>
         <translation>Copiado de %1.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="71"/>
+        <location filename="rust_strings.h" line="69"/>
         <source>Copied to clipboard</source>
         <translation>Copiado para a área de transferência</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="72"/>
+        <location filename="rust_strings.h" line="70"/>
         <source>Sending copied files to %1…</source>
         <translation>Enviando arquivos copiados para %1…</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="73"/>
+        <location filename="rust_strings.h" line="71"/>
         <source>Sent to %1.</source>
         <translation>Enviado para %1.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="74"/>
+        <location filename="rust_strings.h" line="72"/>
         <source>That clip is no longer in clipboard history.</source>
         <translation>Esse item não está mais no histórico da área de transferência.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="75"/>
+        <location filename="rust_strings.h" line="73"/>
         <source>That image can&apos;t be read.</source>
         <translation>Essa imagem não pode ser lida.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="76"/>
+        <location filename="rust_strings.h" line="74"/>
         <source>That image is too large to send.</source>
         <translation>Essa imagem é muito grande para enviar.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="77"/>
+        <location filename="rust_strings.h" line="75"/>
         <source>That&apos;s too much text to send at once.</source>
         <translation>O texto é grande demais para enviar de uma vez.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="78"/>
+        <location filename="rust_strings.h" line="76"/>
         <source>The clipboard is turned off for %1.</source>
         <translation>O compartilhamento da área de transferência está desativado para %1.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="79"/>
+        <location filename="rust_strings.h" line="77"/>
         <source>There&apos;s no text, image, or file on the clipboard.</source>
         <translation>Não há texto, imagem nem arquivo na área de transferência.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="80"/>
+        <location filename="rust_strings.h" line="78"/>
         <source>Update NectarLink on %1 to send it images.</source>
         <translation>Atualize o NectarLink em %1 para enviar imagens.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="81"/>
+        <location filename="rust_strings.h" line="79"/>
         <source>What you copied is marked private by its app, so it wasn&apos;t sent.</source>
         <translation>O app marcou o conteúdo copiado como privado, então ele não foi enviado.</translation>
     </message>
@@ -1487,477 +1608,477 @@
         <translation>%1 · %2 ms</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="82"/>
+        <location filename="rust_strings.h" line="80"/>
         <source>Browse all 28 features, live capability status, and where to find them</source>
         <translation>Explorar os 28 recursos, o status de cada um ao vivo e onde encontrá-los</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="83"/>
+        <location filename="rust_strings.h" line="81"/>
         <source>Browse phone storage in File Explorer</source>
         <translation>Explorar o armazenamento do celular no Explorador de Arquivos</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="84"/>
+        <location filename="rust_strings.h" line="82"/>
         <source>Call %1</source>
         <translation>Ligar para %1</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="85"/>
+        <location filename="rust_strings.h" line="83"/>
         <source>Calling %1 on %2…</source>
         <translation>Ligando para %1 por %2…</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="86"/>
+        <location filename="rust_strings.h" line="84"/>
         <source>Capture a photo on your phone and paste it into the active window</source>
         <translation>Tirar uma foto no celular e colar na janela ativa</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="87"/>
+        <location filename="rust_strings.h" line="85"/>
         <source>Check Wake-on-LAN status in Settings</source>
         <translation>Verificar o status do Wake-on-LAN em Configurações</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="88"/>
+        <location filename="rust_strings.h" line="86"/>
         <source>Connection Doctor</source>
         <translation>Diagnóstico de conexão</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="89"/>
+        <location filename="rust_strings.h" line="87"/>
         <source>Continue copied video on phone</source>
         <translation>Continuar assistindo ao vídeo copiado no celular</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="90"/>
+        <location filename="rust_strings.h" line="88"/>
         <source>Copied image</source>
         <translation>Imagem copiada</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="91"/>
+        <location filename="rust_strings.h" line="89"/>
         <source>Copied number</source>
         <translation>Número copiado</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="92"/>
+        <location filename="rust_strings.h" line="90"/>
         <source>Copy: %1</source>
         <translation>Copiar: %1</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="93"/>
+        <location filename="rust_strings.h" line="91"/>
         <source>Diagnose and fix firewall, discovery, or network issues</source>
         <translation>Diagnosticar e corrigir problemas de firewall, descoberta ou rede</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="94"/>
+        <location filename="rust_strings.h" line="92"/>
         <source>Features guide</source>
         <translation>Guia de recursos</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="95"/>
+        <location filename="rust_strings.h" line="93"/>
         <source>Find %1</source>
         <translation>Localizar %1</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="96"/>
+        <location filename="rust_strings.h" line="94"/>
         <source>Find my phone</source>
         <translation>Localizar meu celular</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="97"/>
+        <location filename="rust_strings.h" line="95"/>
         <source>From %1</source>
         <translation>De %1</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="98"/>
+        <location filename="rust_strings.h" line="96"/>
         <source>Hand off document to phone</source>
         <translation>Enviar documento para o celular</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="99"/>
+        <location filename="rust_strings.h" line="97"/>
         <source>Handoff · Doc</source>
         <translation>Enviar · Documento</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="100"/>
+        <location filename="rust_strings.h" line="98"/>
         <source>Handoff · Map</source>
         <translation>Enviar · Mapa</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="101"/>
+        <location filename="rust_strings.h" line="99"/>
         <source>Handoff · Video</source>
         <translation>Enviar · Vídeo</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="102"/>
+        <location filename="rust_strings.h" line="100"/>
         <source>Hide Shelf</source>
         <translation>Ocultar a Bandeja de arquivos</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="103"/>
+        <location filename="rust_strings.h" line="101"/>
         <source>Make %1 ring at full volume</source>
         <translation>Fazer %1 tocar no volume máximo</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="104"/>
+        <location filename="rust_strings.h" line="102"/>
         <source>Make phone ring at full volume</source>
         <translation>Fazer o celular tocar no volume máximo</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="105"/>
+        <location filename="rust_strings.h" line="103"/>
         <source>Mirror %1</source>
         <translation>Espelhar %1</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="106"/>
+        <location filename="rust_strings.h" line="104"/>
         <source>Mirror Apps</source>
         <translation>Espelhar apps</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="107"/>
+        <location filename="rust_strings.h" line="105"/>
         <source>Mirror phone screen</source>
         <translation>Espelhar a tela do celular</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="108"/>
+        <location filename="rust_strings.h" line="106"/>
         <source>Mute %1&apos;s ringer</source>
         <translation>Silenciar o toque de %1</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="109"/>
+        <location filename="rust_strings.h" line="107"/>
         <source>No physical network adapter found for Wake-on-LAN.</source>
         <translation>Nenhum adaptador de rede físico compatível com Wake-on-LAN foi encontrado.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="110"/>
+        <location filename="rust_strings.h" line="108"/>
         <source>Open %1</source>
         <translation>Abrir %1</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="111"/>
+        <location filename="rust_strings.h" line="109"/>
         <source>Open %1 in a window from %2</source>
         <translation>Abrir %1 de %2 em uma janela</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="112"/>
+        <location filename="rust_strings.h" line="110"/>
         <source>Open %1&apos;s Cloud Files folder in Explorer</source>
         <translation>Abrir a pasta de arquivos em nuvem de %1 no Explorador de Arquivos</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="113"/>
+        <location filename="rust_strings.h" line="111"/>
         <source>Open Shelf</source>
         <translation>Abrir a Bandeja de arquivos</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="114"/>
+        <location filename="rust_strings.h" line="112"/>
         <source>Open conversation on %1</source>
         <translation>Abrir conversa em %1</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="115"/>
+        <location filename="rust_strings.h" line="113"/>
         <source>Open copied link on phone</source>
         <translation>Abrir link copiado no celular</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="116"/>
+        <location filename="rust_strings.h" line="114"/>
         <source>Open copied location in Maps on phone</source>
         <translation>Abrir a localização copiada no app de mapas do celular</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="117"/>
+        <location filename="rust_strings.h" line="115"/>
         <source>Open last photo</source>
         <translation>Abrir a foto mais recente</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="118"/>
+        <location filename="rust_strings.h" line="116"/>
         <source>Open last photo from %1</source>
         <translation>Abrir a foto mais recente de %1</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="119"/>
+        <location filename="rust_strings.h" line="117"/>
         <source>Open newest photo or screenshot</source>
         <translation>Abrir a foto ou captura de tela mais recente</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="120"/>
+        <location filename="rust_strings.h" line="118"/>
         <source>Open the newest photo or screenshot from %1</source>
         <translation>Abrir a foto ou captura de tela mais recente de %1</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="121"/>
+        <location filename="rust_strings.h" line="119"/>
         <source>Open voice recordings folder for %1</source>
         <translation>Abrir a pasta de gravações de voz de %1</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="122"/>
+        <location filename="rust_strings.h" line="120"/>
         <source>Opened Recordings folder. Start a voice note in NectarLink on %1 to send it here.</source>
         <translation>Pasta Gravações aberta. Inicie uma nota de voz no NectarLink em %1 para enviá-la para cá.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="123"/>
+        <location filename="rust_strings.h" line="121"/>
         <source>Pair a new phone</source>
         <translation>Parear um celular novo</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="124"/>
+        <location filename="rust_strings.h" line="122"/>
         <source>Pause phone notifications</source>
         <translation>Pausar notificações do celular</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="125"/>
+        <location filename="rust_strings.h" line="123"/>
         <source>Place a phone call or open in dialer</source>
         <translation>Fazer uma ligação ou abrir o discador</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="126"/>
+        <location filename="rust_strings.h" line="124"/>
         <source>Place call on %1</source>
         <translation>Fazer ligação por %1</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="127"/>
+        <location filename="rust_strings.h" line="125"/>
         <source>Quick Toggles</source>
         <translation>Controles rápidos</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="128"/>
+        <location filename="rust_strings.h" line="126"/>
         <source>Re-open the step-by-step setup walkthrough</source>
         <translation>Reabrir o passo a passo de configuração</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="129"/>
+        <location filename="rust_strings.h" line="127"/>
         <source>Ready on %1</source>
         <translation>Pronto em %1</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="130"/>
+        <location filename="rust_strings.h" line="128"/>
         <source>Recent Activity</source>
         <translation>Atividade recente</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="131"/>
+        <location filename="rust_strings.h" line="129"/>
         <source>Reconnect paired phones and refresh notifications and media</source>
         <translation>Reconectar celulares pareados e atualizar notificações e mídia</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="132"/>
+        <location filename="rust_strings.h" line="130"/>
         <source>Record voice</source>
         <translation>Gravar nota de voz</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="133"/>
+        <location filename="rust_strings.h" line="131"/>
         <source>Resume phone notifications</source>
         <translation>Retomar notificações do celular</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="134"/>
+        <location filename="rust_strings.h" line="132"/>
         <source>Ringer: Silent</source>
         <translation>Toque: Silencioso</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="135"/>
+        <location filename="rust_strings.h" line="133"/>
         <source>Ringer: Sound</source>
         <translation>Toque: Som</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="136"/>
+        <location filename="rust_strings.h" line="134"/>
         <source>Ringer: Vibrate</source>
         <translation>Toque: Vibrar</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="137"/>
+        <location filename="rust_strings.h" line="135"/>
         <source>Ringing %1…</source>
         <translation>Fazendo %1 tocar…</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="138"/>
+        <location filename="rust_strings.h" line="136"/>
         <source>Scan a document on your phone and paste it into the active window</source>
         <translation>Digitalizar um documento no celular e colar na janela ativa</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="139"/>
+        <location filename="rust_strings.h" line="137"/>
         <source>Scan document with phone</source>
         <translation>Digitalizar documento com o celular</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="140"/>
+        <location filename="rust_strings.h" line="138"/>
         <source>Send a document to %1 and open it automatically upon arrival</source>
         <translation>Enviar um documento para %1 e abrir sozinho quando chegar</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="141"/>
+        <location filename="rust_strings.h" line="139"/>
         <source>Send clipboard</source>
         <translation>Enviar item copiado</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="142"/>
+        <location filename="rust_strings.h" line="140"/>
         <source>Send clipboard to %1</source>
         <translation>Enviar o item copiado para %1</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="143"/>
+        <location filename="rust_strings.h" line="141"/>
         <source>Send copied text or image</source>
         <translation>Enviar o texto ou a imagem copiados</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="144"/>
+        <location filename="rust_strings.h" line="142"/>
         <source>Send copied text or image to %1</source>
         <translation>Enviar o texto ou a imagem copiados para %1</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="145"/>
+        <location filename="rust_strings.h" line="143"/>
         <source>Send live keystrokes and text to %1 without screen mirroring</source>
         <translation>Enviar teclas e texto ao vivo para %1 sem espelhar a tela</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="146"/>
+        <location filename="rust_strings.h" line="144"/>
         <source>Set %1&apos;s ringer mode to normal sound</source>
         <translation>Definir o toque de %1 como som normal</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="147"/>
+        <location filename="rust_strings.h" line="145"/>
         <source>Set %1&apos;s ringer mode to vibrate</source>
         <translation>Definir o toque de %1 como vibrar</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="148"/>
+        <location filename="rust_strings.h" line="146"/>
         <source>Setup walkthrough</source>
         <translation>Passo a passo de configuração</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="149"/>
+        <location filename="rust_strings.h" line="147"/>
         <source>Show QR code and pairing code to link another phone</source>
         <translation>Mostrar o código QR e o código de pareamento para conectar outro celular</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="150"/>
+        <location filename="rust_strings.h" line="148"/>
         <source>Slide-out edge panel with latest photo, screenshot, clipboard, and recent files</source>
         <translation>Painel lateral deslizante com a foto ou captura de tela mais recente, a área de transferência e arquivos recentes</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="151"/>
+        <location filename="rust_strings.h" line="149"/>
         <source>Start a new message conversation</source>
         <translation>Iniciar uma nova conversa por mensagem</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="152"/>
+        <location filename="rust_strings.h" line="150"/>
         <source>Starting phone webcam…</source>
         <translation>Iniciando a webcam do celular…</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="153"/>
+        <location filename="rust_strings.h" line="151"/>
         <source>Stop phone webcam</source>
         <translation>Parar a webcam do celular</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="154"/>
+        <location filename="rust_strings.h" line="152"/>
         <source>Stop pop-ups for a while. They still collect on Home.</source>
         <translation>Pausar os avisos por um tempo. Eles continuam se acumulando no Início.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="155"/>
+        <location filename="rust_strings.h" line="153"/>
         <source>Stop typing on phone</source>
         <translation>Parar de digitar no celular</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="156"/>
+        <location filename="rust_strings.h" line="154"/>
         <source>Stopped phone webcam.</source>
         <translation>A webcam do celular foi desligada.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="157"/>
+        <location filename="rust_strings.h" line="155"/>
         <source>Stream %1&apos;s camera into the NectarLink virtual webcam</source>
         <translation>Transmitir a câmera de %1 para a webcam virtual do NectarLink</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="158"/>
+        <location filename="rust_strings.h" line="156"/>
         <source>Stream %1&apos;s screen in a desktop window</source>
         <translation>Transmitir a tela de %1 em uma janela no PC</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="159"/>
+        <location filename="rust_strings.h" line="157"/>
         <source>Switch Bluetooth on %1</source>
         <translation>Alternar o Bluetooth em %1</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="160"/>
+        <location filename="rust_strings.h" line="158"/>
         <source>Switch Do Not Disturb on %1</source>
         <translation>Alternar o Não perturbe em %1</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="161"/>
+        <location filename="rust_strings.h" line="159"/>
         <source>Switch Wi-Fi on %1</source>
         <translation>Alternar o Wi-Fi em %1</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="162"/>
+        <location filename="rust_strings.h" line="160"/>
         <source>Switch to %1</source>
         <translation>Mudar para %1</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="163"/>
+        <location filename="rust_strings.h" line="161"/>
         <source>Switch torch / flashlight on %1</source>
         <translation>Alternar a lanterna em %1</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="164"/>
+        <location filename="rust_strings.h" line="162"/>
         <source>Sync now</source>
         <translation>Sincronizar agora</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="165"/>
+        <location filename="rust_strings.h" line="163"/>
         <source>Syncing devices…</source>
         <translation>Sincronizando dispositivos…</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="166"/>
+        <location filename="rust_strings.h" line="164"/>
         <source>Take photo with phone</source>
         <translation>Tirar foto com o celular</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="167"/>
+        <location filename="rust_strings.h" line="165"/>
         <source>Text %1</source>
         <translation>Mandar mensagem para %1</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="168"/>
+        <location filename="rust_strings.h" line="166"/>
         <source>That file is no longer in its saved location.</source>
         <translation>Esse arquivo não está mais no local onde foi salvo.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="169"/>
+        <location filename="rust_strings.h" line="167"/>
         <source>Toggle Bluetooth</source>
         <translation>Alternar Bluetooth</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="170"/>
+        <location filename="rust_strings.h" line="168"/>
         <source>Toggle Do Not Disturb</source>
         <translation>Alternar Não perturbe</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="171"/>
+        <location filename="rust_strings.h" line="169"/>
         <source>Toggle Flashlight</source>
         <translation>Alternar lanterna</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="172"/>
+        <location filename="rust_strings.h" line="170"/>
         <source>Toggle Wi-Fi</source>
         <translation>Alternar Wi-Fi</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="173"/>
+        <location filename="rust_strings.h" line="171"/>
         <source>Type on phone with PC keyboard</source>
         <translation>Digitar no celular com o teclado do PC</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="174"/>
+        <location filename="rust_strings.h" line="172"/>
         <source>Use phone as webcam</source>
         <translation>Usar o celular como webcam</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="175"/>
+        <location filename="rust_strings.h" line="173"/>
         <source>Wake-on-LAN is ready on %1 (phones can wake this PC).</source>
         <translation>O Wake-on-LAN está pronto em %1 (os celulares podem acordar este PC).</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="176"/>
+        <location filename="rust_strings.h" line="174"/>
         <source>Wake-on-LAN on %1 is %2. Check Settings.</source>
         <translation>O Wake-on-LAN em %1 está %2. Confira em Configurações.</translation>
     </message>
@@ -1965,67 +2086,67 @@
 <context>
     <name>ContinuityCamera</name>
     <message>
-        <location filename="rust_strings.h" line="177"/>
+        <location filename="rust_strings.h" line="175"/>
         <source>Allow Photos access for %1 in Settings first.</source>
         <translation>Primeiro, permita o acesso a Fotos para %1 em Configurações.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="178"/>
+        <location filename="rust_strings.h" line="176"/>
         <source>Camera capture cancelled on %1.</source>
         <translation>A captura pela câmera foi cancelada em %1.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="179"/>
+        <location filename="rust_strings.h" line="177"/>
         <source>Camera is busy on %1.</source>
         <translation>A câmera está ocupada em %1.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="180"/>
+        <location filename="rust_strings.h" line="178"/>
         <source>Camera permission was denied on %1.</source>
         <translation>A permissão da câmera foi negada em %1.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="181"/>
+        <location filename="rust_strings.h" line="179"/>
         <source>Couldn’t copy image to clipboard: %1</source>
         <translation>Não foi possível copiar a imagem para a área de transferência: %1</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="182"/>
+        <location filename="rust_strings.h" line="180"/>
         <source>Couldn’t open camera on %1: %2</source>
         <translation>Não foi possível abrir a câmera em %1: %2</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="183"/>
+        <location filename="rust_strings.h" line="181"/>
         <source>Image is on your clipboard. Press Ctrl+V in your target app.</source>
         <translation>A imagem está na área de transferência. Pressione Ctrl+V no app desejado.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="184"/>
+        <location filename="rust_strings.h" line="182"/>
         <source>Opening camera on %1…</source>
         <translation>Abrindo a câmera em %1…</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="185"/>
+        <location filename="rust_strings.h" line="183"/>
         <source>Opening document scanner on %1…</source>
         <translation>Abrindo o scanner de documentos em %1…</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="186"/>
+        <location filename="rust_strings.h" line="184"/>
         <source>Pair your phone first to take a photo or scan a document.</source>
         <translation>Pareie seu celular primeiro para tirar uma foto ou digitalizar um documento.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="187"/>
+        <location filename="rust_strings.h" line="185"/>
         <source>Pasted into %1</source>
         <translation>Colado em %1</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="188"/>
+        <location filename="rust_strings.h" line="186"/>
         <source>Scan a document on %1…</source>
         <translation>Digitalize um documento em %1…</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="189"/>
+        <location filename="rust_strings.h" line="187"/>
         <source>Take a photo on %1…</source>
         <translation>Tire uma foto em %1…</translation>
     </message>
@@ -2033,90 +2154,143 @@
 <context>
     <name>CoreHost</name>
     <message>
-        <location filename="rust_strings.h" line="190"/>
+        <location filename="rust_strings.h" line="188"/>
         <source>Dropped %1 queued item(s) for %2 (device unpaired).</source>
         <translation>%1 item(ns) na fila para %2 descartado(s) (dispositivo despareado).</translation>
     </message>
 </context>
 <context>
+    <name>CrashCard</name>
+    <message>
+        <location filename="../qml/components/CrashCard.qml" line="53"/>
+        <source>Thanks, the crash report is sent</source>
+        <translation>Obrigado, o relatório de falha foi enviado</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/CrashCard.qml" line="53"/>
+        <source>NectarLink closed unexpectedly</source>
+        <translation>O NectarLink fechou inesperadamente</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/CrashCard.qml" line="62"/>
+        <source>This crash is fixed in NectarLink %1. Update to get the fix.</source>
+        <translation>Esta falha foi corrigida no NectarLink %1. Atualize para receber a correção.</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/CrashCard.qml" line="64"/>
+        <source>The crash report couldn&apos;t be sent. Use Look first to send it another way.</source>
+        <translation>Não foi possível enviar o relatório de falha. Use Ver antes para enviar de outro jeito.</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/CrashCard.qml" line="65"/>
+        <source>A crash report helps fix it. It says where in NectarLink it happened and which versions you run, nothing personal.</source>
+        <translation>Um relatório de falha ajuda a corrigir. Ele diz onde no NectarLink aconteceu e quais versões você usa, nada pessoal.</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/CrashCard.qml" line="73"/>
+        <source>Update</source>
+        <translation>Atualizar</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/CrashCard.qml" line="81"/>
+        <source>Send</source>
+        <translation>Enviar</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/CrashCard.qml" line="88"/>
+        <source>Look first</source>
+        <translation>Ver antes</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/CrashCard.qml" line="94"/>
+        <source>Not now</source>
+        <translation>Agora não</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/CrashCard.qml" line="103"/>
+        <source>Don&apos;t ask about crashes</source>
+        <translation>Não perguntar sobre falhas</translation>
+    </message>
+</context>
+<context>
     <name>Deck</name>
     <message>
-        <location filename="rust_strings.h" line="191"/>
+        <location filename="rust_strings.h" line="189"/>
         <source>Alt + Tab</source>
         <translation>Alt + Tab</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="192"/>
+        <location filename="rust_strings.h" line="190"/>
         <source>Application path must end with .exe or .lnk.</source>
         <translation>O caminho do app precisa terminar em .exe ou .lnk.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="193"/>
+        <location filename="rust_strings.h" line="191"/>
         <source>Choose a key for the shortcut.</source>
         <translation>Escolha uma tecla para o atalho.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="194"/>
+        <location filename="rust_strings.h" line="192"/>
         <source>Choose an application (.exe or .lnk) on this PC.</source>
         <translation>Escolha um app (.exe ou .lnk) neste PC.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="195"/>
+        <location filename="rust_strings.h" line="193"/>
         <source>Enter a command to run on this PC.</source>
         <translation>Digite um comando para executar neste PC.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="196"/>
+        <location filename="rust_strings.h" line="194"/>
         <source>Enter an application path (/usr/bin/..., .desktop, or .AppImage).</source>
         <translation>Digite o caminho do app (/usr/bin/..., .desktop ou .AppImage).</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="197"/>
+        <location filename="rust_strings.h" line="195"/>
         <source>Enter an http:// or https:// web address.</source>
         <translation>Digite um endereço da web começando com http:// ou https://.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="198"/>
+        <location filename="rust_strings.h" line="196"/>
         <source>Enter the text snippet to type.</source>
         <translation>Digite o trecho de texto que será inserido.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="199"/>
+        <location filename="rust_strings.h" line="197"/>
         <source>Invalid action configuration.</source>
         <translation>Configuração de ação inválida.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="200"/>
+        <location filename="rust_strings.h" line="198"/>
         <source>Invalid tile properties.</source>
         <translation>As propriedades do botão são inválidas.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="201"/>
+        <location filename="rust_strings.h" line="199"/>
         <source>Media key</source>
         <translation>Tecla de mídia</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="202"/>
+        <location filename="rust_strings.h" line="200"/>
         <source>Page not found.</source>
         <translation>Página não encontrada.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="203"/>
+        <location filename="rust_strings.h" line="201"/>
         <source>This page already has the maximum number of tiles (24).</source>
         <translation>Esta página já atingiu o limite de 24 botões.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="204"/>
+        <location filename="rust_strings.h" line="202"/>
         <source>Tile not found.</source>
         <translation>Botão não encontrado.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="205"/>
+        <location filename="rust_strings.h" line="203"/>
         <source>Use a single key (a-z, 0-9, f1-f12, enter, tab, space, escape, arrows, etc.).</source>
         <translation>Use uma única tecla (a-z, 0-9, F1–F12, Enter, Tab, Espaço, Esc, setas etc.).</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="206"/>
+        <location filename="rust_strings.h" line="204"/>
         <source>Web address must start with http:// or https://.</source>
         <translation>O endereço da web precisa começar com http:// ou https://.</translation>
     </message>
@@ -2131,765 +2305,783 @@
         <translation>Principal</translation>
     </message>
     <message>
-        <location filename="../qml/pages/DeckPage.qml" line="94"/>
-        <location filename="../qml/pages/DeckPage.qml" line="95"/>
-        <location filename="../qml/pages/DeckPage.qml" line="96"/>
+        <location filename="../qml/pages/DeckPage.qml" line="97"/>
+        <location filename="../qml/pages/DeckPage.qml" line="98"/>
+        <location filename="../qml/pages/DeckPage.qml" line="99"/>
         <source>Media</source>
         <translation>Mídia</translation>
     </message>
     <message>
-        <location filename="../qml/pages/DeckPage.qml" line="94"/>
+        <location filename="../qml/pages/DeckPage.qml" line="97"/>
         <source>Play / pause</source>
         <translation>Reproduzir / pausar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/DeckPage.qml" line="95"/>
+        <location filename="../qml/pages/DeckPage.qml" line="98"/>
         <source>Previous track</source>
         <translation>Faixa anterior</translation>
     </message>
     <message>
-        <location filename="../qml/pages/DeckPage.qml" line="96"/>
+        <location filename="../qml/pages/DeckPage.qml" line="99"/>
         <source>Next track</source>
         <translation>Próxima faixa</translation>
     </message>
     <message>
-        <location filename="../qml/pages/DeckPage.qml" line="97"/>
-        <location filename="../qml/pages/DeckPage.qml" line="98"/>
-        <location filename="../qml/pages/DeckPage.qml" line="99"/>
         <location filename="../qml/pages/DeckPage.qml" line="100"/>
+        <location filename="../qml/pages/DeckPage.qml" line="101"/>
+        <location filename="../qml/pages/DeckPage.qml" line="102"/>
+        <location filename="../qml/pages/DeckPage.qml" line="103"/>
         <source>Audio</source>
         <translation>Áudio</translation>
     </message>
     <message>
-        <location filename="../qml/pages/DeckPage.qml" line="97"/>
+        <location filename="../qml/pages/DeckPage.qml" line="100"/>
         <source>Volume down</source>
         <translation>Diminuir volume</translation>
     </message>
     <message>
-        <location filename="../qml/pages/DeckPage.qml" line="98"/>
+        <location filename="../qml/pages/DeckPage.qml" line="101"/>
         <source>Volume up</source>
         <translation>Aumentar volume</translation>
     </message>
     <message>
-        <location filename="../qml/pages/DeckPage.qml" line="99"/>
+        <location filename="../qml/pages/DeckPage.qml" line="102"/>
         <source>Mute speaker</source>
         <translation>Silenciar alto-falante</translation>
     </message>
     <message>
-        <location filename="../qml/pages/DeckPage.qml" line="100"/>
+        <location filename="../qml/pages/DeckPage.qml" line="103"/>
         <source>Mute microphone</source>
         <translation>Silenciar microfone</translation>
     </message>
     <message>
-        <location filename="../qml/pages/DeckPage.qml" line="101"/>
-        <location filename="../qml/pages/DeckPage.qml" line="102"/>
-        <location filename="../qml/pages/DeckPage.qml" line="103"/>
         <location filename="../qml/pages/DeckPage.qml" line="104"/>
+        <location filename="../qml/pages/DeckPage.qml" line="105"/>
+        <location filename="../qml/pages/DeckPage.qml" line="106"/>
+        <location filename="../qml/pages/DeckPage.qml" line="107"/>
         <source>System</source>
         <translation>Sistema</translation>
     </message>
     <message>
-        <location filename="../qml/pages/DeckPage.qml" line="101"/>
+        <location filename="../qml/pages/DeckPage.qml" line="104"/>
         <source>Show desktop (Win+D)</source>
         <translation>Mostrar área de trabalho (Win+D)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/DeckPage.qml" line="101"/>
+        <location filename="../qml/pages/DeckPage.qml" line="104"/>
         <source>Show desktop (Super+D)</source>
         <translation>Mostrar área de trabalho (Super+D)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/DeckPage.qml" line="102"/>
+        <location filename="../qml/pages/DeckPage.qml" line="105"/>
         <source>Switch window (Alt+Tab)</source>
         <translation>Alternar janela (Alt+Tab)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/DeckPage.qml" line="103"/>
+        <location filename="../qml/pages/DeckPage.qml" line="106"/>
         <source>Screenshot (Win+Shift+S)</source>
         <translation>Captura de tela (Win+Shift+S)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/DeckPage.qml" line="103"/>
+        <location filename="../qml/pages/DeckPage.qml" line="106"/>
         <source>Screenshot</source>
         <translation>Captura de tela</translation>
     </message>
     <message>
-        <location filename="../qml/pages/DeckPage.qml" line="104"/>
+        <location filename="../qml/pages/DeckPage.qml" line="107"/>
         <source>Lock PC</source>
         <translation>Bloquear PC</translation>
     </message>
     <message>
-        <location filename="../qml/pages/DeckPage.qml" line="105"/>
-        <location filename="../qml/pages/DeckPage.qml" line="106"/>
-        <location filename="../qml/pages/DeckPage.qml" line="107"/>
+        <location filename="../qml/pages/DeckPage.qml" line="108"/>
+        <location filename="../qml/pages/DeckPage.qml" line="109"/>
+        <location filename="../qml/pages/DeckPage.qml" line="110"/>
         <source>Custom</source>
         <translation>Personalizado</translation>
     </message>
     <message>
-        <location filename="../qml/pages/DeckPage.qml" line="105"/>
+        <location filename="../qml/pages/DeckPage.qml" line="108"/>
         <source>Keyboard shortcut</source>
         <translation>Atalho de teclado</translation>
     </message>
     <message>
-        <location filename="../qml/pages/DeckPage.qml" line="106"/>
+        <location filename="../qml/pages/DeckPage.qml" line="109"/>
         <source>Open website</source>
         <translation>Abrir site</translation>
     </message>
     <message>
-        <location filename="../qml/pages/DeckPage.qml" line="107"/>
+        <location filename="../qml/pages/DeckPage.qml" line="110"/>
         <source>Type text snippet</source>
         <translation>Digitar trecho de texto</translation>
     </message>
     <message>
-        <location filename="../qml/pages/DeckPage.qml" line="108"/>
-        <location filename="../qml/pages/DeckPage.qml" line="109"/>
+        <location filename="../qml/pages/DeckPage.qml" line="111"/>
+        <location filename="../qml/pages/DeckPage.qml" line="112"/>
         <source>Apps</source>
         <translation>Apps</translation>
     </message>
     <message>
-        <location filename="../qml/pages/DeckPage.qml" line="108"/>
+        <location filename="../qml/pages/DeckPage.qml" line="111"/>
         <source>Launch application (.desktop / binary)</source>
         <translation>Abrir app (.desktop / binário)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/DeckPage.qml" line="108"/>
+        <location filename="../qml/pages/DeckPage.qml" line="111"/>
         <source>Launch application (.exe / .lnk)</source>
         <translation>Abrir app (.exe / .lnk)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/DeckPage.qml" line="109"/>
+        <location filename="../qml/pages/DeckPage.qml" line="112"/>
         <source>Run shell command</source>
         <translation>Executar comando do shell</translation>
     </message>
     <message>
-        <location filename="../qml/pages/DeckPage.qml" line="146"/>
+        <location filename="../qml/pages/DeckPage.qml" line="149"/>
         <source>Choose an application or shortcut</source>
         <translation>Escolher um app ou atalho</translation>
     </message>
     <message>
-        <location filename="../qml/pages/DeckPage.qml" line="148"/>
+        <location filename="../qml/pages/DeckPage.qml" line="151"/>
         <source>Applications and launchers (*.desktop *.AppImage *)</source>
         <translation>Apps e atalhos (*.desktop *.AppImage *)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/DeckPage.qml" line="148"/>
+        <location filename="../qml/pages/DeckPage.qml" line="151"/>
         <source>All files (*)</source>
         <translation>Todos os arquivos (*)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/DeckPage.qml" line="149"/>
+        <location filename="../qml/pages/DeckPage.qml" line="152"/>
         <source>Applications and shortcuts (*.exe *.lnk)</source>
         <translation>Apps e atalhos (*.exe *.lnk)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/DeckPage.qml" line="154"/>
+        <location filename="../qml/pages/DeckPage.qml" line="157"/>
         <source>Launch app</source>
         <translation>Abrir app</translation>
     </message>
     <message>
-        <location filename="../qml/pages/DeckPage.qml" line="193"/>
+        <location filename="../qml/pages/DeckPage.qml" line="196"/>
         <source>Control Deck</source>
         <translation>Deck de controle</translation>
     </message>
     <message>
-        <location filename="../qml/pages/DeckPage.qml" line="199"/>
+        <location filename="../qml/pages/DeckPage.qml" line="202"/>
         <source>Drag to reorder · click to edit.</source>
         <translation>Arraste para reordenar · clique para editar.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/DeckPage.qml" line="210"/>
+        <location filename="../qml/pages/DeckPage.qml" line="213"/>
         <source>Reset defaults</source>
         <translation>Restaurar padrões</translation>
     </message>
     <message>
-        <location filename="../qml/pages/DeckPage.qml" line="217"/>
-        <location filename="../qml/pages/DeckPage.qml" line="565"/>
-        <location filename="../qml/pages/DeckPage.qml" line="584"/>
-        <location filename="../qml/pages/DeckPage.qml" line="652"/>
+        <location filename="../qml/pages/DeckPage.qml" line="220"/>
+        <location filename="../qml/pages/DeckPage.qml" line="572"/>
+        <location filename="../qml/pages/DeckPage.qml" line="591"/>
+        <location filename="../qml/pages/DeckPage.qml" line="659"/>
         <source>Add tile</source>
         <translation>Adicionar botão</translation>
     </message>
     <message>
-        <location filename="../qml/pages/DeckPage.qml" line="243"/>
+        <location filename="../qml/pages/DeckPage.qml" line="246"/>
         <source>Speaker muted (%1%)</source>
         <translation>Alto-falante silenciado (%1%)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/DeckPage.qml" line="244"/>
+        <location filename="../qml/pages/DeckPage.qml" line="247"/>
         <source>Speaker %1%</source>
         <translation>Alto-falante %1%</translation>
     </message>
     <message>
-        <location filename="../qml/pages/DeckPage.qml" line="259"/>
+        <location filename="../qml/pages/DeckPage.qml" line="262"/>
         <source>Mic muted</source>
         <translation>Microfone silenciado</translation>
     </message>
     <message>
-        <location filename="../qml/pages/DeckPage.qml" line="260"/>
+        <location filename="../qml/pages/DeckPage.qml" line="263"/>
         <source>Mic live</source>
         <translation>Microfone ligado</translation>
     </message>
     <message>
-        <location filename="../qml/pages/DeckPage.qml" line="261"/>
+        <location filename="../qml/pages/DeckPage.qml" line="264"/>
         <source>No mic</source>
         <translation>Sem microfone</translation>
     </message>
     <message>
-        <location filename="../qml/pages/DeckPage.qml" line="276"/>
+        <location filename="../qml/pages/DeckPage.qml" line="279"/>
         <source>Media playing</source>
         <translation>Mídia em reprodução</translation>
     </message>
     <message>
-        <location filename="../qml/pages/DeckPage.qml" line="276"/>
+        <location filename="../qml/pages/DeckPage.qml" line="279"/>
         <source>Media paused</source>
         <translation>Mídia pausada</translation>
     </message>
     <message>
-        <location filename="../qml/pages/DeckPage.qml" line="311"/>
-        <location filename="../qml/pages/DeckPage.qml" line="1005"/>
+        <location filename="../qml/pages/DeckPage.qml" line="314"/>
+        <location filename="../qml/pages/DeckPage.qml" line="1012"/>
         <source>New page</source>
         <translation>Nova página</translation>
     </message>
     <message>
-        <location filename="../qml/pages/DeckPage.qml" line="314"/>
+        <location filename="../qml/pages/DeckPage.qml" line="317"/>
         <source>Page %1</source>
         <translation>Página %1</translation>
     </message>
     <message>
-        <location filename="../qml/pages/DeckPage.qml" line="329"/>
-        <location filename="../qml/pages/DeckPage.qml" line="1005"/>
+        <location filename="../qml/pages/DeckPage.qml" line="332"/>
+        <location filename="../qml/pages/DeckPage.qml" line="1012"/>
         <source>Rename page</source>
         <translation>Renomear página</translation>
     </message>
     <message>
-        <location filename="../qml/pages/DeckPage.qml" line="341"/>
+        <location filename="../qml/pages/DeckPage.qml" line="344"/>
         <source>Delete page</source>
         <translation>Excluir página</translation>
     </message>
     <message>
-        <location filename="../qml/pages/DeckPage.qml" line="452"/>
+        <location filename="../qml/pages/DeckPage.qml" line="456"/>
         <source>Test %1</source>
         <translation>Testar %1</translation>
     </message>
     <message>
-        <location filename="../qml/pages/DeckPage.qml" line="652"/>
+        <location filename="../qml/pages/DeckPage.qml" line="659"/>
         <source>Edit tile</source>
         <translation>Editar botão</translation>
     </message>
     <message>
-        <location filename="../qml/pages/DeckPage.qml" line="660"/>
+        <location filename="../qml/pages/DeckPage.qml" line="667"/>
         <source>Phones see only each tile&apos;s label and icon. Paths and commands stay on this PC.</source>
         <translation>Os celulares veem apenas o nome e o ícone de cada botão. Caminhos e comandos ficam neste PC.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/DeckPage.qml" line="705"/>
+        <location filename="../qml/pages/DeckPage.qml" line="712"/>
         <source>Action</source>
         <translation>Ação</translation>
     </message>
     <message>
-        <location filename="../qml/pages/DeckPage.qml" line="741"/>
+        <location filename="../qml/pages/DeckPage.qml" line="748"/>
         <source>Ctrl</source>
         <translation>Ctrl</translation>
     </message>
     <message>
-        <location filename="../qml/pages/DeckPage.qml" line="747"/>
+        <location filename="../qml/pages/DeckPage.qml" line="754"/>
         <source>Alt</source>
         <translation>Alt</translation>
     </message>
     <message>
-        <location filename="../qml/pages/DeckPage.qml" line="753"/>
+        <location filename="../qml/pages/DeckPage.qml" line="760"/>
         <source>Shift</source>
         <translation>Shift</translation>
     </message>
     <message>
-        <location filename="../qml/pages/DeckPage.qml" line="759"/>
+        <location filename="../qml/pages/DeckPage.qml" line="766"/>
         <source>Win</source>
         <translation>Win</translation>
     </message>
     <message>
-        <location filename="../qml/pages/DeckPage.qml" line="759"/>
+        <location filename="../qml/pages/DeckPage.qml" line="766"/>
         <source>Super</source>
         <translation>Super</translation>
     </message>
     <message>
-        <location filename="../qml/pages/DeckPage.qml" line="767"/>
+        <location filename="../qml/pages/DeckPage.qml" line="774"/>
         <source>Key (e.g. c, v, z, f5, tab, enter, space, escape, up, down):</source>
         <translation>Tecla (ex.: c, v, z, F5, Tab, Enter, Espaço, Esc, ↑, ↓):</translation>
     </message>
     <message>
-        <location filename="../qml/pages/DeckPage.qml" line="768"/>
+        <location filename="../qml/pages/DeckPage.qml" line="775"/>
         <source>Website address (https://…):</source>
         <translation>Endereço do site (https://…):</translation>
     </message>
     <message>
-        <location filename="../qml/pages/DeckPage.qml" line="769"/>
+        <location filename="../qml/pages/DeckPage.qml" line="776"/>
         <source>Text snippet to type:</source>
         <translation>Trecho de texto para digitar:</translation>
     </message>
     <message>
-        <location filename="../qml/pages/DeckPage.qml" line="770"/>
+        <location filename="../qml/pages/DeckPage.qml" line="777"/>
         <source>Application or launcher path (/usr/bin/…, .desktop, or .AppImage):</source>
         <translation>Caminho do app ou atalho (/usr/bin/…, .desktop ou .AppImage):</translation>
     </message>
     <message>
-        <location filename="../qml/pages/DeckPage.qml" line="770"/>
+        <location filename="../qml/pages/DeckPage.qml" line="777"/>
         <source>Application or shortcut path (.exe or .lnk):</source>
         <translation>Caminho do app ou atalho (.exe ou .lnk):</translation>
     </message>
     <message>
-        <location filename="../qml/pages/DeckPage.qml" line="771"/>
+        <location filename="../qml/pages/DeckPage.qml" line="778"/>
         <source>Shell command to run on this PC:</source>
         <translation>Comando do shell para executar neste PC:</translation>
     </message>
     <message>
-        <location filename="../qml/pages/DeckPage.qml" line="801"/>
+        <location filename="../qml/pages/DeckPage.qml" line="808"/>
         <source>Action parameter</source>
         <translation>Parâmetro da ação</translation>
     </message>
     <message>
-        <location filename="../qml/pages/DeckPage.qml" line="811"/>
+        <location filename="../qml/pages/DeckPage.qml" line="818"/>
         <source>Browse…</source>
         <translation>Procurar…</translation>
     </message>
     <message>
-        <location filename="../qml/pages/DeckPage.qml" line="822"/>
+        <location filename="../qml/pages/DeckPage.qml" line="829"/>
         <source>Requires &quot;Allow running Deck commands&quot; to be turned on for the phone in Settings → Devices.</source>
         <translation>É preciso ativar “Executar comandos do shell do Deck” para o celular em Configurações → Dispositivos.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/DeckPage.qml" line="830"/>
+        <location filename="../qml/pages/DeckPage.qml" line="837"/>
         <source>Label</source>
         <translation>Nome</translation>
     </message>
     <message>
-        <location filename="../qml/pages/DeckPage.qml" line="856"/>
+        <location filename="../qml/pages/DeckPage.qml" line="863"/>
         <source>Tile label</source>
         <translation>Nome do botão</translation>
     </message>
     <message>
-        <location filename="../qml/pages/DeckPage.qml" line="865"/>
+        <location filename="../qml/pages/DeckPage.qml" line="872"/>
         <source>Icon</source>
         <translation>Ícone</translation>
     </message>
     <message>
-        <location filename="../qml/pages/DeckPage.qml" line="928"/>
+        <location filename="../qml/pages/DeckPage.qml" line="935"/>
         <source>Delete</source>
         <translation>Excluir</translation>
     </message>
     <message>
-        <location filename="../qml/pages/DeckPage.qml" line="938"/>
+        <location filename="../qml/pages/DeckPage.qml" line="945"/>
         <source>Test</source>
         <translation>Testar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/DeckPage.qml" line="950"/>
-        <location filename="../qml/pages/DeckPage.qml" line="1038"/>
-        <location filename="../qml/pages/DeckPage.qml" line="1066"/>
+        <location filename="../qml/pages/DeckPage.qml" line="957"/>
+        <location filename="../qml/pages/DeckPage.qml" line="1045"/>
+        <location filename="../qml/pages/DeckPage.qml" line="1073"/>
         <source>Cancel</source>
         <translation>Cancelar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/DeckPage.qml" line="955"/>
-        <location filename="../qml/pages/DeckPage.qml" line="1041"/>
+        <location filename="../qml/pages/DeckPage.qml" line="962"/>
+        <location filename="../qml/pages/DeckPage.qml" line="1048"/>
         <source>Save</source>
         <translation>Salvar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/DeckPage.qml" line="1029"/>
+        <location filename="../qml/pages/DeckPage.qml" line="1036"/>
         <source>Page name</source>
         <translation>Nome da página</translation>
     </message>
     <message>
-        <location filename="../qml/pages/DeckPage.qml" line="1041"/>
+        <location filename="../qml/pages/DeckPage.qml" line="1048"/>
         <source>Create</source>
         <translation>Criar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/DeckPage.qml" line="1055"/>
+        <location filename="../qml/pages/DeckPage.qml" line="1062"/>
         <source>Reset Deck to defaults?</source>
         <translation>Restaurar o Deck para os padrões?</translation>
     </message>
     <message>
-        <location filename="../qml/pages/DeckPage.qml" line="1061"/>
+        <location filename="../qml/pages/DeckPage.qml" line="1068"/>
         <source>This replaces your custom pages and tiles with the default 11-tile Deck.</source>
         <translation>Isso substitui suas páginas e botões personalizados pelo Deck padrão com 11 botões.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/DeckPage.qml" line="1069"/>
+        <location filename="../qml/pages/DeckPage.qml" line="1076"/>
         <source>Reset</source>
         <translation>Restaurar</translation>
     </message>
 </context>
 <context>
+    <name>DiscordPrompt</name>
+    <message>
+        <location filename="../qml/components/DiscordPrompt.qml" line="113"/>
+        <source>Come chat on Discord?</source>
+        <translation>Vem conversar no Discord?</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/DiscordPrompt.qml" line="121"/>
+        <source>Join Discord</source>
+        <translation>Entrar no Discord</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/DiscordPrompt.qml" line="130"/>
+        <source>Dismiss</source>
+        <translation>Dispensar</translation>
+    </message>
+</context>
+<context>
     <name>Doctor</name>
     <message>
-        <location filename="rust_strings.h" line="207"/>
+        <location filename="rust_strings.h" line="205"/>
         <source>%1 Open NectarLink on the phone and keep both on the same network. If the phone asks to run in the background, allow it.</source>
         <translation>%1 Abra o NectarLink no celular e mantenha os dois dispositivos na mesma rede. Se o celular pedir para manter o app em segundo plano, permita.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="208"/>
+        <location filename="rust_strings.h" line="206"/>
         <source>%1 announces itself at %2, which isn&apos;t in a private range such as 192.168.x.x. NectarLink connects on such a network once both apps are up to date. Until then, turn on Connect over mobile data on both, or connect with a USB cable.</source>
         <translation>%1 se anuncia em %2, que não pertence a uma faixa privada, como 192.168.x.x. O NectarLink consegue se conectar a esse tipo de rede quando os dois apps estiverem atualizados. Até lá, ative Conectar usando dados móveis nos dois dispositivos ou conecte-os por USB.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="209"/>
+        <location filename="rust_strings.h" line="207"/>
         <source>%1 days ago</source>
         <translation>há %1 dias</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="210"/>
+        <location filename="rust_strings.h" line="208"/>
         <source>%1 hours ago</source>
         <translation>há %1 horas</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="211"/>
+        <location filename="rust_strings.h" line="209"/>
         <source>%1 is connected</source>
         <translation>%1 está conectado</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="212"/>
+        <location filename="rust_strings.h" line="210"/>
         <source>%1 is on this Wi-Fi at an address outside the usual home ranges</source>
         <translation>%1 está nesta rede Wi-Fi, mas com um endereço fora das faixas residenciais comuns</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="213"/>
+        <location filename="rust_strings.h" line="211"/>
         <source>%1 is on this Wi-Fi, but the router blocks direct connections (AP isolation)</source>
         <translation>%1 está nesta rede Wi-Fi, mas o roteador bloqueia conexões diretas (isolamento de AP)</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="214"/>
+        <location filename="rust_strings.h" line="212"/>
         <source>%1 is set as a public network</source>
         <translation>%1 está marcada como rede pública</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="215"/>
+        <location filename="rust_strings.h" line="213"/>
         <source>%1 isn&apos;t connected</source>
         <translation>%1 não está conectado</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="216"/>
+        <location filename="rust_strings.h" line="214"/>
         <source>%1 minutes ago</source>
         <translation>há %1 minutos</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="217"/>
+        <location filename="rust_strings.h" line="215"/>
         <source>%1 · %2 ms</source>
         <translation>%1 · %2 ms</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="218"/>
+        <location filename="rust_strings.h" line="216"/>
         <source>A USB cable needs adb</source>
         <translation>A conexão por cabo USB precisa do adb</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="219"/>
+        <location filename="rust_strings.h" line="217"/>
         <source>A VPN is on</source>
         <translation>Uma VPN está ativa</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="220"/>
+        <location filename="rust_strings.h" line="218"/>
         <source>A firewall rule blocks incoming NectarLink connections. Allow it, and your phone can connect.</source>
         <translation>Uma regra do firewall está bloqueando conexões de entrada do NectarLink. Permita-as para que o celular consiga se conectar.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="221"/>
+        <location filename="rust_strings.h" line="219"/>
         <source>Calls and alerts can&apos;t play sound yet</source>
         <translation>Chamadas e alertas ainda não podem tocar som</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="222"/>
+        <location filename="rust_strings.h" line="220"/>
         <source>Connect it to the same Wi-Fi or wired network as your phone.</source>
         <translation>Conecte-o à mesma rede Wi-Fi ou cabeada do celular.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="223"/>
+        <location filename="rust_strings.h" line="221"/>
         <source>Connected to %1</source>
         <translation>Conectado a %1</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="224"/>
+        <location filename="rust_strings.h" line="222"/>
         <source>Connected to a network</source>
         <translation>Conectado a uma rede</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="225"/>
+        <location filename="rust_strings.h" line="223"/>
         <source>Connecting to %1…</source>
         <translation>Conectando a %1…</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="226"/>
+        <location filename="rust_strings.h" line="224"/>
         <source>GNOME shows app icons there only with the AppIndicator extension. Install it (gnome-shell-extension-appindicator) and turn it on in Extensions.</source>
         <translation>No GNOME, os ícones de apps aparecem ali somente com a extensão AppIndicator. Instale gnome-shell-extension-appindicator e ative-a em Extensões.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="227"/>
+        <location filename="rust_strings.h" line="225"/>
         <source>Install fuse3 to browse your phone&apos;s files in your file manager.</source>
         <translation>Instale fuse3 para explorar os arquivos do celular no gerenciador de arquivos.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="228"/>
+        <location filename="rust_strings.h" line="226"/>
         <source>Install gstreamer1.0-pipewire and gstreamer1.0-tools, and the desktop portal (xdg-desktop-portal) if it&apos;s missing.</source>
         <translation>Instale gstreamer1.0-pipewire e gstreamer1.0-tools e, se estiver faltando, o portal da área de trabalho (xdg-desktop-portal).</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="229"/>
+        <location filename="rust_strings.h" line="227"/>
         <source>Install pipewire-pulse (or pulseaudio-utils) for call audio and Find my PC.</source>
         <translation>Instale pipewire-pulse (ou pulseaudio-utils) para usar o áudio em chamadas e Localizar meu PC.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="230"/>
+        <location filename="rust_strings.h" line="228"/>
         <source>Install v4l2loopback-dkms, then restart, so apps can use your phone as a camera.</source>
         <translation>Instale v4l2loopback-dkms e reinicie o PC para que os apps possam usar o celular como câmera.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="231"/>
+        <location filename="rust_strings.h" line="229"/>
         <source>It hasn&apos;t connected yet.</source>
         <translation>Ainda não se conectou.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="232"/>
+        <location filename="rust_strings.h" line="230"/>
         <source>Keep %1 reachable in the background (%2)</source>
         <translation>Manter %1 acessível em segundo plano (%2)</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="233"/>
+        <location filename="rust_strings.h" line="231"/>
         <source>Last seen %1.</source>
         <translation>Visto por último %1.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="234"/>
+        <location filename="rust_strings.h" line="232"/>
         <source>NectarLink can&apos;t show its icon in the top bar</source>
         <translation>O NectarLink não consegue mostrar o ícone na barra superior</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="235"/>
+        <location filename="rust_strings.h" line="233"/>
         <source>NectarLink is in the top bar</source>
         <translation>O NectarLink está na barra superior</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="236"/>
+        <location filename="rust_strings.h" line="234"/>
         <source>NectarLink isn&apos;t allowed through Windows Firewall</source>
         <translation>O NectarLink não tem permissão no Firewall do Windows</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="237"/>
+        <location filename="rust_strings.h" line="235"/>
         <source>NectarLink isn&apos;t allowed through the firewall</source>
         <translation>O NectarLink não tem permissão no firewall</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="238"/>
+        <location filename="rust_strings.h" line="236"/>
         <source>On Huawei / Honor: open Settings → Battery → App launch, turn off Manage automatically for NectarLink, and keep Auto-launch, Secondary launch, and Run in background on.</source>
         <translation>Em celulares Huawei / Honor: abra Configurações → Bateria → Inicialização de apps, desative Gerenciar automaticamente para o NectarLink e mantenha Inicialização automática, Inicialização secundária e Executar em segundo plano ativadas.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="239"/>
+        <location filename="rust_strings.h" line="237"/>
         <source>On OnePlus / OxygenOS: open Settings → Apps → App management → NectarLink → Battery usage and turn on Allow background activity and Allow auto-launch.</source>
         <translation>Em celulares OnePlus / OxygenOS: abra Configurações → Apps → Gerenciamento de apps → NectarLink → Uso da bateria e ative Permitir atividade em segundo plano e Permitir inicialização automática.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="240"/>
+        <location filename="rust_strings.h" line="238"/>
         <source>On Oppo / Realme: open Settings → Apps → App management → NectarLink → Battery usage and turn on Allow background activity and Allow auto-launch.</source>
         <translation>Em celulares Oppo / Realme: abra Configurações → Apps → Gerenciamento de apps → NectarLink → Uso da bateria e ative Permitir atividade em segundo plano e Permitir inicialização automática.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="241"/>
+        <location filename="rust_strings.h" line="239"/>
         <source>On Pixel: open Settings → Apps → See all apps → NectarLink → App battery usage, tap Allow background usage, and choose Unrestricted.</source>
         <translation>Em celulares Pixel: abra Configurações → Apps → Ver todos os apps → NectarLink → Uso da bateria do app, toque em Permitir uso em segundo plano e escolha Sem restrições.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="242"/>
+        <location filename="rust_strings.h" line="240"/>
         <source>On Samsung: open Settings → Apps → NectarLink → Battery and choose Unrestricted, then in Device care → Battery → Background usage limits make sure NectarLink is never put to sleep.</source>
         <translation>Em celulares Samsung: abra Configurações → Apps → NectarLink → Bateria e escolha Sem restrições. Depois, em Assistência do aparelho → Bateria → Limites de uso em segundo plano, confira se o NectarLink nunca é suspenso.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="243"/>
+        <location filename="rust_strings.h" line="241"/>
         <source>On USB</source>
         <translation>Via USB</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="244"/>
+        <location filename="rust_strings.h" line="242"/>
         <source>On Vivo / OriginOS / Funtouch: open Settings → Battery → Background power consumption management → NectarLink and choose Unrestricted, and allow Autostart.</source>
         <translation>Em celulares Vivo / OriginOS / Funtouch: abra Configurações → Bateria → Gerenciamento de consumo em segundo plano → NectarLink, escolha Sem restrições e permita a inicialização automática.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="245"/>
+        <location filename="rust_strings.h" line="243"/>
         <source>On Xiaomi / HyperOS / MIUI: open Settings → Apps → Manage apps → NectarLink, turn on Autostart, and set Battery saver to No restrictions.</source>
         <translation>Em celulares Xiaomi / HyperOS / MIUI: abra Configurações → Apps → Gerenciar apps → NectarLink, ative Inicialização automática e escolha Sem restrições em Economia de bateria.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="246"/>
+        <location filename="rust_strings.h" line="244"/>
         <source>On public networks Windows keeps other devices from finding this PC. If it&apos;s your home or work network, set it to Private.</source>
         <translation>Em redes públicas, o Windows impede que outros dispositivos encontrem este PC. Se a rede for de casa ou do trabalho, configure-a como Privada.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="247"/>
+        <location filename="rust_strings.h" line="245"/>
         <source>On public networks the firewall keeps other devices from finding this PC. If it&apos;s your home or work network, open network settings and set its firewall zone to Home or Trusted.</source>
         <translation>Em redes públicas, o firewall impede que outros dispositivos encontrem este PC. Se a rede for de casa ou do trabalho, abra as configurações de rede e defina a zona do firewall como Casa (home) ou Confiável (trusted).</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="248"/>
+        <location filename="rust_strings.h" line="246"/>
         <source>On this network</source>
         <translation>Nesta rede</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="249"/>
+        <location filename="rust_strings.h" line="247"/>
         <source>Phone as webcam is ready</source>
         <translation>O celular como webcam está pronto</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="250"/>
+        <location filename="rust_strings.h" line="248"/>
         <source>Phone as webcam needs one more step</source>
         <translation>O celular como webcam precisa de mais uma etapa</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="251"/>
+        <location filename="rust_strings.h" line="249"/>
         <source>Phone storage can open in your file manager</source>
         <translation>O armazenamento do celular pode abrir no gerenciador de arquivos</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="252"/>
+        <location filename="rust_strings.h" line="250"/>
         <source>Phone storage needs one more step</source>
         <translation>O armazenamento do celular precisa de mais uma etapa</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="253"/>
+        <location filename="rust_strings.h" line="251"/>
         <source>Phones on a USB cable connect through adb. NectarLink starts it every minute or so; start it now if a phone on a cable isn&apos;t showing up.</source>
         <translation>Celulares no cabo USB se conectam pelo adb. O NectarLink o inicia a cada minuto, mais ou menos; inicie agora se um celular no cabo não aparecer.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="254"/>
+        <location filename="rust_strings.h" line="252"/>
         <source>Ready for a USB cable</source>
         <translation>Pronto para conexão por cabo USB</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="255"/>
+        <location filename="rust_strings.h" line="253"/>
         <source>Showing this PC&apos;s screen needs one more step</source>
         <translation>Mostrar a tela deste PC precisa de mais uma etapa</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="256"/>
+        <location filename="rust_strings.h" line="254"/>
         <source>Someone chose not to allow it when Windows asked. Allow it, and your phone can connect.</source>
         <translation>Alguém escolheu não permitir quando o Windows perguntou. Permita, e o celular vai conseguir se conectar.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="257"/>
+        <location filename="rust_strings.h" line="255"/>
         <source>Sound is ready</source>
         <translation>O som está pronto</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="258"/>
+        <location filename="rust_strings.h" line="256"/>
         <source>The firewall blocks NectarLink</source>
         <translation>O firewall bloqueia o NectarLink</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="259"/>
+        <location filename="rust_strings.h" line="257"/>
         <source>The firewall is off for this network</source>
         <translation>O firewall está desativado para esta rede</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="260"/>
+        <location filename="rust_strings.h" line="258"/>
         <source>The firewall lets your phone connect</source>
         <translation>O firewall permite que seu celular se conecte</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="261"/>
+        <location filename="rust_strings.h" line="259"/>
         <source>The touchpad and keyboard on your phone need the desktop portal (xdg-desktop-portal) or access to /dev/uinput.</source>
         <translation>O touchpad e o teclado do celular precisam do portal da área de trabalho (xdg-desktop-portal) ou de acesso a /dev/uinput.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="262"/>
+        <location filename="rust_strings.h" line="260"/>
         <source>This PC can see %1 announce itself on the network, but the router is blocking devices from talking directly to each other (often called AP Isolation, Client Isolation, or Guest Wi-Fi). Move both devices off any Guest Wi-Fi network, turn off AP / Client Isolation in your router&apos;s Wi-Fi settings, or connect with a USB cable.</source>
         <translation>Este PC detecta o anúncio de %1 na rede, mas o roteador impede que os dispositivos se comuniquem diretamente (também chamado de AP Isolation, Client Isolation ou rede Wi-Fi para convidados). Tire os dois dispositivos das redes para convidados, desative o isolamento de AP/clientes nas configurações de Wi-Fi do roteador ou conecte-os por USB.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="263"/>
+        <location filename="rust_strings.h" line="261"/>
         <source>This PC isn&apos;t on a network</source>
         <translation>Este PC não está em uma rede</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="264"/>
+        <location filename="rust_strings.h" line="262"/>
         <source>This network</source>
         <translation>Esta rede</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="265"/>
+        <location filename="rust_strings.h" line="263"/>
         <source>This usually takes a few seconds.</source>
         <translation>Isso geralmente leva alguns segundos.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="266"/>
+        <location filename="rust_strings.h" line="264"/>
         <source>To connect over a cable, NectarLink can get Android&apos;s USB tools from Google for you, and the phone needs USB debugging on. Wi-Fi works without them.</source>
         <oldsource>To connect over a cable, install Android&apos;s platform-tools or Android Studio, and turn on USB debugging on the phone. Wi-Fi works without it.</oldsource>
         <translation>Para conectar por cabo, o NectarLink pode baixar para você as ferramentas USB do Android direto do Google, e o celular precisa da depuração USB ativada. O Wi-Fi funciona sem elas.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="267"/>
+        <location filename="rust_strings.h" line="265"/>
         <source>VPNs often keep devices on your network from reaching this PC. If your phone can&apos;t connect, try turning it off.</source>
         <translation>VPNs costumam impedir que dispositivos da sua rede acessem este PC. Se o celular não conseguir se conectar, tente desativar a VPN.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="268"/>
+        <location filename="rust_strings.h" line="266"/>
         <source>While away</source>
         <translation>À distância</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="269"/>
+        <location filename="rust_strings.h" line="267"/>
         <source>Windows Firewall blocks NectarLink</source>
         <translation>O Firewall do Windows bloqueia o NectarLink</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="270"/>
+        <location filename="rust_strings.h" line="268"/>
         <source>Windows Firewall is off for this network</source>
         <translation>O Firewall do Windows está desativado para esta rede</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="271"/>
+        <location filename="rust_strings.h" line="269"/>
         <source>Windows Firewall lets your phone connect</source>
         <translation>O Firewall do Windows permite que o celular se conecte</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="272"/>
+        <location filename="rust_strings.h" line="270"/>
         <source>Your phone can control this PC</source>
         <translation>Seu celular pode controlar este PC</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="273"/>
+        <location filename="rust_strings.h" line="271"/>
         <source>Your phone can show this PC&apos;s screen</source>
         <translation>Seu celular pode mostrar a tela deste PC</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="274"/>
+        <location filename="rust_strings.h" line="272"/>
         <source>Your phone can&apos;t control this PC yet</source>
         <translation>Seu celular ainda não pode controlar este PC</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="275"/>
+        <location filename="rust_strings.h" line="273"/>
         <source>Your phone may not be able to connect. Allow it once here.</source>
         <translation>Seu celular talvez não consiga se conectar. Permita uma vez aqui.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="276"/>
+        <location filename="rust_strings.h" line="274"/>
         <source>a minute ago</source>
         <translation>há um minuto</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="277"/>
+        <location filename="rust_strings.h" line="275"/>
         <source>adb is running, so a phone with USB debugging on connects over a cable.</source>
         <translation>O adb está em execução, então um celular com a depuração USB ativada se conecta pelo cabo.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="278"/>
+        <location filename="rust_strings.h" line="276"/>
         <source>adb isn&apos;t running</source>
         <translation>O adb não está em execução</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="279"/>
+        <location filename="rust_strings.h" line="277"/>
         <source>an hour ago</source>
         <translation>há uma hora</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="280"/>
+        <location filename="rust_strings.h" line="278"/>
         <source>just now</source>
         <translation>agora mesmo</translation>
     </message>
@@ -2953,11 +3145,16 @@
     </message>
     <message>
         <location filename="../qml/components/DoctorSheet.qml" line="168"/>
+        <source>Report a problem</source>
+        <translation>Relatar um problema</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/DoctorSheet.qml" line="176"/>
         <source>Check again</source>
         <translation>Verificar de novo</translation>
     </message>
     <message>
-        <location filename="../qml/components/DoctorSheet.qml" line="172"/>
+        <location filename="../qml/components/DoctorSheet.qml" line="180"/>
         <source>Done</source>
         <translation>Concluído</translation>
     </message>
@@ -2965,32 +3162,32 @@
 <context>
     <name>Errors</name>
     <message>
-        <location filename="rust_strings.h" line="281"/>
+        <location filename="rust_strings.h" line="279"/>
         <source>Something went wrong: %1</source>
         <translation>Algo deu errado: %1</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="282"/>
+        <location filename="rust_strings.h" line="280"/>
         <source>That device isn&apos;t paired anymore.</source>
         <translation>Esse dispositivo não está mais pareado.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="283"/>
+        <location filename="rust_strings.h" line="281"/>
         <source>The device declined.</source>
         <translation>O dispositivo recusou.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="284"/>
+        <location filename="rust_strings.h" line="282"/>
         <source>The device didn&apos;t answer in time.</source>
         <translation>O dispositivo não respondeu a tempo.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="285"/>
+        <location filename="rust_strings.h" line="283"/>
         <source>The device isn&apos;t connected right now.</source>
         <translation>O dispositivo não está conectado agora.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="286"/>
+        <location filename="rust_strings.h" line="284"/>
         <source>The device&apos;s app doesn&apos;t support that yet.</source>
         <translation>O app do dispositivo ainda não suporta isso.</translation>
     </message>
@@ -3775,19 +3972,29 @@
 <context>
     <name>FolderSync</name>
     <message>
-        <location filename="rust_strings.h" line="287"/>
+        <location filename="rust_strings.h" line="285"/>
+        <source>%1 of %2 files</source>
+        <translation>%1 de %2 arquivos</translation>
+    </message>
+    <message>
+        <location filename="rust_strings.h" line="286"/>
         <source>Couldn&apos;t read the folder on the phone. Check that it&apos;s connected.</source>
         <translation>Não foi possível ler a pasta do celular. Confira se ele está conectado.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="288"/>
+        <location filename="rust_strings.h" line="287"/>
         <source>Folders are up to date.</source>
         <translation>As pastas estão atualizadas.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="289"/>
+        <location filename="rust_strings.h" line="288"/>
         <source>Synced %1 file(s).</source>
         <translation>%1 arquivo(s) sincronizado(s).</translation>
+    </message>
+    <message>
+        <location filename="rust_strings.h" line="289"/>
+        <source>Syncing with %1</source>
+        <translation>Sincronizando com %1</translation>
     </message>
     <message>
         <location filename="rust_strings.h" line="290"/>
@@ -4769,7 +4976,7 @@ O que precisa
     <message>
         <location filename="../qml/pages/HomePage.qml" line="300"/>
         <location filename="../qml/pages/HomePage.qml" line="1569"/>
-        <location filename="../qml/pages/HomePage.qml" line="1748"/>
+        <location filename="../qml/pages/HomePage.qml" line="1695"/>
         <source>Dismiss</source>
         <translation>Dispensar</translation>
     </message>
@@ -4825,13 +5032,13 @@ O que precisa
     </message>
     <message>
         <location filename="../qml/pages/HomePage.qml" line="520"/>
-        <location filename="../qml/pages/HomePage.qml" line="1595"/>
+        <location filename="../qml/pages/HomePage.qml" line="3302"/>
         <source>Transfers</source>
         <translation>Transferências</translation>
     </message>
     <message>
         <location filename="../qml/pages/HomePage.qml" line="529"/>
-        <location filename="../qml/pages/HomePage.qml" line="1612"/>
+        <location filename="../qml/pages/HomePage.qml" line="3319"/>
         <source>Clear finished</source>
         <translation>Limpar concluídas</translation>
     </message>
@@ -4863,13 +5070,13 @@ O que precisa
     </message>
     <message>
         <location filename="../qml/pages/HomePage.qml" line="1157"/>
-        <location filename="../qml/pages/HomePage.qml" line="3233"/>
+        <location filename="../qml/pages/HomePage.qml" line="3206"/>
         <source>Away · %1 ms</source>
         <translation>À distância · %1 ms</translation>
     </message>
     <message>
         <location filename="../qml/pages/HomePage.qml" line="1157"/>
-        <location filename="../qml/pages/HomePage.qml" line="3233"/>
+        <location filename="../qml/pages/HomePage.qml" line="3206"/>
         <source>Away</source>
         <translation>À distância</translation>
     </message>
@@ -4892,8 +5099,8 @@ O que precisa
     <message>
         <location filename="../qml/pages/HomePage.qml" line="1161"/>
         <location filename="../qml/pages/HomePage.qml" line="1165"/>
-        <location filename="../qml/pages/HomePage.qml" line="2072"/>
-        <location filename="../qml/pages/HomePage.qml" line="2073"/>
+        <location filename="../qml/pages/HomePage.qml" line="2019"/>
+        <location filename="../qml/pages/HomePage.qml" line="2020"/>
         <source>Wi‑Fi</source>
         <translation>Wi-Fi</translation>
     </message>
@@ -4909,19 +5116,19 @@ O que precisa
     </message>
     <message>
         <location filename="../qml/pages/HomePage.qml" line="1166"/>
-        <location filename="../qml/pages/HomePage.qml" line="3235"/>
+        <location filename="../qml/pages/HomePage.qml" line="3208"/>
         <source>Not reconnecting</source>
         <translation>Reconexão desativada</translation>
     </message>
     <message>
         <location filename="../qml/pages/HomePage.qml" line="1167"/>
-        <location filename="../qml/pages/HomePage.qml" line="3236"/>
+        <location filename="../qml/pages/HomePage.qml" line="3209"/>
         <source>Offline · %1</source>
         <translation>Offline · %1</translation>
     </message>
     <message>
         <location filename="../qml/pages/HomePage.qml" line="1168"/>
-        <location filename="../qml/pages/HomePage.qml" line="3237"/>
+        <location filename="../qml/pages/HomePage.qml" line="3210"/>
         <source>Offline</source>
         <translation>Offline</translation>
     </message>
@@ -4931,7 +5138,17 @@ O que precisa
         <translation>Solucionar problemas</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="3297"/>
+        <location filename="../qml/pages/HomePage.qml" line="2643"/>
+        <source>Copy text</source>
+        <translation>Copiar texto</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/HomePage.qml" line="2651"/>
+        <source>Copy title and text</source>
+        <translation>Copiar título e texto</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/HomePage.qml" line="3270"/>
         <source>Sync clipboard is off in Settings, so copies only go over with Send clipboard.</source>
         <translation>Sincronizar área de transferência está desativado nas Configurações, então o que você copia só vai com Enviar item copiado.</translation>
     </message>
@@ -4972,32 +5189,32 @@ O que precisa
     </message>
     <message>
         <location filename="../qml/pages/HomePage.qml" line="1324"/>
-        <location filename="../qml/pages/HomePage.qml" line="3259"/>
-        <location filename="../qml/pages/HomePage.qml" line="3808"/>
+        <location filename="../qml/pages/HomePage.qml" line="3232"/>
+        <location filename="../qml/pages/HomePage.qml" line="3838"/>
         <source>Send files</source>
         <translation>Enviar arquivos</translation>
     </message>
     <message>
         <location filename="../qml/pages/HomePage.qml" line="1330"/>
-        <location filename="../qml/pages/HomePage.qml" line="3265"/>
+        <location filename="../qml/pages/HomePage.qml" line="3238"/>
         <source>Send a folder</source>
         <translation>Enviar uma pasta</translation>
     </message>
     <message>
         <location filename="../qml/pages/HomePage.qml" line="1337"/>
-        <location filename="../qml/pages/HomePage.qml" line="3271"/>
+        <location filename="../qml/pages/HomePage.qml" line="3244"/>
         <source>Send clipboard</source>
         <translation>Enviar item copiado</translation>
     </message>
     <message>
         <location filename="../qml/pages/HomePage.qml" line="1343"/>
-        <location filename="../qml/pages/HomePage.qml" line="2928"/>
+        <location filename="../qml/pages/HomePage.qml" line="2901"/>
         <source>Clipboard history</source>
         <translation>Histórico da área de transferência</translation>
     </message>
     <message>
         <location filename="../qml/pages/HomePage.qml" line="1353"/>
-        <location filename="../qml/pages/HomePage.qml" line="3280"/>
+        <location filename="../qml/pages/HomePage.qml" line="3253"/>
         <source>Stop ringing</source>
         <translation>Parar de tocar</translation>
     </message>
@@ -5008,7 +5225,7 @@ O que precisa
     </message>
     <message>
         <location filename="../qml/pages/HomePage.qml" line="1363"/>
-        <location filename="../qml/pages/HomePage.qml" line="3302"/>
+        <location filename="../qml/pages/HomePage.qml" line="3277"/>
         <source>Send to %1</source>
         <translation>Enviar para %1</translation>
     </message>
@@ -5019,7 +5236,7 @@ O que precisa
     </message>
     <message>
         <location filename="../qml/pages/HomePage.qml" line="1385"/>
-        <location filename="../qml/pages/HomePage.qml" line="3308"/>
+        <location filename="../qml/pages/HomePage.qml" line="3283"/>
         <source>Send a folder to %1</source>
         <translation>Enviar uma pasta para %1</translation>
     </message>
@@ -5085,282 +5302,282 @@ O que precisa
     </message>
     <message>
         <location filename="../qml/pages/HomePage.qml" line="1569"/>
-        <location filename="../qml/pages/HomePage.qml" line="2182"/>
-        <location filename="../qml/pages/HomePage.qml" line="2274"/>
-        <location filename="../qml/pages/HomePage.qml" line="2771"/>
+        <location filename="../qml/pages/HomePage.qml" line="2129"/>
+        <location filename="../qml/pages/HomePage.qml" line="2221"/>
+        <location filename="../qml/pages/HomePage.qml" line="2744"/>
         <source>Cancel</source>
         <translation>Cancelar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="1604"/>
-        <location filename="../qml/pages/HomePage.qml" line="2573"/>
+        <location filename="../qml/pages/HomePage.qml" line="2520"/>
+        <location filename="../qml/pages/HomePage.qml" line="3311"/>
         <source>Timeline</source>
         <translation>Linha do tempo</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="1660"/>
+        <location filename="../qml/pages/HomePage.qml" line="1607"/>
         <source>Notifications · %1</source>
         <translation>Notificações · %1</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="1660"/>
+        <location filename="../qml/pages/HomePage.qml" line="1607"/>
         <source>Notifications</source>
         <translation>Notificações</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="1671"/>
+        <location filename="../qml/pages/HomePage.qml" line="1618"/>
         <source>Resume pop-ups</source>
         <translation>Retomar avisos</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="1671"/>
+        <location filename="../qml/pages/HomePage.qml" line="1618"/>
         <source>Pause pop-ups</source>
         <translation>Pausar avisos</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="1681"/>
+        <location filename="../qml/pages/HomePage.qml" line="1628"/>
         <source>History</source>
         <translation>Histórico</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="1682"/>
+        <location filename="../qml/pages/HomePage.qml" line="1629"/>
         <source>Notification history (last 24 hours)</source>
         <translation>Histórico de notificações (últimas 24 horas)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="1695"/>
+        <location filename="../qml/pages/HomePage.qml" line="1642"/>
         <source>Clear all</source>
         <translation>Limpar tudo</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="1741"/>
+        <location filename="../qml/pages/HomePage.qml" line="1688"/>
         <source>Undo</source>
         <translation>Desfazer</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="1798"/>
+        <location filename="../qml/pages/HomePage.qml" line="1745"/>
         <source>No notifications</source>
         <translation>Nenhuma notificação</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="1800"/>
+        <location filename="../qml/pages/HomePage.qml" line="1747"/>
         <source>Notifications unavailable</source>
         <translation>Notificações indisponíveis</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="1801"/>
+        <location filename="../qml/pages/HomePage.qml" line="1748"/>
         <source>Connect %1 to view notifications</source>
         <translation>Conecte %1 para ver notificações</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="1828"/>
+        <location filename="../qml/pages/HomePage.qml" line="1775"/>
         <source>Desktop notifications are off. Turn them on in your system&apos;s notification settings.</source>
         <translation>As notificações da área de trabalho estão desativadas. Ative-as nas configurações de notificações do sistema.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="1827"/>
+        <location filename="../qml/pages/HomePage.qml" line="1774"/>
         <source>Windows notifications are off.</source>
         <translation>As notificações do Windows estão desativadas.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="1835"/>
+        <location filename="../qml/pages/HomePage.qml" line="1782"/>
         <source>Turn on</source>
         <translation>Ativar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="1895"/>
+        <location filename="../qml/pages/HomePage.qml" line="1842"/>
         <source>Webcam</source>
         <translation>Webcam</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="1906"/>
+        <location filename="../qml/pages/HomePage.qml" line="1853"/>
         <source>Streaming from %1</source>
         <translation>Transmitindo de %1</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="1917"/>
-        <location filename="../qml/pages/HomePage.qml" line="2408"/>
+        <location filename="../qml/pages/HomePage.qml" line="1864"/>
+        <location filename="../qml/pages/HomePage.qml" line="2355"/>
         <source>Stop</source>
         <translation>Parar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="1939"/>
+        <location filename="../qml/pages/HomePage.qml" line="1886"/>
         <source>Back</source>
         <translation>Voltar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="1940"/>
+        <location filename="../qml/pages/HomePage.qml" line="1887"/>
         <source>Front</source>
         <translation>Frontal</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="1958"/>
+        <location filename="../qml/pages/HomePage.qml" line="1905"/>
         <source>Mirror</source>
         <translation>Espelhar imagem</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="2027"/>
+        <location filename="../qml/pages/HomePage.qml" line="1974"/>
         <source>Phone controls</source>
         <translation>Controles do celular</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="2036"/>
+        <location filename="../qml/pages/HomePage.qml" line="1983"/>
         <source>Less</source>
         <translation>Menos</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="2036"/>
+        <location filename="../qml/pages/HomePage.qml" line="1983"/>
         <source>Sound &amp; display</source>
         <translation>Som e tela</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="2051"/>
+        <location filename="../qml/pages/HomePage.qml" line="1998"/>
         <source>DND</source>
         <translation>Não perturbe</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="2052"/>
+        <location filename="../qml/pages/HomePage.qml" line="1999"/>
         <source>Do Not Disturb</source>
         <translation>Não perturbe</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="2062"/>
+        <location filename="../qml/pages/HomePage.qml" line="2009"/>
         <source>Torch</source>
         <translation>Lanterna</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="2063"/>
+        <location filename="../qml/pages/HomePage.qml" line="2010"/>
         <source>Flashlight</source>
         <translation>Lanterna</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="2087"/>
+        <location filename="../qml/pages/HomePage.qml" line="2034"/>
         <source>BT</source>
         <translation>BT</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="2088"/>
+        <location filename="../qml/pages/HomePage.qml" line="2035"/>
         <source>Bluetooth</source>
         <translation>Bluetooth</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="2097"/>
+        <location filename="../qml/pages/HomePage.qml" line="2044"/>
         <source>Hotspot</source>
         <translation>Hotspot</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="2098"/>
+        <location filename="../qml/pages/HomePage.qml" line="2045"/>
         <source>Instant Hotspot</source>
         <translation>Hotspot instantâneo</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="2112"/>
+        <location filename="../qml/pages/HomePage.qml" line="2059"/>
         <source>Phone as speaker</source>
         <translation>Celular como alto-falante</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="2113"/>
+        <location filename="../qml/pages/HomePage.qml" line="2060"/>
         <source>Streaming PC audio</source>
         <translation>Transmitindo áudio do PC</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="2124"/>
+        <location filename="../qml/pages/HomePage.qml" line="2071"/>
         <source>Play on phone</source>
         <translation>Reproduzir no celular</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="2127"/>
+        <location filename="../qml/pages/HomePage.qml" line="2074"/>
         <source>Watching on %1</source>
         <translation>Assistindo em %1</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="2128"/>
+        <location filename="../qml/pages/HomePage.qml" line="2075"/>
         <source>Tap the notification on %1</source>
         <translation>Toque na notificação em %1</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="2130"/>
+        <location filename="../qml/pages/HomePage.qml" line="2077"/>
         <source>Play a video on this PC first</source>
         <translation>Reproduza um vídeo neste PC primeiro</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="2140"/>
+        <location filename="../qml/pages/HomePage.qml" line="2087"/>
         <source>Phone sound on this PC</source>
         <translation>Som do celular neste PC</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="2142"/>
+        <location filename="../qml/pages/HomePage.qml" line="2089"/>
         <source>Playing %1&apos;s sound</source>
         <translation>Tocando o som de %1</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="2143"/>
+        <location filename="../qml/pages/HomePage.qml" line="2090"/>
         <source>Allow it on %1</source>
         <translation>Permita em %1</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="2173"/>
+        <location filename="../qml/pages/HomePage.qml" line="2120"/>
         <source>Turning off Wi‑Fi may disconnect %1.</source>
         <translation>Desativar o Wi-Fi pode desconectar %1.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="2188"/>
+        <location filename="../qml/pages/HomePage.qml" line="2135"/>
         <source>Turn off</source>
         <translation>Desligar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="2213"/>
+        <location filename="../qml/pages/HomePage.qml" line="2160"/>
         <source>Ring</source>
         <translation>Som</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="2214"/>
+        <location filename="../qml/pages/HomePage.qml" line="2161"/>
         <source>Vibrate</source>
         <translation>Vibrar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="2215"/>
+        <location filename="../qml/pages/HomePage.qml" line="2162"/>
         <source>Silent</source>
         <translation>Silencioso</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="2232"/>
+        <location filename="../qml/pages/HomePage.qml" line="2179"/>
         <source>Volume</source>
         <translation>Volume</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="2243"/>
+        <location filename="../qml/pages/HomePage.qml" line="2190"/>
         <source>Brightness</source>
         <translation>Brilho</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="2264"/>
+        <location filename="../qml/pages/HomePage.qml" line="2211"/>
         <source>Continuity Camera</source>
         <translation>Câmera de Continuidade</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="2275"/>
+        <location filename="../qml/pages/HomePage.qml" line="2222"/>
         <source>Scan document</source>
         <translation>Digitalizar documento</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="2288"/>
+        <location filename="../qml/pages/HomePage.qml" line="2235"/>
         <source>Phone as webcam</source>
         <translation>Celular como webcam</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="2291"/>
+        <location filename="../qml/pages/HomePage.qml" line="2238"/>
         <source>Streaming</source>
         <translation>Transmitindo</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="2384"/>
-        <location filename="../qml/pages/HomePage.qml" line="2445"/>
+        <location filename="../qml/pages/HomePage.qml" line="2331"/>
+        <location filename="../qml/pages/HomePage.qml" line="2392"/>
         <source>Type on phone</source>
         <translation>Digitar no celular</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="2395"/>
+        <location filename="../qml/pages/HomePage.qml" line="2342"/>
         <source>Sent: %1</source>
         <translation>Enviado: %1</translation>
     </message>
@@ -5369,288 +5586,288 @@ O que precisa
         <translation type="vanished">Aguardando teclas</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="2397"/>
-        <location filename="../qml/pages/HomePage.qml" line="3404"/>
+        <location filename="../qml/pages/HomePage.qml" line="2344"/>
+        <location filename="../qml/pages/HomePage.qml" line="3434"/>
         <source>When connected</source>
         <translation>Quando conectado</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="2408"/>
+        <location filename="../qml/pages/HomePage.qml" line="2355"/>
         <source>Start</source>
         <translation>Iniciar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="2460"/>
-        <location filename="../qml/pages/HomePage.qml" line="2540"/>
+        <location filename="../qml/pages/HomePage.qml" line="2407"/>
+        <location filename="../qml/pages/HomePage.qml" line="2487"/>
         <source>Clipboard</source>
         <translation>Área de transferência</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="2520"/>
+        <location filename="../qml/pages/HomePage.qml" line="2467"/>
         <source>Type here: keys go to %1</source>
         <translation>Digite aqui: as teclas vão para %1</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="2521"/>
+        <location filename="../qml/pages/HomePage.qml" line="2468"/>
         <source>Click to focus keyboard</source>
         <translation>Clique para usar o teclado</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="2528"/>
+        <location filename="../qml/pages/HomePage.qml" line="2475"/>
         <source>Ctrl+V pastes · Esc stops</source>
         <translation>Ctrl+V cola · Esc encerra</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="2537"/>
+        <location filename="../qml/pages/HomePage.qml" line="2484"/>
         <source>Paste</source>
         <translation>Colar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="2582"/>
+        <location filename="../qml/pages/HomePage.qml" line="2529"/>
         <source>View all</source>
         <translation>Ver tudo</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="2592"/>
+        <location filename="../qml/pages/HomePage.qml" line="2539"/>
         <source>No recent activity</source>
         <translation>Nenhuma atividade recente</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="2681"/>
+        <location filename="../qml/pages/HomePage.qml" line="2633"/>
         <source>%1 notifications</source>
         <translation>%1 notificações</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="2684"/>
+        <location filename="../qml/pages/HomePage.qml" line="2657"/>
         <source>Show</source>
         <translation>Mostrar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="2685"/>
+        <location filename="../qml/pages/HomePage.qml" line="2658"/>
         <source>No pop-ups</source>
         <translation>Sem avisos</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="2686"/>
+        <location filename="../qml/pages/HomePage.qml" line="2659"/>
         <source>Hide</source>
         <translation>Ocultar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="2700"/>
+        <location filename="../qml/pages/HomePage.qml" line="2673"/>
         <source>Hidden on this PC.</source>
         <translation>Ocultas neste PC.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="2702"/>
+        <location filename="../qml/pages/HomePage.qml" line="2675"/>
         <source>Shown in feed without pop-ups.</source>
         <translation>Aparecem no feed, sem avisos.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="2705"/>
+        <location filename="../qml/pages/HomePage.qml" line="2678"/>
         <source>Shown in feed and as desktop pop-ups.</source>
         <translation>Aparecem no feed e como avisos na área de trabalho.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="2704"/>
+        <location filename="../qml/pages/HomePage.qml" line="2677"/>
         <source>Shown in feed and as Windows pop-ups.</source>
         <translation>Aparecem no feed e como avisos do Windows.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="2709"/>
-        <location filename="../qml/pages/HomePage.qml" line="2905"/>
-        <location filename="../qml/pages/HomePage.qml" line="3148"/>
-        <location filename="../qml/pages/HomePage.qml" line="3885"/>
+        <location filename="../qml/pages/HomePage.qml" line="2682"/>
+        <location filename="../qml/pages/HomePage.qml" line="2878"/>
+        <location filename="../qml/pages/HomePage.qml" line="3121"/>
+        <location filename="../qml/pages/HomePage.qml" line="3915"/>
         <source>Done</source>
         <translation>Concluído</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="2776"/>
+        <location filename="../qml/pages/HomePage.qml" line="2749"/>
         <source>Save</source>
         <translation>Salvar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="2797"/>
+        <location filename="../qml/pages/HomePage.qml" line="2770"/>
         <source>Notification history</source>
         <translation>Histórico de notificações</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="2805"/>
-        <location filename="../qml/pages/HomePage.qml" line="2936"/>
+        <location filename="../qml/pages/HomePage.qml" line="2778"/>
+        <location filename="../qml/pages/HomePage.qml" line="2909"/>
         <source>Clear history</source>
         <translation>Limpar histórico</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="2815"/>
+        <location filename="../qml/pages/HomePage.qml" line="2788"/>
         <source>Dismissed notifications from the last 24 hours.</source>
         <translation>Notificações dispensadas nas últimas 24 horas.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="2816"/>
+        <location filename="../qml/pages/HomePage.qml" line="2789"/>
         <source>No recent notifications.</source>
         <translation>Nenhuma notificação recente.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="2858"/>
-        <location filename="../qml/pages/HomePage.qml" line="2864"/>
+        <location filename="../qml/pages/HomePage.qml" line="2831"/>
+        <location filename="../qml/pages/HomePage.qml" line="2837"/>
         <source>Search notification history</source>
         <translation>Buscar no histórico de notificações</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="2901"/>
-        <location filename="../qml/pages/HomePage.qml" line="3144"/>
+        <location filename="../qml/pages/HomePage.qml" line="2874"/>
+        <location filename="../qml/pages/HomePage.qml" line="3117"/>
         <source>Nothing matches “%1”.</source>
         <translation>Nada encontrado para “%1”.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="2946"/>
+        <location filename="../qml/pages/HomePage.qml" line="2919"/>
         <source>Last 50 shared clips.</source>
         <translation>Últimos 50 itens compartilhados.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="2947"/>
+        <location filename="../qml/pages/HomePage.qml" line="2920"/>
         <source>No shared clips yet.</source>
         <translation>Nenhum item compartilhado ainda.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="2987"/>
-        <location filename="../qml/pages/HomePage.qml" line="2993"/>
+        <location filename="../qml/pages/HomePage.qml" line="2960"/>
+        <location filename="../qml/pages/HomePage.qml" line="2966"/>
         <source>Search clipboard history</source>
         <translation>Buscar no histórico da área de transferência</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="3013"/>
+        <location filename="../qml/pages/HomePage.qml" line="2986"/>
         <source>From %1</source>
         <translation>De %1</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="3013"/>
+        <location filename="../qml/pages/HomePage.qml" line="2986"/>
         <source>From phone</source>
         <translation>Do celular</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="3014"/>
+        <location filename="../qml/pages/HomePage.qml" line="2987"/>
         <source>Sent to %1</source>
         <translation>Enviado para %1</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="3014"/>
+        <location filename="../qml/pages/HomePage.qml" line="2987"/>
         <source>From this PC</source>
         <translation>Deste PC</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="3020"/>
+        <location filename="../qml/pages/HomePage.qml" line="2993"/>
         <source>Image</source>
         <translation>Imagem</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="3058"/>
+        <location filename="../qml/pages/HomePage.qml" line="3031"/>
         <source>Pinned</source>
         <translation>Fixado</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="3102"/>
+        <location filename="../qml/pages/HomePage.qml" line="3075"/>
         <source>Open on phone</source>
         <translation>Abrir no celular</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="3111"/>
+        <location filename="../qml/pages/HomePage.qml" line="3084"/>
         <source>Send to phone</source>
         <translation>Enviar para o celular</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="3119"/>
+        <location filename="../qml/pages/HomePage.qml" line="3092"/>
         <source>Copy</source>
         <translation>Copiar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="3125"/>
+        <location filename="../qml/pages/HomePage.qml" line="3098"/>
         <source>Unpin</source>
         <translation>Desafixar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="3125"/>
+        <location filename="../qml/pages/HomePage.qml" line="3098"/>
         <source>Pin</source>
         <translation>Fixar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="3130"/>
+        <location filename="../qml/pages/HomePage.qml" line="3103"/>
         <source>Delete</source>
         <translation>Excluir</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="3234"/>
+        <location filename="../qml/pages/HomePage.qml" line="3207"/>
         <source>Connected · %1 ms</source>
         <translation>Conectado · %1 ms</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="3234"/>
+        <location filename="../qml/pages/HomePage.qml" line="3207"/>
         <source>Connected</source>
         <translation>Conectado</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="3239"/>
+        <location filename="../qml/pages/HomePage.qml" line="3212"/>
         <source>%1% · charging</source>
         <translation>%1% · carregando</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="3240"/>
-        <location filename="../qml/pages/HomePage.qml" line="3577"/>
-        <location filename="../qml/pages/HomePage.qml" line="3588"/>
+        <location filename="../qml/pages/HomePage.qml" line="3213"/>
+        <location filename="../qml/pages/HomePage.qml" line="3607"/>
+        <location filename="../qml/pages/HomePage.qml" line="3618"/>
         <source>%1%</source>
         <translation>%1%</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="3280"/>
+        <location filename="../qml/pages/HomePage.qml" line="3253"/>
         <source>Ring PC</source>
         <translation>Tocar no PC</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="3296"/>
+        <location filename="../qml/pages/HomePage.qml" line="3269"/>
         <source>What you copy here also goes to %1, and what you copy there comes here.</source>
         <translation>O que você copia aqui também vai para %1, e o que você copia lá vem para cá.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="3729"/>
+        <location filename="../qml/pages/HomePage.qml" line="3759"/>
         <source>LocalSend nearby · %1</source>
         <translation>LocalSend por perto · %1</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="3730"/>
+        <location filename="../qml/pages/HomePage.qml" line="3760"/>
         <source>LocalSend nearby</source>
         <translation>LocalSend por perto</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="3739"/>
+        <location filename="../qml/pages/HomePage.qml" line="3769"/>
         <source>Refresh</source>
         <translation>Atualizar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="3750"/>
+        <location filename="../qml/pages/HomePage.qml" line="3780"/>
         <source>Listening for LocalSend devices on your Wi‑Fi network.</source>
         <translation>Procurando dispositivos LocalSend na rede Wi-Fi.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="3751"/>
+        <location filename="../qml/pages/HomePage.qml" line="3781"/>
         <source>LocalSend port 53317 is busy on this PC (another LocalSend app may be running).</source>
         <translation>A porta 53317 do LocalSend está ocupada neste PC (talvez outro app LocalSend esteja em execução).</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="3790"/>
+        <location filename="../qml/pages/HomePage.qml" line="3820"/>
         <source>Nearby device</source>
         <translation>Dispositivo por perto</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="3846"/>
+        <location filename="../qml/pages/HomePage.qml" line="3876"/>
         <source>Image preview</source>
         <translation>Prévia da imagem</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="3853"/>
+        <location filename="../qml/pages/HomePage.qml" line="3883"/>
         <source>Close</source>
         <translation>Fechar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="3881"/>
+        <location filename="../qml/pages/HomePage.qml" line="3911"/>
         <source>Open externally</source>
         <translation>Abrir em outro app</translation>
     </message>
@@ -5665,17 +5882,17 @@ O que precisa
         <translation>Alterar apelido</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="2396"/>
+        <location filename="../qml/pages/HomePage.qml" line="2343"/>
         <source>Tap a text box on the phone, then type</source>
         <translation>Toque em uma caixa de texto no celular e digite</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="2738"/>
+        <location filename="../qml/pages/HomePage.qml" line="2711"/>
         <source>Phone nickname</source>
         <translation>Apelido do celular</translation>
     </message>
     <message>
-        <location filename="../qml/pages/HomePage.qml" line="2746"/>
+        <location filename="../qml/pages/HomePage.qml" line="2719"/>
         <source>Set a custom name for this phone on your PC. Leave blank to use &quot;%1&quot;.</source>
         <translation>Defina um nome para identificar este celular no PC. Deixe em branco para usar “%1”.</translation>
     </message>
@@ -5699,6 +5916,14 @@ O que precisa
     </message>
 </context>
 <context>
+    <name>IconButton</name>
+    <message>
+        <location filename="../qml/components/IconButton.qml" line="31"/>
+        <source>New changes</source>
+        <translation>Novas mudanças</translation>
+    </message>
+</context>
+<context>
     <name>IslandWindow</name>
     <message>
         <location filename="../qml/IslandWindow.qml" line="18"/>
@@ -5707,119 +5932,132 @@ O que precisa
         <translation>Ilha Nectar</translation>
     </message>
     <message>
-        <location filename="../qml/IslandWindow.qml" line="319"/>
+        <location filename="../qml/IslandWindow.qml" line="382"/>
         <source>Phone call</source>
         <translation>Chamada telefônica</translation>
     </message>
     <message>
-        <location filename="../qml/IslandWindow.qml" line="322"/>
+        <location filename="../qml/IslandWindow.qml" line="385"/>
         <source>Transfer complete</source>
         <translation>Transferência concluída</translation>
     </message>
     <message>
-        <location filename="../qml/IslandWindow.qml" line="322"/>
+        <location filename="../qml/IslandWindow.qml" line="385"/>
         <source>Transfer failed</source>
         <translation>Falha na transferência</translation>
     </message>
     <message>
-        <location filename="../qml/IslandWindow.qml" line="325"/>
+        <location filename="../qml/IslandWindow.qml" line="388"/>
         <source>Transferring %1 file(s)…</source>
         <translation>Transferindo %1 arquivo(s)…</translation>
     </message>
     <message>
-        <location filename="../qml/IslandWindow.qml" line="328"/>
+        <location filename="../qml/IslandWindow.qml" line="391"/>
         <source>Now playing</source>
         <translation>Tocando agora</translation>
     </message>
     <message>
-        <location filename="../qml/IslandWindow.qml" line="330"/>
+        <location filename="../qml/IslandWindow.qml" line="397"/>
         <source>%1 phone notification(s)</source>
         <translation>%1 notificação(ões) do celular</translation>
     </message>
     <message>
-        <location filename="../qml/IslandWindow.qml" line="332"/>
-        <location filename="../qml/IslandWindow.qml" line="375"/>
-        <location filename="../qml/IslandWindow.qml" line="384"/>
+        <location filename="../qml/IslandWindow.qml" line="399"/>
+        <location filename="../qml/IslandWindow.qml" line="442"/>
+        <location filename="../qml/IslandWindow.qml" line="451"/>
         <source>%1 waiting</source>
         <translation>%1 aguardando</translation>
     </message>
     <message>
-        <location filename="../qml/IslandWindow.qml" line="334"/>
+        <location filename="../qml/IslandWindow.qml" line="401"/>
         <source>Nectar Island · %1</source>
         <translation>Ilha Nectar · %1</translation>
     </message>
     <message>
-        <location filename="../qml/IslandWindow.qml" line="335"/>
+        <location filename="../qml/IslandWindow.qml" line="402"/>
         <source>Nectar Island · Ready</source>
         <translation>Ilha Nectar · Pronta</translation>
     </message>
     <message>
-        <location filename="../qml/IslandWindow.qml" line="358"/>
+        <location filename="../qml/IslandWindow.qml" line="425"/>
         <source>Incoming call</source>
         <translation>Chamada recebida</translation>
     </message>
     <message>
-        <location filename="../qml/IslandWindow.qml" line="362"/>
+        <location filename="../qml/IslandWindow.qml" line="429"/>
         <source>On hold</source>
         <translation>Em espera</translation>
     </message>
     <message>
-        <location filename="../qml/IslandWindow.qml" line="364"/>
-        <location filename="../qml/IslandWindow.qml" line="1037"/>
+        <location filename="../qml/IslandWindow.qml" line="431"/>
+        <location filename="../qml/IslandWindow.qml" line="1133"/>
         <source>On PC</source>
         <translation>No PC</translation>
     </message>
     <message>
-        <location filename="../qml/IslandWindow.qml" line="364"/>
+        <location filename="../qml/IslandWindow.qml" line="431"/>
         <source>On phone</source>
         <translation>No celular</translation>
     </message>
     <message>
-        <location filename="../qml/IslandWindow.qml" line="365"/>
+        <location filename="../qml/IslandWindow.qml" line="432"/>
         <source>Mic off</source>
         <translation>Microfone desligado</translation>
     </message>
     <message>
-        <location filename="../qml/IslandWindow.qml" line="365"/>
+        <location filename="../qml/IslandWindow.qml" line="432"/>
         <source>Mic on</source>
         <translation>Microfone ligado</translation>
     </message>
+    <message numerus="yes">
+        <location filename="../qml/IslandWindow.qml" line="458"/>
+        <source>%1 · %n notification(s)</source>
+        <translation>
+            <numerusform>%1 · %n notificação</numerusform>
+            <numerusform>%1 · %n notificações</numerusform>
+        </translation>
+    </message>
     <message>
-        <location filename="../qml/IslandWindow.qml" line="1037"/>
+        <location filename="../qml/IslandWindow.qml" line="1133"/>
         <source>Back to phone</source>
         <translation>Voltar ao celular</translation>
+    </message>
+    <message>
+        <location filename="../qml/IslandWindow.qml" line="1165"/>
+        <source>Switch to the next player</source>
+        <translation>Mudar para o próximo player</translation>
     </message>
     <message>
         <source>Call in progress</source>
         <translation type="vanished">Chamada em andamento</translation>
     </message>
     <message>
-        <location filename="../qml/IslandWindow.qml" line="379"/>
+        <location filename="../qml/IslandWindow.qml" line="446"/>
         <source>This PC</source>
         <translation>Este PC</translation>
     </message>
     <message>
-        <location filename="../qml/IslandWindow.qml" line="379"/>
+        <location filename="../qml/IslandWindow.qml" line="446"/>
         <source>Phone</source>
         <translation>Celular</translation>
     </message>
     <message>
-        <location filename="../qml/IslandWindow.qml" line="388"/>
+        <location filename="../qml/IslandWindow.qml" line="456"/>
         <source>Click to view in NectarLink</source>
         <translation>Clique para ver no NectarLink</translation>
     </message>
     <message>
-        <location filename="../qml/IslandWindow.qml" line="391"/>
+        <location filename="../qml/IslandWindow.qml" line="463"/>
         <source>Will send when %1 is back</source>
         <translation>Será enviado quando %1 voltar</translation>
     </message>
     <message>
-        <location filename="../qml/IslandWindow.qml" line="392"/>
+        <location filename="../qml/IslandWindow.qml" line="464"/>
         <source>Will send when connected</source>
         <translation>Será enviado quando a conexão voltar</translation>
     </message>
     <message>
-        <location filename="../qml/IslandWindow.qml" line="394"/>
+        <location filename="../qml/IslandWindow.qml" line="466"/>
         <source>Live calls, transfers &amp; media</source>
         <translation>Chamadas, transferências e mídia em tempo real</translation>
     </message>
@@ -6006,177 +6244,182 @@ O que precisa
 <context>
     <name>MainWindow</name>
     <message>
-        <location filename="../qml/MainWindow.qml" line="590"/>
-        <location filename="../qml/MainWindow.qml" line="730"/>
+        <location filename="../qml/MainWindow.qml" line="604"/>
+        <location filename="../qml/MainWindow.qml" line="744"/>
         <source>Home</source>
         <translation>Início</translation>
     </message>
     <message>
-        <location filename="../qml/MainWindow.qml" line="601"/>
-        <location filename="../qml/MainWindow.qml" line="732"/>
+        <location filename="../qml/MainWindow.qml" line="615"/>
+        <location filename="../qml/MainWindow.qml" line="746"/>
         <source>Messages</source>
         <translation>Mensagens</translation>
     </message>
     <message>
-        <location filename="../qml/MainWindow.qml" line="612"/>
-        <location filename="../qml/MainWindow.qml" line="733"/>
+        <location filename="../qml/MainWindow.qml" line="626"/>
+        <location filename="../qml/MainWindow.qml" line="747"/>
         <source>Calls</source>
         <translation>Chamadas</translation>
     </message>
     <message>
-        <location filename="../qml/MainWindow.qml" line="623"/>
-        <location filename="../qml/MainWindow.qml" line="734"/>
+        <location filename="../qml/MainWindow.qml" line="637"/>
+        <location filename="../qml/MainWindow.qml" line="748"/>
         <source>Photos</source>
         <translation>Fotos</translation>
     </message>
     <message>
-        <location filename="../qml/MainWindow.qml" line="634"/>
-        <location filename="../qml/MainWindow.qml" line="735"/>
+        <location filename="../qml/MainWindow.qml" line="648"/>
+        <location filename="../qml/MainWindow.qml" line="749"/>
         <source>Apps</source>
         <translation>Apps</translation>
     </message>
     <message>
-        <location filename="../qml/MainWindow.qml" line="645"/>
-        <location filename="../qml/MainWindow.qml" line="736"/>
+        <location filename="../qml/MainWindow.qml" line="659"/>
+        <location filename="../qml/MainWindow.qml" line="750"/>
         <source>Deck</source>
         <translation>Deck</translation>
     </message>
     <message>
-        <location filename="../qml/MainWindow.qml" line="656"/>
+        <location filename="../qml/MainWindow.qml" line="670"/>
         <source>Guide</source>
         <translation>Guia</translation>
     </message>
     <message>
-        <location filename="../qml/MainWindow.qml" line="667"/>
-        <location filename="../qml/MainWindow.qml" line="738"/>
+        <location filename="../qml/MainWindow.qml" line="681"/>
+        <location filename="../qml/MainWindow.qml" line="752"/>
         <source>Settings</source>
         <translation>Configurações</translation>
     </message>
     <message>
-        <location filename="../qml/MainWindow.qml" line="682"/>
+        <location filename="../qml/MainWindow.qml" line="696"/>
         <source>Pair a new device</source>
         <translation>Parear um novo dispositivo</translation>
     </message>
     <message>
-        <location filename="../qml/MainWindow.qml" line="721"/>
+        <location filename="../qml/MainWindow.qml" line="735"/>
         <source>Back to Home</source>
         <translation>Voltar ao Início</translation>
     </message>
     <message>
-        <location filename="../qml/MainWindow.qml" line="731"/>
-        <location filename="../qml/MainWindow.qml" line="850"/>
+        <location filename="../qml/MainWindow.qml" line="745"/>
+        <location filename="../qml/MainWindow.qml" line="864"/>
         <source>Timeline</source>
         <translation>Linha do tempo</translation>
     </message>
     <message>
-        <location filename="../qml/MainWindow.qml" line="737"/>
+        <location filename="../qml/MainWindow.qml" line="751"/>
         <source>Features guide</source>
         <translation>Guia de recursos</translation>
     </message>
     <message>
-        <location filename="../qml/MainWindow.qml" line="749"/>
+        <location filename="../qml/MainWindow.qml" line="763"/>
         <source>Sharing screen with %1</source>
         <translation>Compartilhando a tela com %1</translation>
     </message>
     <message>
-        <location filename="../qml/MainWindow.qml" line="750"/>
+        <location filename="../qml/MainWindow.qml" line="764"/>
         <source>Sharing screen</source>
         <translation>Compartilhando a tela</translation>
     </message>
     <message>
-        <location filename="../qml/MainWindow.qml" line="819"/>
+        <location filename="../qml/MainWindow.qml" line="833"/>
         <source>Stop</source>
         <translation>Parar</translation>
     </message>
     <message>
-        <location filename="../qml/MainWindow.qml" line="820"/>
+        <location filename="../qml/MainWindow.qml" line="834"/>
         <source>Stop sharing this PC&apos;s screen</source>
         <translation>Parar de compartilhar a tela deste PC</translation>
     </message>
     <message>
-        <location filename="../qml/MainWindow.qml" line="837"/>
+        <location filename="../qml/MainWindow.qml" line="851"/>
         <source>Commands</source>
         <translation>Comandos</translation>
     </message>
     <message>
-        <location filename="../qml/MainWindow.qml" line="839"/>
+        <location filename="../qml/MainWindow.qml" line="853"/>
         <source>Command palette (%1)</source>
         <translation>Paleta de comandos (%1)</translation>
     </message>
     <message>
-        <location filename="../qml/MainWindow.qml" line="840"/>
+        <location filename="../qml/MainWindow.qml" line="854"/>
         <source>Command palette (Ctrl+K)</source>
         <translation>Paleta de comandos (Ctrl+K)</translation>
     </message>
     <message>
-        <location filename="../qml/MainWindow.qml" line="852"/>
+        <location filename="../qml/MainWindow.qml" line="866"/>
         <source>Files, clips, links, photos, recordings and sessions</source>
         <translation>Arquivos, itens copiados, links, fotos, gravações e sessões</translation>
     </message>
     <message>
-        <location filename="../qml/MainWindow.qml" line="864"/>
+        <location filename="../qml/MainWindow.qml" line="878"/>
         <source>Refresh</source>
         <translation>Atualizar</translation>
     </message>
     <message>
-        <location filename="../qml/MainWindow.qml" line="1067"/>
+        <location filename="../qml/MainWindow.qml" line="899"/>
+        <source>What&apos;s new</source>
+        <translation>Novidades</translation>
+    </message>
+    <message>
+        <location filename="../qml/MainWindow.qml" line="1107"/>
         <source>%1 is ringing this PC</source>
         <translation>%1 está fazendo este PC tocar</translation>
     </message>
     <message>
-        <location filename="../qml/MainWindow.qml" line="1073"/>
+        <location filename="../qml/MainWindow.qml" line="1113"/>
         <source>Stop ringing</source>
         <translation>Parar de tocar</translation>
     </message>
     <message>
-        <location filename="../qml/MainWindow.qml" line="1099"/>
+        <location filename="../qml/MainWindow.qml" line="1139"/>
         <source>Allow %1 to control this PC?</source>
         <translation>Permitir que %1 controle este PC?</translation>
     </message>
     <message>
-        <location filename="../qml/MainWindow.qml" line="1106"/>
+        <location filename="../qml/MainWindow.qml" line="1146"/>
         <source>%1 wants to use this PC&apos;s mouse and keyboard. You can change this in Settings.</source>
         <translation>%1 quer usar o mouse e o teclado deste PC. Você pode mudar essa opção em Configurações.</translation>
     </message>
     <message>
-        <location filename="../qml/MainWindow.qml" line="1116"/>
-        <location filename="../qml/MainWindow.qml" line="1164"/>
+        <location filename="../qml/MainWindow.qml" line="1156"/>
+        <location filename="../qml/MainWindow.qml" line="1204"/>
         <source>Not now</source>
         <translation>Agora não</translation>
     </message>
     <message>
-        <location filename="../qml/MainWindow.qml" line="1120"/>
-        <location filename="../qml/MainWindow.qml" line="1169"/>
+        <location filename="../qml/MainWindow.qml" line="1160"/>
+        <location filename="../qml/MainWindow.qml" line="1209"/>
         <source>Allow</source>
         <translation>Permitir</translation>
     </message>
     <message>
-        <location filename="../qml/MainWindow.qml" line="1147"/>
+        <location filename="../qml/MainWindow.qml" line="1187"/>
         <source>Allow %1 to view this PC&apos;s screen?</source>
         <translation>Permitir que %1 veja a tela deste PC?</translation>
     </message>
     <message>
-        <location filename="../qml/MainWindow.qml" line="1154"/>
+        <location filename="../qml/MainWindow.qml" line="1194"/>
         <source>%1 wants to view this PC&apos;s screen. Control needs Remote mouse, keyboard &amp; Deck in Settings.</source>
         <translation>%1 quer ver a tela deste PC. Para controlar o PC, ative Mouse, teclado e Deck remotos em Configurações.</translation>
     </message>
     <message>
-        <location filename="../qml/MainWindow.qml" line="1173"/>
+        <location filename="../qml/MainWindow.qml" line="1213"/>
         <source>Allow for this device</source>
         <translation>Permitir para este dispositivo</translation>
     </message>
     <message>
-        <location filename="../qml/MainWindow.qml" line="1202"/>
+        <location filename="../qml/MainWindow.qml" line="1242"/>
         <source>Photo ready on clipboard</source>
         <translation>Foto pronta na área de transferência</translation>
     </message>
     <message>
-        <location filename="../qml/MainWindow.qml" line="1219"/>
+        <location filename="../qml/MainWindow.qml" line="1259"/>
         <source>Keep on clipboard</source>
         <translation>Manter na área de transferência</translation>
     </message>
     <message>
-        <location filename="../qml/MainWindow.qml" line="1223"/>
+        <location filename="../qml/MainWindow.qml" line="1263"/>
         <source>Paste into active window</source>
         <translation>Colar na janela ativa</translation>
     </message>
@@ -6251,214 +6494,219 @@ O que precisa
     </message>
     <message>
         <location filename="../qml/pages/MessagesPage.qml" line="92"/>
-        <location filename="../qml/pages/MessagesPage.qml" line="210"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="219"/>
         <source>Yesterday</source>
         <translation>Ontem</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="233"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="242"/>
         <source>Text from your PC</source>
         <translation>Mensagens pelo PC</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="234"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="243"/>
         <source>%1 isn&apos;t connected</source>
         <translation>%1 não está conectado</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="235"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="244"/>
         <source>Messages are off for %1</source>
         <translation>As mensagens estão desativadas para %1</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="236"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="245"/>
         <source>Allow texting on %1</source>
         <translation>Permitir mensagens em %1</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="237"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="246"/>
         <source>Couldn&apos;t load messages</source>
         <translation>Não foi possível carregar as mensagens</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="245"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="254"/>
         <source>Pair your phone to read and send texts.</source>
         <translation>Pareie seu celular para ler e enviar mensagens.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="246"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="255"/>
         <source>Connect %1 to view messages.</source>
         <translation>Conecte %1 para ver mensagens.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="247"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="256"/>
         <source>Enable Messages in Settings.</source>
         <translation>Ative Mensagens em Configurações.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="248"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="257"/>
         <source>Grant SMS permission on %1.</source>
         <translation>Permita SMS em %1.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="249"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="258"/>
         <source>Unable to load messages.</source>
         <translation>Não foi possível carregar as mensagens.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="255"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="264"/>
         <source>Try again</source>
         <translation>Tentar de novo</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="280"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="289"/>
         <source>Conversations</source>
         <translation>Conversas</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="289"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="298"/>
         <source>New message (Ctrl+N)</source>
         <translation>Nova mensagem (Ctrl+N)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="298"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="307"/>
         <source>Refresh</source>
         <translation>Atualizar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="338"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="347"/>
         <source>Search conversations</source>
         <translation>Buscar conversas</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="348"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="357"/>
         <source>Search</source>
         <translation>Buscar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="359"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="368"/>
         <source>Clear search</source>
         <translation>Limpar busca</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="414"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="423"/>
         <source>No conversations match.</source>
         <translation>Nenhuma conversa encontrada.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="414"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="423"/>
         <source>No conversations yet.</source>
         <translation>Nenhuma conversa ainda.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="465"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="474"/>
         <source>Drop image to attach (MMS)</source>
         <translation>Solte a imagem para anexar (MMS)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="471"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="480"/>
         <source>PNG, JPEG, WebP, GIF, or BMP up to 900 KB</source>
         <translation>PNG, JPEG, WebP, GIF ou BMP, até 900 KB</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="481"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="490"/>
         <source>Select a conversation</source>
         <translation>Selecione uma conversa</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="495"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="504"/>
         <source>Back to conversations (Esc)</source>
         <translation>Voltar às conversas (Esc)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="553"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="562"/>
         <source>Call %1</source>
         <translation>Ligar para %1</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="553"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="562"/>
         <source>Call</source>
         <translation>Ligar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="563"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="572"/>
         <source>Remove conversation from PC</source>
         <translation>Remover conversa do PC</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="575"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="584"/>
         <source>To</source>
         <translation>Para</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="586"/>
-        <location filename="../qml/pages/MessagesPage.qml" line="598"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="595"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="607"/>
         <source>Name or phone number</source>
         <translation>Nome ou número de telefone</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="800"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="809"/>
         <source>No mirrored messages yet</source>
         <translation>Nenhuma mensagem espelhada ainda</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="801"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="810"/>
         <source>No messages</source>
         <translation>Sem mensagens</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="851"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="860"/>
         <source>%1 · Sent as MMS</source>
         <translation>%1 · Enviada como MMS</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="861"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="870"/>
         <source>Remove attachment</source>
         <translation>Remover anexo</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="918"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="927"/>
         <source>Attach image (MMS)</source>
         <translation>Anexar imagem (MMS)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="954"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="953"/>
+        <source>Sending from %1. Switch SIM</source>
+        <translation>Enviando pelo %1. Trocar SIM</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/MessagesPage.qml" line="982"/>
         <source>Reply in %1</source>
         <translation>Responder em %1</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="955"/>
-        <location filename="../qml/pages/MessagesPage.qml" line="991"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="983"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="1019"/>
         <source>Text message</source>
         <translation>Mensagem de texto</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="984"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="1012"/>
         <source>Replies are available while the notification is active on your phone</source>
         <translation>Dá para responder enquanto a notificação estiver ativa no celular</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="986"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="1014"/>
         <source>Reply in %1…</source>
         <translation>Responder em %1…</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="988"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="1016"/>
         <source>Group texts can&apos;t be sent from the PC yet</source>
         <translation>Ainda não dá para enviar mensagens em grupo pelo PC</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="990"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="1018"/>
         <source>Add a caption (optional)…</source>
         <translation>Adicionar legenda (opcional)…</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="1002"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="1030"/>
         <source>Send</source>
         <translation>Enviar</translation>
     </message>
     <message numerus="yes">
-        <location filename="../qml/pages/MessagesPage.qml" line="1020"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="1048"/>
         <source>%1 characters · %n text(s)</source>
         <translation>
             <numerusform>%1 caracteres · %n SMS</numerusform>
@@ -6466,72 +6714,72 @@ O que precisa
         </translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="1268"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="1296"/>
         <source>Open image attachment</source>
         <translation>Abrir anexo de imagem</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="1334"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="1362"/>
         <source>Voice note</source>
         <translation>Nota de voz</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="1340"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="1368"/>
         <source> · Click to play</source>
         <translation> · Clique para reproduzir</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="1340"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="1368"/>
         <source> · Loading…</source>
         <translation> · Carregando…</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="1363"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="1391"/>
         <source>Attachment (open it on the phone)</source>
         <translation>Anexo (abra-o no celular)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="1389"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="1417"/>
         <source>Not sent</source>
         <translation>Não enviado</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="1390"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="1418"/>
         <source>Sending…</source>
         <translation>Enviando…</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="1405"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="1433"/>
         <source>Copy text</source>
         <translation>Copiar texto</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="1423"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="1451"/>
         <source>Copied</source>
         <translation>Copiado</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="1423"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="1451"/>
         <source>Copy code %1</source>
         <translation>Copiar código %1</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="1455"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="1483"/>
         <source>Image attachment</source>
         <translation>Anexo de imagem</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="1462"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="1490"/>
         <source>Close</source>
         <translation>Fechar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="1490"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="1518"/>
         <source>Open externally</source>
         <translation>Abrir em outro app</translation>
     </message>
     <message>
-        <location filename="../qml/pages/MessagesPage.qml" line="1494"/>
+        <location filename="../qml/pages/MessagesPage.qml" line="1522"/>
         <source>Done</source>
         <translation>Concluído</translation>
     </message>
@@ -6545,116 +6793,136 @@ O que precisa
     </message>
     <message>
         <location filename="rust_strings.h" line="384"/>
+        <source>Lowering the picture so this PC keeps up</source>
+        <translation>Reduzindo a imagem para este PC acompanhar</translation>
+    </message>
+    <message>
+        <location filename="rust_strings.h" line="385"/>
         <source>Mirror recording</source>
         <translation>Gravação do espelhamento</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="385"/>
+        <location filename="rust_strings.h" line="386"/>
         <source>Mirror screenshot</source>
         <translation>Captura de tela do espelhamento</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="386"/>
+        <location filename="rust_strings.h" line="387"/>
         <source>Mirroring is turned off for this phone.</source>
         <translation>O espelhamento está desativado para este celular.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="387"/>
+        <location filename="rust_strings.h" line="388"/>
         <source>Recording from %1, saved in Downloads/Nectarlink</source>
         <translation>Gravação de %1, salva em Downloads/Nectarlink</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="388"/>
+        <location filename="rust_strings.h" line="389"/>
         <source>Recording from %1, saved in Downloads\Nectarlink</source>
         <translation>Gravação de %1, salva em Downloads\Nectarlink</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="389"/>
+        <location filename="rust_strings.h" line="390"/>
         <source>Saved %1</source>
         <translation>%1 salvo</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="390"/>
+        <location filename="rust_strings.h" line="391"/>
         <source>Saved %1 to Downloads/Nectarlink.</source>
         <translation>%1 salvo em Downloads/Nectarlink.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="391"/>
+        <location filename="rust_strings.h" line="392"/>
         <source>Saved %1 to Downloads\Nectarlink.</source>
         <translation>%1 salvo em Downloads\Nectarlink.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="392"/>
+        <location filename="rust_strings.h" line="393"/>
         <source>Screenshot copied to clipboard.</source>
         <translation>Captura de tela copiada para a área de transferência.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="393"/>
+        <location filename="rust_strings.h" line="394"/>
         <source>Screenshot from %1, saved in Downloads/Nectarlink</source>
         <translation>Captura de tela de %1, salva em Downloads/Nectarlink</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="394"/>
+        <location filename="rust_strings.h" line="395"/>
         <source>Screenshot from %1, saved in Downloads\Nectarlink</source>
         <translation>Captura de tela de %1, salva em Downloads\Nectarlink</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="395"/>
+        <location filename="rust_strings.h" line="396"/>
         <source>Sending %1 files…</source>
         <translation>Enviando %1 arquivos…</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="396"/>
+        <location filename="rust_strings.h" line="397"/>
         <source>Sending %1…</source>
         <translation>Enviando %1…</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="397"/>
+        <location filename="rust_strings.h" line="398"/>
         <source>Set up Wireless debugging in NectarLink on the phone to open its apps here.</source>
         <translation>Configure a Depuração por Wi-Fi no NectarLink do celular para abrir os apps aqui.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="398"/>
+        <location filename="rust_strings.h" line="399"/>
         <source>Show in folder</source>
         <translation>Mostrar na pasta</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="399"/>
+        <location filename="rust_strings.h" line="400"/>
         <source>The app didn&apos;t open on the phone. Try again, or open NectarLink on the phone to check Wireless debugging.</source>
         <translation>O app não abriu no celular. Tente de novo ou abra o NectarLink no celular para conferir a Depuração por Wi-Fi.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="400"/>
+        <location filename="rust_strings.h" line="401"/>
         <source>The phone ignores taps from this PC. In its Developer options, turn on USB debugging (Security settings).</source>
         <translation>O celular ignora os toques deste PC. Nas Opções do desenvolvedor, ative Depuração USB (configurações de segurança).</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="401"/>
+        <location filename="rust_strings.h" line="402"/>
         <source>The phone isn&apos;t connected.</source>
         <translation>O celular não está conectado.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="402"/>
+        <location filename="rust_strings.h" line="403"/>
         <source>The screenshot couldn&apos;t be copied to the clipboard.</source>
         <translation>Não foi possível copiar a captura de tela para a área de transferência.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="403"/>
+        <location filename="rust_strings.h" line="404"/>
         <source>The screenshot couldn&apos;t be saved.</source>
         <translation>Não foi possível salvar a captura de tela.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="404"/>
+        <location filename="rust_strings.h" line="405"/>
         <source>This PC can&apos;t decode the phone&apos;s video.</source>
         <translation>Este PC não consegue decodificar o vídeo do celular.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="405"/>
+        <location filename="rust_strings.h" line="406"/>
+        <source>This PC keeps up again: sharper picture</source>
+        <translation>Este PC acompanha de novo: imagem mais nítida</translation>
+    </message>
+    <message>
+        <location filename="rust_strings.h" line="407"/>
         <source>This phone&apos;s app doesn&apos;t share its screen yet. Update NectarLink on the phone.</source>
         <translation>O app deste celular ainda não compartilha a tela. Atualize o NectarLink no celular.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="406"/>
+        <location filename="rust_strings.h" line="408"/>
+        <source>Turning the phone to landscape</source>
+        <translation>Girando o celular para paisagem</translation>
+    </message>
+    <message>
+        <location filename="rust_strings.h" line="409"/>
+        <source>Turning the phone to portrait</source>
+        <translation>Girando o celular para retrato</translation>
+    </message>
+    <message>
+        <location filename="rust_strings.h" line="410"/>
         <source>Wait for the screen to appear first.</source>
         <translation>Espere a tela aparecer primeiro.</translation>
     </message>
@@ -6677,73 +6945,73 @@ O que precisa
         <translation>Tela do celular · NectarLink</translation>
     </message>
     <message>
-        <location filename="../qml/MirrorWindow.qml" line="697"/>
+        <location filename="../qml/MirrorWindow.qml" line="784"/>
         <source>Copy screenshot (Ctrl+Shift+C)</source>
         <translation>Copiar captura de tela (Ctrl+Shift+C)</translation>
     </message>
     <message>
-        <location filename="../qml/MirrorWindow.qml" line="704"/>
+        <location filename="../qml/MirrorWindow.qml" line="791"/>
         <source>Save screenshot (Ctrl+S)</source>
         <translation>Salvar captura de tela (Ctrl+S)</translation>
     </message>
     <message>
-        <location filename="../qml/MirrorWindow.qml" line="711"/>
+        <location filename="../qml/MirrorWindow.qml" line="798"/>
         <source>Stop recording (Ctrl+R)</source>
         <translation>Parar gravação (Ctrl+R)</translation>
     </message>
     <message>
-        <location filename="../qml/MirrorWindow.qml" line="711"/>
+        <location filename="../qml/MirrorWindow.qml" line="798"/>
         <source>Record video (Ctrl+R)</source>
         <translation>Gravar vídeo (Ctrl+R)</translation>
     </message>
     <message>
-        <location filename="../qml/MirrorWindow.qml" line="738"/>
+        <location filename="../qml/MirrorWindow.qml" line="832"/>
         <source>Phone stays awake while mirroring (turn off)</source>
         <translation>A tela do celular fica ligada durante o espelhamento (desativar)</translation>
     </message>
     <message>
-        <location filename="../qml/MirrorWindow.qml" line="739"/>
+        <location filename="../qml/MirrorWindow.qml" line="833"/>
         <source>Keep phone awake while mirroring</source>
         <translation>Manter a tela do celular ligada durante o espelhamento</translation>
     </message>
     <message>
-        <location filename="../qml/MirrorWindow.qml" line="748"/>
+        <location filename="../qml/MirrorWindow.qml" line="842"/>
         <source>Turn phone screen back on</source>
         <translation>Ligar a tela do celular</translation>
     </message>
     <message>
-        <location filename="../qml/MirrorWindow.qml" line="749"/>
+        <location filename="../qml/MirrorWindow.qml" line="843"/>
         <source>Turn phone screen off while mirroring</source>
         <translation>Desligar a tela do celular durante o espelhamento</translation>
     </message>
     <message>
-        <location filename="../qml/MirrorWindow.qml" line="774"/>
-        <location filename="../qml/MirrorWindow.qml" line="850"/>
+        <location filename="../qml/MirrorWindow.qml" line="877"/>
+        <location filename="../qml/MirrorWindow.qml" line="962"/>
         <source>Play the phone&apos;s sound here</source>
         <translation>Tocar o som do celular aqui</translation>
     </message>
     <message>
-        <location filename="../qml/MirrorWindow.qml" line="758"/>
+        <location filename="../qml/MirrorWindow.qml" line="861"/>
         <source>Lock phone</source>
         <translation>Bloquear celular</translation>
     </message>
     <message>
-        <location filename="../qml/MirrorWindow.qml" line="809"/>
+        <location filename="../qml/MirrorWindow.qml" line="922"/>
         <source>Back (right-click)</source>
         <translation>Voltar (botão direito)</translation>
     </message>
     <message>
-        <location filename="../qml/MirrorWindow.qml" line="816"/>
+        <location filename="../qml/MirrorWindow.qml" line="929"/>
         <source>Home (middle-click)</source>
         <translation>Início (botão do meio)</translation>
     </message>
     <message>
-        <location filename="../qml/MirrorWindow.qml" line="823"/>
+        <location filename="../qml/MirrorWindow.qml" line="936"/>
         <source>Recent apps</source>
         <translation>Apps recentes</translation>
     </message>
     <message>
-        <location filename="../qml/MirrorWindow.qml" line="774"/>
+        <location filename="../qml/MirrorWindow.qml" line="877"/>
         <source>Play the sound on the phone</source>
         <translation>Tocar o som no celular</translation>
     </message>
@@ -6758,97 +7026,132 @@ O que precisa
         <translation>Tela do celular desligada</translation>
     </message>
     <message>
-        <location filename="../qml/MirrorWindow.qml" line="729"/>
+        <location filename="../qml/MirrorWindow.qml" line="682"/>
+        <source>Toolbar hidden. Ctrl+Shift+T shows it again.</source>
+        <translation>Barra de ferramentas oculta. Ctrl+Shift+T mostra de novo.</translation>
+    </message>
+    <message>
+        <location filename="../qml/MirrorWindow.qml" line="757"/>
+        <source>Drag to move the toolbar to another corner</source>
+        <translation>Arraste para mover a barra para outro canto</translation>
+    </message>
+    <message>
+        <location filename="../qml/MirrorWindow.qml" line="815"/>
+        <source>Show the picture as it is</source>
+        <translation>Mostrar a imagem como é</translation>
+    </message>
+    <message>
+        <location filename="../qml/MirrorWindow.qml" line="815"/>
+        <source>Dark picture: swap light and dark</source>
+        <translation>Imagem escura: trocar claro e escuro</translation>
+    </message>
+    <message>
+        <location filename="../qml/MirrorWindow.qml" line="823"/>
         <source>Flex mode</source>
         <translation>Modo flexível</translation>
     </message>
     <message>
-        <location filename="../qml/MirrorWindow.qml" line="765"/>
+        <location filename="../qml/MirrorWindow.qml" line="852"/>
+        <source>Turn the phone to portrait</source>
+        <translation>Girar o celular para retrato</translation>
+    </message>
+    <message>
+        <location filename="../qml/MirrorWindow.qml" line="852"/>
+        <source>Turn the phone to landscape</source>
+        <translation>Girar o celular para paisagem</translation>
+    </message>
+    <message>
+        <location filename="../qml/MirrorWindow.qml" line="868"/>
         <source>Don&apos;t keep on top</source>
         <translation>Não manter acima</translation>
     </message>
     <message>
-        <location filename="../qml/MirrorWindow.qml" line="765"/>
+        <location filename="../qml/MirrorWindow.qml" line="868"/>
         <source>Keep on top</source>
         <translation>Manter acima das outras janelas</translation>
     </message>
     <message>
-        <location filename="../qml/MirrorWindow.qml" line="809"/>
+        <location filename="../qml/MirrorWindow.qml" line="884"/>
+        <source>Hide the toolbar (Ctrl+Shift+T)</source>
+        <translation>Ocultar a barra de ferramentas (Ctrl+Shift+T)</translation>
+    </message>
+    <message>
+        <location filename="../qml/MirrorWindow.qml" line="922"/>
         <source>Back (Esc)</source>
         <translation>Voltar (Esc)</translation>
     </message>
     <message>
-        <location filename="../qml/MirrorWindow.qml" line="859"/>
+        <location filename="../qml/MirrorWindow.qml" line="971"/>
         <source>Release to send files to %1</source>
         <translation>Solte para enviar arquivos para %1</translation>
     </message>
     <message>
-        <location filename="../qml/MirrorWindow.qml" line="859"/>
+        <location filename="../qml/MirrorWindow.qml" line="971"/>
         <source>phone</source>
         <translation>celular</translation>
     </message>
     <message>
-        <location filename="../qml/MirrorWindow.qml" line="927"/>
+        <location filename="../qml/MirrorWindow.qml" line="1039"/>
         <source>To control the phone, turn on Control from your PC in NectarLink&apos;s settings on the phone.</source>
         <translation>Para controlar o celular, ative Controle pelo PC nas Configurações do NectarLink no celular.</translation>
     </message>
     <message>
-        <location filename="../qml/MirrorWindow.qml" line="936"/>
+        <location filename="../qml/MirrorWindow.qml" line="1048"/>
         <source>Notify phone</source>
         <translation>Avisar o celular</translation>
     </message>
     <message>
-        <location filename="../qml/MirrorWindow.qml" line="947"/>
+        <location filename="../qml/MirrorWindow.qml" line="1059"/>
         <source>Hide</source>
         <translation>Ocultar</translation>
     </message>
     <message>
-        <location filename="../qml/MirrorWindow.qml" line="985"/>
+        <location filename="../qml/MirrorWindow.qml" line="1097"/>
         <source>Opening %1</source>
         <translation>Abrindo %1</translation>
     </message>
     <message>
-        <location filename="../qml/MirrorWindow.qml" line="985"/>
+        <location filename="../qml/MirrorWindow.qml" line="1097"/>
         <source>Allow it on your phone</source>
         <translation>Permita no celular</translation>
     </message>
     <message>
-        <location filename="../qml/MirrorWindow.qml" line="986"/>
+        <location filename="../qml/MirrorWindow.qml" line="1098"/>
         <source>%1 closed</source>
         <translation>%1 foi fechado</translation>
     </message>
     <message>
-        <location filename="../qml/MirrorWindow.qml" line="986"/>
+        <location filename="../qml/MirrorWindow.qml" line="1098"/>
         <source>Mirroring stopped</source>
         <translation>Espelhamento encerrado</translation>
     </message>
     <message>
-        <location filename="../qml/MirrorWindow.qml" line="987"/>
+        <location filename="../qml/MirrorWindow.qml" line="1099"/>
         <source>Starting…</source>
         <translation>Iniciando…</translation>
     </message>
     <message>
-        <location filename="../qml/MirrorWindow.qml" line="996"/>
+        <location filename="../qml/MirrorWindow.qml" line="1108"/>
         <source>Tap the notification on %1, then choose to share the entire screen.</source>
         <translation>Toque na notificação em %1 e escolha Compartilhar a tela inteira.</translation>
     </message>
     <message>
-        <location filename="../qml/MirrorWindow.qml" line="998"/>
+        <location filename="../qml/MirrorWindow.qml" line="1110"/>
         <source>The app closed on %1.</source>
         <translation>O app foi fechado em %1.</translation>
     </message>
     <message>
-        <location filename="../qml/MirrorWindow.qml" line="999"/>
+        <location filename="../qml/MirrorWindow.qml" line="1111"/>
         <source>The phone stopped sharing its screen.</source>
         <translation>O celular parou de compartilhar a tela.</translation>
     </message>
     <message>
-        <location filename="../qml/MirrorWindow.qml" line="1006"/>
+        <location filename="../qml/MirrorWindow.qml" line="1118"/>
         <source>Open again</source>
         <translation>Abrir de novo</translation>
     </message>
     <message>
-        <location filename="../qml/MirrorWindow.qml" line="1006"/>
+        <location filename="../qml/MirrorWindow.qml" line="1118"/>
         <source>Try again</source>
         <translation>Tentar de novo</translation>
     </message>
@@ -6856,7 +7159,7 @@ O que precisa
 <context>
     <name>Mp4</name>
     <message>
-        <location filename="rust_strings.h" line="407"/>
+        <location filename="rust_strings.h" line="411"/>
         <source>No video frames were recorded yet.</source>
         <translation>Ainda não foram gravados quadros de vídeo.</translation>
     </message>
@@ -6951,47 +7254,52 @@ O que precisa
 <context>
     <name>Notifications</name>
     <message>
-        <location filename="rust_strings.h" line="408"/>
+        <location filename="rust_strings.h" line="412"/>
         <source>Code copied</source>
         <translation>Código copiado</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="409"/>
+        <location filename="rust_strings.h" line="413"/>
+        <source>Copied</source>
+        <translation>Copiado</translation>
+    </message>
+    <message>
+        <location filename="rust_strings.h" line="414"/>
         <source>Copy code</source>
         <translation>Copiar código</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="410"/>
+        <location filename="rust_strings.h" line="415"/>
         <source>Dismissed %1 from %2</source>
         <translation>Dispensada: %1, de %2</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="411"/>
+        <location filename="rust_strings.h" line="416"/>
         <source>Dismissed %1 notifications</source>
         <translation>%1 notificações dispensadas</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="412"/>
+        <location filename="rust_strings.h" line="417"/>
         <source>Dismissed from %1</source>
         <translation>Dispensadas de %1</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="413"/>
+        <location filename="rust_strings.h" line="418"/>
         <source>Notification dismissed</source>
         <translation>Notificação dispensada</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="414"/>
+        <location filename="rust_strings.h" line="419"/>
         <source>Open</source>
         <translation>Abrir</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="415"/>
+        <location filename="rust_strings.h" line="420"/>
         <source>Reply</source>
         <translation>Responder</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="416"/>
+        <location filename="rust_strings.h" line="421"/>
         <source>That notification is gone from the phone.</source>
         <translation>Essa notificação não existe mais no celular.</translation>
     </message>
@@ -7107,17 +7415,17 @@ O que precisa
 <context>
     <name>Obs</name>
     <message>
-        <location filename="rust_strings.h" line="417"/>
+        <location filename="rust_strings.h" line="422"/>
         <source>OBS isn&apos;t reachable on port %1. Turn on its WebSocket server.</source>
         <translation>Não foi possível acessar o OBS na porta %1. Ative o servidor WebSocket do OBS.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="418"/>
+        <location filename="rust_strings.h" line="423"/>
         <source>OBS: %1</source>
         <translation>OBS: %1</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="419"/>
+        <location filename="rust_strings.h" line="424"/>
         <source>The service on that port isn&apos;t OBS.</source>
         <translation>O serviço nessa porta não é o OBS.</translation>
     </message>
@@ -7275,21 +7583,26 @@ O que precisa
     </message>
     <message>
         <location filename="../qml/pages/PairingPanel.qml" line="359"/>
+        <source>The other device isn&apos;t ready to pair. Open its pairing screen, then try again.</source>
+        <translation>O outro dispositivo não está pronto para parear. Abra a tela de pareamento dele e tente de novo.</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/PairingPanel.qml" line="360"/>
         <source>The code expired.</source>
         <translation>O código expirou.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PairingPanel.qml" line="360"/>
+        <location filename="../qml/pages/PairingPanel.qml" line="361"/>
         <source>Something went wrong. Try again.</source>
         <translation>Algo deu errado. Tente de novo.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PairingPanel.qml" line="367"/>
+        <location filename="../qml/pages/PairingPanel.qml" line="368"/>
         <source>Try again</source>
         <translation>Tentar de novo</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PairingPanel.qml" line="377"/>
+        <location filename="../qml/pages/PairingPanel.qml" line="378"/>
         <source>Cancel</source>
         <translation>Cancelar</translation>
     </message>
@@ -7297,7 +7610,7 @@ O que precisa
 <context>
     <name>PcMirror</name>
     <message>
-        <location filename="rust_strings.h" line="420"/>
+        <location filename="rust_strings.h" line="425"/>
         <source>Can&apos;t find the player&apos;s window. Play the video on this PC again, then turn on Play on phone.</source>
         <translation>Não foi possível encontrar a janela do player. Reproduza o vídeo neste PC de novo e ative Reproduzir no celular.</translation>
     </message>
@@ -7305,102 +7618,102 @@ O que precisa
 <context>
     <name>PhoneInstall</name>
     <message>
-        <location filename="rust_strings.h" line="421"/>
+        <location filename="rust_strings.h" line="426"/>
         <source>Android said: %1</source>
         <translation>O Android disse: %1</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="422"/>
+        <location filename="rust_strings.h" line="427"/>
         <source>Another build of NectarLink is on this phone</source>
         <translation>Outra versão do NectarLink está neste celular</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="423"/>
+        <location filename="rust_strings.h" line="428"/>
         <source>Check this PC&apos;s internet connection and try again. (%1)</source>
         <translation>Verifique a conexão com a internet deste PC e tente de novo. (%1)</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="424"/>
+        <location filename="rust_strings.h" line="429"/>
         <source>Couldn&apos;t download the phone app</source>
         <translation>Não foi possível baixar o app do celular</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="425"/>
+        <location filename="rust_strings.h" line="430"/>
         <source>Free up some storage on the phone, then try again.</source>
         <translation>Libere espaço no celular e tente de novo.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="426"/>
+        <location filename="rust_strings.h" line="431"/>
         <source>In Developer options, turn on Install via USB, then try again. On Xiaomi, Redmi and POCO phones it may ask you to sign in to a Xiaomi account first.</source>
         <translation>Nas Opções do desenvolvedor, ative Instalar via USB e tente de novo. Em celulares Xiaomi, Redmi e POCO, pode ser preciso entrar com uma conta Xiaomi antes.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="427"/>
+        <location filename="rust_strings.h" line="432"/>
         <source>It didn&apos;t match its checksum, so it wasn&apos;t installed. Try again.</source>
         <translation>O arquivo não bateu com a soma de verificação, então não foi instalado. Tente de novo.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="428"/>
+        <location filename="rust_strings.h" line="433"/>
         <source>It was signed differently (a test build, or one from another store), so Android won&apos;t update it. Replacing it removes it with its data, including the PCs it&apos;s paired with, then installs this one.</source>
         <translation>Ela foi assinada de outro jeito (uma versão de teste, ou de outra loja), então o Android não a atualiza. Substituir remove ela e os dados dela, incluindo os PCs pareados, e depois instala esta.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="429"/>
+        <location filename="rust_strings.h" line="434"/>
         <source>Keep it plugged in and unlocked until the install is done, then try again.</source>
         <translation>Deixe o celular conectado e desbloqueado até a instalação terminar e tente de novo.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="430"/>
+        <location filename="rust_strings.h" line="435"/>
         <source>NectarLink needs Android 8.0 or newer.</source>
         <translation>O NectarLink precisa do Android 8.0 ou mais recente.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="431"/>
+        <location filename="rust_strings.h" line="436"/>
         <source>The download was damaged</source>
         <translation>O download veio corrompido</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="432"/>
+        <location filename="rust_strings.h" line="437"/>
         <source>The install was stopped on the phone</source>
         <translation>A instalação foi interrompida no celular</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="433"/>
+        <location filename="rust_strings.h" line="438"/>
         <source>The phone already has a newer version</source>
         <translation>O celular já tem uma versão mais recente</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="434"/>
+        <location filename="rust_strings.h" line="439"/>
         <source>The phone asked whether to allow it and the answer was no, or Google Play Protect stopped it. Try again and allow it on the phone. If Play Protect stops it, turn off Verify apps over USB in Developer options for the install.</source>
         <translation>O celular perguntou se permitia a instalação e a resposta foi não, ou o Google Play Protect a interrompeu. Tente de novo e permita no celular. Se o Play Protect interromper, desative Verificar apps por USB nas Opções do desenvolvedor durante a instalação.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="435"/>
+        <location filename="rust_strings.h" line="440"/>
         <source>The phone blocks installs over USB</source>
         <translation>O celular bloqueia instalações por USB</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="436"/>
+        <location filename="rust_strings.h" line="441"/>
         <source>The phone didn&apos;t install it</source>
         <translation>O celular não instalou</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="437"/>
+        <location filename="rust_strings.h" line="442"/>
         <source>The phone is out of space</source>
         <translation>O celular está sem espaço</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="438"/>
+        <location filename="rust_strings.h" line="443"/>
         <source>The phone stopped answering</source>
         <translation>O celular parou de responder</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="439"/>
+        <location filename="rust_strings.h" line="444"/>
         <source>There&apos;s nothing to install. Open NectarLink on the phone to pair it.</source>
         <translation>Não há nada para instalar. Abra o NectarLink no celular para parear.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="440"/>
+        <location filename="rust_strings.h" line="445"/>
         <source>This phone&apos;s Android is too old</source>
         <translation>O Android deste celular é antigo demais</translation>
     </message>
@@ -7459,7 +7772,7 @@ O que precisa
     </message>
     <message>
         <location filename="../qml/components/PhoneInstallPane.qml" line="213"/>
-        <location filename="../qml/components/PhoneInstallPane.qml" line="739"/>
+        <location filename="../qml/components/PhoneInstallPane.qml" line="740"/>
         <source>Try again</source>
         <translation>Tentar de novo</translation>
     </message>
@@ -7469,203 +7782,207 @@ O que precisa
         <translation>Baixar do Google</translation>
     </message>
     <message>
-        <location filename="../qml/components/PhoneInstallPane.qml" line="224"/>
         <source>Downloading them means you accept Google&apos;s &lt;a href=&quot;https://developer.android.com/studio/terms&quot;&gt;Android SDK terms&lt;/a&gt;.</source>
-        <translation>Ao baixá-las, você aceita os &lt;a href=&quot;https://developer.android.com/studio/terms&quot;&gt;termos do SDK do Android&lt;/a&gt; do Google.</translation>
+        <translation type="vanished">Ao baixá-las, você aceita os &lt;a href=&quot;https://developer.android.com/studio/terms&quot;&gt;termos do SDK do Android&lt;/a&gt; do Google.</translation>
     </message>
     <message>
-        <location filename="../qml/components/PhoneInstallPane.qml" line="237"/>
+        <location filename="../qml/components/PhoneInstallPane.qml" line="225"/>
+        <source>Downloading them means you accept Google&apos;s &lt;a href=&quot;%1&quot;&gt;Android SDK terms&lt;/a&gt;.</source>
+        <translation>Ao baixá-las, você aceita os &lt;a href=&quot;%1&quot;&gt;termos do SDK do Android&lt;/a&gt; do Google.</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/PhoneInstallPane.qml" line="238"/>
         <source>Downloading from Google… %1 of %2 MB</source>
         <translation>Baixando do Google… %1 de %2 MB</translation>
     </message>
     <message>
-        <location filename="../qml/components/PhoneInstallPane.qml" line="238"/>
+        <location filename="../qml/components/PhoneInstallPane.qml" line="239"/>
         <source>Asking Google which version is current…</source>
         <translation>Perguntando ao Google qual é a versão atual…</translation>
     </message>
     <message>
-        <location filename="../qml/components/PhoneInstallPane.qml" line="252"/>
+        <location filename="../qml/components/PhoneInstallPane.qml" line="253"/>
         <source>Google doesn&apos;t make them for this kind of PC. Install adb from your distribution&apos;s packages (for example: sudo apt install adb), then come back here.</source>
         <translation>O Google não as oferece para este tipo de PC. Instale o adb pelos pacotes da sua distribuição (por exemplo: sudo apt install adb) e depois volte aqui.</translation>
     </message>
     <message>
-        <location filename="../qml/components/PhoneInstallPane.qml" line="263"/>
+        <location filename="../qml/components/PhoneInstallPane.qml" line="264"/>
         <source>%1 is connected</source>
         <translation>%1 está conectado</translation>
     </message>
     <message>
-        <location filename="../qml/components/PhoneInstallPane.qml" line="264"/>
+        <location filename="../qml/components/PhoneInstallPane.qml" line="265"/>
         <source>%1 phones are connected</source>
         <translation>%1 celulares estão conectados</translation>
     </message>
     <message>
-        <location filename="../qml/components/PhoneInstallPane.qml" line="265"/>
+        <location filename="../qml/components/PhoneInstallPane.qml" line="266"/>
         <source>Connect the phone</source>
         <translation>Conecte o celular</translation>
     </message>
     <message>
-        <location filename="../qml/components/PhoneInstallPane.qml" line="277"/>
+        <location filename="../qml/components/PhoneInstallPane.qml" line="278"/>
         <source>Unlock %1 and tap Allow on “Allow USB debugging?”. Tick “Always allow from this computer” so it doesn&apos;t ask again.</source>
         <translation>Desbloqueie o %1 e toque em Permitir em “Permitir a depuração USB?”. Marque “Sempre permitir a partir deste computador” para não perguntar de novo.</translation>
     </message>
     <message>
-        <location filename="../qml/components/PhoneInstallPane.qml" line="279"/>
+        <location filename="../qml/components/PhoneInstallPane.qml" line="280"/>
         <source>Linux needs Android&apos;s USB rules to reach %1. Install your distribution&apos;s android-udev-rules package (on Debian and Ubuntu: android-sdk-platform-tools-common), then plug the phone in again.</source>
         <translation>O Linux precisa das regras USB do Android para acessar o %1. Instale o pacote android-udev-rules da sua distribuição (no Debian e no Ubuntu: android-sdk-platform-tools-common) e conecte o celular de novo.</translation>
     </message>
     <message>
-        <location filename="../qml/components/PhoneInstallPane.qml" line="280"/>
+        <location filename="../qml/components/PhoneInstallPane.qml" line="281"/>
         <source>%1 isn&apos;t answering. Unplug it and plug it back in.</source>
         <translation>%1 não está respondendo. Desconecte e conecte de novo.</translation>
     </message>
     <message>
-        <location filename="../qml/components/PhoneInstallPane.qml" line="293"/>
+        <location filename="../qml/components/PhoneInstallPane.qml" line="294"/>
         <source>Windows sees the phone but has no driver for its USB debugging. Install your phone maker&apos;s USB driver, then plug the phone in again.</source>
         <translation>O Windows vê o celular, mas não tem driver para a depuração USB dele. Instale o driver USB do fabricante do celular e conecte de novo.</translation>
     </message>
     <message>
-        <location filename="../qml/components/PhoneInstallPane.qml" line="294"/>
+        <location filename="../qml/components/PhoneInstallPane.qml" line="295"/>
         <source>Find the driver</source>
         <translation>Encontrar o driver</translation>
     </message>
     <message>
-        <location filename="../qml/components/PhoneInstallPane.qml" line="302"/>
+        <location filename="../qml/components/PhoneInstallPane.qml" line="303"/>
         <source>Plug the phone into this PC with a USB cable. If it&apos;s the first time, turn on USB debugging first:</source>
         <translation>Conecte o celular a este PC com um cabo USB. Se for a primeira vez, ative antes a depuração USB:</translation>
     </message>
     <message>
-        <location filename="../qml/components/PhoneInstallPane.qml" line="307"/>
+        <location filename="../qml/components/PhoneInstallPane.qml" line="308"/>
         <source>On the phone, open Settings › About phone and tap Build number seven times. On Xiaomi phones it&apos;s the OS version; on Samsung it&apos;s under Software information.</source>
         <translation>No celular, abra Configurações › Sobre o telefone e toque sete vezes em Número da versão. Em celulares Xiaomi é a versão do sistema; no Samsung fica em Informações do software.</translation>
     </message>
     <message>
-        <location filename="../qml/components/PhoneInstallPane.qml" line="308"/>
+        <location filename="../qml/components/PhoneInstallPane.qml" line="309"/>
         <source>Go back to Settings, open Developer options (under System on many phones) and turn on USB debugging.</source>
         <translation>Volte às Configurações, abra as Opções do desenvolvedor (em Sistema em muitos celulares) e ative a depuração USB.</translation>
     </message>
     <message>
-        <location filename="../qml/components/PhoneInstallPane.qml" line="309"/>
+        <location filename="../qml/components/PhoneInstallPane.qml" line="310"/>
         <source>Use a cable that carries data, since some only charge. If the phone asks what the USB connection is for, pick File transfer.</source>
         <translation>Use um cabo que transmita dados, porque alguns só carregam. Se o celular perguntar para que é a conexão USB, escolha Transferência de arquivos.</translation>
     </message>
     <message>
-        <location filename="../qml/components/PhoneInstallPane.qml" line="318"/>
+        <location filename="../qml/components/PhoneInstallPane.qml" line="319"/>
         <source>Still nothing? Try another USB port or cable, and check that USB debugging stayed on (some phones turn it off when unplugged).</source>
         <translation>Ainda nada? Tente outra porta USB ou outro cabo e confira se a depuração USB continua ativada (alguns celulares a desativam ao desconectar).</translation>
     </message>
     <message>
-        <location filename="../qml/components/PhoneInstallPane.qml" line="329"/>
+        <location filename="../qml/components/PhoneInstallPane.qml" line="330"/>
         <source>Install NectarLink</source>
         <translation>Instalar o NectarLink</translation>
     </message>
     <message>
-        <location filename="../qml/components/PhoneInstallPane.qml" line="339"/>
+        <location filename="../qml/components/PhoneInstallPane.qml" line="340"/>
         <source>NectarLink %1 comes from its own releases on GitHub and is checked before it&apos;s sent to the phone.</source>
         <translation>O NectarLink %1 vem das versões oficiais no GitHub e é verificado antes de ir para o celular.</translation>
     </message>
     <message>
-        <location filename="../qml/components/PhoneInstallPane.qml" line="340"/>
+        <location filename="../qml/components/PhoneInstallPane.qml" line="341"/>
         <source>NectarLink comes from its own releases on GitHub and is checked before it&apos;s sent to the phone.</source>
         <translation>O NectarLink vem das versões oficiais no GitHub e é verificado antes de ir para o celular.</translation>
     </message>
     <message>
-        <location filename="../qml/components/PhoneInstallPane.qml" line="610"/>
+        <location filename="../qml/components/PhoneInstallPane.qml" line="611"/>
         <source>Android %1</source>
         <translation>Android %1</translation>
     </message>
     <message>
-        <location filename="../qml/components/PhoneInstallPane.qml" line="613"/>
+        <location filename="../qml/components/PhoneInstallPane.qml" line="614"/>
         <source>needs Android 8.0 or newer</source>
         <translation>precisa do Android 8.0 ou mais recente</translation>
     </message>
     <message>
-        <location filename="../qml/components/PhoneInstallPane.qml" line="615"/>
+        <location filename="../qml/components/PhoneInstallPane.qml" line="616"/>
         <source>NectarLink isn&apos;t on it yet</source>
         <translation>ainda não tem o NectarLink</translation>
     </message>
     <message>
-        <location filename="../qml/components/PhoneInstallPane.qml" line="617"/>
+        <location filename="../qml/components/PhoneInstallPane.qml" line="618"/>
         <source>has NectarLink %1, %2 is newer</source>
         <translation>tem o NectarLink %1, %2 é mais recente</translation>
     </message>
     <message>
-        <location filename="../qml/components/PhoneInstallPane.qml" line="619"/>
+        <location filename="../qml/components/PhoneInstallPane.qml" line="620"/>
         <source>has NectarLink %1</source>
         <translation>tem o NectarLink %1</translation>
     </message>
     <message>
-        <location filename="../qml/components/PhoneInstallPane.qml" line="634"/>
-        <location filename="../qml/components/PhoneInstallPane.qml" line="710"/>
+        <location filename="../qml/components/PhoneInstallPane.qml" line="635"/>
+        <location filename="../qml/components/PhoneInstallPane.qml" line="711"/>
         <source>Open on phone</source>
         <translation>Abrir no celular</translation>
     </message>
     <message>
-        <location filename="../qml/components/PhoneInstallPane.qml" line="635"/>
+        <location filename="../qml/components/PhoneInstallPane.qml" line="636"/>
         <source>Update</source>
         <translation>Atualizar</translation>
     </message>
     <message>
-        <location filename="../qml/components/PhoneInstallPane.qml" line="635"/>
+        <location filename="../qml/components/PhoneInstallPane.qml" line="636"/>
         <source>Install</source>
         <translation>Instalar</translation>
     </message>
     <message>
-        <location filename="../qml/components/PhoneInstallPane.qml" line="655"/>
+        <location filename="../qml/components/PhoneInstallPane.qml" line="656"/>
         <source>Downloading NectarLink… %1%</source>
         <translation>Baixando o NectarLink… %1%</translation>
     </message>
     <message>
-        <location filename="../qml/components/PhoneInstallPane.qml" line="656"/>
+        <location filename="../qml/components/PhoneInstallPane.qml" line="657"/>
         <source>Getting NectarLink…</source>
         <translation>Obtendo o NectarLink…</translation>
     </message>
     <message>
-        <location filename="../qml/components/PhoneInstallPane.qml" line="658"/>
+        <location filename="../qml/components/PhoneInstallPane.qml" line="659"/>
         <source>Sending it to the phone… %1%</source>
         <translation>Enviando para o celular… %1%</translation>
     </message>
     <message>
-        <location filename="../qml/components/PhoneInstallPane.qml" line="660"/>
+        <location filename="../qml/components/PhoneInstallPane.qml" line="661"/>
         <source>Removing the other build…</source>
         <translation>Removendo a outra versão…</translation>
     </message>
     <message>
-        <location filename="../qml/components/PhoneInstallPane.qml" line="661"/>
+        <location filename="../qml/components/PhoneInstallPane.qml" line="662"/>
         <source>Installing… If the phone asks whether to allow it, tap Allow or Install.</source>
         <translation>Instalando… Se o celular perguntar se pode permitir, toque em Permitir ou Instalar.</translation>
     </message>
     <message>
-        <location filename="../qml/components/PhoneInstallPane.qml" line="703"/>
+        <location filename="../qml/components/PhoneInstallPane.qml" line="704"/>
         <source>NectarLink %1 is installed and opening on the phone. Finish its setup there, then pair it with this PC from Home.</source>
         <translation>O NectarLink %1 foi instalado e está abrindo no celular. Termine a configuração lá e depois pareie com este PC pela tela Início.</translation>
     </message>
     <message>
-        <location filename="../qml/components/PhoneInstallPane.qml" line="716"/>
+        <location filename="../qml/components/PhoneInstallPane.qml" line="717"/>
         <source>Done</source>
         <translation>Concluído</translation>
     </message>
     <message>
-        <location filename="../qml/components/PhoneInstallPane.qml" line="745"/>
+        <location filename="../qml/components/PhoneInstallPane.qml" line="746"/>
         <source>Replace it</source>
         <translation>Substituir</translation>
     </message>
     <message>
-        <location filename="../qml/components/PhoneInstallPane.qml" line="751"/>
+        <location filename="../qml/components/PhoneInstallPane.qml" line="752"/>
         <source>Close</source>
         <translation>Fechar</translation>
     </message>
     <message>
-        <location filename="../qml/components/PhoneInstallPane.qml" line="765"/>
+        <location filename="../qml/components/PhoneInstallPane.qml" line="766"/>
         <source>Remove the NectarLink on %1 with everything it keeps, including the PCs it&apos;s paired with? This can&apos;t be undone.</source>
         <translation>Remover o NectarLink do %1 com tudo o que ele guarda, incluindo os PCs pareados? Isso não pode ser desfeito.</translation>
     </message>
     <message>
-        <location filename="../qml/components/PhoneInstallPane.qml" line="771"/>
+        <location filename="../qml/components/PhoneInstallPane.qml" line="772"/>
         <source>Remove and install</source>
         <translation>Remover e instalar</translation>
     </message>
     <message>
-        <location filename="../qml/components/PhoneInstallPane.qml" line="780"/>
+        <location filename="../qml/components/PhoneInstallPane.qml" line="781"/>
         <source>Cancel</source>
         <translation>Cancelar</translation>
     </message>
@@ -7673,17 +7990,17 @@ O que precisa
 <context>
     <name>PhoneMic</name>
     <message>
-        <location filename="rust_strings.h" line="441"/>
+        <location filename="rust_strings.h" line="446"/>
         <source>Tap Start on %1 to use its microphone.</source>
         <translation>Toque em Iniciar em %1 para usar o microfone.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="442"/>
+        <location filename="rust_strings.h" line="447"/>
         <source>The microphone is turned off for this PC on %1.</source>
         <translation>O uso do microfone está desativado para este PC em %1.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="443"/>
+        <location filename="rust_strings.h" line="448"/>
         <source>Update NectarLink on %1 to use its microphone.</source>
         <translation>Atualize o NectarLink em %1 para usar o microfone.</translation>
     </message>
@@ -7691,22 +8008,22 @@ O que precisa
 <context>
     <name>PhoneSound</name>
     <message>
-        <location filename="rust_strings.h" line="444"/>
+        <location filename="rust_strings.h" line="449"/>
         <source>%1 couldn&apos;t ask to share its sound. Check that NectarLink can show notifications on the phone.</source>
         <translation>%1 não conseguiu pedir para compartilhar o som. Confira se o NectarLink pode mostrar notificações no celular.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="445"/>
+        <location filename="rust_strings.h" line="450"/>
         <source>Mirroring is turned off for this phone.</source>
         <translation>O espelhamento está desativado para este celular.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="446"/>
+        <location filename="rust_strings.h" line="451"/>
         <source>The phone isn&apos;t connected.</source>
         <translation>O celular não está conectado.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="447"/>
+        <location filename="rust_strings.h" line="452"/>
         <source>Update NectarLink on %1 to play its sound here.</source>
         <translation>Atualize o NectarLink em %1 para tocar o som dele aqui.</translation>
     </message>
@@ -7714,62 +8031,62 @@ O que precisa
 <context>
     <name>PhotoBackup</name>
     <message>
-        <location filename="rust_strings.h" line="448"/>
+        <location filename="rust_strings.h" line="453"/>
         <source>Can&apos;t write to the backup folder.</source>
         <translation>Não foi possível gravar na pasta de backup.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="449"/>
+        <location filename="rust_strings.h" line="454"/>
         <source>Copying, %1 left</source>
         <translation>Copiando, restam %1</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="450"/>
+        <location filename="rust_strings.h" line="455"/>
         <source>Looking for new photos…</source>
         <translation>Procurando novas fotos…</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="451"/>
+        <location filename="rust_strings.h" line="456"/>
         <source>Off</source>
         <translation>Desativado</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="452"/>
+        <location filename="rust_strings.h" line="457"/>
         <source>Photos are turned off for this PC on %1.</source>
         <translation>O compartilhamento de fotos com este PC está desativado em %1.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="453"/>
+        <location filename="rust_strings.h" line="458"/>
         <source>The backup folder&apos;s drive is full.</source>
         <translation>O disco da pasta de backup está cheio.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="454"/>
+        <location filename="rust_strings.h" line="459"/>
         <source>The backup stopped. It tries again in a few minutes.</source>
         <translation>O backup parou. Ele tenta de novo em alguns minutos.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="455"/>
+        <location filename="rust_strings.h" line="460"/>
         <source>Up to date</source>
         <translation>Em dia</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="456"/>
+        <location filename="rust_strings.h" line="461"/>
         <source>Up to date, %1 backed up</source>
         <translation>Em dia, %1 no backup</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="457"/>
+        <location filename="rust_strings.h" line="462"/>
         <source>Update NectarLink on %1 to back up its photos.</source>
         <translation>Atualize o NectarLink em %1 para fazer backup das fotos.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="458"/>
+        <location filename="rust_strings.h" line="463"/>
         <source>Waiting for %1</source>
         <translation>Aguardando %1</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="459"/>
+        <location filename="rust_strings.h" line="464"/>
         <source>Waiting for Wi-Fi</source>
         <translation>Aguardando Wi-Fi</translation>
     </message>
@@ -7777,87 +8094,87 @@ O que precisa
 <context>
     <name>Photos</name>
     <message>
-        <location filename="rust_strings.h" line="460"/>
+        <location filename="rust_strings.h" line="465"/>
         <source>%1 of %2 couldn&apos;t be moved to %3. They&apos;re in Downloads\Nectarlink.</source>
         <translation>%1 de %2 não puderam ser movidos para %3. Eles estão em Downloads\Nectarlink.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="461"/>
+        <location filename="rust_strings.h" line="466"/>
         <source>Copied to clipboard.</source>
         <translation>Copiado para a área de transferência.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="462"/>
+        <location filename="rust_strings.h" line="467"/>
         <source>Couldn&apos;t open the share window. Try Save instead.</source>
         <translation>Não foi possível abrir a janela de compartilhamento. Tente Salvar.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="464"/>
+        <location filename="rust_strings.h" line="469"/>
         <source>From %1</source>
         <translation>De %1</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="465"/>
+        <location filename="rust_strings.h" line="470"/>
         <source>New photo</source>
         <translation>Nova foto</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="466"/>
+        <location filename="rust_strings.h" line="471"/>
         <source>New screenshot</source>
         <translation>Nova captura de tela</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="467"/>
+        <location filename="rust_strings.h" line="472"/>
         <source>No recent photos found on the phone.</source>
         <translation>Nenhuma foto recente encontrada no celular.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="468"/>
+        <location filename="rust_strings.h" line="473"/>
         <source>Opening latest photo…</source>
         <translation>Abrindo a foto mais recente…</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="469"/>
+        <location filename="rust_strings.h" line="474"/>
         <source>Saved %1 items to %2.</source>
         <translation>%1 itens salvos em %2.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="470"/>
+        <location filename="rust_strings.h" line="475"/>
         <source>Saved %1 to %2.</source>
         <translation>%1 salvo em %2.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="474"/>
+        <location filename="rust_strings.h" line="479"/>
         <source>The phone kept them. Deleting from the PC needs All files access on the phone (Android 11 or later).</source>
         <translation>O celular manteve os arquivos. Para apagá-los do PC, é preciso permitir o acesso a todos os arquivos no celular (Android 11 ou posterior).</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="463"/>
+        <location filename="rust_strings.h" line="468"/>
         <source>Deleted %1 of %2.</source>
         <translation>%1 de %2 itens excluídos.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="471"/>
+        <location filename="rust_strings.h" line="476"/>
         <source>That photo isn&apos;t on the phone anymore.</source>
         <translation>Essa foto não está mais no celular.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="472"/>
+        <location filename="rust_strings.h" line="477"/>
         <source>The phone doesn&apos;t share photos or files with this PC.</source>
         <translation>O celular não está compartilhando fotos nem arquivos com este PC.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="473"/>
+        <location filename="rust_strings.h" line="478"/>
         <source>The phone isn&apos;t connected right now.</source>
         <translation>O celular não está conectado no momento.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="475"/>
+        <location filename="rust_strings.h" line="480"/>
         <source>The photo couldn&apos;t be copied to the clipboard.</source>
         <translation>Não foi possível copiar a foto para a área de transferência.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="476"/>
+        <location filename="rust_strings.h" line="481"/>
         <source>The photo couldn&apos;t be copied. It&apos;s in Downloads\Nectarlink.</source>
         <translation>Não foi possível copiar a foto. Ela está em Downloads\Nectarlink.</translation>
     </message>
@@ -7865,292 +8182,292 @@ O que precisa
 <context>
     <name>PhotosPage</name>
     <message>
-        <location filename="../qml/pages/PhotosPage.qml" line="46"/>
-        <location filename="../qml/pages/PhotosPage.qml" line="375"/>
+        <location filename="../qml/pages/PhotosPage.qml" line="67"/>
+        <location filename="../qml/pages/PhotosPage.qml" line="407"/>
         <source>All photos</source>
         <translation>Todas as fotos</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PhotosPage.qml" line="50"/>
+        <location filename="../qml/pages/PhotosPage.qml" line="71"/>
         <source>Album</source>
         <translation>Álbum</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PhotosPage.qml" line="75"/>
-        <location filename="../qml/pages/PhotosPage.qml" line="90"/>
+        <location filename="../qml/pages/PhotosPage.qml" line="96"/>
+        <location filename="../qml/pages/PhotosPage.qml" line="111"/>
         <source>Today</source>
         <translation>Hoje</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PhotosPage.qml" line="76"/>
-        <location filename="../qml/pages/PhotosPage.qml" line="91"/>
+        <location filename="../qml/pages/PhotosPage.qml" line="97"/>
+        <location filename="../qml/pages/PhotosPage.qml" line="112"/>
         <source>Yesterday</source>
         <translation>Ontem</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PhotosPage.qml" line="114"/>
+        <location filename="../qml/pages/PhotosPage.qml" line="135"/>
         <source>%1 B</source>
         <translation>%1 B</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PhotosPage.qml" line="115"/>
+        <location filename="../qml/pages/PhotosPage.qml" line="136"/>
         <source>%1 KB</source>
         <translation>%1 KB</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PhotosPage.qml" line="115"/>
+        <location filename="../qml/pages/PhotosPage.qml" line="136"/>
         <source>%1 MB</source>
         <translation>%1 MB</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PhotosPage.qml" line="115"/>
+        <location filename="../qml/pages/PhotosPage.qml" line="136"/>
         <source>%1 GB</source>
         <translation>%1 GB</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PhotosPage.qml" line="115"/>
+        <location filename="../qml/pages/PhotosPage.qml" line="136"/>
         <source>%1 TB</source>
         <translation>%1 TB</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PhotosPage.qml" line="275"/>
+        <location filename="../qml/pages/PhotosPage.qml" line="307"/>
         <source>Choose default folder for saved photos</source>
         <translation>Escolha a pasta padrão para salvar as fotos</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PhotosPage.qml" line="282"/>
+        <location filename="../qml/pages/PhotosPage.qml" line="314"/>
         <source>Save to folder</source>
         <translation>Salvar na pasta</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PhotosPage.qml" line="312"/>
+        <location filename="../qml/pages/PhotosPage.qml" line="344"/>
         <source>Photos</source>
         <translation>Fotos</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PhotosPage.qml" line="313"/>
-        <location filename="../qml/pages/PhotosPage.qml" line="682"/>
+        <location filename="../qml/pages/PhotosPage.qml" line="345"/>
+        <location filename="../qml/pages/PhotosPage.qml" line="714"/>
         <source>%1 isn&apos;t connected</source>
         <translation>%1 não está conectado</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PhotosPage.qml" line="322"/>
+        <location filename="../qml/pages/PhotosPage.qml" line="354"/>
         <source>Pair your phone to browse photos and albums.</source>
         <translation>Pareie seu celular para explorar fotos e álbuns.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PhotosPage.qml" line="323"/>
-        <location filename="../qml/pages/PhotosPage.qml" line="696"/>
+        <location filename="../qml/pages/PhotosPage.qml" line="355"/>
+        <location filename="../qml/pages/PhotosPage.qml" line="728"/>
         <source>Connect %1 to view photos.</source>
         <translation>Conecte %1 para ver fotos.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PhotosPage.qml" line="344"/>
+        <location filename="../qml/pages/PhotosPage.qml" line="376"/>
         <source>Albums</source>
         <translation>Álbuns</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PhotosPage.qml" line="351"/>
+        <location filename="../qml/pages/PhotosPage.qml" line="383"/>
         <source>Refresh</source>
         <translation>Atualizar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PhotosPage.qml" line="449"/>
+        <location filename="../qml/pages/PhotosPage.qml" line="481"/>
         <source>%1+ items</source>
         <translation>%1+ itens</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PhotosPage.qml" line="450"/>
+        <location filename="../qml/pages/PhotosPage.qml" line="482"/>
         <source>1 item</source>
         <translation>1 item</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PhotosPage.qml" line="450"/>
+        <location filename="../qml/pages/PhotosPage.qml" line="482"/>
         <source>%1 items</source>
         <translation>%1 itens</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PhotosPage.qml" line="476"/>
+        <location filename="../qml/pages/PhotosPage.qml" line="508"/>
         <source>Cancel</source>
         <translation>Cancelar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PhotosPage.qml" line="486"/>
+        <location filename="../qml/pages/PhotosPage.qml" line="518"/>
         <source>Photo</source>
         <translation>Foto</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PhotosPage.qml" line="486"/>
+        <location filename="../qml/pages/PhotosPage.qml" line="518"/>
         <source>Take photo</source>
         <translation>Tirar foto</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PhotosPage.qml" line="496"/>
+        <location filename="../qml/pages/PhotosPage.qml" line="528"/>
         <source>Scan</source>
         <translation>Digitalizar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PhotosPage.qml" line="496"/>
+        <location filename="../qml/pages/PhotosPage.qml" line="528"/>
         <source>Scan document</source>
         <translation>Digitalizar documento</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PhotosPage.qml" line="521"/>
+        <location filename="../qml/pages/PhotosPage.qml" line="553"/>
         <source>Select</source>
         <translation>Selecionar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PhotosPage.qml" line="537"/>
+        <location filename="../qml/pages/PhotosPage.qml" line="569"/>
         <source>Cancel selection</source>
         <translation>Cancelar seleção</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PhotosPage.qml" line="545"/>
+        <location filename="../qml/pages/PhotosPage.qml" line="577"/>
         <source>%1 selected</source>
         <translation>%1 selecionado(s)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PhotosPage.qml" line="546"/>
+        <location filename="../qml/pages/PhotosPage.qml" line="578"/>
         <source>Select items</source>
         <translation>Selecionar itens</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PhotosPage.qml" line="546"/>
+        <location filename="../qml/pages/PhotosPage.qml" line="578"/>
         <source>Click items to select</source>
         <translation>Clique nos itens para selecioná-los</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PhotosPage.qml" line="554"/>
+        <location filename="../qml/pages/PhotosPage.qml" line="586"/>
         <source>Select all</source>
         <translation>Selecionar tudo</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PhotosPage.qml" line="554"/>
+        <location filename="../qml/pages/PhotosPage.qml" line="586"/>
         <source>Select first 500</source>
         <translation>Selecionar os primeiros 500</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PhotosPage.qml" line="572"/>
-        <location filename="../qml/pages/PhotosPage.qml" line="938"/>
+        <location filename="../qml/pages/PhotosPage.qml" line="604"/>
+        <location filename="../qml/pages/PhotosPage.qml" line="974"/>
         <source>Copy</source>
         <translation>Copiar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PhotosPage.qml" line="583"/>
-        <location filename="../qml/pages/PhotosPage.qml" line="949"/>
+        <location filename="../qml/pages/PhotosPage.qml" line="615"/>
+        <location filename="../qml/pages/PhotosPage.qml" line="985"/>
         <source>Share</source>
         <translation>Compartilhar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PhotosPage.qml" line="594"/>
+        <location filename="../qml/pages/PhotosPage.qml" line="626"/>
         <source>Open</source>
         <translation>Abrir</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PhotosPage.qml" line="605"/>
+        <location filename="../qml/pages/PhotosPage.qml" line="637"/>
         <source>Delete</source>
         <translation>Excluir</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PhotosPage.qml" line="625"/>
+        <location filename="../qml/pages/PhotosPage.qml" line="657"/>
         <source>Save (%1)</source>
         <translation>Salvar (%1)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PhotosPage.qml" line="626"/>
-        <location filename="../qml/pages/PhotosPage.qml" line="971"/>
+        <location filename="../qml/pages/PhotosPage.qml" line="658"/>
+        <location filename="../qml/pages/PhotosPage.qml" line="1007"/>
         <source>Save</source>
         <translation>Salvar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PhotosPage.qml" line="637"/>
-        <location filename="../qml/pages/PhotosPage.qml" line="979"/>
+        <location filename="../qml/pages/PhotosPage.qml" line="669"/>
+        <location filename="../qml/pages/PhotosPage.qml" line="1015"/>
         <source>Save to folder…</source>
         <translation>Salvar na pasta…</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PhotosPage.qml" line="605"/>
+        <location filename="../qml/pages/PhotosPage.qml" line="637"/>
         <source>Move to the phone&apos;s trash?</source>
         <translation>Mover para a lixeira do celular?</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PhotosPage.qml" line="680"/>
+        <location filename="../qml/pages/PhotosPage.qml" line="712"/>
         <source>Photos are off for %1</source>
         <translation>O compartilhamento de fotos está desativado para %1</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PhotosPage.qml" line="681"/>
+        <location filename="../qml/pages/PhotosPage.qml" line="713"/>
         <source>Allow photos on %1</source>
         <translation>Permitir acesso a fotos em %1</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PhotosPage.qml" line="683"/>
+        <location filename="../qml/pages/PhotosPage.qml" line="715"/>
         <source>Couldn&apos;t load photos</source>
         <translation>Não foi possível carregar as fotos</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PhotosPage.qml" line="692"/>
+        <location filename="../qml/pages/PhotosPage.qml" line="724"/>
         <source>Enable Photos in Settings.</source>
         <translation>Ative Fotos em Configurações.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PhotosPage.qml" line="694"/>
+        <location filename="../qml/pages/PhotosPage.qml" line="726"/>
         <source>Grant photos permission on %1.</source>
         <translation>Permita o acesso a fotos em %1.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PhotosPage.qml" line="697"/>
+        <location filename="../qml/pages/PhotosPage.qml" line="729"/>
         <source>Unable to load photos.</source>
         <translation>Não foi possível carregar as fotos.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PhotosPage.qml" line="709"/>
+        <location filename="../qml/pages/PhotosPage.qml" line="741"/>
         <source>Try again</source>
         <translation>Tentar de novo</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PhotosPage.qml" line="732"/>
+        <location filename="../qml/pages/PhotosPage.qml" line="764"/>
         <source>No photos or videos</source>
         <translation>Nenhuma foto ou vídeo</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PhotosPage.qml" line="885"/>
+        <location filename="../qml/pages/PhotosPage.qml" line="921"/>
         <source>Back to gallery</source>
         <translation>Voltar à galeria</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PhotosPage.qml" line="959"/>
-        <location filename="../qml/pages/PhotosPage.qml" line="1057"/>
+        <location filename="../qml/pages/PhotosPage.qml" line="995"/>
+        <location filename="../qml/pages/PhotosPage.qml" line="1093"/>
         <source>Play video</source>
         <translation>Reproduzir vídeo</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PhotosPage.qml" line="959"/>
+        <location filename="../qml/pages/PhotosPage.qml" line="995"/>
         <source>Open in Photos</source>
         <translation>Abrir no app Fotos</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PhotosPage.qml" line="1038"/>
+        <location filename="../qml/pages/PhotosPage.qml" line="1074"/>
         <source>Loading full resolution…</source>
         <translation>Carregando resolução completa…</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PhotosPage.qml" line="1097"/>
+        <location filename="../qml/pages/PhotosPage.qml" line="1133"/>
         <source>Previous photo</source>
         <translation>Foto anterior</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PhotosPage.qml" line="1110"/>
+        <location filename="../qml/pages/PhotosPage.qml" line="1146"/>
         <source>Next photo</source>
         <translation>Próxima foto</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PhotosPage.qml" line="1197"/>
+        <location filename="../qml/pages/PhotosPage.qml" line="1233"/>
         <source>%1</source>
         <translation>%1</translation>
     </message>
     <message>
-        <location filename="../qml/pages/PhotosPage.qml" line="1379"/>
+        <location filename="../qml/pages/PhotosPage.qml" line="1420"/>
         <source>Select photo</source>
         <translation>Selecionar foto</translation>
     </message>
@@ -8158,32 +8475,32 @@ O que precisa
 <context>
     <name>PlayOnPhone</name>
     <message>
-        <location filename="rust_strings.h" line="477"/>
+        <location filename="rust_strings.h" line="482"/>
         <source>Connect your phone to play on it.</source>
         <translation>Conecte o celular para reproduzir a mídia nele.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="478"/>
+        <location filename="rust_strings.h" line="483"/>
         <source>Media is turned off for %1.</source>
         <translation>A mídia está desativada para %1.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="479"/>
+        <location filename="rust_strings.h" line="484"/>
         <source>Opening in %1 on %2. Tap the notification there.</source>
         <translation>Abrindo no %1 em %2. Toque na notificação lá.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="480"/>
+        <location filename="rust_strings.h" line="485"/>
         <source>Sent to %1. Tap the notification there.</source>
         <translation>Enviado para %1. Toque na notificação lá.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="481"/>
+        <location filename="rust_strings.h" line="486"/>
         <source>Tap the notification on %1 to watch.</source>
         <translation>Toque na notificação em %1 para assistir.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="482"/>
+        <location filename="rust_strings.h" line="487"/>
         <source>Update NectarLink on %1 to play on it.</source>
         <translation>Atualize o NectarLink em %1 para reproduzir a mídia nele.</translation>
     </message>
@@ -8191,7 +8508,7 @@ O que precisa
 <context>
     <name>Prefs</name>
     <message>
-        <location filename="rust_strings.h" line="483"/>
+        <location filename="rust_strings.h" line="488"/>
         <source>Connected to OBS.</source>
         <translation>Conectado ao OBS.</translation>
     </message>
@@ -8199,7 +8516,7 @@ O que precisa
 <context>
     <name>Recordings</name>
     <message>
-        <location filename="rust_strings.h" line="484"/>
+        <location filename="rust_strings.h" line="489"/>
         <source>Recording from %1 saved</source>
         <translation>Gravação de %1 salva</translation>
     </message>
@@ -8384,6 +8701,241 @@ O que precisa
     </message>
 </context>
 <context>
+    <name>ReportRequests</name>
+    <message>
+        <location filename="rust_strings.h" line="490"/>
+        <source>%1 asks for this PC&apos;s log</source>
+        <translation>%1 pede o registro deste PC</translation>
+    </message>
+    <message>
+        <location filename="rust_strings.h" line="491"/>
+        <source>Don&apos;t share</source>
+        <translation>Não compartilhar</translation>
+    </message>
+    <message>
+        <location filename="rust_strings.h" line="492"/>
+        <source>For a problem report you&apos;re making. The log has no names, messages, files, numbers or addresses. You see the whole report before it&apos;s sent.</source>
+        <translation>Para um relatório de problema que você está fazendo. O registro não tem nomes, mensagens, arquivos, números nem endereços. Você vê o relatório inteiro antes de ele ser enviado.</translation>
+    </message>
+    <message>
+        <location filename="rust_strings.h" line="493"/>
+        <source>Report #%1. Open it to read it on GitHub.</source>
+        <translation>Relatório #%1. Abra para ler no GitHub.</translation>
+    </message>
+    <message>
+        <location filename="rust_strings.h" line="494"/>
+        <source>Share</source>
+        <translation>Compartilhar</translation>
+    </message>
+    <message>
+        <location filename="rust_strings.h" line="495"/>
+        <source>There&apos;s a reply to your report</source>
+        <translation>Há uma resposta ao seu relatório</translation>
+    </message>
+    <message>
+        <location filename="rust_strings.h" line="496"/>
+        <source>Your phone</source>
+        <translation>Seu celular</translation>
+    </message>
+    <message>
+        <location filename="rust_strings.h" line="497"/>
+        <source>Your report was closed</source>
+        <translation>Seu relatório foi fechado</translation>
+    </message>
+</context>
+<context>
+    <name>ReportSheet</name>
+    <message>
+        <location filename="../qml/components/ReportSheet.qml" line="20"/>
+        <source>Connection</source>
+        <translation>Conexão</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/ReportSheet.qml" line="21"/>
+        <source>Mirroring and app windows</source>
+        <translation>Espelhamento e janelas de apps</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/ReportSheet.qml" line="22"/>
+        <source>Clipboard</source>
+        <translation>Área de transferência</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/ReportSheet.qml" line="23"/>
+        <source>Audio</source>
+        <translation>Áudio</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/ReportSheet.qml" line="24"/>
+        <source>Calls and messages</source>
+        <translation>Chamadas e mensagens</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/ReportSheet.qml" line="25"/>
+        <source>Files and photos</source>
+        <translation>Arquivos e fotos</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/ReportSheet.qml" line="26"/>
+        <source>Notifications</source>
+        <translation>Notificações</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/ReportSheet.qml" line="27"/>
+        <source>Something else</source>
+        <translation>Outra coisa</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/ReportSheet.qml" line="61"/>
+        <source>Report a problem</source>
+        <translation>Relatar um problema</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/ReportSheet.qml" line="61"/>
+        <location filename="../qml/components/ReportSheet.qml" line="265"/>
+        <source>Your report</source>
+        <translation>Seu relatório</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/ReportSheet.qml" line="78"/>
+        <source>What is it about?</source>
+        <translation>Sobre o que é?</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/ReportSheet.qml" line="104"/>
+        <location filename="../qml/components/ReportSheet.qml" line="117"/>
+        <source>What part of NectarLink?</source>
+        <translation>Qual parte do NectarLink?</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/ReportSheet.qml" line="121"/>
+        <location filename="../qml/components/ReportSheet.qml" line="151"/>
+        <source>What happened?</source>
+        <translation>O que aconteceu?</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/ReportSheet.qml" line="139"/>
+        <source>What you did, what you expected, and what happened instead.</source>
+        <translation>O que você fez, o que esperava e o que aconteceu no lugar.</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/ReportSheet.qml" line="163"/>
+        <location filename="../qml/components/ReportSheet.qml" line="168"/>
+        <source>It happened just now</source>
+        <translation>Aconteceu agora mesmo</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/ReportSheet.qml" line="178"/>
+        <source>Check the connection first</source>
+        <translation>Verificar a conexão antes</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/ReportSheet.qml" line="185"/>
+        <source>Next</source>
+        <translation>Avançar</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/ReportSheet.qml" line="205"/>
+        <source>This is everything in the report. It will be public on GitHub. It has no names, messages, files, numbers or addresses from NectarLink, only what you wrote above.</source>
+        <translation>Isto é tudo o que vai no relatório. Ele será público no GitHub. Não tem nomes, mensagens, arquivos, números nem endereços do NectarLink, só o que você escreveu acima.</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/ReportSheet.qml" line="213"/>
+        <source>What you wrote looks like it has an email address or phone number in it. Reports are public, so go back and remove it unless you mean to share it.</source>
+        <translation>O que você escreveu parece ter um e-mail ou número de telefone. Os relatórios são públicos, então volte e remova, a menos que queira compartilhar.</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/ReportSheet.qml" line="220"/>
+        <source>About the devices</source>
+        <translation>Sobre os dispositivos</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/ReportSheet.qml" line="221"/>
+        <source>Checks</source>
+        <translation>Verificações</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/ReportSheet.qml" line="222"/>
+        <source>How features have been doing</source>
+        <translation>Como os recursos têm funcionado</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/ReportSheet.qml" line="223"/>
+        <source>Crashes</source>
+        <translation>Falhas</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/ReportSheet.qml" line="224"/>
+        <source>Activity log</source>
+        <translation>Registro de atividade</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/ReportSheet.qml" line="275"/>
+        <source>The report is copied. On the GitHub page, paste it into the Report box, then submit.</source>
+        <translation>O relatório foi copiado. Na página do GitHub, cole no campo Report e envie.</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/ReportSheet.qml" line="283"/>
+        <source>Your phone is asking whether to share its log. Tap Share on the phone to add it.</source>
+        <translation>Seu celular está perguntando se deve compartilhar o registro. Toque em Compartilhar no celular para incluir.</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/ReportSheet.qml" line="300"/>
+        <source>Sending the report</source>
+        <translation>Enviando o relatório</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/ReportSheet.qml" line="301"/>
+        <source>Sent. This is report #%1.</source>
+        <translation>Enviado. Este é o relatório #%1.</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/ReportSheet.qml" line="302"/>
+        <source>Sent. It will be filed shortly.</source>
+        <translation>Enviado. Ele será registrado em breve.</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/ReportSheet.qml" line="303"/>
+        <source>NectarLink couldn&apos;t reach the report service. It will send the report later by itself.</source>
+        <translation>O NectarLink não conseguiu falar com o serviço de relatórios. Ele vai enviar o relatório mais tarde sozinho.</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/ReportSheet.qml" line="304"/>
+        <source>Too many reports came from this network today. Use Open on GitHub, or send it tomorrow.</source>
+        <translation>Muitos relatórios vieram desta rede hoje. Use Abrir no GitHub ou envie amanhã.</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/ReportSheet.qml" line="305"/>
+        <source>The report couldn&apos;t be sent. Use Open on GitHub instead.</source>
+        <translation>Não foi possível enviar o relatório. Use Abrir no GitHub.</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/ReportSheet.qml" line="316"/>
+        <source>View it</source>
+        <translation>Ver</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/ReportSheet.qml" line="325"/>
+        <source>Back</source>
+        <translation>Voltar</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/ReportSheet.qml" line="331"/>
+        <source>Copy</source>
+        <translation>Copiar</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/ReportSheet.qml" line="340"/>
+        <source>Open on GitHub</source>
+        <translation>Abrir no GitHub</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/ReportSheet.qml" line="349"/>
+        <source>Send</source>
+        <translation>Enviar</translation>
+    </message>
+</context>
+<context>
     <name>SadBee</name>
     <message>
         <location filename="../qml/setup/SadBee.qml" line="23"/>
@@ -8394,57 +8946,57 @@ O que precisa
 <context>
     <name>SendTo</name>
     <message>
-        <location filename="rust_strings.h" line="485"/>
+        <location filename="rust_strings.h" line="498"/>
         <source>Copied to your phone&apos;s clipboard.</source>
         <translation>Copiado para a área de transferência do celular.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="486"/>
+        <location filename="rust_strings.h" line="499"/>
         <source>Couldn&apos;t reach %1.</source>
         <translation>Não foi possível acessar %1.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="487"/>
+        <location filename="rust_strings.h" line="500"/>
         <source>Couldn&apos;t send %1</source>
         <translation>Não foi possível enviar %1</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="488"/>
+        <location filename="rust_strings.h" line="501"/>
         <source>Couldn&apos;t send to %1</source>
         <translation>Não foi possível enviar para %1</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="489"/>
+        <location filename="rust_strings.h" line="502"/>
         <source>Couldn&apos;t share with %1</source>
         <translation>Não foi possível compartilhar com %1</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="490"/>
+        <location filename="rust_strings.h" line="503"/>
         <source>File failed integrity check; partial file kept to resume.</source>
         <translation>O arquivo falhou na verificação de integridade. A parte recebida foi mantida para continuar depois.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="491"/>
+        <location filename="rust_strings.h" line="504"/>
         <source>Send to %1 with NectarLink</source>
         <translation>Enviar para %1 com o NectarLink</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="492"/>
+        <location filename="rust_strings.h" line="505"/>
         <source>Sending to %1…</source>
         <translation>Enviando para %1…</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="493"/>
+        <location filename="rust_strings.h" line="506"/>
         <source>Sent to %1</source>
         <translation>Enviado para %1</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="494"/>
+        <location filename="rust_strings.h" line="507"/>
         <source>The transfer didn&apos;t go through.</source>
         <translation>Não foi possível concluir a transferência.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="495"/>
+        <location filename="rust_strings.h" line="508"/>
         <source>Waiting for %1…</source>
         <translation>Aguardando %1…</translation>
     </message>
@@ -8452,595 +9004,595 @@ O que precisa
 <context>
     <name>SettingsPage</name>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="19"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="96"/>
         <source>Appearance</source>
         <translation>Aparência</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="19"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="96"/>
         <source>Theme, mode &amp; colors</source>
         <translation>Tema, modo e cores</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="20"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="97"/>
         <source>General</source>
         <translation>Geral</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="20"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="97"/>
         <source>Startup, clipboard &amp; desktop</source>
         <translation>Inicialização, área de transferência e área de trabalho</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="21"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="98"/>
         <source>Devices</source>
         <translation>Dispositivos</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="21"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="98"/>
         <source>Paired phones &amp; permissions</source>
         <translation>Celulares pareados e permissões</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="22"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="99"/>
         <source>Install on a phone</source>
         <translation>Instalar em um celular</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="22"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="99"/>
         <source>The phone app, over a USB cable</source>
         <translation>O app do celular, por cabo USB</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="23"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="100"/>
         <source>Camera &amp; Audio</source>
         <translation>Câmera e áudio</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="23"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="100"/>
         <source>Webcam, speaker &amp; calls</source>
         <translation>Webcam, alto-falante e chamadas</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="24"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="170"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="101"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="248"/>
         <source>Notifications</source>
         <translation>Notificações</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="24"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="101"/>
         <source>Do not disturb &amp; app rules</source>
         <translation>Não perturbe e regras dos apps</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="25"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="102"/>
         <source>Files &amp; Sync</source>
         <translation>Arquivos e sincronização</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="25"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="102"/>
         <source>Folder sync, storage &amp; recordings</source>
         <translation>Sincronização de pastas, armazenamento e gravações</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="26"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="103"/>
         <source>Shortcuts &amp; Rules</source>
         <translation>Atalhos e regras</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="26"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="103"/>
         <source>Hotkeys &amp; automations</source>
         <translation>Atalhos de teclado e automações</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="28"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="105"/>
         <source>Storage &amp; Privacy</source>
         <translation>Armazenamento e privacidade</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="28"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="105"/>
         <source>History, caches &amp; retention</source>
         <translation>Histórico, cache e retenção</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="29"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="106"/>
         <source>Connection &amp; About</source>
         <translation>Conexão e sobre</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="29"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="106"/>
         <source>Doctor, Wake-on-LAN, API &amp; version</source>
         <translation>Diagnóstico, Wake-on-LAN, API e versão</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="30"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="3776"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="4354"/>
         <source>Support NectarLink</source>
         <translation>Apoiar o NectarLink</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="30"/>
         <source>Help keep it going</source>
-        <translation>Ajude o projeto a continuar</translation>
+        <translation type="vanished">Ajude o projeto a continuar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="53"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="131"/>
         <source>When phone connects</source>
         <translation>Quando o celular se conectar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="54"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="132"/>
         <source>When phone disconnects</source>
         <translation>Quando o celular se desconectar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="55"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="133"/>
         <source>When phone rings</source>
         <translation>Quando o celular tocar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="56"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="134"/>
         <source>When call ends</source>
         <translation>Quando a chamada terminar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="57"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="135"/>
         <source>When phone battery is low</source>
         <translation>Quando a bateria do celular estiver fraca</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="58"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="136"/>
         <source>When phone is charged</source>
         <translation>Quando o celular estiver carregado</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="65"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="143"/>
         <source>Lock this PC</source>
         <translation>Bloquear este PC</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="66"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="144"/>
         <source>Sleep this PC</source>
         <translation>Suspender este PC</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="68"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="146"/>
         <source>Pause PC media</source>
         <translation>Pausar mídia no PC</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="70"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="148"/>
         <source>Resume PC media</source>
         <translation>Retomar mídia no PC</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="71"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="149"/>
         <source>Mute PC audio</source>
         <translation>Silenciar o áudio do PC</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="72"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="150"/>
         <source>Unmute PC audio</source>
         <translation>Ativar o som do PC</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="73"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="151"/>
         <source>Run command</source>
         <translation>Executar comando</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="75"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="153"/>
         <source>Show notification</source>
         <translation>Mostrar notificação</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="151"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="153"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="229"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="231"/>
         <source>%1 B</source>
         <translation>%1 B</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="155"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="233"/>
         <source>%1 KB</source>
         <translation>%1 KB</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="157"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="235"/>
         <source>%1 MB</source>
         <translation>%1 MB</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="159"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="237"/>
         <source>%1 GB</source>
         <translation>%1 GB</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="160"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="238"/>
         <source>%1 TB</source>
         <translation>%1 TB</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="171"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="249"/>
         <source>Messages</source>
         <translation>Mensagens</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="172"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="1135"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="250"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="1361"/>
         <source>Calls</source>
         <translation>Chamadas</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="173"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="251"/>
         <source>Talk through this PC</source>
         <translation>Falar por este PC</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="174"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="252"/>
         <source>Contacts</source>
         <translation>Contatos</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="175"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="253"/>
         <source>Clipboard</source>
         <translation>Área de transferência</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="176"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="254"/>
         <source>Files</source>
         <translation>Arquivos</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="177"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="2409"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="255"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="2891"/>
         <source>Voice recordings</source>
         <translation>Gravações de voz</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="178"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="256"/>
         <source>Media controls</source>
         <translation>Controles de mídia</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="179"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="257"/>
         <source>Photos</source>
         <translation>Fotos</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="180"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="258"/>
         <source>Phone controls</source>
         <translation>Controles do celular</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="181"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="259"/>
         <source>Lock, sleep &amp; wake PC</source>
         <translation>Bloquear, suspender e acordar o PC</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="182"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="260"/>
         <source>Screen mirroring</source>
         <translation>Espelhamento de tela</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="183"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="261"/>
         <source>Share PC screen to phone</source>
         <translation>Compartilhar a tela do PC com o celular</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="184"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="262"/>
         <source>Webcam</source>
         <translation>Webcam</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="186"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="264"/>
         <source>File Explorer integration</source>
         <translation>Integração com o Explorador de Arquivos</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="187"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="265"/>
         <source>File manager integration</source>
         <translation>Integração com o gerenciador de arquivos</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="188"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="266"/>
         <source>Remote mouse, keyboard &amp; Deck</source>
         <translation>Mouse, teclado e Deck remotos</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="189"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="267"/>
         <source>Run Deck shell commands</source>
         <translation>Executar comandos do shell do Deck</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="190"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="268"/>
         <source>Remote PC file access</source>
         <translation>Acesso remoto aos arquivos do PC</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="217"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="297"/>
         <source>Allow this phone to view this PC&apos;s screen.</source>
         <translation>Permitir que este celular veja a tela deste PC.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="218"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="298"/>
         <source>Move a call&apos;s sound to this PC: its speakers and microphone.</source>
         <translation>Levar o som da chamada para este PC: alto-falantes e microfone.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="219"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="299"/>
         <source>Only enable for a phone you trust.</source>
         <translation>Ative somente para celulares em que você confia.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="220"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="300"/>
         <source>Allow this phone to browse and download shared PC files over mobile data.</source>
         <translation>Permitir que este celular navegue e baixe os arquivos compartilhados do PC usando dados móveis.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="225"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="306"/>
         <source>Calls, messages &amp; notifications</source>
         <translation>Chamadas, mensagens e notificações</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="229"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="310"/>
         <source>Files, photos &amp; clipboard</source>
         <translation>Arquivos, fotos e área de transferência</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="233"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="314"/>
         <source>Screen, camera &amp; control</source>
         <translation>Tela, câmera e controle</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="270"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="353"/>
         <source>Back up photos to</source>
         <translation>Fazer backup das fotos em</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="276"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="359"/>
         <source>Sync into</source>
         <translation>Sincronizar em</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="282"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="365"/>
         <source>Save recordings in</source>
         <translation>Salvar gravações em</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="543"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="749"/>
         <source>Pair a new device</source>
         <translation>Parear um novo dispositivo</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="563"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="770"/>
         <source>Theme</source>
         <translation>Tema</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="566"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="773"/>
         <source>Hive</source>
         <translation>Hive</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="567"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="774"/>
         <source>Bloom</source>
         <translation>Bloom</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="568"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="775"/>
         <source>Glass</source>
         <translation>Vidro</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="569"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="776"/>
         <source>Graphite</source>
         <translation>Grafite</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="570"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="777"/>
         <source>Fluent</source>
         <translation>Fluent</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="580"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="787"/>
         <source>Mode</source>
         <translation>Modo</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="583"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="979"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="790"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="1187"/>
         <source>System</source>
         <translation>Sistema</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="584"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="791"/>
         <source>Light</source>
         <translation>Claro</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="585"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="792"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="1460"/>
         <source>Dark</source>
         <translation>Escuro</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="616"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="823"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="1272"/>
         <source>Color</source>
         <translation>Cor</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="642"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="849"/>
         <source>Wallpaper</source>
         <translation>Papel de parede</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="718"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="925"/>
         <source>AMOLED</source>
         <translation>AMOLED</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="726"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="901"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="905"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="933"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="1108"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="1112"/>
         <source>Pure black (AMOLED)</source>
         <translation>Preto puro (AMOLED)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="753"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="784"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="960"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="991"/>
         <source>Media artwork</source>
         <translation>Capa da mídia</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="860"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="869"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="1067"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="1076"/>
         <source>Animated comb</source>
         <translation>Favo animado</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="864"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="1071"/>
         <source>Still while animations are off in system settings.</source>
         <translation>Fica parado quando as animações estão desativadas nas configurações do sistema.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="863"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="1070"/>
         <source>Still while animations are off in Windows.</source>
         <translation>Fica parado quando as animações estão desativadas no Windows.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="866"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="1073"/>
         <source>Still while energy saver is on.</source>
         <translation>Fica parado quando a economia de energia está ativada.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="867"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="1074"/>
         <source>The honeycomb breathes and pulses.</source>
         <translation>O favo respira e pulsa.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="902"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="1109"/>
         <source>Pitch-black #000000 surfaces.</source>
         <translation>Superfícies em preto absoluto (#000000).</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="936"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="942"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="1143"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="1149"/>
         <source>Mica backdrop</source>
         <translation>Plano de fundo Mica</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="938"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="1145"/>
         <source>Tint window with desktop wallpaper.</source>
         <translation>Colorir a janela com o papel de parede da área de trabalho.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="939"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="1146"/>
         <source>Only on Windows 11.</source>
         <translation>Só no Windows 11.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="971"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="4093"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="1179"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="4795"/>
         <source>Language</source>
         <translation>Idioma</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="974"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="1182"/>
         <source>NectarLink follows the system unless you pick one.</source>
         <translation>O NectarLink segue o idioma do sistema, a menos que você escolha outro.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="973"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="1181"/>
         <source>NectarLink follows Windows unless you pick one.</source>
         <translation>O NectarLink segue o idioma do Windows, a menos que você escolha outro.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="982"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="1190"/>
         <source>More</source>
         <translation>Mais</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="1012"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="1015"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="1220"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="1223"/>
         <source>Start with Windows</source>
         <translation>Iniciar com o Windows</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="1012"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="1015"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="1220"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="1223"/>
         <source>Start at login</source>
         <translation>Iniciar ao entrar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="1013"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="1221"/>
         <source>Launch in the tray when you sign in.</source>
         <translation>Abre na bandeja quando você entra na sessão.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="1044"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="1047"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="1252"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="1255"/>
         <source>Stay in system tray</source>
         <translation>Manter na bandeja do sistema</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="1045"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="1253"/>
         <source>Keep running when the window is closed.</source>
         <translation>Continuar em execução quando a janela for fechada.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="1072"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="1075"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="1298"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="1301"/>
         <source>Nectar Island</source>
         <translation>Ilha Nectar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="1073"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="1299"/>
         <source>Top-screen pill for calls, transfers &amp; media.</source>
         <translation>Barra flutuante no topo da tela para chamadas, transferências e mídia.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="1104"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="1107"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="1330"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="1333"/>
         <source>Battery alerts</source>
         <translation>Alertas de bateria</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="1105"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="1331"/>
         <source>Notify when phone battery is low or full.</source>
         <translation>Avisar quando a bateria do celular estiver fraca ou cheia.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="1126"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="1352"/>
         <source>Island triggers</source>
         <translation>Eventos da Ilha Nectar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="1127"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="1353"/>
         <source>Choose when the top pill appears.</source>
         <translation>Escolha quando a Ilha Nectar aparece.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="1136"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="1362"/>
         <source>Transfers</source>
         <translation>Transferências</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="1137"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="1363"/>
         <source>Media</source>
         <translation>Mídia</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="1138"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="1364"/>
         <source>Alerts</source>
         <translation>Alertas</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="1249"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="1252"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="1542"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="1545"/>
         <source>Right-click is a long press</source>
         <translation>Botão direito faz toque longo</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="1250"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="1543"/>
         <source>In mirroring and app windows, right-click holds a finger down, for menus and selecting. Esc is Back. Shift+click is a long press either way.</source>
         <translation>No espelhamento e nas janelas de apps, o botão direito equivale a manter o dedo pressionado, para abrir menus e selecionar. Esc é Voltar. Shift+clique sempre faz toque longo.</translation>
     </message>
@@ -9053,815 +9605,1078 @@ O que precisa
         <translation type="vanished">Compartilhe textos e imagens copiados com o celular.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="1278"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="1281"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="1585"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="1588"/>
         <source>Clipboard follows control</source>
         <translation>Sincronizar ao controlar o celular</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="1279"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="1586"/>
         <source>Send your clipboard to the phone when you start controlling it, or when the mouse moves into its window.</source>
         <translation>Envia o conteúdo da área de transferência para o celular quando você começa a controlá-lo ou quando o mouse entra na janela dele.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="1305"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="1308"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="1612"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="1615"/>
         <source>Copy one-time codes</source>
         <translation>Copiar códigos de uso único</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="1306"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="1613"/>
         <source>Auto-copy verification codes from texts.</source>
         <translation>Copiar automaticamente códigos de verificação das mensagens.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="1337"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="1340"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="1644"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="1647"/>
         <source>Copy received files</source>
         <translation>Copiar arquivos recebidos</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="1338"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="1645"/>
         <source>Ready to Ctrl+V incoming files anywhere.</source>
         <translation>Pronto para colar arquivos recebidos com Ctrl+V em qualquer lugar.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="1353"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="1356"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="1660"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="1663"/>
         <source>Suggest clipboard actions</source>
         <translation>Sugerir ações para itens copiados</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="1354"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="1661"/>
         <source>Open links, maps, numbers &amp; emails from phone clips.</source>
         <translation>Abrir links, mapas, números e e-mails copiados do celular.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="1429"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="1737"/>
         <source>No phones paired yet</source>
         <translation>Nenhum celular pareado ainda</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="1434"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="1742"/>
         <source>Pair your phone to get started.</source>
         <translation>Pareie seu celular para começar.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="1443"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="1751"/>
         <source>Pair a phone</source>
         <translation>Parear um celular</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="1495"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="1803"/>
         <source>Connected</source>
         <translation>Conectado</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="1495"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="1803"/>
         <source>Not connected</source>
         <translation>Não conectado</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="1507"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="4199"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="1815"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="4901"/>
         <source>Unpair</source>
         <translation>Desparear</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="1523"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="1831"/>
         <source>Join this phone&apos;s hotspot</source>
         <translation>Conectar ao hotspot deste celular</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="1527"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="1835"/>
         <source>When Instant Hotspot turns it on, this PC joins %1.</source>
         <translation>Quando o Hotspot instantâneo ativar a rede, este PC se conecta a %1.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="1529"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="1837"/>
         <source>Join the phone&apos;s hotspot once from your system Wi-Fi list, then choose it here.</source>
         <translation>Conecte-se uma vez ao hotspot do celular pela lista de redes Wi-Fi do sistema e escolha-o aqui.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="1530"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="1838"/>
         <source>Join the phone&apos;s hotspot once from Windows&apos; Wi-Fi list, then choose it here.</source>
         <translation>Conecte-se uma vez ao hotspot do celular pela lista de redes Wi-Fi do Windows e escolha-o aqui.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="1536"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="1844"/>
         <source>Choose network</source>
         <translation>Escolher rede</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="1662"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="1703"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="2503"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="3298"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="3742"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="3755"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="2082"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="2123"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="2985"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="3790"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="4204"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="4274"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="4287"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="4318"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="4332"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="4346"/>
         <source>Open</source>
         <translation>Abrir</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="1742"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="2166"/>
         <source>Mirror quality</source>
         <translation>Qualidade do espelhamento</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="1744"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="2168"/>
         <source>The phone&apos;s full resolution. Uses more of its battery, and needs good Wi-Fi or USB and a GPU on this PC.</source>
         <translation>A resolução total do celular. Usa mais bateria e precisa de um bom Wi-Fi ou USB e de uma GPU neste PC.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="1746"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="2170"/>
         <source>A softer picture that holds up better on weak Wi-Fi.</source>
         <translation>Uma imagem mais suave que se sai melhor em Wi-Fi fraco.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="1747"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="2173"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="2194"/>
         <source>For the phone&apos;s screen and app windows, from the next time you open them.</source>
         <translation>Vale para a tela do celular e as janelas de apps a partir da próxima vez que forem abertas.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="1750"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="2176"/>
         <source>Balanced</source>
         <translation>Equilibrado</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="1751"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="2177"/>
         <source>Sharper</source>
         <translation>Mais nítido</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="1752"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="2178"/>
         <source>Smoother</source>
         <translation>Mais fluido</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="1781"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="1784"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="2230"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="2233"/>
         <source>Stream PC audio to phone</source>
         <translation>Transmitir o áudio do PC para o celular</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="1782"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="2231"/>
         <source>Listen to PC audio through your phone.</source>
         <translation>Ouça o áudio do PC pelo celular.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="1813"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="1816"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="2262"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="2265"/>
         <source>Pause media during calls</source>
         <translation>Pausar a mídia durante chamadas</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="1814"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="2263"/>
         <source>Auto-pause PC media when phone rings.</source>
         <translation>Pausa sozinho a mídia do PC quando o celular toca.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="1828"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="1831"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="2277"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="2280"/>
         <source>Mute this PC while a phone watches</source>
         <translation>Silenciar este PC enquanto um celular assiste</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="1829"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="2278"/>
         <source>With Play on phone, the phone still gets the sound.</source>
         <translation>Com Reproduzir no celular, o celular continua recebendo o som.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="185"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="1844"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="263"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="2312"/>
         <source>Phone as microphone</source>
         <translation>Celular como microfone</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="27"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="104"/>
         <source>AI agents</source>
         <translation>Agentes de IA</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="27"/>
         <source>Claude Code, Codex, Cursor &amp; more</source>
-        <translation>Claude Code, Codex, Cursor e mais</translation>
+        <translation type="vanished">Claude Code, Codex, Cursor e mais</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="187"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="265"/>
         <source>Finder integration</source>
         <translation>Integração com o Finder</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="595"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="802"/>
         <source>App size</source>
         <translation>Tamanho do app</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="596"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="803"/>
         <source>Makes text and everything else bigger. Applies when you restart NectarLink.</source>
         <translation>Aumenta o texto e os demais elementos. A mudança é aplicada quando você reinicia o NectarLink.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="1235"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="1238"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="1528"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="1531"/>
         <source>Enter sends messages</source>
         <translation>Enter envia mensagens</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="1236"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="1529"/>
         <source>In mirroring and app windows, Enter presses the app&apos;s Send and Ctrl+Enter makes a new line. Needs Assist on the phone.</source>
         <translation>No espelhamento e nas janelas de apps, Enter aperta o Enviar do app e Ctrl+Enter cria uma nova linha. Requer o Assist no celular.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="1264"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="1267"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="1571"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="1574"/>
         <source>Sync clipboard</source>
         <translation>Sincronizar área de transferência</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="1265"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="1572"/>
         <source>Share copied text and images with your phone and paired PCs.</source>
         <translation>Compartilhe textos e imagens copiados com o celular e os PCs pareados.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="1525"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="2333"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="1833"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="2815"/>
         <source>Not on macOS yet.</source>
         <translation>Ainda não no macOS.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="1549"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="1552"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="1857"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="1860"/>
         <source>Keep phone screen off</source>
         <translation>Manter a tela do celular desligada</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="1550"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="1858"/>
         <source>Mirroring and app windows start with this phone&apos;s screen off. Needs Elevated.</source>
         <translation>O espelhamento e as janelas de apps começam com a tela do celular desligada. Requer o Elevated.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="1562"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="1870"/>
         <source>Beside this PC</source>
         <translation>Ao lado deste PC</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="1563"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="1871"/>
         <source>Move the mouse past that edge of the screen to use it on this phone, and type there. Move it back, or press Ctrl+Alt+Esc, to return. Needs Elevated.</source>
         <translation>Mova o mouse além dessa borda da tela para usá-lo neste celular e digitar nele. Mova-o de volta ou pressione Ctrl+Alt+Esc para voltar. Requer o Elevated.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="1566"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="1874"/>
         <source>Off</source>
         <translation>Desligado</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="1567"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="1442"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="1875"/>
         <source>Left</source>
         <translation>Esquerda</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="1568"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="1444"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="1876"/>
         <source>Right</source>
         <translation>Direita</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="1846"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="2314"/>
         <source>Live from %1, playing into %2.</source>
         <translation>Ao vivo de %1, reproduzindo em %2.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="1848"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="2316"/>
         <source>Tap Start on %1.</source>
         <translation>Toque em Iniciar em %1.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="1850"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="2318"/>
         <source>Plays into %1, so apps can pick its other end as a microphone.</source>
         <translation>O áudio é enviado para %1, para que outros apps possam selecionar a outra ponta como microfone.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="1851"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="2319"/>
         <source>Plays into %1. To use it as a microphone in other apps, install a virtual audio cable such as VB-CABLE.</source>
         <translation>O áudio é enviado para %1. Para usá-lo como microfone em outros apps, instale um cabo de áudio virtual, como VB-CABLE.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="1857"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="2325"/>
         <source>Output</source>
         <translation>Saída</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="1867"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="2335"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="4387"/>
         <source>Start</source>
         <translation>Iniciar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="1867"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="2335"/>
         <source>Stop</source>
         <translation>Parar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="1876"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="1884"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="2344"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="2352"/>
         <source>Microphone volume</source>
         <translation>Volume do microfone</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="1877"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="1885"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="2345"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="2353"/>
         <source>%1%</source>
         <translation>%1%</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="1896"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="2364"/>
         <source>Virtual camera add-on</source>
         <translation>Complemento de câmera virtual</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="1898"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="2366"/>
         <source>Registered for Zoom, Teams &amp; Meet.</source>
         <translation>Registrado para Zoom, Teams e Meet.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="1899"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="2367"/>
         <source>One-time setup (admin required) for Zoom, Teams &amp; Meet.</source>
         <translation>Configuração única (requer administrador) para Zoom, Teams e Meet.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="1918"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="3569"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="2386"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="4063"/>
         <source>Ready</source>
         <translation>Pronto</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="1926"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="2603"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="2973"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="2394"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="3093"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="3464"/>
         <source>Remove</source>
         <translation>Remover</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="1926"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="1985"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="2394"/>
         <source>Set up</source>
         <translation>Configurar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="1937"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="104"/>
+        <source>Assistants that use your devices</source>
+        <translation>Assistentes que usam seus dispositivos</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="107"/>
+        <source>Community</source>
+        <translation>Comunidade</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="107"/>
+        <source>Discord, news and support</source>
+        <translation>Discord, novidades e apoio</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="108"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="4192"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="4382"/>
+        <source>Report a problem</source>
+        <translation>Relatar um problema</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="108"/>
+        <source>Tell us what went wrong</source>
+        <translation>Conte o que deu errado</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="269"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="1897"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="1900"/>
+        <source>Unlock this PC with the phone</source>
+        <translation>Desbloquear este PC com o celular</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="301"/>
+        <source>Unlock the lock screen with your fingerprint on the phone. Off by default; asks for an administrator once.</source>
+        <translation>Desbloqueie a tela de bloqueio com sua digital no celular. Desativado por padrão; pede um administrador uma vez.</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="653"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="663"/>
+        <source>Search settings</source>
+        <translation>Pesquisar configurações</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="679"/>
+        <source>No setting matches &quot;%1&quot;.</source>
+        <translation>Nenhuma configuração corresponde a &quot;%1&quot;.</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="1268"/>
+        <source>Tray icon</source>
+        <translation>Ícone da bandeja</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="1269"/>
+        <source>One color turns white or black to match the taskbar.</source>
+        <translation>Uma cor fica branca ou preta, combinando com a barra de tarefas.</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="1273"/>
+        <source>One color</source>
+        <translation>Uma cor</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="1438"/>
+        <source>Island position</source>
+        <translation>Posição da Ilha Nectar</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="1439"/>
+        <source>Where the pill sits along the top of the screen.</source>
+        <translation>Onde a Ilha Nectar fica no topo da tela.</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="1443"/>
+        <source>Center</source>
+        <translation>Centro</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="1456"/>
+        <source>Island look</source>
+        <translation>Aparência da Ilha Nectar</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="1457"/>
+        <source>Always dark, or light and dark with the app.</source>
+        <translation>Sempre escura, ou clara e escura como o app.</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="1461"/>
+        <source>Like the app</source>
+        <translation>Como o app</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="1474"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="1477"/>
+        <source>This PC&apos;s players too</source>
+        <translation>Também os players deste PC</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="1475"/>
+        <source>Also show music and videos playing on this PC. With more than one, a button switches between them.</source>
+        <translation>Mostra também músicas e vídeos tocando neste PC. Com mais de um, um botão alterna entre eles.</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="1496"/>
+        <source>Low battery at</source>
+        <translation>Bateria fraca em</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="1497"/>
+        <source>Alert once when a phone gets down to this level.</source>
+        <translation>Avisa uma vez quando um celular chega a este nível.</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="1556"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="1559"/>
+        <source>Toolbar in mirroring and app windows</source>
+        <translation>Barra de ferramentas no espelhamento e nas janelas de apps</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="1557"/>
+        <source>Shows when the pointer is near the top of the window. Off, Ctrl+Shift+T in a window shows it again.</source>
+        <translation>Aparece quando o ponteiro está perto do topo da janela. Desligada, Ctrl+Shift+T em uma janela mostra de novo.</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="1926"/>
+        <source>Done. On the lock screen, pick Unlock with phone, then confirm on the phone.</source>
+        <translation>Pronto. Na tela de bloqueio, escolha Desbloquear com o celular e confirme no celular.</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="1927"/>
+        <source>That isn&apos;t this account&apos;s Windows password.</source>
+        <translation>Essa não é a senha do Windows desta conta.</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="1928"/>
+        <source>Not confirmed on the phone.</source>
+        <translation>Não confirmado no celular.</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="1929"/>
+        <source>The phone isn&apos;t connected on this network.</source>
+        <translation>O celular não está conectado nesta rede.</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="1930"/>
+        <source>Turn on Unlock this PC with your fingerprint for this PC on the phone too.</source>
+        <translation>Ative também no celular Desbloquear este PC com sua digital para este PC.</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="1931"/>
+        <source>Couldn&apos;t set it up. Try again.</source>
+        <translation>Não foi possível configurar. Tente de novo.</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="1933"/>
+        <source>Windows didn&apos;t allow it. Turn it off and on to try again.</source>
+        <translation>O Windows não permitiu. Desative e ative de novo para tentar outra vez.</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="1945"/>
+        <source>Set up for this Windows account. Type the password again here if you change it.</source>
+        <translation>Configurado para esta conta do Windows. Se você mudar a senha, digite-a aqui de novo.</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="1946"/>
+        <source>Type this account&apos;s Windows password once. It&apos;s kept locked with a key only the phone has, and the phone asks for your fingerprint every time.</source>
+        <translation>Digite uma vez a senha do Windows desta conta. Ela fica trancada com uma chave que só o celular tem, e o celular pede sua digital toda vez.</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="1971"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="1978"/>
+        <source>Windows password</source>
+        <translation>Senha do Windows</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="1985"/>
+        <source>Confirm on the phone…</source>
+        <translation>Confirme no celular…</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="1985"/>
+        <source>Update</source>
+        <translation>Atualizar</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="2172"/>
+        <source>Starts at Balanced and lowers the picture while this PC can&apos;t keep up, then goes back up once it can.</source>
+        <translation>Começa em Equilibrada e reduz a imagem enquanto este PC não acompanha; volta a subir quando ele consegue.</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="2179"/>
+        <source>Adaptive</source>
+        <translation>Adaptável</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="2189"/>
+        <source>Frame rate</source>
+        <translation>Taxa de quadros</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="2191"/>
+        <source>Smoother motion where the phone&apos;s screen refreshes that fast. Uses more battery, Wi-Fi and PC.</source>
+        <translation>Movimento mais suave onde a tela do celular atualiza tão rápido. Usa mais bateria, Wi-Fi e PC.</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="2193"/>
+        <source>Half the frames: easier on the phone&apos;s battery and weak Wi-Fi.</source>
+        <translation>Metade dos quadros: poupa a bateria do celular e um Wi-Fi fraco.</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="2292"/>
+        <source>Phone sound buffer</source>
+        <translation>Buffer do som do celular</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="2293"/>
+        <source>If phone sound on this PC skips on a busy Wi-Fi, a bigger buffer smooths it out, with a little more delay.</source>
+        <translation>Se o som do celular neste PC falha numa Wi-Fi congestionada, um buffer maior o suaviza, com um pouco mais de atraso.</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="2296"/>
+        <source>Low</source>
+        <translation>Baixo</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="2297"/>
+        <source>Medium</source>
+        <translation>Médio</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="2298"/>
+        <source>High</source>
+        <translation>Alto</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="2405"/>
         <source>Phone</source>
         <translation>Celular</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="1972"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="2440"/>
         <source>Camera</source>
         <translation>Câmera</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="1975"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="2443"/>
         <source>Back</source>
         <translation>Voltar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="1976"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="2444"/>
         <source>Front</source>
         <translation>Frontal</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="2006"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="2008"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="2474"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="2476"/>
         <source>Mirror image</source>
         <translation>Espelhar imagem</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="2019"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="2487"/>
         <source>Resolution</source>
         <translation>Resolução</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="2035"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="2038"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="2503"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="2506"/>
         <source>Torch on with the back camera</source>
         <translation>Lanterna ligada com a câmera traseira</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="2036"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="2504"/>
         <source>Turns the phone&apos;s torch on when the webcam starts with the back camera.</source>
         <translation>Liga a lanterna do celular quando a webcam começa com a câmera traseira.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="2064"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="2532"/>
         <source>Preview · %1</source>
         <translation>Prévia · %1</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="2065"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="2533"/>
         <source>Pair a phone to use its camera as a webcam</source>
         <translation>Pareie um celular para usar a câmera dele como webcam</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="2076"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="2544"/>
         <source>Stop webcam</source>
         <translation>Parar webcam</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="2077"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="2545"/>
         <source>Start webcam</source>
         <translation>Iniciar webcam</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="2110"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="2578"/>
         <source>Calls through this PC</source>
         <translation>Chamadas por este PC</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="2115"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="2583"/>
         <source>Microphone for calls</source>
         <translation>Microfone para chamadas</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="2119"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="2587"/>
         <source>Windows default</source>
         <translation>Padrão do Windows</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="2121"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="2589"/>
         <source>Talking through this PC on a call records %1.</source>
         <translation>Ao falar pelo PC em uma chamada, é usado %1.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="2126"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="2594"/>
         <source>Microphone</source>
         <translation>Microfone</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="2153"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="2156"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="2622"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="2625"/>
         <source>Quiet while this PC is locked</source>
         <translation>Silencioso com o PC bloqueado</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="2154"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="2623"/>
         <source>No pop-ups while it&apos;s locked. Notifications still collect on Home.</source>
         <translation>Sem avisos enquanto ele estiver bloqueado. As notificações continuam se acumulando no Início.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="2165"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="2168"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="2634"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="2637"/>
         <source>Don&apos;t receive while this PC is locked</source>
         <translation>Não receber enquanto este PC estiver bloqueado</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="2166"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="2635"/>
         <source>The phone sends nothing until you unlock. Then Home shows what&apos;s still on the phone.</source>
         <translation>O celular não envia nada até você desbloquear. Depois, o Início mostra o que ainda está no celular.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="2191"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="2194"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="2646"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="2649"/>
+        <source>Keep pop-ups paused after a restart</source>
+        <translation>Manter avisos pausados após reiniciar</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="2647"/>
+        <source>Pause pop-ups on Home stays on until you resume them, even when NectarLink or the PC restarts.</source>
+        <translation>Pausar avisos no Início fica ativo até você retomá-los, mesmo quando o NectarLink ou o PC reinicia.</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="2672"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="2675"/>
         <source>Follow phone Do not disturb</source>
         <translation>Seguir o Não perturbe do celular</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="2192"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="2673"/>
         <source>Mute pop-ups while phone is on DND.</source>
         <translation>Silenciar os avisos enquanto o celular estiver no Não perturbe.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="2223"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="2226"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="2704"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="2707"/>
         <source>Forward PC notifications</source>
         <translation>Encaminhar notificações do PC</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="2224"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="2705"/>
         <source>Send PC alerts to phone while away.</source>
         <translation>Enviar alertas do PC ao celular quando você estiver longe.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="2238"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="2719"/>
         <source>Quiet hours</source>
         <translation>Horários de silêncio</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="2239"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="2720"/>
         <source>Configure automatic DND schedule in Windows.</source>
         <translation>Configure o horário automático do Não perturbe no Windows.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="2243"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="2724"/>
         <source>Set a schedule</source>
         <translation>Definir horário</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="2287"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="2768"/>
         <source>Show</source>
         <translation>Mostrar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="2288"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="2769"/>
         <source>No pop-ups</source>
         <translation>Sem avisos</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="2289"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="2770"/>
         <source>Hide</source>
         <translation>Ocultar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="2330"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="2337"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="2812"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="2819"/>
         <source>File Explorer Send to</source>
         <translation>“Enviar para” no Explorador de Arquivos</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="2331"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="2338"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="2813"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="2820"/>
         <source>File manager Send to</source>
         <translation>“Enviar para” no gerenciador de arquivos</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="2331"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="2338"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="2813"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="2820"/>
         <source>Finder Send to</source>
         <translation>Enviar para no Finder</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="2334"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="2816"/>
         <source>Send files from right-click menu.</source>
         <translation>Envie arquivos pelo menu do botão direito.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="2368"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="2371"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="2850"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="2853"/>
         <source>Your PC in your pocket</source>
         <translation>Seu PC no bolso</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="2369"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="2851"/>
         <source>Share Downloads, Documents, Desktop &amp; Pictures.</source>
         <translation>Compartilhe as pastas Downloads, Documentos, Área de trabalho e Imagens.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="2382"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="2385"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="2864"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="2867"/>
         <source>LocalSend on local network</source>
         <translation>LocalSend na rede local</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="2383"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="2865"/>
         <source>Share with nearby LocalSend devices without pairing.</source>
         <translation>Compartilhe arquivos com dispositivos LocalSend por perto, sem parear.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="2395"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="2398"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="2877"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="2880"/>
         <source>Open files shared from the phone</source>
         <translation>Abrir arquivos compartilhados do celular</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="2396"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="2878"/>
         <source>Opens a shared photo or document as soon as it arrives.</source>
         <translation>Abre uma foto ou documento compartilhado assim que chega.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="2429"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="2658"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="2733"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="2804"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="2879"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="2911"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="3149"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="3224"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="3295"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="3370"/>
         <source>Reset</source>
         <translation>Redefinir</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="2436"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="2510"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="2918"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="2992"/>
         <source>Choose folder</source>
         <translation>Escolher pasta</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="2449"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="2452"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="2931"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="2934"/>
         <source>Sync on Wi-Fi only</source>
         <translation>Sincronizar só no Wi-Fi</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="2450"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="2932"/>
         <source>Folder sync and photo backup wait while the phone is away, so they don&apos;t use its mobile data.</source>
         <translation>A sincronização de pastas e o backup de fotos esperam enquanto o celular está à distância, para não usar os dados móveis dele.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="2467"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="2949"/>
         <source>Photo backup</source>
         <translation>Backup de fotos</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="2468"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="2950"/>
         <source>Copies new photos from every album into a folder on this PC, by year and month. Nothing is deleted, here or on the phone. Needs only the phone&apos;s photos permission.</source>
         <translation>Copia fotos novas de todos os álbuns para uma pasta neste PC, organizadas por ano e mês. Nada é apagado do PC ou do celular. Precisa somente da permissão de fotos no celular.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="2486"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="2968"/>
         <source>Back up photos from %1</source>
         <translation>Fazer backup das fotos de %1</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="2496"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="2978"/>
         <source>Backup folder</source>
         <translation>Pasta de backup</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="2522"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="2537"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="3004"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="3019"/>
         <source>Include videos</source>
         <translation>Incluir vídeos</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="2523"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="3005"/>
         <source>Videos can be large. Copied one at a time, so a lost connection costs at most one file.</source>
         <translation>Os vídeos podem ser grandes. Eles são copiados um de cada vez para que, se a conexão cair, no máximo um arquivo precise ser reenviado.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="2531"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="3013"/>
         <source>Back up now</source>
         <translation>Fazer backup agora</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="2555"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="3037"/>
         <source>Synced folders</source>
         <translation>Pastas sincronizadas</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="2556"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="3038"/>
         <source>One-way or two-way folder sync between phone and PC.</source>
         <translation>Sincronize pastas entre o celular e o PC em uma ou nas duas direções.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="2563"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="3045"/>
         <source>Sync now</source>
         <translation>Sincronizar agora</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="2591"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="3073"/>
         <source>Two-way sync · conflict copies kept · deletions go across</source>
         <translation>Sincronização nas duas direções · cópias de conflito mantidas · exclusões passam para o outro lado</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="2592"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="3074"/>
         <source>Two-way sync · conflict copies kept</source>
         <translation>Nas duas direções · cópias de conflito mantidas</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="2593"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="3075"/>
         <source>One-way · PC to phone</source>
         <translation>Uma direção · PC para o celular</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="2594"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="3076"/>
         <source>One-way · phone to PC · removes files deleted on the phone</source>
         <translation>Uma direção · celular para o PC · remove arquivos excluídos no celular</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="2595"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="3077"/>
         <source>One-way · phone to PC</source>
         <translation>Um sentido · do celular para o PC</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="2649"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="3085"/>
+        <source>Edit</source>
+        <translation>Editar</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="3140"/>
         <source>Command palette</source>
         <translation>Paleta de comandos</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="2650"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="3141"/>
         <source>Open from any app.</source>
         <translation>Abre de qualquer app.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="2695"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="3186"/>
         <source>Command palette shortcut</source>
         <translation>Atalho da paleta de comandos</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="2724"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="3215"/>
         <source>File shelf</source>
         <translation>Bandeja de arquivos</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="2725"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="3216"/>
         <source>Toggle screen-edge shelf.</source>
         <translation>Mostra ou oculta a Bandeja de arquivos na borda da tela.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="2770"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="3261"/>
         <source>Shelf shortcut</source>
         <translation>Atalho da Bandeja de arquivos</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="2795"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="3286"/>
         <source>Take photo</source>
         <translation>Tirar foto</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="2796"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="3287"/>
         <source>Capture &amp; paste photo.</source>
         <translation>Tira e cola uma foto.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="2841"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="3332"/>
         <source>Take photo shortcut</source>
         <translation>Atalho para tirar foto</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="2870"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="3361"/>
         <source>Scan document</source>
         <translation>Digitalizar documento</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="2871"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="3362"/>
         <source>Scan &amp; paste document.</source>
         <translation>Digitaliza e cola um documento.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="2916"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="3407"/>
         <source>Scan document shortcut</source>
         <translation>Atalho para digitalizar documento</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="2932"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="3423"/>
         <source>Trigger-action rules</source>
         <translation>Regras de automação</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="2933"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="3424"/>
         <source>Run actions when your phone connects, disconnects, or rings.</source>
         <translation>Executa ações quando o celular se conecta, se desconecta ou toca.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="2940"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="3431"/>
         <source>Lock PC on disconnect</source>
         <translation>Bloquear o PC ao desconectar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="2947"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="3438"/>
         <source>Pause media on ring</source>
         <translation>Pausar a mídia quando o celular tocar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3000"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="3491"/>
         <source>OBS Studio</source>
         <translation>OBS Studio</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3001"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="3492"/>
         <source>For Deck tiles that run obs: commands. Turn on OBS&apos;s WebSocket server in Tools › WebSocket Server Settings.</source>
         <translation>Para botões do Deck que executam comandos obs:. Ative o servidor WebSocket do OBS em Ferramentas › Configurações do Servidor WebSocket.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3009"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="3500"/>
         <source>Port</source>
         <translation>Porta</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3033"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="3524"/>
         <source>OBS WebSocket port</source>
         <translation>Porta do OBS WebSocket</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3040"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="3531"/>
         <source>Password</source>
         <translation>Senha</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3062"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="3553"/>
         <source>OBS WebSocket password</source>
         <translation>Senha do OBS WebSocket</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3068"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="3559"/>
         <source>Saved</source>
         <translation>Salvo</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3068"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="3559"/>
         <source>None</source>
         <translation>Nenhum</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3077"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="3568"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="4655"/>
         <source>Save</source>
         <translation>Salvar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3088"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="3579"/>
         <source>Test connection</source>
         <translation>Testar conexão</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3095"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="3586"/>
         <source>Remove password</source>
         <translation>Remover senha</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3123"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="3126"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="3615"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="3618"/>
         <source>Sync copied passwords</source>
         <translation>Sincronizar senhas copiadas</translation>
     </message>
@@ -9870,40 +10685,40 @@ O que precisa
         <translation type="vanished">Envia também o que os gerenciadores de senhas marcam como privado. Fica na área de transferência do celular até algo substituir, e nunca é guardado no histórico.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3152"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="3176"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="3644"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="3668"/>
         <source>Clipboard history</source>
         <translation>Histórico da área de transferência</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3156"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="3648"/>
         <source>%1 clips · %2 · kept 7 days</source>
         <translation>%1 itens · %2 · guardados por 7 dias</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3165"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="3223"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="3285"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="3345"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="3376"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="3413"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="4244"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="3657"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="3715"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="3777"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="3837"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="3868"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="3905"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="4946"/>
         <source>Clear</source>
         <translation>Limpar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3167"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="3659"/>
         <source>Clear clipboard history?</source>
         <translation>Limpar o histórico da área de transferência?</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3168"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="3660"/>
         <source>Deletes the clips kept on this PC. What&apos;s on the clipboard now stays.</source>
         <translation>Apaga os itens copiados salvos neste PC. O conteúdo que está na área de transferência agora permanece.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3209"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="3231"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="3701"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="3723"/>
         <source>Notification history</source>
         <translation>Histórico de notificações</translation>
     </message>
@@ -9912,620 +10727,715 @@ O que precisa
         <translation type="vanished">%1 notificações · %2 · guardadas por 24 h</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3225"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="3717"/>
         <source>Clear notification history?</source>
         <translation>Limpar o histórico de notificações?</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3226"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="3718"/>
         <source>Deletes the notifications kept after they went away. Ones still showing stay.</source>
         <translation>Apaga as notificações guardadas depois que sumiram. As que ainda aparecem ficam.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3271"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="3763"/>
         <source>Cross-device timeline</source>
         <translation>Linha do tempo entre dispositivos</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3275"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="3767"/>
         <source>1 item stored (max 5,000).</source>
         <translation>1 item salvo (máx. 5.000).</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3276"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="3768"/>
         <source>%1 items stored (max 5,000).</source>
         <translation>%1 itens salvos (máx. 5.000).</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3287"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="3779"/>
         <source>Clear the Timeline?</source>
         <translation>Limpar a Linha do tempo?</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3288"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="3780"/>
         <source>Deletes the Timeline&apos;s entries on this PC. Files stay where they were saved.</source>
         <translation>Apaga as entradas da Linha do tempo neste PC. Os arquivos continuam nos locais onde foram salvos.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3304"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="3796"/>
         <source>30d</source>
         <translation>30 dias</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3305"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="3797"/>
         <source>90d</source>
         <translation>90 dias</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3306"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="3798"/>
         <source>1y</source>
         <translation>1 ano</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3307"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="3799"/>
         <source>All</source>
         <translation>Tudo</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3322"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="3814"/>
         <source>Cached messages</source>
         <translation>Mensagens em cache</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3330"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="3822"/>
         <source>1 chat</source>
         <translation>1 conversa</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3330"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="3822"/>
         <source>%1 chats</source>
         <translation>%1 conversas</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3331"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="3823"/>
         <source>1 message</source>
         <translation>1 mensagem</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3331"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="3823"/>
         <source>%1 messages</source>
         <translation>%1 mensagens</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3332"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="3824"/>
         <source>%1 · %2 · %3 · kept 90 days</source>
         <translation>%1 · %2 · %3 · guardadas por 90 dias</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3366"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="3858"/>
         <source>Photo thumbnails</source>
         <translation>Miniaturas de fotos</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3370"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="3862"/>
         <source>%1 cached · %2 · kept 30 days</source>
         <translation>%1 em cache · %2 · guardadas por 30 dias</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3404"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="3896"/>
         <source>Transfer history</source>
         <translation>Histórico de transferências</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3407"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="3899"/>
         <source>%1 records · kept with timeline</source>
         <translation>%1 registros · guardados com a Linha do tempo</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3415"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="3907"/>
         <source>Clear transfer history?</source>
         <translation>Limpar o histórico de transferências?</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3416"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="3908"/>
         <source>Deletes the list of past transfers. The files stay where they were saved.</source>
         <translation>Apaga a lista de transferências anteriores. Os arquivos continuam nos locais onde foram salvos.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3427"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="3919"/>
         <source>Clear all local history &amp; caches</source>
         <translation>Apagar todo o histórico e os caches locais</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3428"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="3920"/>
         <source>Wipes local history and caches; keeps paired devices and settings.</source>
         <translation>Apaga o histórico e os caches locais; mantém os dispositivos pareados e as configurações.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3433"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="3925"/>
         <source>Clear everything…</source>
         <translation>Limpar tudo…</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3477"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="3971"/>
         <source>Connection Doctor</source>
         <translation>Diagnóstico de conexão</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3478"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="3972"/>
         <source>Diagnose and fix firewall, network, or VPN issues.</source>
         <translation>Diagnosticar e corrigir problemas de firewall, rede ou VPN.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3482"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="3976"/>
         <source>Check</source>
         <translation>Verificar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3490"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="3984"/>
         <source>Connect over mobile data</source>
         <translation>Conectar usando dados móveis</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3491"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="3985"/>
         <source>Stay connected over LTE/5G or relay when away from Wi-Fi.</source>
         <translation>Mantenha a conexão por LTE/5G ou por retransmissor quando estiver fora do Wi-Fi.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3519"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="3984"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="4013"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="4686"/>
         <source>Network interface</source>
         <translation>Interface de rede</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3520"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="4014"/>
         <source>Local connections switch after a restart. Relays switch right away if the app started with an interface selected.</source>
         <translation>As conexões locais mudam depois de reiniciar o app. As por retransmissor mudam na hora se o app já tiver iniciado com uma interface selecionada.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="2119"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="3524"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="3991"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="2587"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="4018"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="4693"/>
         <source>System default</source>
         <translation>Padrão do sistema</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3990"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="4692"/>
         <source>%1 · Direct (without a VPN)</source>
         <translation>%1 · Direta (sem VPN)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="4014"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="4716"/>
         <source>Could not use this network interface.</source>
         <translation>Não foi possível usar esta interface de rede.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3536"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="4030"/>
         <source>Iroh relay servers</source>
         <translation>Servidores de retransmissão do iroh</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3213"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="3705"/>
         <source>%1 alerts · %2</source>
         <translation>%1 notificações · %2</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3248"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="3740"/>
         <source>Keep notification history for</source>
         <translation>Guardar o histórico de notificações por</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3249"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="3741"/>
         <source>Notifications that went away stay in the feed&apos;s history this long.</source>
         <translation>As notificações que sumiram ficam no histórico por este tempo.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3252"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="3744"/>
         <source>1 day</source>
         <translation>1 dia</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3253"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="3745"/>
         <source>3 days</source>
         <translation>3 dias</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3254"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="3746"/>
         <source>1 week</source>
         <translation>1 semana</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3255"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="3747"/>
         <source>30 days</source>
         <translation>30 dias</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3502"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="3509"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="3996"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="4003"/>
         <source>Use USB debugging</source>
         <translation>Usar a depuração USB</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3504"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="3998"/>
         <source>Applies when NectarLink restarts.</source>
         <translation>Vale quando o NectarLink reiniciar.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3506"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="4000"/>
         <source>Connect, pair, install the app and start Elevated over a USB cable. Your phone asks once to allow USB debugging.</source>
         <translation>Conecte, pareie, instale o app e inicie o Elevated pelo cabo USB. O celular pergunta uma vez se permite a depuração USB.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3507"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="4001"/>
         <source>Off: NectarLink never asks a phone on a cable for USB debugging. Wi-Fi works as usual.</source>
         <translation>Desativado: o NectarLink nunca pede a depuração USB a um celular no cabo. O Wi-Fi funciona como sempre.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3537"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="4031"/>
         <source>View active routes, check latency and manage relay servers.</source>
         <translation>Veja as rotas ativas, verifique a latência e gerencie os servidores de retransmissão.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3541"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="4035"/>
         <source>Manage</source>
         <translation>Gerenciar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3549"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="4043"/>
         <source>Wake from your phone</source>
         <translation>Acordar pelo celular</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3554"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="4048"/>
         <source>No active network adapter found.</source>
         <translation>Nenhum adaptador de rede ativo encontrado.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3556"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="4050"/>
         <source>%1 · Wake on Magic Packet ready.</source>
         <translation>%1 · Wake on Magic Packet pronto.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3557"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="4051"/>
         <source>%1 · Enable Wake on Magic Packet in Device Manager.</source>
         <translation>%1 · Ative o Wake on Magic Packet no Gerenciador de Dispositivos.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3571"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="4065"/>
         <source>Off in Windows</source>
         <translation>Desativado no Windows</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3571"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="4065"/>
         <source>Off in the adapter&apos;s settings</source>
         <translation>Desativado nas configurações do adaptador</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3572"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="4066"/>
         <source>Check settings</source>
         <translation>Verificar configurações</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3573"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="4067"/>
         <source>No adapter</source>
         <translation>Nenhum adaptador</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3581"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="3620"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="4075"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="4114"/>
         <source>Local automation API</source>
         <translation>API de automação local</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3583"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="4077"/>
         <source>Listening on 127.0.0.1:%1 · Token in %2</source>
         <translation>Ouvindo em 127.0.0.1:%1 · Token em %2</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3584"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="4078"/>
         <source>Local HTTP/SSE server (127.0.0.1:%1) for scripts and tools.</source>
         <translation>Servidor HTTP/SSE local (127.0.0.1:%1) para scripts e ferramentas.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3630"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="4125"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="4129"/>
+        <source>Notifications and messages</source>
+        <translation>Notificações e mensagens</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="4126"/>
+        <source>Tools using the API can also read your phones&apos; notifications and conversations. Apps you hide stay hidden.</source>
+        <translation>Ferramentas que usam a API também podem ler as notificações e conversas dos seus celulares. Apps que você oculta continuam ocultos.</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="4138"/>
         <source>NectarLink %1</source>
         <translation>NectarLink %1</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3633"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="4141"/>
         <source>This PC: %1</source>
         <translation>Este PC: %1</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3645"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="4153"/>
         <source>Update download</source>
         <translation>Download da atualização</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3666"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="4174"/>
         <source>Update to %1</source>
         <translation>Atualizar para %1</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3667"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="3686"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="3691"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="4175"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="4215"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="4220"/>
         <source>Check for updates</source>
         <translation>Verificar atualizações</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3676"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="4184"/>
         <source>Open logs</source>
         <translation>Abrir logs</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3719"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="3722"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="4201"/>
+        <source>What&apos;s new</source>
+        <translation>Novidades</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="4202"/>
+        <source>What changed since your last update.</source>
+        <translation>O que mudou desde a sua última atualização.</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="4234"/>
+        <source>It&apos;s the same for everyone who uses NectarLink on this PC.</source>
+        <translation>É o mesmo para todos que usam o NectarLink neste PC.</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="4251"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="4254"/>
         <source>Install updates automatically</source>
         <translation>Instalar atualizações automaticamente</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3720"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="4252"/>
         <source>When nobody is using the PC and nothing is in progress.</source>
         <translation>Quando ninguém estiver usando o PC e não houver nada em andamento.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3737"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="4269"/>
         <source>Setup walkthrough</source>
         <translation>Passo a passo de configuração</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3738"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="4270"/>
         <source>Re-open the setup guide.</source>
         <translation>Reabrir o passo a passo de configuração.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3750"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="4282"/>
         <source>Features guide</source>
         <translation>Guia de recursos</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3751"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="4283"/>
         <source>What each feature needs and where to find it.</source>
         <translation>Do que cada recurso precisa e onde encontrá-lo.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3777"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="4312"/>
+        <source>Discord</source>
+        <translation>Discord</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="4313"/>
+        <source>Our server. Ask questions, share ideas and try new builds with others.</source>
+        <translation>Nosso servidor. Tire dúvidas, compartilhe ideias e teste versões novas com outras pessoas.</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="4328"/>
+        <source>Follow me. I post what&apos;s coming to NectarLink and other things I make.</source>
+        <translation>Me siga. Eu posto o que vem por aí no NectarLink e outras coisas que faço.</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="4341"/>
+        <source>GitHub</source>
+        <translation>GitHub</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="4342"/>
+        <source>Source code, issues and releases.</source>
+        <translation>Código-fonte, issues e versões.</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="4355"/>
         <source>NectarLink is free and open source. If it makes your days a little easier, you can help keep it going. Thank you!</source>
         <translation>O NectarLink é gratuito e de código aberto. Se ele deixa seus dias um pouco mais fáceis, você pode ajudar a mantê-lo. Obrigado!</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3782"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="4360"/>
         <source>Support</source>
         <translation>Apoiar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3854"/>
-        <source>Sync a folder</source>
-        <translation>Sincronizar uma pasta</translation>
+        <location filename="../qml/pages/SettingsPage.qml" line="4383"/>
+        <source>Tell us what went wrong. You see the whole report before it goes anywhere.</source>
+        <translation>Conte o que deu errado. Você vê o relatório inteiro antes de ele ir para qualquer lugar.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3860"/>
+        <source>Sync a folder</source>
+        <translation type="vanished">Sincronizar uma pasta</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="4513"/>
         <source>The phone asks once to let this PC in. NectarLink there also needs All files access, or this folder under Selected folders only.</source>
         <translation>O celular pede uma vez para liberar este PC. O NectarLink de lá também precisa do Acesso a todos os arquivos, ou desta pasta em Somente pastas selecionadas.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3863"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="3894"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="4516"/>
         <source>Folder on the phone</source>
         <translation>Pasta no celular</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3899"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="4547"/>
+        <source>Another folder on the phone</source>
+        <translation>Outra pasta no celular</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="4559"/>
+        <source>Another folder, like WhatsApp/Media</source>
+        <translation>Outra pasta, como WhatsApp/Media</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="4564"/>
         <source>Folder on this PC</source>
         <translation>Pasta neste PC</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3914"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="4571"/>
+        <source>A folder of its own for each, in Pictures, Music, Videos or Documents</source>
+        <translation>Uma pasta própria para cada, em Imagens, Músicas, Vídeos ou Documentos</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="4581"/>
         <source>Choose…</source>
         <translation>Escolher…</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3924"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="4588"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="4591"/>
+        <source>Keep each folder&apos;s name</source>
+        <translation>Manter o nome de cada pasta</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="4589"/>
+        <source>Each phone folder goes into a folder of its own name in the one you chose, instead of straight into it.</source>
+        <translation>Cada pasta do celular vai para uma pasta com o mesmo nome dentro da escolhida, em vez de direto nela.</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="4617"/>
         <source>Phone to PC</source>
         <translation>Do celular para o PC</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3925"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="4618"/>
         <source>PC to phone</source>
         <translation>PC para o celular</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3926"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="4619"/>
         <source>Both ways</source>
         <translation>Nas duas direções</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3937"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="4630"/>
         <source>New and changed files on the PC are copied to the phone. Nothing on the phone comes to the PC, and nothing is deleted.</source>
         <translation>Arquivos novos e alterados no PC são copiados para o celular. Nada do celular vai para o PC, e nada é excluído.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3939"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="4632"/>
         <source>Changes on either side are copied to the other. When a file changed on both, both versions are kept.</source>
         <translation>As alterações em qualquer um dos lados são copiadas para o outro. Se um arquivo mudar dos dois lados, as duas versões serão mantidas.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3940"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="4633"/>
         <source>New and changed files on the phone are copied to the PC. Nothing on the PC goes to the phone.</source>
         <translation>Arquivos novos e alterados no celular são copiados para o PC. Nada do PC é enviado ao celular.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3946"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="3951"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="4639"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="4644"/>
         <source>Also remove from the PC</source>
         <translation>Remover também do PC</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3946"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="3951"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="4639"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="4644"/>
         <source>Also remove deleted files</source>
         <translation>Remover também arquivos excluídos</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3948"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="4641"/>
         <source>A synced file you delete on one side leaves the other. On the PC it goes to the Recycle Bin. On the phone, photos and videos go to its trash where Android has one, and other files are gone for good.</source>
         <translation>Um arquivo sincronizado que você excluir de um lado também é excluído do outro. No PC, ele vai para a Lixeira. No celular, fotos e vídeos vão para a lixeira, quando o Android tem uma, e os outros arquivos são apagados de vez.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3949"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="4642"/>
         <source>A synced file you delete on the phone goes to the PC&apos;s Recycle Bin.</source>
         <translation>Um arquivo sincronizado que você excluir no celular vai para a Lixeira do PC.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3962"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="4656"/>
+        <source>Add %1 folders</source>
+        <translation>Adicionar %1 pastas</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="4657"/>
         <source>Add</source>
         <translation>Adicionar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="4031"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="4733"/>
         <source>Phone&apos;s hotspot network</source>
         <translation>Rede do hotspot do celular</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="4039"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="4741"/>
         <source>Wi-Fi networks this PC has joined before. Your system keeps their passwords; NectarLink never sees them.</source>
         <translation>Redes Wi-Fi já usadas por este PC. O sistema guarda as senhas; o NectarLink nunca tem acesso a elas.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="4040"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="4742"/>
         <source>This PC hasn&apos;t saved any Wi-Fi networks yet. Join the phone&apos;s hotspot once from your system Wi-Fi list first.</source>
         <translation>Este PC ainda não salvou nenhuma rede Wi-Fi. Conecte-se uma vez ao hotspot do celular pela lista de redes Wi-Fi do sistema.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="4042"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="4744"/>
         <source>Wi-Fi networks this PC has joined before. Windows keeps their passwords; NectarLink never sees them.</source>
         <translation>Redes Wi-Fi já usadas por este PC. O Windows guarda as senhas; o NectarLink nunca tem acesso a elas.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="4043"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="4745"/>
         <source>This PC hasn&apos;t saved any Wi-Fi networks yet. Join the phone&apos;s hotspot once from Windows&apos; Wi-Fi list first.</source>
         <translation>Este PC ainda não salvou nenhuma rede Wi-Fi. Conecte-se uma vez ao hotspot do celular pela lista de redes Wi-Fi do Windows.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="4073"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="4775"/>
         <source>Don&apos;t join</source>
         <translation>Não conectar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="4016"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="4082"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="4110"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="4145"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="4173"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="4718"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="4784"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="4812"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="4847"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="4875"/>
         <source>Close</source>
         <translation>Fechar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="4156"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="4858"/>
         <source>Play the phone&apos;s microphone into</source>
         <translation>Reproduzir o áudio do microfone do celular em</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="4186"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="4888"/>
         <source>Unpair %1?</source>
         <translation>Desparear %1?</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="4192"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="4894"/>
         <source>Both devices forget each other. You can pair them again any time.</source>
         <translation>Os dois dispositivos vão esquecer um ao outro. Você pode pareá-los de novo quando quiser.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3960"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="4197"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="4241"/>
-        <location filename="../qml/pages/SettingsPage.qml" line="4277"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="4653"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="4899"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="4943"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="4979"/>
         <source>Cancel</source>
         <translation>Cancelar</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="2570"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="3052"/>
         <source>Add folder</source>
         <translation>Adicionar pasta</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3124"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="3616"/>
         <source>Also sends what password managers mark private. It leaves the phone&apos;s clipboard after a minute where Android allows it, and is never kept in history.</source>
         <translation>Envia também o que os gerenciadores de senhas marcam como privado. Sai da área de transferência do celular após um minuto, quando o Android permite, e nunca é guardado no histórico.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3688"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="4217"/>
         <source>Looks for a new build every couple of hours, and tells your phone.</source>
         <translation>Procura uma versão nova a cada poucas horas e avisa o celular.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3689"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="4218"/>
         <source>Looks for a new release twice a day, and tells your phone.</source>
         <translation>Procura uma versão nova duas vezes por dia e avisa o celular.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3700"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="4229"/>
         <source>Update channel</source>
         <translation>Canal de atualização</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3702"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="4231"/>
         <source>The newest build from every couple of hours, with the latest fixes and features, and sometimes new bugs. Back on Stable, this PC keeps its build until the next release is newer.</source>
         <translation>A versão mais nova, gerada a cada poucas horas, com as últimas correções e recursos, e às vezes bugs novos. Ao voltar para Estável, este PC mantém a versão atual até sair uma versão estável mais nova.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3703"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="4232"/>
         <source>Releases, tested and less often.</source>
         <translation>Versões oficiais, testadas e menos frequentes.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3706"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="4238"/>
         <source>Stable</source>
         <translation>Estável</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="3707"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="4239"/>
         <source>Nightly</source>
         <translation>Nightly</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="4121"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="4504"/>
+        <source>Edit synced folder</source>
+        <translation>Editar pasta sincronizada</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="4504"/>
+        <source>Sync folders</source>
+        <translation>Sincronizar pastas</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="4823"/>
         <source>Talk on calls through</source>
         <translation>Falar nas chamadas com</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="4140"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="4842"/>
         <source>No microphone found on this PC.</source>
         <translation>Nenhum microfone encontrado neste PC.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="4263"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="4965"/>
         <source>Clear all local history &amp; caches?</source>
         <translation>Apagar todo o histórico e os caches locais?</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="4272"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="4974"/>
         <source>Deletes clipboard history, Timeline, notification history, cached messages, photo thumbnails and transfer history on this PC. Paired devices, settings and downloaded files are kept.</source>
         <translation>Apaga do PC o histórico da área de transferência, a Linha do tempo, o histórico de notificações, as mensagens em cache, as miniaturas de fotos e o histórico de transferências. Os dispositivos pareados, as configurações e os arquivos baixados são mantidos.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="4280"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="4982"/>
         <source>Clear everything</source>
         <translation>Limpar tudo</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="1217"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="1510"/>
         <source>Full charge target</source>
         <translation>Limite de carga</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="1218"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="1511"/>
         <source>Alert at 100%, or at 80% if your phone has battery protection enabled.</source>
         <translation>Avisar em 100%, ou em 80% se o celular estiver com a proteção da bateria ativada.</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="1221"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="1514"/>
         <source>100% (Standard)</source>
         <translation>100% (Padrão)</translation>
     </message>
     <message>
-        <location filename="../qml/pages/SettingsPage.qml" line="1222"/>
+        <location filename="../qml/pages/SettingsPage.qml" line="1515"/>
         <source>80% (Protect battery)</source>
         <translation>80% (Proteção da bateria)</translation>
     </message>
@@ -10533,72 +11443,72 @@ O que precisa
 <context>
     <name>Setup</name>
     <message>
-        <location filename="rust_strings.h" line="496"/>
+        <location filename="rust_strings.h" line="509"/>
         <source>Choose a folder on a drive inside this PC, not a USB or network drive.</source>
         <translation>Escolha uma pasta em uma unidade deste PC, não em uma unidade USB ou de rede.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="497"/>
+        <location filename="rust_strings.h" line="510"/>
         <source>Choose a folder on one of this PC&apos;s drives.</source>
         <translation>Escolha uma pasta em uma das unidades deste PC.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="498"/>
+        <location filename="rust_strings.h" line="511"/>
         <source>Couldn&apos;t start setup: %1</source>
         <translation>Não foi possível iniciar a instalação: %1</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="499"/>
+        <location filename="rust_strings.h" line="512"/>
         <source>Couldn&apos;t uninstall NectarLink: %1</source>
         <translation>Não foi possível desinstalar o NectarLink: %1</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="500"/>
+        <location filename="rust_strings.h" line="513"/>
         <source>Setup can&apos;t use that folder. Choose another one.</source>
         <translation>A instalação não pode usar essa pasta. Escolha outra.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="501"/>
+        <location filename="rust_strings.h" line="514"/>
         <source>Setup is taking too long. Try again after restarting the PC.</source>
         <translation>A instalação está demorando demais. Tente de novo depois de reiniciar o PC.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="502"/>
+        <location filename="rust_strings.h" line="515"/>
         <source>Setup stopped with code %1.</source>
         <translation>A instalação parou com o código %1.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="503"/>
+        <location filename="rust_strings.h" line="516"/>
         <source>That drive can&apos;t keep the app&apos;s files safe (it isn&apos;t NTFS). Choose another drive.</source>
         <translation>Essa unidade não consegue proteger os arquivos do app (não é NTFS). Escolha outra unidade.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="504"/>
+        <location filename="rust_strings.h" line="517"/>
         <source>That folder&apos;s path is too long. Choose one closer to the top of a drive.</source>
         <translation>O caminho dessa pasta é muito longo. Escolha uma pasta mais perto da raiz da unidade.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="505"/>
+        <location filename="rust_strings.h" line="518"/>
         <source>The uninstaller is missing. Reinstall NectarLink, then uninstall it.</source>
         <translation>O desinstalador não foi encontrado. Reinstale o NectarLink e depois desinstale-o.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="506"/>
+        <location filename="rust_strings.h" line="519"/>
         <source>There&apos;s a file named %1 there. Choose another place.</source>
         <translation>Já existe um arquivo chamado %1 lá. Escolha outro lugar.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="507"/>
+        <location filename="rust_strings.h" line="520"/>
         <source>There&apos;s already a %1 folder there with files in it. Choose another place.</source>
         <translation>Já existe uma pasta %1 com arquivos lá. Escolha outro lugar.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="508"/>
+        <location filename="rust_strings.h" line="521"/>
         <source>Uninstall stopped with code %1.</source>
         <translation>A desinstalação foi interrompida com o código %1.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="509"/>
+        <location filename="rust_strings.h" line="522"/>
         <source>Updates here will ask for your permission each time.</source>
         <translation>As atualizações neste local vão pedir sua permissão toda vez.</translation>
     </message>
@@ -11037,17 +11947,17 @@ O que precisa
 <context>
     <name>Storage</name>
     <message>
-        <location filename="rust_strings.h" line="510"/>
+        <location filename="rust_strings.h" line="523"/>
         <source>%1&apos;s files aren&apos;t shared with this PC</source>
         <translation>Os arquivos de %1 não estão compartilhados com este PC</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="511"/>
+        <location filename="rust_strings.h" line="524"/>
         <source>On the phone, allow All files access for NectarLink.</source>
         <translation>No celular, permita Acesso a todos os arquivos para o NectarLink.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="512"/>
+        <location filename="rust_strings.h" line="525"/>
         <source>On the phone, turn on Browse this phone&apos;s storage in File Explorer in NectarLink.</source>
         <translation>No celular, ative Explorar o armazenamento deste celular pelo Explorador de Arquivos no NectarLink.</translation>
     </message>
@@ -11055,147 +11965,147 @@ O que precisa
 <context>
     <name>Timeline</name>
     <message>
-        <location filename="rust_strings.h" line="513"/>
+        <location filename="rust_strings.h" line="526"/>
         <source>App window #%1</source>
         <translation>Janela de app #%1</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="514"/>
+        <location filename="rust_strings.h" line="527"/>
         <source>Clip (removed from clipboard history)</source>
         <translation>Item copiado (removido do histórico da área de transferência)</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="515"/>
+        <location filename="rust_strings.h" line="528"/>
         <source>Copied image</source>
         <translation>Imagem copiada</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="516"/>
+        <location filename="rust_strings.h" line="529"/>
         <source>Copied link to clipboard.</source>
         <translation>Link copiado para a área de transferência.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="517"/>
+        <location filename="rust_strings.h" line="530"/>
         <source>Copied to clipboard.</source>
         <translation>Copiado para a área de transferência.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="518"/>
+        <location filename="rust_strings.h" line="531"/>
         <source>From %1</source>
         <translation>De %1</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="519"/>
+        <location filename="rust_strings.h" line="532"/>
         <source>In progress</source>
         <translation>Em andamento</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="520"/>
+        <location filename="rust_strings.h" line="533"/>
         <source>No phone is paired yet.</source>
         <translation>Nenhum celular pareado ainda.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="521"/>
+        <location filename="rust_strings.h" line="534"/>
         <source>Opened from %1</source>
         <translation>Aberto a partir de %1</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="522"/>
+        <location filename="rust_strings.h" line="535"/>
         <source>Opened on %1</source>
         <translation>Aberto em %1</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="523"/>
+        <location filename="rust_strings.h" line="536"/>
         <source>Phone microphone</source>
         <translation>Microfone do celular</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="524"/>
+        <location filename="rust_strings.h" line="537"/>
         <source>Phone webcam</source>
         <translation>Webcam do celular</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="525"/>
+        <location filename="rust_strings.h" line="538"/>
         <source>Recorded on %1</source>
         <translation>Gravado em %1</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="526"/>
+        <location filename="rust_strings.h" line="539"/>
         <source>Saved from %1</source>
         <translation>Salvo de %1</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="527"/>
+        <location filename="rust_strings.h" line="540"/>
         <source>Screen mirroring</source>
         <translation>Espelhamento de tela</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="528"/>
+        <location filename="rust_strings.h" line="541"/>
         <source>Sending to %1…</source>
         <translation>Enviando para %1…</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="529"/>
+        <location filename="rust_strings.h" line="542"/>
         <source>Sent clip to %1.</source>
         <translation>Item enviado para %1.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="530"/>
+        <location filename="rust_strings.h" line="543"/>
         <source>Sent to %1</source>
         <translation>Enviado para %1</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="531"/>
+        <location filename="rust_strings.h" line="544"/>
         <source>Session</source>
         <translation>Sessão</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="532"/>
+        <location filename="rust_strings.h" line="545"/>
         <source>That clip is no longer in clipboard history.</source>
         <translation>Esse item não está mais no histórico da área de transferência.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="533"/>
+        <location filename="rust_strings.h" line="546"/>
         <source>That entry couldn&apos;t be removed. Try again.</source>
         <translation>Não foi possível remover esse item. Tente de novo.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="534"/>
+        <location filename="rust_strings.h" line="547"/>
         <source>That file was moved or deleted.</source>
         <translation>Esse arquivo foi movido ou apagado.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="535"/>
+        <location filename="rust_strings.h" line="548"/>
         <source>That isn&apos;t a web link.</source>
         <translation>Isso não é um link da web.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="536"/>
+        <location filename="rust_strings.h" line="549"/>
         <source>That photo was moved or deleted.</source>
         <translation>Essa foto foi movida ou apagada.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="537"/>
+        <location filename="rust_strings.h" line="550"/>
         <source>The Timeline couldn&apos;t be cleared. Try again.</source>
         <translation>Não foi possível limpar a Linha do tempo. Tente de novo.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="538"/>
+        <location filename="rust_strings.h" line="551"/>
         <source>The photo couldn&apos;t be copied to the clipboard.</source>
         <translation>Não foi possível copiar a foto para a área de transferência.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="539"/>
+        <location filename="rust_strings.h" line="552"/>
         <source>Voice recording</source>
         <translation>Gravação de voz</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="540"/>
+        <location filename="rust_strings.h" line="553"/>
         <source>With %1</source>
         <translation>Com %1</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="541"/>
+        <location filename="rust_strings.h" line="554"/>
         <source>device</source>
         <translation>dispositivo</translation>
     </message>
@@ -11526,120 +12436,133 @@ O que precisa
 <context>
     <name>Transfers</name>
     <message>
-        <location filename="rust_strings.h" line="542"/>
+        <location filename="rust_strings.h" line="555"/>
         <source>Accept in NectarLink to save to Downloads\Nectarlink</source>
         <translation>Aceite no NectarLink para salvar em Downloads\Nectarlink</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="543"/>
+        <location filename="rust_strings.h" line="556"/>
         <source>Files are turned off for that device.</source>
         <translation>O compartilhamento de arquivos está desativado para esse dispositivo.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="544"/>
+        <location filename="rust_strings.h" line="557"/>
         <source>From %1, opened from Downloads\Nectarlink</source>
         <translation>De %1, aberto em Downloads\Nectarlink</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="545"/>
+        <location filename="rust_strings.h" line="558"/>
         <source>From %1, saved in Downloads\Nectarlink</source>
         <translation>De %1, salvo em Downloads\Nectarlink</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="546"/>
+        <location filename="rust_strings.h" line="559"/>
         <source>Nearby device</source>
         <translation>Dispositivo por perto</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="547"/>
+        <location filename="rust_strings.h" line="560"/>
         <source>That&apos;s too many files to send at once.</source>
         <translation>São muitos arquivos para enviar de uma vez.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="548"/>
+        <location filename="rust_strings.h" line="561"/>
         <source>There&apos;s nothing to send in there.</source>
         <translation>Não há nada para enviar aí.</translation>
     </message>
 </context>
 <context>
+    <name>Unlock</name>
+    <message>
+        <location filename="rust_strings.h" line="562"/>
+        <source>Set up unlocking with %1 again</source>
+        <translation>Configure de novo o desbloqueio com %1</translation>
+    </message>
+    <message>
+        <location filename="rust_strings.h" line="563"/>
+        <source>Windows didn&apos;t accept the password saved for it, so it was probably changed. Set it up again under Unlock this PC with the phone.</source>
+        <translation>O Windows não aceitou a senha salva para isso, então ela provavelmente mudou. Configure de novo em “Desbloquear este PC com o celular”.</translation>
+    </message>
+</context>
+<context>
     <name>Updater</name>
     <message>
-        <location filename="rust_strings.h" line="549"/>
+        <location filename="rust_strings.h" line="564"/>
         <source>Couldn&apos;t check for updates. Check your internet connection.</source>
         <translation>Não foi possível verificar se há atualizações. Confira sua conexão com a internet.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="550"/>
+        <location filename="rust_strings.h" line="565"/>
         <source>NectarLink %1 is available</source>
         <translation>O NectarLink %1 está disponível</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="551"/>
+        <location filename="rust_strings.h" line="566"/>
         <source>NectarLink %1 is available.</source>
         <translation>O NectarLink %1 está disponível.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="552"/>
+        <location filename="rust_strings.h" line="567"/>
         <source>NectarLink is still on the version you had. Try again from Settings.</source>
         <translation>O NectarLink continua na versão que você tinha. Tente de novo em Configurações.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="553"/>
+        <location filename="rust_strings.h" line="568"/>
         <source>NectarLink is up to date.</source>
         <translation>O NectarLink está atualizado.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="554"/>
+        <location filename="rust_strings.h" line="569"/>
         <source>NectarLink is updated to %1</source>
         <translation>O NectarLink foi atualizado para %1</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="555"/>
+        <location filename="rust_strings.h" line="570"/>
         <source>Nightly %1</source>
         <translation>Nightly %1</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="556"/>
+        <location filename="rust_strings.h" line="571"/>
         <source>Nightly %1 (%2)</source>
         <translation>Nightly %1 (%2)</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="557"/>
+        <location filename="rust_strings.h" line="572"/>
         <source>The download was damaged, so it wasn&apos;t installed. Try again.</source>
         <translation>O arquivo baixado foi corrompido e não foi instalado. Tente de novo.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="558"/>
+        <location filename="rust_strings.h" line="573"/>
         <source>The update couldn&apos;t be downloaded. Check your internet connection and try again.</source>
         <translation>Não foi possível baixar a atualização. Confira sua conexão com a internet e tente de novo.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="559"/>
+        <location filename="rust_strings.h" line="574"/>
         <source>The update couldn&apos;t be saved. Check that there&apos;s free space and try again.</source>
         <translation>Não foi possível salvar a atualização. Confira se há espaço livre e tente de novo.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="560"/>
+        <location filename="rust_strings.h" line="575"/>
         <source>The update couldn&apos;t be started. Try again.</source>
         <translation>Não foi possível iniciar a atualização. Tente de novo.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="561"/>
+        <location filename="rust_strings.h" line="576"/>
         <source>The update didn&apos;t install</source>
         <translation>A atualização não foi instalada</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="562"/>
+        <location filename="rust_strings.h" line="577"/>
         <source>The update is installed. Restart NectarLink to use it.</source>
         <translation>A atualização foi instalada. Reinicie o NectarLink para começar a usá-la.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="563"/>
+        <location filename="rust_strings.h" line="578"/>
         <source>Update now, or later from Settings.</source>
         <translation>Atualize agora ou depois em Configurações.</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="564"/>
+        <location filename="rust_strings.h" line="579"/>
         <source>Your phone reconnects on its own.</source>
         <translation>O celular se reconecta sozinho.</translation>
     </message>
@@ -12197,12 +13120,12 @@ O que precisa
 <context>
     <name>Webcam</name>
     <message>
-        <location filename="rust_strings.h" line="565"/>
+        <location filename="rust_strings.h" line="580"/>
         <source>Starting camera on %1…</source>
         <translation>Iniciando a câmera em %1…</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="566"/>
+        <location filename="rust_strings.h" line="581"/>
         <source>Streaming %1 × %2 · %3 fps from %4</source>
         <translation>Transmitindo de %4 em %1 × %2, a %3 fps</translation>
     </message>
@@ -12228,6 +13151,55 @@ O que precisa
         <location filename="../qml/pages/WelcomePage.qml" line="85"/>
         <source>Open the logs folder</source>
         <translation>Abrir a pasta de logs</translation>
+    </message>
+</context>
+<context>
+    <name>WhatsNewPanel</name>
+    <message>
+        <location filename="../qml/components/WhatsNewPanel.qml" line="23"/>
+        <source>New</source>
+        <translation>Novo</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/WhatsNewPanel.qml" line="24"/>
+        <source>Changed</source>
+        <translation>Alterado</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/WhatsNewPanel.qml" line="25"/>
+        <source>Fixed</source>
+        <translation>Corrigido</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/WhatsNewPanel.qml" line="35"/>
+        <source>In this version</source>
+        <translation>Nesta versão</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/WhatsNewPanel.qml" line="40"/>
+        <source>and %1 more</source>
+        <translation>e mais %1</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/WhatsNewPanel.qml" line="102"/>
+        <location filename="../qml/components/WhatsNewPanel.qml" line="122"/>
+        <source>What&apos;s new</source>
+        <translation>Novidades</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/WhatsNewPanel.qml" line="141"/>
+        <source>Close</source>
+        <translation>Fechar</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/WhatsNewPanel.qml" line="210"/>
+        <source>Nothing to list for this build.</source>
+        <translation>Nada a listar para esta compilação.</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/WhatsNewPanel.qml" line="231"/>
+        <source>Release notes on GitHub</source>
+        <translation>Notas da versão no GitHub</translation>
     </message>
 </context>
 </TS>

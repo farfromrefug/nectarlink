@@ -49,6 +49,8 @@ pub mod qobject {
         /// Hive's comb breathes and pulses.
         #[qproperty(bool, comb_motion)]
         #[qproperty(bool, close_to_tray)]
+        /// The tray icon in one colour, matching the taskbar.
+        #[qproperty(bool, tray_one_colour, cxx_name = "trayOneColour")]
         /// Send what's copied on this PC to connected phones.
         #[qproperty(bool, auto_clipboard)]
         /// Keep the last 50 synced clips in encrypted local history.
@@ -69,6 +71,11 @@ pub mod qobject {
         #[qproperty(bool, enter_sends)]
         /// In mirroring and app windows, right-click is a long press instead of Back.
         #[qproperty(bool, right_click_long_press)]
+        /// No floating toolbar in mirroring and app windows.
+        #[qproperty(bool, hide_mirror_toolbar)]
+        /// Where that toolbar sits: dragged to a corner of the window.
+        #[qproperty(bool, mirror_toolbar_bottom)]
+        #[qproperty(bool, mirror_toolbar_left)]
         /// No pop-ups for phone notifications while this PC is locked.
         #[qproperty(bool, quiet_when_locked)]
         #[qproperty(bool, hold_when_locked)]
@@ -82,10 +89,19 @@ pub mod qobject {
         #[qproperty(bool, install_updates)]
         /// The update channel: "stable" or "nightly" (the build's own when unset).
         #[qproperty(QString, update_channel)]
+        /// Whether the channel is this PC's, for every account on it (Windows'
+        /// update task installs for all of them).
+        #[qproperty(bool, update_channel_shared)]
         /// Tell when a phone's battery is low, or full.
         #[qproperty(bool, battery_alerts)]
         /// Charge level threshold for full battery alerts (e.g. 100 or 80 for protect battery mode).
         #[qproperty(i32, battery_full_threshold)]
+        /// The battery level that counts as low, in percent.
+        #[qproperty(i32, battery_low_threshold)]
+        /// How much of a phone's sound is held before it plays, in ms.
+        #[qproperty(i32, phone_sound_buffer_ms)]
+        /// Goes up when an app is pinned or unpinned, so Apps reads the pins again.
+        #[qproperty(i32, pins_revision, cxx_name = "pinsRevision")]
         /// How big the app draws, in percent. Takes effect after a restart.
         #[qproperty(i32, ui_scale)]
         /// Folder where voice recordings from phones are saved.
@@ -112,6 +128,8 @@ pub mod qobject {
         #[qproperty(bool, local_api_enabled)]
         /// TCP port for the localhost automation API (default `53320`).
         #[qproperty(i32, local_api_port)]
+        /// The local API may read the phone's notifications and conversations.
+        #[qproperty(bool, local_api_private, cxx_name = "localApiPrivate")]
         /// Path to `<data_dir>/api-token.json` containing the bearer token.
         #[qproperty(QString, local_api_token_path)]
         /// Copy received files (<= 10) to the Windows clipboard as CF_HDROP.
@@ -120,11 +138,13 @@ pub mod qobject {
         #[qproperty(bool, open_shared_files)]
         #[qproperty(bool, sync_wifi_only)]
         #[qproperty(bool, sync_passwords)]
+        #[qproperty(bool, keep_popups_paused, cxx_name = "keepPopupsPaused")]
         /// Use phones' USB debugging for USB features (#439); applies on restart.
         #[qproperty(bool, usb_debugging)]
         /// How many days notification history is kept: 1, 3, 7 or 30 (#442).
         #[qproperty(i32, notification_history_days)]
         #[qproperty(QString, mirror_quality)]
+        #[qproperty(i32, mirror_fps, cxx_name = "mirrorFps")]
         /// Send the clipboard to the phone when control moves to it.
         #[qproperty(bool, flow_follow_clipboard)]
         /// Floating Nectar Island pill at the top center of the screen.
@@ -137,6 +157,12 @@ pub mod qobject {
         #[qproperty(bool, nectar_island_media)]
         /// Trigger Nectar Island for phone notifications.
         #[qproperty(bool, nectar_island_notifications)]
+        /// Where the Island sits: "left", "center" or "right" (#472).
+        #[qproperty(QString, nectar_island_position, cxx_name = "nectarIslandPosition")]
+        /// "dark", or "theme" to follow the app's look (#325).
+        #[qproperty(QString, nectar_island_look, cxx_name = "nectarIslandLook")]
+        /// The Island also shows this PC's own players (#472).
+        #[qproperty(bool, nectar_island_pc_media, cxx_name = "nectarIslandPcMedia")]
         /// Stream PC system audio to the connected phone via WASAPI loopback.
         #[qproperty(bool, stream_pc_audio_to_phone)]
         /// Share PC user folders (Downloads, Documents, Desktop, Pictures) with phones.
@@ -166,6 +192,14 @@ pub mod qobject {
         #[qproperty(bool, star_prompt_updated)]
         /// Minutes the window has been in use, up to when a new install is asked.
         #[qproperty(i32, star_prompt_minutes)]
+        /// The ask to join Discord ended: joined, or dismissed three times.
+        #[qproperty(bool, community_prompt_done)]
+        /// An update armed the ask to join Discord.
+        #[qproperty(bool, community_prompt_due)]
+        /// How many times the ask to join Discord was shown.
+        #[qproperty(i32, community_prompt_count)]
+        /// When it was last armed (Unix seconds); kept as it is.
+        #[qproperty(i64, community_prompt_at)]
         /// JSON array of configured `FolderSyncRule` items.
         #[qproperty(QString, folder_sync_rules_json)]
         /// JSON array of configured `AutomationRule` items.
@@ -251,6 +285,21 @@ pub mod qobject {
         /// Removes a folder sync rule by ID.
         #[qinvokable]
         fn remove_folder_sync_rule(self: Pin<&mut Preferences>, rule_id: &QString);
+        /// Changes a folder sync rule: its folders, direction and deletions (#491).
+        #[qinvokable]
+        #[cxx_name = "updateFolderSyncRule"]
+        fn update_folder_sync_rule(
+            self: Pin<&mut Preferences>,
+            rule_id: &QString,
+            phone_folder: &QString,
+            pc_folder: &QString,
+            mode: &QString,
+            remove_deleted: bool,
+        );
+        /// `base` with the phone folder's name added, for "Keep each folder's name".
+        #[qinvokable]
+        #[cxx_name = "pcFolderKeepingName"]
+        fn pc_folder_keeping_name(self: &Preferences, base: &QString, phone_folder: &QString) -> QString;
         /// Enables or disables a folder sync rule by ID.
         #[qinvokable]
         fn set_folder_sync_rule_enabled(self: Pin<&mut Preferences>, rule_id: &QString, enabled: bool);
@@ -271,6 +320,14 @@ pub mod qobject {
         /// Enables or disables an automation rule by ID.
         #[qinvokable]
         fn set_automation_rule_enabled(self: Pin<&mut Preferences>, rule_id: &QString, enabled: bool);
+        /// A phone's pinned apps (#477) as a JSON list of package names.
+        #[qinvokable]
+        #[cxx_name = "pinnedApps"]
+        fn pinned_apps(self: &Preferences, device_id: &QString) -> QString;
+        /// Pins an app to the top of Apps, or unpins it.
+        #[qinvokable]
+        #[cxx_name = "setAppPinned"]
+        fn set_app_pinned(self: Pin<&mut Preferences>, device_id: &QString, pkg: &QString, on: bool);
         /// Gets custom nickname for a device or empty.
         #[qinvokable]
         fn nickname_of(self: &Preferences, device_id: &QString) -> QString;
@@ -345,6 +402,7 @@ pub struct PreferencesRust {
     backdrop: bool,
     comb_motion: bool,
     close_to_tray: bool,
+    tray_one_colour: bool,
     auto_clipboard: bool,
     clipboard_history: bool,
     suggest_clipboard_actions: bool,
@@ -355,6 +413,9 @@ pub struct PreferencesRust {
     sync_dnd: bool,
     enter_sends: bool,
     right_click_long_press: bool,
+    hide_mirror_toolbar: bool,
+    mirror_toolbar_bottom: bool,
+    mirror_toolbar_left: bool,
     quiet_when_locked: bool,
     hold_when_locked: bool,
     send_to_menu: bool,
@@ -362,8 +423,12 @@ pub struct PreferencesRust {
     auto_update: bool,
     install_updates: bool,
     update_channel: QString,
+    update_channel_shared: bool,
     battery_alerts: bool,
     battery_full_threshold: i32,
+    battery_low_threshold: i32,
+    phone_sound_buffer_ms: i32,
+    pins_revision: i32,
     ui_scale: i32,
     recordings_folder: QString,
     recordings_folder_is_default: bool,
@@ -377,20 +442,26 @@ pub struct PreferencesRust {
     agent_read_only: bool,
     local_api_enabled: bool,
     local_api_port: i32,
+    local_api_private: bool,
     local_api_token_path: QString,
     clipboard_auto_copy_received_files: bool,
     open_shared_files: bool,
     sync_wifi_only: bool,
     sync_passwords: bool,
+    keep_popups_paused: bool,
     usb_debugging: bool,
     notification_history_days: i32,
     mirror_quality: QString,
+    mirror_fps: i32,
     flow_follow_clipboard: bool,
     nectar_island: bool,
     nectar_island_calls: bool,
     nectar_island_transfers: bool,
     nectar_island_media: bool,
     nectar_island_notifications: bool,
+    nectar_island_position: QString,
+    nectar_island_look: QString,
+    nectar_island_pc_media: bool,
     stream_pc_audio_to_phone: bool,
     share_pc_storage: bool,
     forward_pc_notifications_to_phone: bool,
@@ -406,6 +477,10 @@ pub struct PreferencesRust {
     star_prompt_done: bool,
     star_prompt_updated: bool,
     star_prompt_minutes: i32,
+    community_prompt_done: bool,
+    community_prompt_due: bool,
+    community_prompt_count: i32,
+    community_prompt_at: i64,
     folder_sync_rules_json: QString,
     automation_rules_json: QString,
     window_screen: QString,
@@ -436,6 +511,7 @@ impl cxx_qt::Initialize for qobject::Preferences {
         self.as_mut().set_backdrop(settings.backdrop);
         self.as_mut().set_comb_motion(settings.comb_motion);
         self.as_mut().set_close_to_tray(settings.close_to_tray);
+        self.as_mut().set_tray_one_colour(settings.tray_one_colour);
         self.as_mut().set_auto_clipboard(settings.auto_clipboard);
         crate::clipboard::set_auto_send(settings.auto_clipboard);
         self.as_mut().set_clipboard_history(settings.clipboard_history);
@@ -453,6 +529,9 @@ impl cxx_qt::Initialize for qobject::Preferences {
         crate::notifications::set_sync_dnd(settings.sync_dnd);
         self.as_mut().set_enter_sends(settings.enter_sends);
         self.as_mut().set_right_click_long_press(settings.right_click_long_press);
+        self.as_mut().set_hide_mirror_toolbar(settings.hide_mirror_toolbar);
+        self.as_mut().set_mirror_toolbar_bottom(settings.mirror_toolbar_bottom);
+        self.as_mut().set_mirror_toolbar_left(settings.mirror_toolbar_left);
         self.as_mut().set_quiet_when_locked(settings.quiet_when_locked);
         crate::notifications::set_quiet_when_locked(settings.quiet_when_locked);
         self.as_mut().set_hold_when_locked(settings.hold_when_locked);
@@ -466,6 +545,8 @@ impl cxx_qt::Initialize for qobject::Preferences {
         self.as_mut().set_update_channel(QString::from(channel.as_str()));
         self.as_mut().set_battery_alerts(settings.battery_alerts);
         self.as_mut().set_battery_full_threshold(i32::from(settings.battery_full_threshold));
+        self.as_mut().set_battery_low_threshold(i32::from(settings.battery_low_threshold));
+        self.as_mut().set_phone_sound_buffer_ms(i32::from(settings.phone_sound_buffer_ms));
         self.as_mut().set_ui_scale(i32::from(settings.ui_scale));
         let start_effective = crate::startup::effective(settings.start_with_windows);
         self.as_mut().set_start_with_windows(start_effective);
@@ -486,21 +567,27 @@ impl cxx_qt::Initialize for qobject::Preferences {
         self.as_mut().set_agent_read_only(settings.agent_read_only);
         self.as_mut().set_local_api_enabled(settings.local_api_enabled);
         self.as_mut().set_local_api_port(i32::from(settings.local_api_port));
+        self.as_mut().set_local_api_private(settings.local_api_private);
         let token_path = crate::local_api::token_file_path();
         self.as_mut().set_local_api_token_path(QString::from(&token_path.to_string_lossy().into_owned()));
         self.as_mut().set_clipboard_auto_copy_received_files(settings.clipboard_auto_copy_received_files);
         self.as_mut().set_open_shared_files(settings.open_shared_files);
         self.as_mut().set_sync_wifi_only(settings.sync_wifi_only);
         self.as_mut().set_sync_passwords(settings.sync_passwords);
+        self.as_mut().set_keep_popups_paused(settings.keep_popups_paused);
         self.as_mut().set_usb_debugging(settings.usb_debugging);
         self.as_mut().set_notification_history_days(settings.notification_history_days as i32);
         self.as_mut().set_mirror_quality(QString::from(crate::settings::mirror_quality().name()));
+        self.as_mut().set_mirror_fps(crate::settings::sane_mirror_fps(settings.mirror_fps) as i32);
         self.as_mut().set_flow_follow_clipboard(settings.flow_follow_clipboard);
         self.as_mut().set_nectar_island(settings.nectar_island);
         self.as_mut().set_nectar_island_calls(settings.nectar_island_calls);
         self.as_mut().set_nectar_island_transfers(settings.nectar_island_transfers);
         self.as_mut().set_nectar_island_media(settings.nectar_island_media);
         self.as_mut().set_nectar_island_notifications(settings.nectar_island_notifications);
+        self.as_mut().set_nectar_island_position(QString::from(&settings.nectar_island_position));
+        self.as_mut().set_nectar_island_look(QString::from(&settings.nectar_island_look));
+        self.as_mut().set_nectar_island_pc_media(settings.nectar_island_pc_media);
         self.as_mut().set_stream_pc_audio_to_phone(settings.stream_pc_audio_to_phone);
         self.as_mut().set_share_pc_storage(settings.share_pc_storage);
         self.as_mut().set_forward_pc_notifications_to_phone(settings.forward_pc_notifications_to_phone);
@@ -515,6 +602,11 @@ impl cxx_qt::Initialize for qobject::Preferences {
         self.as_mut().set_star_prompt_done(settings.star_prompt_done);
         self.as_mut().set_star_prompt_updated(settings.star_prompt_updated);
         self.as_mut().set_star_prompt_minutes(settings.star_prompt_minutes.min(i32::MAX as u32) as i32);
+        self.as_mut().set_community_prompt_done(settings.community_prompt_done);
+        self.as_mut().set_community_prompt_due(settings.community_prompt_due);
+        self.as_mut().set_community_prompt_count(settings.community_prompt_count.min(100) as i32);
+        self.as_mut()
+            .set_community_prompt_at(i64::try_from(settings.community_prompt_at).unwrap_or(i64::MAX));
         let folder_rules_json =
             serde_json::to_string(&settings.folder_sync_rules).unwrap_or_else(|_| "[]".into());
         self.as_mut().set_folder_sync_rules_json(QString::from(&folder_rules_json));
@@ -545,6 +637,13 @@ impl cxx_qt::Initialize for qobject::Preferences {
         self.as_mut().on_backdrop_changed(|p| p.save()).release();
         self.as_mut().on_comb_motion_changed(|p| p.save()).release();
         self.as_mut().on_close_to_tray_changed(|p| p.save()).release();
+        self.as_mut()
+            .on_tray_one_colour_changed(|p| {
+                #[cfg(windows)]
+                crate::win::tray::set_one_colour(p.tray_one_colour);
+                p.save();
+            })
+            .release();
         self.as_mut()
             .on_auto_clipboard_changed(|p| {
                 crate::clipboard::set_auto_send(p.auto_clipboard);
@@ -601,6 +700,9 @@ impl cxx_qt::Initialize for qobject::Preferences {
             .release();
         self.as_mut().on_enter_sends_changed(|p| p.save()).release();
         self.as_mut().on_right_click_long_press_changed(|p| p.save()).release();
+        self.as_mut().on_hide_mirror_toolbar_changed(|p| p.save()).release();
+        self.as_mut().on_mirror_toolbar_bottom_changed(|p| p.save()).release();
+        self.as_mut().on_mirror_toolbar_left_changed(|p| p.save()).release();
         self.as_mut()
             .on_sync_dnd_changed(|p| {
                 crate::notifications::set_sync_dnd(p.sync_dnd);
@@ -643,6 +745,18 @@ impl cxx_qt::Initialize for qobject::Preferences {
             .on_battery_full_threshold_changed(|p| {
                 let val = p.battery_full_threshold.clamp(50, 100) as u8;
                 crate::settings::set_battery_full_threshold(val);
+                p.save();
+            })
+            .release();
+        self.as_mut()
+            .on_phone_sound_buffer_ms_changed(|p| {
+                crate::settings::set_phone_sound_buffer_ms(p.phone_sound_buffer_ms.clamp(20, 500) as u16);
+                p.save();
+            })
+            .release();
+        self.as_mut()
+            .on_battery_low_threshold_changed(|p| {
+                crate::settings::set_battery_low_threshold(p.battery_low_threshold.clamp(5, 50) as u8);
                 p.save();
             })
             .release();
@@ -757,6 +871,14 @@ impl cxx_qt::Initialize for qobject::Preferences {
             })
             .release();
         self.as_mut()
+            .on_local_api_private_changed(|p| {
+                let settings = p.current_settings();
+                let _ = settings.save(&core_host::host().data_dir);
+                crate::local_api::sync_from_settings();
+                save_in_background(settings);
+            })
+            .release();
+        self.as_mut()
             .on_local_api_port_changed(|mut p| {
                 let token_path = crate::local_api::token_file_path();
                 p.as_mut()
@@ -780,6 +902,12 @@ impl cxx_qt::Initialize for qobject::Preferences {
             })
             .release();
         self.as_mut()
+            .on_mirror_fps_changed(|p| {
+                crate::settings::set_mirror_fps(u32::try_from(p.mirror_fps).unwrap_or(60));
+                p.save();
+            })
+            .release();
+        self.as_mut()
             .on_mirror_quality_changed(|p| {
                 crate::settings::set_mirror_quality(&String::from(p.mirror_quality()));
                 p.save();
@@ -788,6 +916,12 @@ impl cxx_qt::Initialize for qobject::Preferences {
         self.as_mut()
             .on_sync_passwords_changed(|p| {
                 crate::settings::set_sync_passwords(p.sync_passwords);
+                p.save();
+            })
+            .release();
+        self.as_mut()
+            .on_keep_popups_paused_changed(|p| {
+                crate::settings::set_keep_popups_paused(p.keep_popups_paused);
                 p.save();
             })
             .release();
@@ -825,6 +959,9 @@ impl cxx_qt::Initialize for qobject::Preferences {
         self.as_mut().on_nectar_island_transfers_changed(|p| p.save()).release();
         self.as_mut().on_nectar_island_media_changed(|p| p.save()).release();
         self.as_mut().on_nectar_island_notifications_changed(|p| p.save()).release();
+        self.as_mut().on_nectar_island_position_changed(|p| p.save()).release();
+        self.as_mut().on_nectar_island_look_changed(|p| p.save()).release();
+        self.as_mut().on_nectar_island_pc_media_changed(|p| p.save()).release();
         self.as_mut()
             .on_stream_pc_audio_to_phone_changed(|p| {
                 crate::settings::set_stream_pc_audio_to_phone(p.stream_pc_audio_to_phone);
@@ -883,8 +1020,17 @@ impl cxx_qt::Initialize for qobject::Preferences {
         self.as_mut().on_hive_invite_dismissed_changed(|p| p.save()).release();
         self.as_mut().on_star_prompt_done_changed(|p| p.save()).release();
         self.as_mut().on_star_prompt_minutes_changed(|p| p.save()).release();
+        self.as_mut().on_community_prompt_done_changed(|p| p.save()).release();
+        self.as_mut().on_community_prompt_due_changed(|p| p.save()).release();
+        self.as_mut().on_community_prompt_count_changed(|p| p.save()).release();
 
         super::subscribe(self.qt_thread(), crate::state::Changes::PREFS, Self::refresh_runtime_flags);
+        // Asking Windows takes a moment: not on this thread.
+        let qt = self.qt_thread();
+        std::thread::spawn(move || {
+            let shared = crate::updater::task_installs();
+            let _ = qt.queue(move |p| p.set_update_channel_shared(shared));
+        });
     }
 }
 
@@ -1015,6 +1161,18 @@ impl qobject::Preferences {
         }
     }
 
+    pub fn pinned_apps(&self, device_id: &QString) -> QString {
+        let pins = crate::settings::pinned_apps(&String::from(device_id));
+        QString::from(&serde_json::to_string(&pins).unwrap_or_else(|_| "[]".into()))
+    }
+
+    pub fn set_app_pinned(mut self: Pin<&mut Self>, device_id: &QString, pkg: &QString, on: bool) {
+        crate::settings::set_app_pinned(&String::from(device_id), &String::from(pkg), on);
+        let next = self.pins_revision().wrapping_add(1);
+        self.as_mut().set_pins_revision(next);
+        self.save();
+    }
+
     pub fn nickname_of(&self, device_id: &QString) -> QString {
         QString::from(&crate::settings::nickname_for(&String::from(device_id)).unwrap_or_default())
     }
@@ -1104,6 +1262,57 @@ impl qobject::Preferences {
 
     pub fn local_folder(&self, url: &QString) -> QString {
         QString::from(&folder_from_url(url).map(|p| p.to_string_lossy().into_owned()).unwrap_or_default())
+    }
+
+    pub fn update_folder_sync_rule(
+        mut self: Pin<&mut Self>,
+        rule_id: &QString,
+        phone_folder: &QString,
+        pc_folder: &QString,
+        mode: &QString,
+        remove_deleted: bool,
+    ) {
+        let id = String::from(rule_id);
+        let raw_pc = QUrl::from(pc_folder)
+            .to_local_file()
+            .map(|p| String::from(&p))
+            .filter(|s| !s.is_empty())
+            .unwrap_or_else(|| String::from(pc_folder));
+        let pc_trimmed = raw_pc.trim().to_owned();
+        let Some(phone_trimmed) = crate::folder_sync::phone_folder_path(&String::from(phone_folder)) else {
+            return;
+        };
+        if pc_trimmed.is_empty() {
+            return;
+        }
+        let mode = match String::from(mode) {
+            m if m == crate::folder_sync::MODE_PC_TO_PHONE || m == crate::folder_sync::MODE_TWO_WAY => m,
+            _ => crate::folder_sync::MODE_PHONE_TO_PC.to_owned(),
+        };
+        let mut rules = crate::settings::folder_sync_rules();
+        let Some(rule) = rules.iter_mut().find(|r| r.id == id) else { return };
+        // Other folders: what was synced before says nothing about them.
+        if rule.phone_folder != phone_trimmed || rule.pc_folder != pc_trimmed {
+            crate::folder_sync::forget_rule(&id);
+        }
+        rule.phone_folder = phone_trimmed;
+        rule.pc_folder = pc_trimmed;
+        rule.remove_deleted = remove_deleted && mode != crate::folder_sync::MODE_PC_TO_PHONE;
+        rule.mode = mode;
+        let json = serde_json::to_string(&rules).unwrap_or_else(|_| "[]".into());
+        crate::settings::set_folder_sync_rules(rules);
+        self.as_mut().set_folder_sync_rules_json(QString::from(&json));
+        self.save();
+    }
+
+    pub fn pc_folder_keeping_name(&self, base: &QString, phone_folder: &QString) -> QString {
+        let base = folder_from_url(base)
+            .map(|p| p.to_string_lossy().into_owned())
+            .unwrap_or_else(|| String::from(base));
+        QString::from(
+            &crate::folder_sync::pc_folder_keeping_name(&base, &String::from(phone_folder))
+                .unwrap_or_default(),
+        )
     }
 
     pub fn remove_folder_sync_rule(mut self: Pin<&mut Self>, rule_id: &QString) {
@@ -1198,6 +1407,7 @@ impl qobject::Preferences {
             backdrop: p.backdrop,
             comb_motion: p.comb_motion,
             close_to_tray: p.close_to_tray,
+            tray_one_colour: p.tray_one_colour,
             auto_clipboard: p.auto_clipboard,
             clipboard_history: p.clipboard_history,
             suggest_clipboard_actions: p.suggest_clipboard_actions,
@@ -1208,6 +1418,9 @@ impl qobject::Preferences {
             sync_dnd: p.sync_dnd,
             enter_sends: p.enter_sends,
             right_click_long_press: p.right_click_long_press,
+            hide_mirror_toolbar: p.hide_mirror_toolbar,
+            mirror_toolbar_bottom: p.mirror_toolbar_bottom,
+            mirror_toolbar_left: p.mirror_toolbar_left,
             quiet_when_locked: p.quiet_when_locked,
             hold_when_locked: p.hold_when_locked,
             send_to_menu: p.send_to_menu,
@@ -1216,9 +1429,12 @@ impl qobject::Preferences {
             update_channel: String::from(&p.update_channel),
             battery_alerts: p.battery_alerts,
             battery_full_threshold: p.battery_full_threshold.clamp(50, 100) as u8,
+            battery_low_threshold: p.battery_low_threshold.clamp(5, 50) as u8,
+            phone_sound_buffer_ms: p.phone_sound_buffer_ms.clamp(20, 500) as u16,
             ui_scale: u16::try_from(p.ui_scale).unwrap_or(100),
             keep_screen_off: crate::settings::keep_screen_off_phones(),
             device_nicknames: crate::settings::device_nicknames(),
+            pinned_apps: crate::settings::pinned_apps_all(),
             start_with_windows: p.start_choice,
             recordings_folder: p.custom_recordings_folder.clone(),
             recordings_format: RecordingFormat::from_str_lossy(&String::from(&p.recordings_format)),
@@ -1242,13 +1458,17 @@ impl qobject::Preferences {
                 .ok()
                 .filter(|&port| port > 0)
                 .unwrap_or(crate::settings::DEFAULT_LOCAL_API_PORT),
+            local_api_private: p.local_api_private,
             clipboard_auto_copy_received_files: p.clipboard_auto_copy_received_files,
             open_shared_files: p.open_shared_files,
             sync_wifi_only: p.sync_wifi_only,
             sync_passwords: p.sync_passwords,
+            keep_popups_paused: p.keep_popups_paused,
+            popups_paused: p.keep_popups_paused && crate::notifications::paused(),
             usb_debugging: p.usb_debugging,
             notification_history_days: u32::try_from(p.notification_history_days).unwrap_or(1),
             mirror_quality: String::from(&p.mirror_quality),
+            mirror_fps: crate::settings::sane_mirror_fps(u32::try_from(p.mirror_fps).unwrap_or(60)),
             flow_follow_clipboard: p.flow_follow_clipboard,
             folder_sync_rules: crate::settings::folder_sync_rules(),
             nectar_island: p.nectar_island,
@@ -1256,6 +1476,13 @@ impl qobject::Preferences {
             nectar_island_transfers: p.nectar_island_transfers,
             nectar_island_media: p.nectar_island_media,
             nectar_island_notifications: p.nectar_island_notifications,
+            nectar_island_position: match String::from(&p.nectar_island_position).as_str() {
+                side @ ("left" | "right") => side.to_owned(),
+                _ => "center".to_owned(),
+            },
+            nectar_island_look: if String::from(&p.nectar_island_look) == "theme" { "theme" } else { "dark" }
+                .to_owned(),
+            nectar_island_pc_media: p.nectar_island_pc_media,
             automation_rules: crate::settings::automation_rules(),
             stream_pc_audio_to_phone: p.stream_pc_audio_to_phone,
             share_pc_storage: p.share_pc_storage,
@@ -1271,6 +1498,10 @@ impl qobject::Preferences {
             star_prompt_done: p.star_prompt_done,
             star_prompt_updated: p.star_prompt_updated,
             star_prompt_minutes: p.star_prompt_minutes.max(0) as u32,
+            community_prompt_done: p.community_prompt_done,
+            community_prompt_due: p.community_prompt_due,
+            community_prompt_count: p.community_prompt_count.max(0) as u32,
+            community_prompt_at: u64::try_from(p.community_prompt_at).unwrap_or(0),
             obs_port: crate::settings::obs_settings().0,
             obs_password: crate::settings::obs_settings().1,
             window_screen: win_screen,

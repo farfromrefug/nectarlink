@@ -68,6 +68,14 @@ pub mod qobject {
         #[qinvokable]
         #[cxx_name = "addAppShortcut"]
         fn add_app_shortcut(self: &Mirror, device: &QString, pkg: &QString, label: &QString) -> bool;
+        /// Whether that app has a shortcut NectarLink made, still there.
+        #[qinvokable]
+        #[cxx_name = "hasAppShortcut"]
+        fn has_app_shortcut(self: &Mirror, device: &QString, pkg: &QString) -> bool;
+        /// Takes that shortcut away again (#370). Says how it went.
+        #[qinvokable]
+        #[cxx_name = "removeAppShortcut"]
+        fn remove_app_shortcut(self: &Mirror, device: &QString, pkg: &QString, label: &QString) -> bool;
         /// Uninstalls a phone app (D349); the result shows as a message.
         #[qinvokable]
         #[cxx_name = "uninstallApp"]
@@ -76,6 +84,10 @@ pub mod qobject {
         #[qinvokable]
         #[cxx_name = "appShortcutsSupported"]
         fn app_shortcuts_supported(self: &Mirror) -> bool;
+        /// How the taskbar starts an app window again once it's pinned, as
+        /// JSON (`command`, `icon`), or "" for a window that has none (#465).
+        #[qinvokable]
+        fn relaunch(self: &Mirror, device: &QString, pkg: &QString) -> QString;
         /// Reopens an ended window (the screen or an app window).
         #[qinvokable]
         fn reopen(self: &Mirror, key: &QString);
@@ -136,6 +148,10 @@ pub mod qobject {
         #[qinvokable]
         #[cxx_name = "setFlexible"]
         fn set_flexible(self: &Mirror, key: &QString, on: bool);
+        /// Swaps light and dark in a window's picture, kept for its app.
+        #[qinvokable]
+        #[cxx_name = "setDark"]
+        fn set_dark(self: &Mirror, key: &QString, on: bool);
         /// Starts or stops MP4 video recording for a mirror window.
         #[qinvokable]
         #[cxx_name = "toggleRecording"]
@@ -148,6 +164,9 @@ pub mod qobject {
         #[qinvokable]
         #[cxx_name = "setScreenOff"]
         fn set_screen_off(self: &Mirror, key: &QString, on: bool);
+        /// Turns the mirrored phone to landscape or back to portrait.
+        #[qinvokable]
+        fn rotate(self: &Mirror, key: &QString, landscape: bool);
         /// Keeps `device`'s screen off from the start of each mirroring or app window.
         #[qinvokable]
         #[cxx_name = "setKeepScreenOff"]
@@ -288,6 +307,7 @@ impl qobject::Mirror {
                     // Stay awake and screen off: only where the phone's power matters to this window.
                     "powerButtons": power_buttons,
                     "flexible": mirror::flexible(&window),
+                    "dark": mirror::dark(&window),
                     "zoom": mirror::zoom(&window),
                     "notice": mirror::last_notice(&window),
                     "savedX": geom.map(|g| g.x),
@@ -381,6 +401,31 @@ impl qobject::Mirror {
         }
     }
 
+    pub fn has_app_shortcut(&self, device: &QString, pkg: &QString) -> bool {
+        super::parse_device(device)
+            .is_some_and(|device| !crate::app_shortcuts::existing(device, &String::from(pkg)).is_empty())
+    }
+
+    pub fn remove_app_shortcut(&self, device: &QString, pkg: &QString, label: &QString) -> bool {
+        let Some(device) = super::parse_device(device) else { return false };
+        let label = String::from(label);
+        match crate::app_shortcuts::remove(device, &String::from(pkg)) {
+            Ok(_) => {
+                crate::bridge::app::show_message(if cfg!(windows) {
+                    tr!("Apps", "Removed %1 from your desktop.", label)
+                } else {
+                    tr!("Apps", "Removed %1 from your app menu.", label)
+                });
+                true
+            }
+            Err(error) => {
+                tracing::warn!(%error, "couldn't remove a phone app's shortcut");
+                crate::bridge::app::show_message(tr!("Apps", "Couldn't remove the shortcut for %1.", label));
+                false
+            }
+        }
+    }
+
     pub fn uninstall_app(&self, device: &QString, pkg: &QString, label: &QString) {
         let (Some(device), Some(node)) = (super::parse_device(device), crate::core_host::node()) else {
             return;
@@ -402,6 +447,19 @@ impl qobject::Mirror {
 
     pub fn app_shortcuts_supported(&self) -> bool {
         crate::app_shortcuts::supported()
+    }
+
+    pub fn relaunch(&self, device: &QString, pkg: &QString) -> QString {
+        #[cfg(windows)]
+        if let Some(device) = super::parse_device(device)
+            && let Some((command, icon)) =
+                crate::app_shortcuts::relaunch(&crate::core_host::host().data_dir, device, &String::from(pkg))
+        {
+            return QString::from(&serde_json::json!({ "command": command, "icon": icon }).to_string());
+        }
+        #[cfg(not(windows))]
+        let _ = (device, pkg);
+        QString::default()
     }
 
     pub fn start_app(&self, device: &QString, pkg: &QString, label: &QString) {
@@ -525,6 +583,12 @@ impl qobject::Mirror {
         }
     }
 
+    pub fn set_dark(&self, key: &QString, on: bool) {
+        if let Some(window) = Window::parse(&String::from(key)) {
+            mirror::set_dark(window, on);
+        }
+    }
+
     pub fn screenshot_file(&self, key: &QString) {
         if let Some(window) = Window::parse(&String::from(key)) {
             mirror::screenshot_file(window);
@@ -546,6 +610,12 @@ impl qobject::Mirror {
     pub fn set_screen_off(&self, key: &QString, on: bool) {
         if let Some(window) = Window::parse(&String::from(key)) {
             mirror::set_screen_off(window, on);
+        }
+    }
+
+    pub fn rotate(&self, key: &QString, landscape: bool) {
+        if let Some(window) = Window::parse(&String::from(key)) {
+            mirror::rotate(window, landscape);
         }
     }
 

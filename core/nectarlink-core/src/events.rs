@@ -64,6 +64,9 @@ pub enum PairingFailure {
     Expired,
     /// The other device couldn't be reached.
     Unreachable,
+    /// The other device was reached but isn't showing its pairing screen,
+    /// so it refused (nobody can start pairing with it uninvited, #514).
+    NotPairing,
     /// Anything else; the string is for logs.
     Other(String),
 }
@@ -175,6 +178,18 @@ pub enum NodeEvent {
     /// A phone's contacts changed.
     ContactsChanged {
         device: DeviceId,
+    },
+    /// A paired device making a problem report asks for this device's
+    /// recent activity log: ask the user, then `Node::diag_log_answer`.
+    DiagLogAsked {
+        device: DeviceId,
+    },
+    /// The log asked for with `Node::diag_ask`: `None` when its user said
+    /// no. Lines are already private (docs/guide/privacy-and-security.md).
+    DiagLog {
+        device: DeviceId,
+        nonce: u64,
+        lines: Option<Vec<String>>,
     },
     /// A phone's screen started or stopped showing here.
     Mirroring {

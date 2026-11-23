@@ -45,6 +45,9 @@ pub enum Quality {
     Balanced,
     Sharper,
     Smoother,
+    /// Balanced, stepped down (1, 2) while this PC can't keep up and back up
+    /// once it does (#464, #523).
+    Adaptive(u8),
 }
 
 impl Quality {
@@ -52,6 +55,7 @@ impl Quality {
         match name {
             "sharper" => Quality::Sharper,
             "smoother" => Quality::Smoother,
+            "adaptive" => Quality::Adaptive(0),
             _ => Quality::Balanced,
         }
     }
@@ -61,6 +65,15 @@ impl Quality {
             Quality::Balanced => "balanced",
             Quality::Sharper => "sharper",
             Quality::Smoother => "smoother",
+            Quality::Adaptive(_) => "adaptive",
+        }
+    }
+
+    /// The quality to ask `device` for now: Adaptive at the step it's on.
+    fn for_device(self, device: &DeviceId) -> Quality {
+        match self {
+            Quality::Adaptive(_) => Quality::Adaptive(adaptive::level(device)),
+            other => other,
         }
     }
 }
@@ -70,7 +83,10 @@ impl Quality {
 fn screen_options(quality: Quality, on_relay: bool) -> MirrorStart {
     match (quality, on_relay) {
         (Quality::Sharper, false) => MirrorStart { max_size: 4096, bitrate: 20_000_000, ..OPTIONS },
-        (Quality::Smoother, false) => MirrorStart { max_size: 1280, bitrate: 4_000_000, ..OPTIONS },
+        (Quality::Smoother | Quality::Adaptive(1), false) => {
+            MirrorStart { max_size: 1280, bitrate: 4_000_000, ..OPTIONS }
+        }
+        (Quality::Adaptive(2..), false) => MirrorStart { max_size: 960, bitrate: 2_000_000, ..OPTIONS },
         _ => OPTIONS,
     }
 }
@@ -79,6 +95,13 @@ fn app_options(quality: Quality, on_relay: bool) -> MirrorStart {
     let options = screen_options(quality, on_relay);
     // App displays are limited to 1920 pixels by Android's app-window path.
     MirrorStart { max_size: options.max_size.min(OPTIONS.max_size), ..options }
+}
+
+/// The frame rate chosen in Settings (#442). Over the relay it stays at
+/// most 60: more frames there only queue up behind each other.
+fn with_frame_rate(options: MirrorStart, on_relay: bool) -> MirrorStart {
+    let fps = crate::settings::mirror_fps();
+    MirrorStart { fps: if on_relay { fps.min(OPTIONS.fps) } else { fps }, ..options }
 }
 
 fn on_relay(device: &DeviceId) -> bool {
@@ -121,6 +144,7 @@ const OPTIONS: MirrorStart = MirrorStart {
     screen_off: false,
     watch: None,
     sound_only: false,
+    display: None,
 };
 /// A short burst, rather than seconds of old frames behind the user's input.
 const BACKLOG: usize = 8;
@@ -220,6 +244,10 @@ struct SavedWindows {
     /// (Ctrl + mouse wheel); missing is 100.
     #[serde(default)]
     zoom: HashMap<String, u32>,
+    /// `<device>/<pkg>` (or `<device>/#screen`) shown with light and dark
+    /// swapped, for apps with no dark mode of their own.
+    #[serde(default)]
+    dark: HashSet<String>,
 }
 
 impl SavedWindows {
@@ -443,6 +471,26 @@ pub fn set_screen_off(window: Window, on: bool) {
     });
 }
 
+/// Turns the mirrored phone's screen to landscape or portrait (#473). The
+/// phone does it with Elevated and puts its own rotation back afterwards.
+pub fn rotate(window: Window, landscape: bool) {
+    set_notice(
+        window,
+        if landscape {
+            crate::i18n::tr!("Mirror", "Turning the phone to landscape")
+        } else {
+            crate::i18n::tr!("Mirror", "Turning the phone to portrait")
+        },
+    );
+    core_host::host().hub.changed(Changes::MIRROR);
+    let Some(node) = core_host::node() else { return };
+    core_host::spawn(async move {
+        if let Err(e) = node.mirror_rotate(window.device, landscape).await {
+            tracing::debug!(error = %e, "mirror.rotate didn't reach the phone");
+        }
+    });
+}
+
 /// Saves whether `device`'s screen stays off from the start of each mirroring
 /// or app window. The toolbar button and Settings > Devices both set this.
 pub fn remember_screen_off(device: DeviceId, on: bool) {
@@ -581,7 +629,7 @@ pub fn screenshot_file(window: Window) {
     let dir = core_host::downloads_dir();
     if let Err(e) = std::fs::create_dir_all(&dir) {
         let subdir = if cfg!(windows) { "Downloads\\Nectarlink" } else { "Downloads/Nectarlink" };
-        tracing::warn!(error = %e, "can't create {subdir}");
+        tracing::warn!(error = %e, path = %subdir, "can't create the folder");
         set_notice(window, "Couldn't save screenshot");
         show_message(tr!("Mirror", "The screenshot couldn't be saved."));
         return;
@@ -675,7 +723,7 @@ pub fn toggle_recording(window: Window) {
     let dir = core_host::downloads_dir();
     if let Err(e) = std::fs::create_dir_all(&dir) {
         let subdir = if cfg!(windows) { "Downloads\\Nectarlink" } else { "Downloads/Nectarlink" };
-        tracing::warn!(error = %e, "can't create {subdir}");
+        tracing::warn!(error = %e, path = %subdir, "can't create the folder");
         set_notice(window, "Couldn't start recording");
         show_message(tr!("Mirror", "Couldn't start recording."));
         return;
@@ -713,7 +761,8 @@ pub fn toggle_recording(window: Window) {
         show_message(tr!("Mirror", "Couldn't start recording."));
         return;
     }
-    let mut recorder = MirrorRecorder::new(path, width, height, OPTIONS.fps, audio_cfg);
+    let fps = with_frame_rate(OPTIONS, on_relay(&window.device)).fps;
+    let mut recorder = MirrorRecorder::new(path, width, height, fps, audio_cfg);
     recorder.set_codec(codec);
     if let Some(sps_pps) =
         LAST_SPS_PPS.lock().unwrap_or_else(|e| e.into_inner()).as_ref().and_then(|m| m.get(&window))
@@ -869,6 +918,37 @@ pub fn flexible(window: &Window) -> bool {
             let pkg = s.windows.get(window).and_then(|w| w.pkg.clone());
             pkg.is_none_or(|pkg| !s.saved.fixed.contains(&format!("{}/{pkg}", window.device)))
         })
+}
+
+/// What a window's saved choices are kept under: its app, or the screen.
+fn saved_key(s: &State, window: &Window) -> Option<String> {
+    if window.session == MIRROR_SCREEN {
+        return Some(format!("{}/{SCREEN_GEOMETRY}", window.device));
+    }
+    let pkg = s.windows.get(window).and_then(|w| w.pkg.as_deref())?;
+    Some(format!("{}/{pkg}", window.device))
+}
+
+/// Whether a window shows its picture with light and dark swapped.
+pub fn dark(window: &Window) -> bool {
+    state(|s| saved_key(s, window).is_some_and(|key| s.saved.dark.contains(&key)))
+}
+
+/// Swaps light and dark in a window's picture, or stops, for its app (or
+/// the phone's screen) from now on. For apps with no dark mode, like a map
+/// that stays white.
+pub fn set_dark(window: Window, on: bool) {
+    let changed = state(|s| {
+        let Some(key) = saved_key(s, &window) else { return false };
+        let changed = if on { s.saved.dark.insert(key) } else { s.saved.dark.remove(&key) };
+        if changed {
+            s.saved.save();
+        }
+        changed
+    });
+    if changed {
+        core_host::host().hub.changed(Changes::MIRROR);
+    }
 }
 
 /// Turns an app window's flexible display on or off, for its app. Off, the
@@ -1095,7 +1175,9 @@ pub fn start(device: DeviceId) {
         s.windows.insert(window, Shown { phase: Phase::Asking, app: None, pkg: None, restarting: false });
         power(s, &device)
     });
-    let options = screen_options(crate::settings::mirror_quality(), on_relay(&device));
+    let relayed = on_relay(&device);
+    let quality = crate::settings::mirror_quality().for_device(&device);
+    let options = with_frame_rate(screen_options(quality, relayed), relayed);
     set_unproven(device, options.max_size != OPTIONS.max_size);
     request(window, MirrorStart { stay_awake, screen_off, ..options });
 }
@@ -1197,7 +1279,9 @@ pub fn start_app(device: DeviceId, pkg: String, label: String) {
     });
     let Some(window) = window else { return };
     let (stay_awake, screen_off) = app_power(&window);
-    let options = app_options(crate::settings::mirror_quality(), on_relay(&device));
+    let relayed = on_relay(&device);
+    let quality = crate::settings::mirror_quality().for_device(&device);
+    let options = with_frame_rate(app_options(quality, relayed), relayed);
     ffi::video_clear(&window.key());
     request(
         window,
@@ -1228,7 +1312,9 @@ pub fn reopen(window: Window) {
     });
     let Some(pkg) = pkg else { return };
     let (stay_awake, screen_off) = app_power(&window);
-    let options = app_options(crate::settings::mirror_quality(), on_relay(&window.device));
+    let relayed = on_relay(&window.device);
+    let quality = crate::settings::mirror_quality().for_device(&window.device);
+    let options = with_frame_rate(app_options(quality, relayed), relayed);
     ffi::video_clear(&window.key());
     request(
         window,
@@ -1396,10 +1482,46 @@ mod quality_tests {
     }
 
     #[test]
+    fn adaptive_steps_down_when_behind_and_back_up_slowly() {
+        use adaptive::{Verdict, judge, next_level};
+        let ms = Duration::from_millis;
+        let s = Duration::from_secs;
+        // #464's log: decode 14-38 ms, most frames skipped.
+        assert_eq!(judge(40, 472, ms(40 * 45)), Verdict::Behind);
+        assert_eq!(judge(0, 12, Duration::ZERO), Verdict::Behind);
+        assert_eq!(judge(240, 2, ms(240 * 5)), Verdict::Easy);
+        assert_eq!(judge(240, 30, ms(240 * 5)), Verdict::Fine);
+        assert_eq!(judge(240, 0, ms(240 * 12)), Verdict::Fine);
+        // A static screen sends little and drops nothing: not behind.
+        assert_eq!(judge(3, 0, ms(3 * 5)), Verdict::Easy);
+
+        assert_eq!(next_level(0, Verdict::Behind, s(0), s(0)), Some(1));
+        assert_eq!(next_level(1, Verdict::Behind, s(0), s(5)), Some(2));
+        assert_eq!(next_level(2, Verdict::Behind, s(0), s(5)), None, "the lowest step stays");
+        assert_eq!(next_level(1, Verdict::Easy, s(30), s(200)), None, "not easy for long enough");
+        assert_eq!(next_level(1, Verdict::Easy, s(120), s(30)), None, "changed too recently");
+        assert_eq!(next_level(1, Verdict::Easy, s(120), s(120)), Some(0));
+        assert_eq!(next_level(0, Verdict::Easy, s(500), s(500)), None);
+        assert_eq!(next_level(1, Verdict::Fine, s(0), s(500)), None);
+
+        let step = |q| screen_options(q, false);
+        assert_eq!(step(Quality::Adaptive(0)).max_size, 1920);
+        assert_eq!(
+            (step(Quality::Adaptive(1)).max_size, step(Quality::Adaptive(1)).bitrate),
+            (1280, 4_000_000)
+        );
+        assert_eq!(
+            (step(Quality::Adaptive(2)).max_size, step(Quality::Adaptive(2)).bitrate),
+            (960, 2_000_000)
+        );
+        assert_eq!(screen_options(Quality::Adaptive(2), true).max_size, 1920, "the relay stays Balanced");
+    }
+
+    #[test]
     fn a_settings_file_without_a_quality_or_with_an_unknown_one_is_balanced() {
         assert_eq!(Quality::parse(""), Quality::Balanced);
         assert_eq!(Quality::parse("ultra"), Quality::Balanced);
-        for quality in [Quality::Balanced, Quality::Sharper, Quality::Smoother] {
+        for quality in [Quality::Balanced, Quality::Sharper, Quality::Smoother, Quality::Adaptive(0)] {
             assert_eq!(Quality::parse(quality.name()), quality);
         }
     }
@@ -1414,6 +1536,18 @@ mod quality_tests {
         }
         assert!(screen_options(Quality::Sharper, false).max_size > OPTIONS.max_size);
         assert!(screen_options(Quality::Smoother, false).bitrate < OPTIONS.bitrate);
+    }
+
+    #[test]
+    fn the_frame_rate_follows_settings_but_not_past_60_over_the_relay() {
+        crate::settings::set_mirror_fps(120);
+        assert_eq!(with_frame_rate(OPTIONS, false).fps, 120);
+        assert_eq!(with_frame_rate(OPTIONS, true).fps, 60);
+        crate::settings::set_mirror_fps(30);
+        assert_eq!(with_frame_rate(OPTIONS, true).fps, 30);
+        crate::settings::set_mirror_fps(45);
+        assert_eq!(crate::settings::mirror_fps(), 60, "only 30, 60, 90 or 120");
+        assert!(with_frame_rate(app_options(Quality::Smoother, false), false).is_valid());
     }
 
     #[test]
@@ -1518,7 +1652,8 @@ pub fn on_event(event: &NodeEvent) {
                 let (stay_awake, screen_off) = state(|s| power(s, device));
                 set_phase(window, Phase::Asking);
                 set_notice(window, "This phone can't mirror at that quality, so it's using Balanced");
-                request(window, MirrorStart { stay_awake, screen_off, ..OPTIONS });
+                let relayed = on_relay(device);
+                request(window, MirrorStart { stay_awake, screen_off, ..with_frame_rate(OPTIONS, relayed) });
                 return;
             }
             if phase(&window).is_some() {
@@ -2615,7 +2750,7 @@ fn decode(window: Window, items: &Receiver<Item>, waiting: &AtomicUsize) {
                 }
                 if !accept {
                     keyframe_please();
-                    stats.skipped();
+                    stats.skipped(window);
                     continue;
                 }
                 let started = Instant::now();
@@ -2650,9 +2785,9 @@ fn decode(window: Window, items: &Receiver<Item>, waiting: &AtomicUsize) {
                         ffi::video_frame(&stream, w, h, &scaled);
                         save_latest_frame(window, w, h, scaled);
                     }
-                    stats.shown(decoded, converted.elapsed());
+                    stats.shown(window, decoded, converted.elapsed());
                 } else {
-                    stats.skipped();
+                    stats.skipped(window);
                 }
             }
             Item::Ended => break,
@@ -2719,6 +2854,8 @@ struct Stats {
     decode: Duration,
     convert: Duration,
     queue_max: Duration,
+    /// The same, over a shorter stretch, for Adaptive quality.
+    adapt: adaptive::Window,
 }
 
 impl Stats {
@@ -2730,23 +2867,34 @@ impl Stats {
             decode: Duration::ZERO,
             convert: Duration::ZERO,
             queue_max: Duration::ZERO,
+            adapt: adaptive::Window::new(),
         }
+    }
+
+    /// Feeds Adaptive quality, and logs now and then.
+    fn tick(&mut self, window: Window) {
+        if let Some(verdict) = self.adapt.verdict() {
+            adaptive::report(window, verdict);
+        }
+        self.maybe_log();
     }
 
     fn queue_age(&mut self, age: Duration) {
         self.queue_max = self.queue_max.max(age);
     }
 
-    fn shown(&mut self, decode: Duration, convert: Duration) {
+    fn shown(&mut self, window: Window, decode: Duration, convert: Duration) {
         self.shown += 1;
         self.decode += decode;
         self.convert += convert;
-        self.maybe_log();
+        self.adapt.shown(decode + convert);
+        self.tick(window);
     }
 
-    fn skipped(&mut self) {
+    fn skipped(&mut self, window: Window) {
         self.skipped += 1;
-        self.maybe_log();
+        self.adapt.skipped();
+        self.tick(window);
     }
 
     fn maybe_log(&mut self) {
@@ -2759,7 +2907,7 @@ impl Stats {
             if self.skipped > 0 {
                 tracing::warn!(skipped = self.skipped, "mirroring: no picture shown");
             }
-            *self = Stats::new();
+            self.restart_log();
             return;
         }
         tracing::info!(
@@ -2770,7 +2918,159 @@ impl Stats {
             queue_max_ms = self.queue_max.as_millis(),
             "mirroring"
         );
-        *self = Stats::new();
+        self.restart_log();
+    }
+
+    /// Starts the next logging stretch; Adaptive's runs on its own.
+    fn restart_log(&mut self) {
+        let adapt = std::mem::replace(&mut self.adapt, adaptive::Window::new());
+        *self = Stats { adapt, ..Stats::new() };
+    }
+}
+
+/// Adaptive quality (#464, #523): the phone is asked for a smaller picture
+/// while this PC drops most of what arrives, and the full one again once it
+/// has kept up for a while. Each change restarts the stream (a second or two),
+/// so it moves slowly.
+mod adaptive {
+    use std::collections::HashMap;
+    use std::sync::Mutex;
+    use std::time::{Duration, Instant};
+
+    use nectarlink_core::DeviceId;
+
+    use super::{MIRROR_SCREEN, Quality};
+    use crate::i18n::tr;
+
+    /// How long each verdict covers.
+    const STRETCH: Duration = Duration::from_secs(4);
+    /// Kept up this long (and this long since the last change) before stepping back up.
+    const UP_AFTER: Duration = Duration::from_secs(90);
+    /// The lowest step: 960 pixels at 2 Mbit/s.
+    const LOWEST: u8 = 2;
+
+    #[derive(Debug, Clone, Copy, PartialEq, Eq)]
+    pub enum Verdict {
+        /// More than half of what arrived wasn't shown.
+        Behind,
+        /// Almost everything shown, with time to spare.
+        Easy,
+        Fine,
+    }
+
+    /// One stretch of shown and dropped pictures.
+    pub struct Window {
+        since: Instant,
+        shown: u32,
+        skipped: u32,
+        busy: Duration,
+    }
+
+    impl Window {
+        pub fn new() -> Window {
+            Window { since: Instant::now(), shown: 0, skipped: 0, busy: Duration::ZERO }
+        }
+
+        pub fn shown(&mut self, busy: Duration) {
+            self.shown += 1;
+            self.busy += busy;
+        }
+
+        pub fn skipped(&mut self) {
+            self.skipped += 1;
+        }
+
+        /// A verdict once the stretch is over (and starts the next one).
+        pub fn verdict(&mut self) -> Option<Verdict> {
+            if self.since.elapsed() < STRETCH {
+                return None;
+            }
+            let verdict = judge(self.shown, self.skipped, self.busy);
+            *self = Window::new();
+            Some(verdict)
+        }
+    }
+
+    /// Behind when most pictures were dropped; easy when nearly none were and
+    /// each took under 8 ms (half of a 60 fps frame).
+    pub fn judge(shown: u32, skipped: u32, busy: Duration) -> Verdict {
+        if skipped > 0 && skipped >= shown {
+            return Verdict::Behind;
+        }
+        let per_frame = if shown > 0 { busy / shown } else { Duration::ZERO };
+        if skipped * 20 <= shown && per_frame < Duration::from_millis(8) {
+            Verdict::Easy
+        } else {
+            Verdict::Fine
+        }
+    }
+
+    struct Device {
+        level: u8,
+        changed: Instant,
+        easy_since: Option<Instant>,
+    }
+
+    static DEVICES: Mutex<Option<HashMap<DeviceId, Device>>> = Mutex::new(None);
+
+    /// The step `device` is on (0 = Balanced).
+    pub fn level(device: &DeviceId) -> u8 {
+        DEVICES
+            .lock()
+            .unwrap_or_else(|e| e.into_inner())
+            .as_ref()
+            .and_then(|m| m.get(device))
+            .map_or(0, |d| d.level)
+    }
+
+    /// What a verdict means for a device on `level`: a new level, or none.
+    pub fn next_level(level: u8, verdict: Verdict, easy_for: Duration, since_change: Duration) -> Option<u8> {
+        match verdict {
+            Verdict::Behind if level < LOWEST => Some(level + 1),
+            Verdict::Easy if level > 0 && easy_for >= UP_AFTER && since_change >= UP_AFTER => Some(level - 1),
+            _ => None,
+        }
+    }
+
+    /// Takes a verdict on the phone's screen; restarts it at another step
+    /// when the verdict calls for one.
+    pub fn report(window: super::Window, verdict: Verdict) {
+        if window.session != MIRROR_SCREEN
+            || !matches!(crate::settings::mirror_quality(), Quality::Adaptive(_))
+            || super::on_relay(&window.device)
+        {
+            return;
+        }
+        let now = Instant::now();
+        let change = {
+            let mut devices = DEVICES.lock().unwrap_or_else(|e| e.into_inner());
+            let device = devices.get_or_insert_with(HashMap::new).entry(window.device).or_insert(Device {
+                level: 0,
+                changed: now,
+                easy_since: None,
+            });
+            device.easy_since = match verdict {
+                Verdict::Easy => Some(device.easy_since.unwrap_or(now)),
+                _ => None,
+            };
+            let easy_for = device.easy_since.map_or(Duration::ZERO, |at| now - at);
+            let next = next_level(device.level, verdict, easy_for, now - device.changed);
+            if let Some(level) = next {
+                device.level = level;
+                device.changed = now;
+                device.easy_since = None;
+            }
+            next.map(|level| (level, verdict))
+        };
+        let Some((level, verdict)) = change else { return };
+        tracing::info!(level, ?verdict, "mirroring: adaptive quality changes step");
+        let text = if verdict == Verdict::Behind {
+            tr!("Mirror", "Lowering the picture so this PC keeps up")
+        } else {
+            tr!("Mirror", "This PC keeps up again: sharper picture")
+        };
+        super::set_notice(window, text);
+        super::restart(window);
     }
 }
 

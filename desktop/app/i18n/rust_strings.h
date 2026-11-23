@@ -6,11 +6,6 @@
 static const char *const nectarlink_rust_strings[] = {
     QT_TRANSLATE_NOOP("Agents", "%1 is asking"), // desktop/app/src/agents.rs
     QT_TRANSLATE_NOOP("Agents", "%1. Open NectarLink to allow or deny it."), // desktop/app/src/agents.rs
-    QT_TRANSLATE_NOOP("Agents", "Claude Code isn't installed on this PC."), // desktop/app/src/agents.rs
-    QT_TRANSLATE_NOOP("Agents", "Its settings file has comments or something NectarLink can't safely change. Paste the lines below into it instead."), // desktop/app/src/agents.rs
-    QT_TRANSLATE_NOOP("Agents", "The app doesn't seem to be installed on this PC."), // desktop/app/src/agents.rs
-    QT_TRANSLATE_NOOP("Agents", "This app has to be set up by hand."), // desktop/app/src/agents.rs
-    QT_TRANSLATE_NOOP("Agents", "Your user folders couldn't be found."), // desktop/app/src/agents.rs
     QT_TRANSLATE_NOOP("App", "Already on clipboard."), // desktop/app/src/bridge/app.rs
     QT_TRANSLATE_NOOP("App", "Command palette"), // desktop/app/src/bridge/app.rs
     QT_TRANSLATE_NOOP("App", "Copied to clipboard."), // desktop/app/src/bridge/app.rs
@@ -49,7 +44,10 @@ static const char *const nectarlink_rust_strings[] = {
     QT_TRANSLATE_NOOP("Apps", "Added %1 to your app menu."), // desktop/app/src/bridge/mirror.rs
     QT_TRANSLATE_NOOP("Apps", "Added %1 to your desktop."), // desktop/app/src/bridge/mirror.rs
     QT_TRANSLATE_NOOP("Apps", "Couldn't add a shortcut for %1."), // desktop/app/src/bridge/mirror.rs
+    QT_TRANSLATE_NOOP("Apps", "Couldn't remove the shortcut for %1."), // desktop/app/src/bridge/mirror.rs
     QT_TRANSLATE_NOOP("Apps", "Couldn't uninstall %1."), // desktop/app/src/bridge/mirror.rs
+    QT_TRANSLATE_NOOP("Apps", "Removed %1 from your app menu."), // desktop/app/src/bridge/mirror.rs
+    QT_TRANSLATE_NOOP("Apps", "Removed %1 from your desktop."), // desktop/app/src/bridge/mirror.rs
     QT_TRANSLATE_NOOP("Apps", "Uninstalled %1."), // desktop/app/src/bridge/mirror.rs
     QT_TRANSLATE_NOOP("Automations", "Triggered by %1"), // desktop/app/src/automations.rs
     QT_TRANSLATE_NOOP("Battery", "%1 has reached %2% charge"), // desktop/app/src/battery.rs
@@ -284,9 +282,11 @@ static const char *const nectarlink_rust_strings[] = {
     QT_TRANSLATE_NOOP("Errors", "The device didn't answer in time."), // desktop/app/src/bridge/app.rs
     QT_TRANSLATE_NOOP("Errors", "The device isn't connected right now."), // desktop/app/src/bridge/app.rs
     QT_TRANSLATE_NOOP("Errors", "The device's app doesn't support that yet."), // desktop/app/src/bridge/app.rs
+    QT_TRANSLATE_NOOP("FolderSync", "%1 of %2 files"), // desktop/app/src/folder_sync.rs
     QT_TRANSLATE_NOOP("FolderSync", "Couldn't read the folder on the phone. Check that it's connected."), // desktop/app/src/folder_sync.rs
     QT_TRANSLATE_NOOP("FolderSync", "Folders are up to date."), // desktop/app/src/folder_sync.rs
     QT_TRANSLATE_NOOP("FolderSync", "Synced %1 file(s)."), // desktop/app/src/folder_sync.rs
+    QT_TRANSLATE_NOOP("FolderSync", "Syncing with %1"), // desktop/app/src/folder_sync.rs
     QT_TRANSLATE_NOOP("FolderSync", "The phone hasn't let this PC into its files yet. Allow it on the phone."), // desktop/app/src/folder_sync.rs
     QT_TRANSLATE_NOOP("FolderSync", "Waiting for Wi-Fi. Sync on Wi-Fi only is on, and the phone is away."), // desktop/app/src/folder_sync.rs
     QT_TRANSLATE_NOOP("Guide", "1. Install NectarLink on your PC (Windows 11 or Linux) and your Android phone (Android 8.0 or newer).\n2. Connect both devices to the same Wi-Fi network, or plug your phone into your PC with a USB cable.\n3. Open the Pair step in the setup walkthrough, or click + (Pair a new device) at the bottom of the left rail.\n4. Scan the QR code from the NectarLink Android app, or select your phone from the nearby devices list and confirm that the 6-digit code matches on both screens.\n5. Choose which features to share for that phone and grant only the Android permissions you want to use."), // desktop/app/src/bridge/app.rs
@@ -381,6 +381,7 @@ static const char *const nectarlink_rust_strings[] = {
     QT_TRANSLATE_NOOP("Messages", "Only image or voice-note audio files can be attached."), // desktop/app/src/messages.rs
     QT_TRANSLATE_NOOP("Messages", "The text wasn't sent: this conversation isn't loaded yet. Try again in a moment."), // desktop/app/src/messages.rs
     QT_TRANSLATE_NOOP("Mirror", "Couldn't start recording."), // desktop/app/src/mirror.rs
+    QT_TRANSLATE_NOOP("Mirror", "Lowering the picture so this PC keeps up"), // desktop/app/src/mirror.rs
     QT_TRANSLATE_NOOP("Mirror", "Mirror recording"), // desktop/app/src/mirror.rs
     QT_TRANSLATE_NOOP("Mirror", "Mirror screenshot"), // desktop/app/src/mirror.rs
     QT_TRANSLATE_NOOP("Mirror", "Mirroring is turned off for this phone."), // desktop/app/src/mirror.rs
@@ -402,10 +403,14 @@ static const char *const nectarlink_rust_strings[] = {
     QT_TRANSLATE_NOOP("Mirror", "The screenshot couldn't be copied to the clipboard."), // desktop/app/src/mirror.rs
     QT_TRANSLATE_NOOP("Mirror", "The screenshot couldn't be saved."), // desktop/app/src/mirror.rs
     QT_TRANSLATE_NOOP("Mirror", "This PC can't decode the phone's video."), // desktop/app/src/mirror.rs
+    QT_TRANSLATE_NOOP("Mirror", "This PC keeps up again: sharper picture"), // desktop/app/src/mirror.rs
     QT_TRANSLATE_NOOP("Mirror", "This phone's app doesn't share its screen yet. Update NectarLink on the phone."), // desktop/app/src/mirror.rs
+    QT_TRANSLATE_NOOP("Mirror", "Turning the phone to landscape"), // desktop/app/src/mirror.rs
+    QT_TRANSLATE_NOOP("Mirror", "Turning the phone to portrait"), // desktop/app/src/mirror.rs
     QT_TRANSLATE_NOOP("Mirror", "Wait for the screen to appear first."), // desktop/app/src/mirror.rs
     QT_TRANSLATE_NOOP("Mp4", "No video frames were recorded yet."), // desktop/app/src/win/mp4.rs
     QT_TRANSLATE_NOOP("Notifications", "Code copied"), // desktop/app/src/notifications.rs
+    QT_TRANSLATE_NOOP("Notifications", "Copied"), // desktop/app/src/notifications.rs
     QT_TRANSLATE_NOOP("Notifications", "Copy code"), // desktop/app/src/notifications.rs
     QT_TRANSLATE_NOOP("Notifications", "Dismissed %1 from %2"), // desktop/app/src/bridge/notifications.rs
     QT_TRANSLATE_NOOP("Notifications", "Dismissed %1 notifications"), // desktop/app/src/bridge/notifications.rs
@@ -482,6 +487,14 @@ static const char *const nectarlink_rust_strings[] = {
     QT_TRANSLATE_NOOP("PlayOnPhone", "Update NectarLink on %1 to play on it."), // desktop/app/src/play_on_phone.rs
     QT_TRANSLATE_NOOP("Prefs", "Connected to OBS."), // desktop/app/src/bridge/prefs.rs
     QT_TRANSLATE_NOOP("Recordings", "Recording from %1 saved"), // desktop/app/src/recordings.rs
+    QT_TRANSLATE_NOOP("ReportRequests", "%1 asks for this PC's log"), // desktop/app/src/report_requests.rs
+    QT_TRANSLATE_NOOP("ReportRequests", "Don't share"), // desktop/app/src/report_requests.rs
+    QT_TRANSLATE_NOOP("ReportRequests", "For a problem report you're making. The log has no names, messages, files, numbers or addresses. You see the whole report before it's sent."), // desktop/app/src/report_requests.rs
+    QT_TRANSLATE_NOOP("ReportRequests", "Report #%1. Open it to read it on GitHub."), // desktop/app/src/report_requests.rs
+    QT_TRANSLATE_NOOP("ReportRequests", "Share"), // desktop/app/src/report_requests.rs
+    QT_TRANSLATE_NOOP("ReportRequests", "There's a reply to your report"), // desktop/app/src/report_requests.rs
+    QT_TRANSLATE_NOOP("ReportRequests", "Your phone"), // desktop/app/src/report_requests.rs
+    QT_TRANSLATE_NOOP("ReportRequests", "Your report was closed"), // desktop/app/src/report_requests.rs
     QT_TRANSLATE_NOOP("SendTo", "Copied to your phone's clipboard."), // desktop/app/src/send_to.rs
     QT_TRANSLATE_NOOP("SendTo", "Couldn't reach %1."), // desktop/app/src/send_to.rs
     QT_TRANSLATE_NOOP("SendTo", "Couldn't send %1"), // desktop/app/src/send_to.rs
@@ -546,6 +559,8 @@ static const char *const nectarlink_rust_strings[] = {
     QT_TRANSLATE_NOOP("Transfers", "Nearby device"), // desktop/app/src/transfers.rs
     QT_TRANSLATE_NOOP("Transfers", "That's too many files to send at once."), // desktop/app/src/transfers.rs
     QT_TRANSLATE_NOOP("Transfers", "There's nothing to send in there."), // desktop/app/src/transfers.rs
+    QT_TRANSLATE_NOOP("Unlock", "Set up unlocking with %1 again"), // desktop/app/src/win/unlock.rs
+    QT_TRANSLATE_NOOP("Unlock", "Windows didn't accept the password saved for it, so it was probably changed. Set it up again under Unlock this PC with the phone."), // desktop/app/src/win/unlock.rs
     QT_TRANSLATE_NOOP("Updater", "Couldn't check for updates. Check your internet connection."), // desktop/app/src/updater.rs
     QT_TRANSLATE_NOOP("Updater", "NectarLink %1 is available"), // desktop/app/src/updater.rs
     QT_TRANSLATE_NOOP("Updater", "NectarLink %1 is available."), // desktop/app/src/updater.rs

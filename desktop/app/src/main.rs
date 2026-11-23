@@ -9,6 +9,8 @@
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
 mod agents;
+#[cfg(test)]
+mod app_links;
 mod app_shortcuts;
 mod automations;
 mod battery;
@@ -19,6 +21,7 @@ mod clipboard;
 mod command_palette;
 mod continuity_camera;
 mod core_host;
+mod crash_events;
 mod deck;
 mod doctor;
 mod feed;
@@ -57,6 +60,7 @@ mod pointer_flow;
 mod qr;
 mod recordings;
 mod remote;
+mod report_requests;
 mod send_to;
 mod settings;
 mod setup;
@@ -108,6 +112,9 @@ const BUNDLED_FONTS: i32 = 4;
 struct DesktopPlatform;
 
 impl Platform for DesktopPlatform {
+    fn diag_facts(&self) -> Option<(nectarlink_core::diag::report::DeviceFacts, Vec<(String, String)>)> {
+        Some(bridge::report::own_facts())
+    }
     fn start_ringing(&self) {
         win::sound::start_ringing();
     }
@@ -127,6 +134,9 @@ impl Platform for DesktopPlatform {
         win::clipboard::clear_private(text);
     }
     fn set_clipboard_image(&self, mime: &str, bytes: &[u8]) -> Result<(), String> {
+        #[cfg(windows)]
+        return win::clipboard::write_received_image(mime, bytes);
+        #[cfg(not(windows))]
         win::clipboard::write_image(mime, bytes)
     }
     fn power(&self, action: PowerAction) -> Result<(), String> {
@@ -153,6 +163,18 @@ impl Platform for DesktopPlatform {
         }
         pc_mirror::start(*peer, options.clone());
         Ok(())
+    }
+    #[cfg(windows)]
+    fn mirror_displays(&self) -> Vec<nectarlink_core::MirrorDisplay> {
+        win::displays::list()
+            .into_iter()
+            .map(|d| nectarlink_core::MirrorDisplay {
+                id: d.id,
+                width: d.width(),
+                height: d.height(),
+                primary: d.primary,
+            })
+            .collect()
     }
     fn mirror_stop_requested(&self, peer: &nectarlink_core::DeviceId, session: u32) {
         if session == nectarlink_core::MIRROR_SCREEN {
@@ -275,6 +297,8 @@ struct Options {
     share: Option<win::share_target::SharedPayload>,
     /// `--task <action>`: Windows taskbar Jump List task.
     task: Option<String>,
+    /// Windows call picker invocation: --tel <uri>.
+    tel: Option<Result<String, ()>>,
     /// Ask the running app to quit (the installer, before an update).
     quit: bool,
     /// Quit the running app and undo what it set up in Windows (the
@@ -284,12 +308,25 @@ struct Options {
     register_vcam: bool,
     /// Elevated helper: unregister `nectarlink_vcam.dll` from `HKLM` and exit.
     unregister_vcam: bool,
+    /// Unlock with phone: register or remove the credential provider (elevated).
+    #[cfg(windows)]
+    register_unlock: bool,
+    #[cfg(windows)]
+    unregister_unlock: bool,
+    /// Start the optional Linux phone unlock relay in a disposable test profile.
+    #[cfg(target_os = "linux")]
+    linux_phone_unlock: bool,
+    #[cfg(target_os = "linux")]
+    linux_unlock_request: Option<Result<win::phone_unlock::Request, &'static str>>,
     /// Elevated helper (Windows): register the sparse package and exit (#84).
     register_package: bool,
     /// Out-of-process Windows 11 Widget Board COM server (`--widget-provider`).
     widget_provider: bool,
     /// The update task's job, as SYSTEM (`--update-service`, see `updater`).
     update_service: bool,
+    /// The same after the administrator prompt, with no task: the channel
+    /// to follow (`--update-elevated <channel>`, see `updater`).
+    update_elevated: Option<String>,
     /// The installer's window (`--setup --installer <setup.exe>`, see `setup`).
     setup: Option<PathBuf>,
     /// The uninstaller's window (`--remove [--installed <folder>]`).
@@ -319,9 +356,35 @@ fn parse_options_from<I: IntoIterator<Item = std::ffi::OsString>>(iter: I) -> Op
     let mut args = iter.into_iter();
     while let Some(arg) = args.next() {
         match arg.to_str() {
+            #[cfg(target_os = "linux")]
+            Some("--linux-phone-unlock") => {
+                in_share = false;
+                options.linux_phone_unlock = true;
+            }
+            #[cfg(target_os = "linux")]
+            Some("--linux-unlock-devices") => {
+                in_share = false;
+                options.linux_unlock_request = Some(Ok(win::phone_unlock::Request::Devices {}));
+            }
+            #[cfg(target_os = "linux")]
+            Some("--linux-unlock-enroll") => {
+                in_share = false;
+                let phone = args.next().and_then(|arg| arg.to_str()?.parse().ok());
+                options.linux_unlock_request = Some(
+                    phone
+                        .map(|phone| win::phone_unlock::Request::Enroll { phone })
+                        .ok_or("usage: nectarlink-desktop --linux-unlock-enroll <device-id>"),
+                );
+            }
             Some("--data-dir") => {
                 in_share = false;
                 options.data_dir = args.next().map(PathBuf::from);
+            }
+            Some("--tel") => {
+                let number = args.next().and_then(|uri| launch::telephone_number(uri.to_str()?));
+                // The URI is terminal: never interpret pieces of it as app flags.
+                let tel = number.filter(|_| args.next().is_none()).ok_or(());
+                return Options { tel: Some(tel), data_dir: options.data_dir, ..Options::default() };
             }
             Some("--minimized") => {
                 in_share = false;
@@ -363,6 +426,11 @@ fn parse_options_from<I: IntoIterator<Item = std::ffi::OsString>>(iter: I) -> Op
                 in_share = false;
                 options.update_service = true;
             }
+            Some(updater::ELEVATED_ARG) => {
+                in_share = false;
+                options.update_elevated =
+                    Some(args.next().and_then(|a| a.into_string().ok()).unwrap_or_default());
+            }
             Some(updater::UPDATED_ARG) => {
                 in_share = false;
                 options.updated = true;
@@ -374,6 +442,16 @@ fn parse_options_from<I: IntoIterator<Item = std::ffi::OsString>>(iter: I) -> Op
             Some(win::vcam::UNREGISTER_ARG) => {
                 in_share = false;
                 options.unregister_vcam = true;
+            }
+            #[cfg(windows)]
+            Some(win::unlock::REGISTER_ARG) => {
+                in_share = false;
+                options.register_unlock = true;
+            }
+            #[cfg(windows)]
+            Some(win::unlock::UNREGISTER_ARG) => {
+                in_share = false;
+                options.unregister_unlock = true;
             }
             Some("--register-package") => {
                 in_share = false;
@@ -473,12 +551,37 @@ fn uninstall() {
     startup::remove();
 }
 
-fn install_panic_logging() {
-    let default = std::panic::take_hook();
-    std::panic::set_hook(Box::new(move |info| {
-        tracing::error!("panic: {info}");
-        default(info);
-    }));
+/// Marks this run as started and logs how the last one ended. A run that
+/// ended badly without a crash record of its own may have crashed outside
+/// Rust; Windows' record of that is looked for in the background.
+fn note_previous_run(diag_dir: &Path) {
+    use nectarlink_core::diag::crash;
+    let version = env!("CARGO_PKG_VERSION");
+    use nectarlink_core::diag::health::{self, Code, Feature};
+    health::init(diag_dir);
+    let Some(previous) = crash::begin_run(diag_dir, version) else { return };
+    if previous.clean {
+        return;
+    }
+    if let Some(record) = crash::crashed(&previous, &crash::records(diag_dir)) {
+        tracing::warn!(sig = %record.sig, kind = %record.kind, version = %previous.version, "the last run crashed");
+        health::count(Feature::Crash, Code::Ok);
+        return;
+    }
+    std::thread::Builder::new()
+        .name("crash-events".into())
+        .spawn(move || match crash_events::native_crash_since(previous.started, &previous.version) {
+            Some(record) => {
+                tracing::warn!(sig = %record.sig, kind = %record.kind, version = %previous.version, "the last run crashed");
+                crash::record(&record);
+                health::count(Feature::Crash, Code::Ok);
+            }
+            None => {
+                tracing::info!(version = %previous.version, "the last run ended without quitting");
+                health::count(Feature::UncleanExit, Code::Ok);
+            }
+        })
+        .ok();
 }
 
 /// The installer's or uninstaller's window: no core, no data folder, no log
@@ -523,9 +626,32 @@ fn run_setup_window(mode: setup::Mode) -> ExitCode {
 
 fn main() -> ExitCode {
     let options = parse_options();
+    if matches!(options.tel, Some(Err(()))) {
+        return ExitCode::FAILURE;
+    }
     if options.version {
         println!("nectarlink-desktop {}", env!("CARGO_PKG_VERSION"));
         return ExitCode::SUCCESS;
+    }
+    #[cfg(target_os = "linux")]
+    if let Some(request) = options.linux_unlock_request {
+        let request = match request {
+            Ok(request) => request,
+            Err(error) => {
+                eprintln!("{error}");
+                return ExitCode::FAILURE;
+            }
+        };
+        return match win::phone_unlock::run_cli(request) {
+            Ok(reply) => {
+                println!("{reply}");
+                ExitCode::SUCCESS
+            }
+            Err(error) => {
+                eprintln!("nectarlink: phone unlock: {error}");
+                ExitCode::FAILURE
+            }
+        };
     }
     if let Some(installer) = options.setup.clone().filter(|p| !p.as_os_str().is_empty()) {
         return run_setup_window(setup::Mode::Install { installer });
@@ -541,6 +667,9 @@ fn main() -> ExitCode {
     if options.update_service {
         return updater::run_service();
     }
+    if let Some(channel) = &options.update_elevated {
+        return updater::run_elevated(Some(channel.as_str()));
+    }
     if options.register_vcam {
         return match win::vcam::register_hklm() {
             Ok(()) => ExitCode::SUCCESS,
@@ -553,6 +682,21 @@ fn main() -> ExitCode {
     #[cfg(windows)]
     if options.register_package {
         return win::share_target::register_elevated();
+    }
+    #[cfg(windows)]
+    if options.register_unlock || options.unregister_unlock {
+        let done = if options.register_unlock {
+            win::unlock::register_hklm()
+        } else {
+            win::unlock::unregister_hklm()
+        };
+        return match done {
+            Ok(()) => ExitCode::SUCCESS,
+            Err(e) => {
+                eprintln!("nectarlink: unlock with phone: {e}");
+                ExitCode::FAILURE
+            }
+        };
     }
     if options.unregister_vcam {
         return match win::vcam::unregister_hklm() {
@@ -574,7 +718,7 @@ fn main() -> ExitCode {
         return ExitCode::FAILURE;
     }
     logging::init(&data_dir);
-    install_panic_logging();
+    nectarlink_core::diag::crash::install_panic_hook();
     // Home and the other phone pages only load with a paired phone, and a
     // page that fails to load must fail the check.
     if options.ui_check
@@ -596,6 +740,8 @@ fn main() -> ExitCode {
         Request::Quit
     } else if let Some((device, paths)) = options.send_to.clone() {
         Request::Send { device, paths }
+    } else if let Some(Ok(number)) = options.tel {
+        Request::OpenDialer { number }
     } else if let Some(shared) = share_payload {
         Request::Share { files: shared.files, url: shared.url, text: shared.text }
     } else if let Some(action) = options.task.clone() {
@@ -622,6 +768,8 @@ fn main() -> ExitCode {
         }
     };
 
+    // Only the copy that runs marks the run: a second one would overwrite it.
+    note_previous_run(&data_dir.join("diag"));
     // Before any window: toasts and the taskbar both go by this ID.
     win::toast::set_process_id();
     // Logging out or shutting down sends SIGTERM: quit as Quit does, so
@@ -636,6 +784,17 @@ fn main() -> ExitCode {
     if let Err(e) = core_host::start(data_dir.clone(), Arc::new(DesktopPlatform)) {
         tracing::error!(error = %e, "can't start the core runtime");
         return ExitCode::FAILURE;
+    }
+    #[cfg(target_os = "linux")]
+    if options.linux_phone_unlock || win::phone_unlock::configured() {
+        match win::phone_unlock::start() {
+            Ok(()) => core_host::spawn(async {
+                if core_host::wait_for_node().await.is_some() {
+                    core_host::refresh_capabilities();
+                }
+            }),
+            Err(error) => tracing::warn!(%error, "couldn't start phone unlock socket"),
+        }
     }
     // The node starts in the background, so wait for it: the beacon carries
     // its device ID.
@@ -665,6 +824,8 @@ fn main() -> ExitCode {
     clipboard::set_history_enabled(settings.clipboard_history);
     clipboard::set_suggest_actions(settings.suggest_clipboard_actions);
     notifications::set_auto_copy_otp(settings.auto_copy_otp);
+    // Paused pop-ups stay paused after a restart, if the user chose that (#442).
+    notifications::set_paused(settings.keep_popups_paused && settings.popups_paused);
     notifications::set_sync_dnd(settings.sync_dnd);
     notifications::set_hold_when_locked(settings.hold_when_locked);
     notifications::start_lock_watch();
@@ -689,9 +850,14 @@ fn main() -> ExitCode {
         &settings.shelf_hotkey,
     );
     let updated_from = updater::note_running_version(&data_dir);
+    nectarlink_core::whats_new::note_start(&data_dir, updated_from.is_some());
     if updated_from.is_some() {
         let mut saved = settings::Settings::load(&data_dir);
-        if saved.ask_for_star_after_update()
+        let now =
+            std::time::SystemTime::now().duration_since(std::time::UNIX_EPOCH).map_or(0, |d| d.as_secs());
+        let star = saved.ask_for_star_after_update();
+        let join = saved.ask_to_join_after_update(now);
+        if (star || join)
             && let Err(e) = saved.save(&data_dir)
         {
             tracing::warn!(error = %e, "can't save settings");
@@ -705,16 +871,25 @@ fn main() -> ExitCode {
         updater::set_auto(settings.auto_update);
         updater::set_auto_install(settings.install_updates);
         // Kept from the first run: going by the version alone, a nightly install
-        // would leave Nightly as soon as it took a release.
-        let channel = version::Channel::parse(&settings.update_channel).unwrap_or_else(|| {
-            let own = updater::channel();
-            let mut saved = settings::Settings::load(&data_dir);
-            saved.update_channel = own.as_str().into();
-            if let Err(e) = saved.save(&data_dir) {
-                tracing::warn!(error = %e, "can't save settings");
+        // would leave Nightly as soon as it took a release. Where the update
+        // task installs for everyone on this PC, it follows one channel, the
+        // last one anyone picked: that's the one this account shows and
+        // follows too, rather than set it back to its own at every start.
+        // (The task is only asked about when the two differ.)
+        let mine = version::Channel::parse(&settings.update_channel);
+        let pc = updater::machine_channel().filter(|pc| mine != Some(*pc) && updater::task_installs());
+        let channel = match (pc, mine) {
+            (None, Some(mine)) => mine,
+            (pc, _) => {
+                let channel = pc.unwrap_or_else(updater::channel);
+                let mut saved = settings::Settings::load(&data_dir);
+                saved.update_channel = channel.as_str().into();
+                if let Err(e) = saved.save(&data_dir) {
+                    tracing::warn!(error = %e, "can't save settings");
+                }
+                channel
             }
-            own
-        });
+        };
         updater::set_channel(channel);
         updater::start();
         match (updated_from, options.updated) {
@@ -733,19 +908,6 @@ fn main() -> ExitCode {
             (None, false) => {}
         }
     }
-    // Requests left while no instance was running, then this launch's own.
-    for waiting in launch::drain(&data_dir) {
-        if matches!(
-            waiting,
-            Request::Send { .. } | Request::Share { .. } | Request::TaskNotify { .. } | Request::Task { .. }
-        ) {
-            send_to::handle(waiting);
-        }
-    }
-    if matches!(request, Request::Send { .. } | Request::Share { .. } | Request::Task { .. }) {
-        send_to::handle(request);
-    }
-
     if options.ui_check {
         bridge::native::ffi::prepare_qt_for_ui_check();
     } else {
@@ -774,6 +936,31 @@ fn main() -> ExitCode {
     bridge::native::ffi::apply_app_icon();
     bridge::native::ffi::stay_out_of_session_restore();
 
+    let mut engine = QQmlApplicationEngine::new();
+    if let Some(mut engine) = engine.as_mut() {
+        bridge::native::ffi::register_qml_app_engine(engine.as_mut());
+        engine.load(&QUrl::from("qrc:/qt/qml/app/nectarlink/qml/App.qml"));
+    }
+    // Requests left while no instance was running, then this launch's own.
+    for waiting in launch::drain(&data_dir) {
+        if matches!(
+            waiting,
+            Request::Send { .. }
+                | Request::Share { .. }
+                | Request::TaskNotify { .. }
+                | Request::Task { .. }
+                | Request::OpenDialer { .. }
+        ) {
+            send_to::handle(waiting);
+        }
+    }
+    if matches!(
+        request,
+        Request::Send { .. } | Request::Share { .. } | Request::Task { .. } | Request::OpenDialer { .. }
+    ) {
+        send_to::handle(request);
+    }
+
     if let Some(instance) = instance {
         let data_dir = data_dir.clone();
         instance.watch(move || {
@@ -785,11 +972,6 @@ fn main() -> ExitCode {
         });
     }
 
-    let mut engine = QQmlApplicationEngine::new();
-    if let Some(mut engine) = engine.as_mut() {
-        bridge::native::ffi::register_qml_app_engine(engine.as_mut());
-        engine.load(&QUrl::from("qrc:/qt/qml/app/nectarlink/qml/App.qml"));
-    }
     if options.ui_check {
         std::thread::spawn(|| {
             std::thread::sleep(Duration::from_secs(UI_CHECK_SECONDS));
@@ -813,6 +995,8 @@ fn main() -> ExitCode {
     win::net::stop();
     core_host::shutdown();
     drop(app);
+    nectarlink_core::diag::health::flush();
+    nectarlink_core::diag::crash::end_run();
     if options.ui_check {
         let problems = bridge::native::ffi::qml_problem_count();
         if problems > 0 {
@@ -851,6 +1035,19 @@ mod tests {
     use super::*;
 
     #[test]
+    fn parse_options_keeps_tel_activation_separate_from_other_commands() {
+        let parse = |args: &[&str]| parse_options_from(args.iter().copied().map(OsString::from));
+        let opts = parse(&["--data-dir", "preview", "--tel", "tel:%2B1-202-555-0100"]);
+        assert_eq!(opts.data_dir, Some(PathBuf::from("preview")));
+        assert_eq!(opts.tel, Some(Ok("+12025550100".into())));
+        assert!(!opts.minimized);
+        let malformed = parse(&["--tel", "tel:2025550100", "--quit"]);
+        assert_eq!(malformed.tel, Some(Err(())));
+        assert!(!malformed.quit);
+        assert_eq!(parse(&["--tel"]).tel, Some(Err(())));
+    }
+
+    #[test]
     fn parse_options_recognizes_share_flag() {
         let opts = parse_options_from(
             ["--data-dir", r"C:\Temp\nectarlink-test", "--share", r"C:\photo.jpg", "https://example.com"]
@@ -878,6 +1075,16 @@ mod tests {
         assert!(!opts.minimized);
         assert_eq!(opts.data_dir, Some(PathBuf::from(r"C:\Temp\nectarlink-test")));
         assert!(!parse_options_from(["--minimized"].into_iter().map(OsString::from)).ui_check);
+    }
+
+    #[test]
+    fn parse_options_recognizes_the_elevated_update_flag() {
+        let opts = parse_options_from([updater::ELEVATED_ARG, "nightly"].into_iter().map(OsString::from));
+        assert_eq!(opts.update_elevated.as_deref(), Some("nightly"));
+        assert!(!opts.update_service);
+        assert!(
+            parse_options_from(["--minimized"].into_iter().map(OsString::from)).update_elevated.is_none()
+        );
     }
 
     #[test]

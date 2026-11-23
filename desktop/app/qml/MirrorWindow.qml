@@ -41,6 +41,8 @@ Window {
     // An app window whose display follows its size (see Mirror.setFlexible);
     // otherwise the display keeps the phone's resolution and the window its shape.
     readonly property bool flexible: info.app === true && info.flexible !== false
+    // Light and dark swapped in the picture, for apps with no dark mode.
+    readonly property bool dark: info.dark === true
     // A flexible window between its size changing and the phone's picture
     // of the new size: frost covers it (see `frost`), and the phone is told
     // the size once, when the edge is let go.
@@ -361,9 +363,22 @@ Window {
         keepShape: win.info.app === true && !win.flexible
         fillsNearShape: win.info.app === true
         windowIcon: win.info.icon || ""
+        layer.enabled: win.dark
+        layer.effect: ShaderEffect {
+            fragmentShader: "qrc:/shaders/darken.frag.qsb"
+        }
         windowAppId: win.info.app && (win.info.pkg || "").length > 0
             ? "Nectarlink.App." + (win.info.device || "").slice(0, 8) + "." + win.info.pkg
             : ""
+        // Pinned to the taskbar, it opens this app again (#465).
+        windowRelaunch: {
+            if (!win.info.app || (win.info.pkg || "").length === 0) return ""
+            const relaunch = Mirror.relaunch(win.info.device || "", win.info.pkg)
+            if (relaunch.length === 0) return ""
+            const r = JSON.parse(relaunch)
+            r.name = (win.info.title || win.info.pkg).replace(/^@+/, "")
+            return JSON.stringify(r)
+        }
         focus: true
         acceptsText: win.phase === "showing" && win.canControl
         // The emoji panel (Win+.) and input methods give finished text here
@@ -520,6 +535,11 @@ Window {
                 event.accepted = true
                 return
             }
+            if ((event.modifiers & Qt.ControlModifier) && (event.modifiers & Qt.ShiftModifier) && event.key === Qt.Key_T) {
+                win.setToolbarHidden(!Preferences.hideMirrorToolbar)
+                event.accepted = true
+                return
+            }
             if (!win.canControl)
                 return
             if (Preferences.enterSends && (event.key === Qt.Key_Return || event.key === Qt.Key_Enter)) {
@@ -633,6 +653,10 @@ Window {
             stream: win.mirrorKey
             frosted: true
             frozen: win.frosted
+            layer.enabled: win.dark
+            layer.effect: ShaderEffect {
+                fragmentShader: "qrc:/shaders/darken.frag.qsb"
+            }
         }
         RoundedImage {
             anchors.centerIn: parent
@@ -651,44 +675,107 @@ Window {
         }
     }
 
+    // Hiding the toolbar (D475) is for every window, and says how to get it back.
+    property string localNotice: ""
+    function setToolbarHidden(hidden) {
+        Preferences.hideMirrorToolbar = hidden
+        localNotice = hidden ? qsTr("Toolbar hidden. Ctrl+Shift+T shows it again.") : ""
+        if (hidden)
+            localNoticeTimer.restart()
+        else
+            toolbarWakeTimer.restart()
+    }
+    Timer {
+        id: localNoticeTimer
+        interval: 3000
+        onTriggered: win.localNotice = ""
+    }
+
     // Floating mirror toolbar: screenshots, MP4 recording, stay awake, screen off, and audio mute.
     Timer {
         id: toolbarWakeTimer
         interval: 1800
         repeat: false
     }
+    // The toolbar sits in a corner of the window, top right unless it was
+    // dragged by its grip to another one: off the app's own buttons (#340).
+    readonly property bool toolbarBottom: Preferences.mirrorToolbarBottom
+    readonly property bool toolbarLeft: Preferences.mirrorToolbarLeft
+    // Hovering this strip along the toolbar's edge shows it.
     Item {
-        anchors.top: parent.top
         anchors.left: parent.left
         anchors.right: parent.right
+        y: win.toolbarBottom ? parent.height - height : 0
         height: navPill.visible && !navPill.besideToolbar ? 104 : 56
         HoverHandler { id: topZoneHover }
     }
     Rectangle {
         id: toolbar
-        anchors.top: parent.top
-        anchors.right: parent.right
-        anchors.margins: 12
+        readonly property real restX: win.toolbarLeft ? 12 : parent.width - width - 12
+        readonly property real restY: win.toolbarBottom
+            ? parent.height - height - 12 - (hintBanner.visible ? hintBanner.height + 12 : 0)
+            : 12
+        x: restX
+        y: restY
         width: toolbarRow.implicitWidth + 8
         height: 40
         radius: 20
         color: Qt.rgba(0, 0, 0, 0.68)
-        visible: win.phase === "showing" && video.frameSize.width > 0
+        visible: win.phase === "showing" && video.frameSize.width > 0 && !Preferences.hideMirrorToolbar
         readonly property bool toolbarHasFocus: flexibleBtn.activeFocus || lockBtn.activeFocus || copyShotBtn.activeFocus || saveShotBtn.activeFocus
-            || recordBtn.activeFocus || stayAwakeBtn.activeFocus || screenOffBtn.activeFocus || soundBtn.activeFocus
-            || backBtn.activeFocus || homeBtn.activeFocus || recentsBtn.activeFocus
+            || recordBtn.activeFocus || stayAwakeBtn.activeFocus || screenOffBtn.activeFocus || rotateBtn.activeFocus || soundBtn.activeFocus
+            || backBtn.activeFocus || homeBtn.activeFocus || recentsBtn.activeFocus || hideToolbarBtn.activeFocus
         // Only while it's wanted: it sits over the app's own top bar (#340).
         // Recording and a dark phone screen show in the window's title instead.
         opacity: topZoneHover.hovered || toolbarHover.hovered || navHover.hovered || toolbarWakeTimer.running
-            || toolbarHasFocus ? 1 : 0
+            || toolbarHasFocus || gripDrag.active ? 1 : 0
         Behavior on opacity { enabled: !Theme.reduceMotion; NumberAnimation { duration: Theme.fadeFast } }
 
         HoverHandler { id: toolbarHover }
+
+        // Let go of a drag: the nearest corner keeps it, in every window.
+        function settle() {
+            const parentItem = toolbar.parent
+            Preferences.mirrorToolbarLeft = toolbar.x + toolbar.width / 2 < parentItem.width / 2
+            Preferences.mirrorToolbarBottom = toolbar.y + toolbar.height / 2 > parentItem.height / 2
+            toolbar.x = Qt.binding(() => toolbar.restX)
+            toolbar.y = Qt.binding(() => toolbar.restY)
+            toolbarWakeTimer.restart()
+        }
 
         Row {
             id: toolbarRow
             anchors.centerIn: parent
             spacing: 2
+
+            Item {
+                id: gripHandle
+                width: 20
+                height: 32
+                anchors.verticalCenter: parent.verticalCenter
+                Accessible.role: Accessible.Grip
+                Accessible.name: qsTr("Drag to move the toolbar to another corner")
+                Icon {
+                    anchors.centerIn: parent
+                    width: 14
+                    height: 14
+                    path: Icons.grip
+                    color: Qt.rgba(1, 1, 1, gripHover.hovered || gripDrag.active ? 0.95 : 0.6)
+                }
+                HoverHandler {
+                    id: gripHover
+                    cursorShape: gripDrag.active ? Qt.ClosedHandCursor : Qt.OpenHandCursor
+                }
+                DragHandler {
+                    id: gripDrag
+                    target: toolbar
+                    xAxis.minimum: 0
+                    xAxis.maximum: toolbar.parent.width - toolbar.width
+                    yAxis.minimum: 0
+                    yAxis.maximum: toolbar.parent.height - toolbar.height
+                    onActiveChanged: if (!active) toolbar.settle()
+                }
+            }
 
             IconButton {
                 id: copyShotBtn
@@ -722,6 +809,13 @@ Window {
                 text: win.formatDuration(win.recordingElapsedSecs)
             }
             IconButton {
+                id: darkBtn
+                iconPath: Icons.moon
+                iconColor: win.dark ? Theme.primary : "white"
+                label: win.dark ? qsTr("Show the picture as it is") : qsTr("Dark picture: swap light and dark")
+                onClicked: Mirror.setDark(win.mirrorKey, !win.dark)
+            }
+            IconButton {
                 id: flexibleBtn
                 visible: win.info.app === true
                 iconPath: Icons.resize
@@ -750,6 +844,15 @@ Window {
                 onClicked: Mirror.setScreenOff(win.mirrorKey, !(win.info.screenOff === true))
             }
             IconButton {
+                id: rotateBtn
+                // The phone's screen only, and with Elevated (the phone turns itself).
+                visible: win.canControl && !win.info.app
+                iconPath: Icons.rotate
+                iconColor: "white"
+                label: win.frame.width > win.frame.height ? qsTr("Turn the phone to portrait") : qsTr("Turn the phone to landscape")
+                onClicked: Mirror.rotate(win.mirrorKey, !(win.frame.width > win.frame.height))
+            }
+            IconButton {
                 id: lockBtn
                 // The phone's screen only: an app window runs whether it's locked or not.
                 visible: win.canControl && !win.info.app
@@ -774,6 +877,13 @@ Window {
                 label: Mirror.muted ? qsTr("Play the phone's sound here") : qsTr("Play the sound on the phone")
                 onClicked: Mirror.toggleSound()
             }
+            IconButton {
+                id: hideToolbarBtn
+                iconPath: Icons.eyeOff
+                iconColor: "white"
+                label: qsTr("Hide the toolbar (Ctrl+Shift+T)")
+                onClicked: win.setToolbarHidden(true)
+            }
         }
     }
 
@@ -782,10 +892,13 @@ Window {
     Rectangle {
         id: navPill
         readonly property bool besideToolbar: win.width >= toolbar.width + width + 30
-        anchors.top: besideToolbar ? parent.top : toolbar.bottom
-        anchors.topMargin: besideToolbar ? 12 : 6
-        anchors.right: besideToolbar ? toolbar.left : parent.right
-        anchors.rightMargin: besideToolbar ? 6 : 12
+        // Beside the toolbar on the window's inner side, or past it, away from the edge.
+        x: besideToolbar
+            ? (win.toolbarLeft ? toolbar.x + toolbar.width + 6 : toolbar.x - width - 6)
+            : (win.toolbarLeft ? toolbar.x : toolbar.x + toolbar.width - width)
+        y: besideToolbar
+            ? toolbar.y
+            : (win.toolbarBottom ? toolbar.y - height - 6 : toolbar.y + toolbar.height + 6)
         width: navRow.implicitWidth + 8
         height: 40
         radius: 20
@@ -830,9 +943,8 @@ Window {
     // toolbar's corner says so, instead of the whole toolbar staying over
     // the picture. A click plays the sound again.
     Rectangle {
-        anchors.top: parent.top
-        anchors.right: parent.right
-        anchors.margins: 12
+        x: win.toolbarLeft ? 12 : parent.width - width - 12
+        y: win.toolbarBottom ? parent.height - height - 12 : 12
         width: 32
         height: 32
         radius: 16
@@ -857,7 +969,7 @@ Window {
         id: noticePill
         readonly property string pillText: mirrorDropArea.containsDrag
             ? qsTr("Release to send files to %1").arg(win.deviceName.length > 0 ? win.deviceName : qsTr("phone"))
-            : (win.info.notice || "")
+            : (win.localNotice || win.info.notice || "")
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.bottom: hintBanner.visible ? hintBanner.top : parent.bottom
         anchors.bottomMargin: hintBanner.visible ? 8 : 16

@@ -63,6 +63,9 @@ mod imp {
         /// Play on phone: the phone watches a player, and its input is ignored.
         watching: bool,
         video_ready: bool,
+        /// The screen shown, when it isn't the main one (#442): taps land there.
+        #[cfg(windows)]
+        area: Option<RECT>,
         #[cfg(target_os = "linux")]
         input_portal: Option<Arc<win::input::RemoteDesktopPortal>>,
     }
@@ -162,6 +165,8 @@ mod imp {
                 force_keyframe: Arc::clone(&force_keyframe),
                 watching: options.watch.is_some(),
                 video_ready: false,
+                #[cfg(windows)]
+                area: None,
                 #[cfg(target_os = "linux")]
                 input_portal: None,
             })
@@ -265,8 +270,10 @@ mod imp {
             {
                 input_portal = active.input_portal.clone();
             }
+            // Taps go to the screen this session shows, whatever another
+            // session set before it.
             #[cfg(windows)]
-            let _ = active;
+            win::input::set_absolute_area(active.area);
         }
         if !remote_input_allowed(*peer) {
             return;
@@ -1579,6 +1586,32 @@ mod imp {
         dst_h: u32,
         bgra: &mut Vec<u8>,
     ) -> Option<(u32, u32)> {
+        capture_rect(region.map(|r| (r, false)), dst_w, dst_h, bgra)
+    }
+
+    /// What the phone views: the screen at `area` (another screen than the
+    /// main one, #442) or else the main one, with the pointer.
+    #[cfg(windows)]
+    fn capture_shown(area: Option<RECT>, dst_w: u32, dst_h: u32, bgra: &mut Vec<u8>) -> bool {
+        capture_rect(area.map(|a| (a, true)), dst_w, dst_h, bgra).is_some()
+    }
+
+    #[cfg(target_os = "linux")]
+    fn capture_shown(_area: Option<()>, dst_w: u32, dst_h: u32, bgra: &mut Vec<u8>) -> bool {
+        capture_screen(None, dst_w, dst_h, bgra).is_some()
+    }
+
+    /// [`capture_screen`], with `region`'s flag saying whether to draw the
+    /// pointer there (a whole screen) or not (a player's window).
+    #[cfg(windows)]
+    fn capture_rect(
+        region: Option<(RECT, bool)>,
+        dst_w: u32,
+        dst_h: u32,
+        bgra: &mut Vec<u8>,
+    ) -> Option<(u32, u32)> {
+        let pointer = region.is_none_or(|(_, pointer)| pointer);
+        let region = region.map(|(r, _)| r);
         // SAFETY: Win32 GDI device context and bitmap calls with balanced cleanup.
         unsafe {
             let hdc_screen = GetDC(None);
@@ -1633,9 +1666,9 @@ mod imp {
                 hCursor: Default::default(),
                 ptScreenPos: POINT::default(),
             };
-            if region.is_none() && GetCursorInfo(&mut ci).is_ok() && (ci.flags.0 & CURSOR_SHOWING.0) != 0 {
-                let cx = ((ci.ptScreenPos.x as i64) * (dst_w as i64) / (src_w as i64)) as i32;
-                let cy = ((ci.ptScreenPos.y as i64) * (dst_h as i64) / (src_h as i64)) as i32;
+            if pointer && GetCursorInfo(&mut ci).is_ok() && (ci.flags.0 & CURSOR_SHOWING.0) != 0 {
+                let cx = (((ci.ptScreenPos.x - src_x) as i64) * (dst_w as i64) / (src_w as i64)) as i32;
+                let cy = (((ci.ptScreenPos.y - src_y) as i64) * (dst_h as i64) / (src_h as i64)) as i32;
                 let _ = DrawIconEx(hdc_mem, cx, cy, ci.hCursor.into(), 0, 0, 0, None, DI_NORMAL);
             }
 
@@ -1940,6 +1973,10 @@ mod imp {
         started: Instant,
         child: std::process::Child,
         latest_frame: LatestFrame,
+        /// The frame size the pipeline scales to.
+        size: (u32, u32),
+        /// Frames go through OpenGL.
+        gl: bool,
     }
 
     #[cfg(target_os = "linux")]
@@ -1962,6 +1999,7 @@ mod imp {
             node_id: u32,
             dst_w: u32,
             dst_h: u32,
+            gl: bool,
         ) -> std::io::Result<(std::process::Child, LatestFrame)> {
             use std::io::Read;
             use std::os::fd::AsRawFd;
@@ -1970,7 +2008,7 @@ mod imp {
 
             let raw = remote.as_raw_fd();
             let mut cmd = Command::new("gst-launch-1.0");
-            cmd.args(pipeline_args(node_id, dst_w, dst_h))
+            cmd.args(pipeline_args(node_id, dst_w, dst_h, gl))
                 .stdin(Stdio::null())
                 .stdout(Stdio::piped())
                 .stderr(Stdio::null());
@@ -2017,17 +2055,43 @@ mod imp {
         }
 
         fn start(portal: win::screen_portal::ScreenPortal, dst_w: u32, dst_h: u32) -> anyhow::Result<Self> {
-            let (child, latest_frame) = Self::spawn_pipeline(&portal.remote, portal.node_id, dst_w, dst_h)?;
-            Ok(Self { portal, started: Instant::now(), child, latest_frame })
+            let gl = USE_GL.load(std::sync::atomic::Ordering::Relaxed);
+            let (child, latest_frame) =
+                Self::spawn_pipeline(&portal.remote, portal.node_id, dst_w, dst_h, gl)?;
+            Ok(Self { portal, started: Instant::now(), child, latest_frame, size: (dst_w, dst_h), gl })
+        }
+
+        /// No frame yet through the CPU pipeline: GPU buffers (NVIDIA's
+        /// DMABuf) only come through OpenGL, so try that, once, and keep
+        /// using it for later captures (D511).
+        fn switch_to_gl(&mut self) -> anyhow::Result<()> {
+            let (dst_w, dst_h) = self.size;
+            let _ = self.child.kill();
+            let _ = self.child.wait();
+            let (child, latest_frame) =
+                Self::spawn_pipeline(&self.portal.remote, self.portal.node_id, dst_w, dst_h, true)?;
+            tracing::info!("no frames from PipeWire on the CPU; capturing through OpenGL");
+            USE_GL.store(true, std::sync::atomic::Ordering::Relaxed);
+            self.child = child;
+            self.latest_frame = latest_frame;
+            self.started = Instant::now();
+            self.gl = true;
+            Ok(())
         }
 
         fn capture(&mut self, bgra: &mut Vec<u8>) -> anyhow::Result<bool> {
             const FRAME_TIMEOUT: Duration = Duration::from_secs(8);
+            const TRY_GL_AFTER: Duration = Duration::from_secs(3);
             if self.portal.is_closed() {
                 anyhow::bail!("the Wayland portal closed the screen sharing session");
             }
             if let Some(status) = self.child.try_wait()? {
                 anyhow::bail!("the PipeWire capture process exited ({status})");
+            }
+            let nothing_yet = self.latest_frame.lock().unwrap_or_else(|e| e.into_inner()).is_none();
+            if nothing_yet && !self.gl && self.started.elapsed() >= TRY_GL_AFTER && gl_elements_installed() {
+                self.switch_to_gl()?;
+                return Ok(false);
             }
             let latest = self.latest_frame.lock().unwrap_or_else(|e| e.into_inner());
             if latest.as_ref().map_or(self.started, |(at, _)| *at).elapsed() >= FRAME_TIMEOUT {
@@ -2040,10 +2104,27 @@ mod imp {
         }
     }
 
-    /// gst-launch arguments: read stream `node_id` through the portal's
-    /// PipeWire connection (fd 3) and write raw BGRx frames to stdout.
+    /// Capture through OpenGL from the start: an earlier CPU capture got no frames.
     #[cfg(target_os = "linux")]
-    pub(crate) fn pipeline_args(node_id: u32, dst_w: u32, dst_h: u32) -> Vec<String> {
+    static USE_GL: std::sync::atomic::AtomicBool = std::sync::atomic::AtomicBool::new(false);
+
+    /// Whether GStreamer's OpenGL elements are installed (gst-plugins-base's gl).
+    #[cfg(target_os = "linux")]
+    fn gl_elements_installed() -> bool {
+        static HAS: std::sync::OnceLock<bool> = std::sync::OnceLock::new();
+        *HAS.get_or_init(|| {
+            ["glupload", "glcolorconvert", "gldownload"].iter().all(|element| {
+                win::run_cmd_timeout("gst-inspect-1.0", &["--exists", element], Duration::from_secs(2))
+                    .is_some_and(|out| out.status.success())
+            })
+        })
+    }
+
+    /// gst-launch arguments: read stream `node_id` through the portal's
+    /// PipeWire connection (fd 3) and write raw BGRx frames to stdout. With
+    /// `gl`, frames go through OpenGL first, for GPU (DMABuf) buffers.
+    #[cfg(target_os = "linux")]
+    pub(crate) fn pipeline_args(node_id: u32, dst_w: u32, dst_h: u32, gl: bool) -> Vec<String> {
         static HAS_ON_DISCONNECT: std::sync::OnceLock<bool> = std::sync::OnceLock::new();
         let mut args = vec![
             "-q".to_owned(),
@@ -2060,6 +2141,12 @@ mod imp {
             )
         }) {
             args.push("on-disconnect=error".to_owned());
+        }
+        if gl {
+            args.extend(
+                ["!", "glupload", "!", "glcolorconvert", "!", "gldownload", "!", "video/x-raw,format=RGBA"]
+                    .map(str::to_owned),
+            );
         }
         args.extend([
             "!".to_owned(),
@@ -2234,7 +2321,7 @@ mod imp {
         let sender = match runtime.block_on(node.mirror_open(peer)) {
             Ok(sender) => sender,
             Err(error) => {
-                tracing::warn!(%peer, %error, "couldn't open PC mirror stream to phone");
+                tracing::warn!(peer = %peer.short(), %error, "couldn't open PC mirror stream to phone");
                 #[cfg(target_os = "linux")]
                 if wayland.is_some() {
                     drop(wayland);
@@ -2245,6 +2332,34 @@ mod imp {
                 return;
             }
         };
+
+        // The screen the phone picked (#442), when it isn't the main one: its
+        // taps land there too, until this sharing ends. Looked up again now
+        // and then, as screens come, go and change size.
+        #[cfg(windows)]
+        let shown_area = || {
+            options
+                .display
+                .filter(|_| options.watch.is_none())
+                .and_then(win::displays::by_id)
+                .filter(|d| !d.primary)
+                .map(|d| d.rect)
+        };
+        #[cfg(windows)]
+        let set_area = |area: Option<RECT>| {
+            let mut active = ACTIVE.lock().unwrap_or_else(|e| e.into_inner());
+            if let Some(active) = active.as_mut().filter(|s| Arc::ptr_eq(&s.stop, &stop)) {
+                active.area = area;
+            }
+        };
+        #[cfg(windows)]
+        let mut screen_area = shown_area();
+        #[cfg(windows)]
+        set_area(screen_area);
+        #[cfg(windows)]
+        let mut screens_checked = Instant::now();
+        #[cfg(target_os = "linux")]
+        let screen_area: Option<()> = None;
 
         // Give the phone's PcMirrorView TextureView and MediaCodec a brief moment to
         // mount before sending the initial MirrorConfig and IDR keyframe.
@@ -2288,9 +2403,9 @@ mod imp {
         let mut window_capture: Option<win::window_capture::WindowCapture> = None;
         let _sound = watched.is_some().then(|| SoundToPhone::start(peer));
         if watched.is_some() {
-            tracing::info!(%peer, fps, bitrate, "streaming a player to the phone");
+            tracing::info!(peer = %peer.short(), fps, bitrate, "streaming a player to the phone");
         } else {
-            tracing::info!(%peer, fps, bitrate, "sharing this PC's screen");
+            tracing::info!(peer = %peer.short(), fps, bitrate, "sharing this PC's screen");
         }
 
         #[cfg(target_os = "linux")]
@@ -2299,6 +2414,19 @@ mod imp {
         let mut last_video = Instant::now();
         while !stop.load(Ordering::Relaxed) && !sender.is_closed() {
             let tick_start = Instant::now();
+
+            #[cfg(windows)]
+            if options.display.is_some() && screens_checked.elapsed() >= Duration::from_secs(2) {
+                screens_checked = Instant::now();
+                let now = shown_area();
+                if now != screen_area {
+                    // Moved, resized or gone (then the main screen): a new stream config.
+                    screen_area = now;
+                    set_area(screen_area);
+                    stream_dims = None;
+                    encoder = None;
+                }
+            }
 
             let place = watched.as_ref().and_then(crate::play_on_phone::Watched::place);
             if watched.is_some() && place.is_none() && started.elapsed() < FIND_WINDOW {
@@ -2309,7 +2437,7 @@ mod imp {
             if watched.is_some() && place.is_none() {
                 // The player's window can't be found. Not the screen instead:
                 // that would show the phone whatever else is on it.
-                tracing::info!(%peer, "can't find the player's window; stopping");
+                tracing::info!(peer = %peer.short(), "can't find the player's window; stopping");
                 crate::bridge::app::show_message(crate::i18n::tr!(
                     "PcMirror",
                     "Can't find the player's window. Play the video on this PC again, then turn on Play on phone."
@@ -2339,6 +2467,11 @@ mod imp {
             let (dst_w, dst_h) = match stream_dims {
                 Some(dims) => dims,
                 None => {
+                    #[cfg(windows)]
+                    let (src_w, src_h) = screen_area.map_or_else(primary_screen_dimensions, |a| {
+                        ((a.right - a.left).max(1) as u32, (a.bottom - a.top).max(1) as u32)
+                    });
+                    #[cfg(target_os = "linux")]
                     let (src_w, src_h) = primary_screen_dimensions();
                     let dims = target_dimensions(src_w, src_h, options.max_size);
                     stream_dims = Some(dims);
@@ -2417,7 +2550,7 @@ mod imp {
                     (Some(place), None) => {
                         capture_screen(Some(place.on_screen), dst_w, dst_h, &mut bgra).is_some()
                     }
-                    (None, _) => capture_screen(None, dst_w, dst_h, &mut bgra).is_some(),
+                    (None, _) => capture_shown(screen_area, dst_w, dst_h, &mut bgra),
                 };
             if captured && let Some(enc) = encoder.as_mut() {
                 bgra_to_nv12(&bgra, dst_w as usize, dst_h as usize, &mut nv12);
@@ -2518,7 +2651,7 @@ mod imp {
             if stats_since.elapsed() >= Duration::from_secs(10) {
                 let secs = stats_since.elapsed().as_secs_f64();
                 tracing::info!(
-                    %peer,
+                    peer = %peer.short(),
                     fps = format!("{:.1}", stats.frames as f64 / secs),
                     kbps = (stats.bytes as f64 * 8.0 / secs / 1000.0) as u64,
                     keyframes = stats.keyframes,
@@ -2549,7 +2682,7 @@ mod imp {
                 return;
             }
         }
-        tracing::info!(%peer, "stopped sharing this PC's screen");
+        tracing::info!(peer = %peer.short(), "stopped sharing this PC's screen");
         sender.close();
         cleanup_session(&stop);
     }
@@ -2557,7 +2690,7 @@ mod imp {
     #[cfg(target_os = "linux")]
     fn finish_failed_capture(peer: DeviceId, stop: &Arc<AtomicBool>, error: &anyhow::Error) {
         if cleanup_session(stop) && !stop.load(Ordering::Acquire) {
-            tracing::warn!(%peer, error = %format_args!("{error:#}"), "Wayland screen sharing stopped");
+            tracing::warn!(peer = %peer.short(), error = %format_args!("{error:#}"), "Wayland screen sharing stopped");
             if let Some(node) = core_host::node() {
                 core_host::spawn(async move {
                     // A retry can take over while resources from the old attempt close.
@@ -2644,6 +2777,8 @@ mod imp {
             }
         };
         if removed {
+            #[cfg(windows)]
+            win::input::set_absolute_area(None);
             win::input::release_held_buttons();
             crate::input_share::leave_remote();
             core_host::host().hub.changed(crate::state::Changes::REMOTE);
@@ -2697,12 +2832,20 @@ mod imp {
         #[cfg(target_os = "linux")]
         #[test]
         fn wayland_capture_reads_the_stream_through_the_portal_connection() {
-            let args = pipeline_args(57, 1280, 720);
+            let args = pipeline_args(57, 1280, 720, false);
             assert_eq!(args[1], "pipewiresrc");
             assert!(args.contains(&"fd=3".to_owned()), "the portal's PipeWire connection, as fd 3");
             assert!(args.contains(&"path=57".to_owned()));
             assert!(args.contains(&"video/x-raw,format=BGRx,width=1280,height=720".to_owned()));
             assert_eq!(args.last().map(String::as_str), Some("fd=1"));
+            assert!(!args.iter().any(|a| a.starts_with("gl")));
+
+            // Through OpenGL: GPU buffers downloaded as RGBA, then the same tail.
+            let gl = pipeline_args(57, 1280, 720, true);
+            let at = |name: &str| gl.iter().position(|a| a == name).unwrap_or(usize::MAX);
+            assert!(at("glupload") < at("glcolorconvert") && at("glcolorconvert") < at("gldownload"));
+            assert!(at("gldownload") < at("videoconvert"));
+            assert!(gl.contains(&"video/x-raw,format=BGRx,width=1280,height=720".to_owned()));
         }
 
         #[test]

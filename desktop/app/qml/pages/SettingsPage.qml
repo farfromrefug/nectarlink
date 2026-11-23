@@ -10,6 +10,83 @@ Item {
     id: page
     property bool active: false
     property string currentSection: "appearance"
+
+    // ---- Search (#522): every row's title and description, in every section ----
+    property string searchQuery: ""
+    property var searchResults: []
+    onSearchQueryChanged: searchResults = findSettings(searchQuery)
+
+    function sectionTitle(id) {
+        for (let i = 0; i < categories.length; i++)
+            if (categories[i].id === id) return categories[i].title
+        return ""
+    }
+
+    // Rows are anything with a title and a description (ListRow, SwitchBar...).
+    function collectRows(item, section, into) {
+        if (!item) return
+        if (typeof item.title === "string" && typeof item.description === "string" && item.title.length > 0)
+            into.push({ section: section, title: item.title, description: item.description, item: item })
+        const kids = item.children
+        for (let i = 0; i < kids.length; i++)
+            collectRows(kids[i], section, into)
+    }
+
+    function findSettings(query) {
+        const words = query.toLowerCase().split(/\s+/).filter(w => w.length > 0)
+        if (words.length === 0) return []
+        const rows = []
+        const kids = column.children
+        for (let i = 0; i < kids.length; i++) {
+            const section = kids[i].settingsSection
+            if (typeof section === "string" && section.length > 0)
+                collectRows(kids[i], section, rows)
+        }
+        // Sections by name too, so "camera" finds Camera & Audio.
+        for (let i = 0; i < categories.length; i++)
+            rows.push({ section: categories[i].id, title: categories[i].title, description: categories[i].subtitle, item: null })
+        const matches = (row) => {
+            const text = (row.title + " " + row.description + " " + sectionTitle(row.section)).toLowerCase()
+            return words.every(w => text.indexOf(w) >= 0)
+        }
+        const seen = {}
+        const found = []
+        for (let i = 0; i < rows.length && found.length < 12; i++) {
+            const key = rows[i].section + "|" + rows[i].title
+            if (seen[key] || !matches(rows[i])) continue
+            seen[key] = true
+            found.push(rows[i])
+        }
+        return found
+    }
+
+    // Opens a result's section, scrolls to its row and flashes it.
+    function openResult(result) {
+        searchQuery = ""
+        searchInput.text = ""
+        currentSection = result.section
+        pendingRow = result.item
+        scrollToRow.restart()
+    }
+    property var pendingRow: null
+    Timer {
+        id: scrollToRow
+        // After the section's own scroll-to-top and fade-in.
+        interval: 180
+        onTriggered: {
+            const row = page.pendingRow
+            page.pendingRow = null
+            if (!row || !row.visible) return
+            const pos = row.mapToItem(column, 0, 0)
+            const max = Math.max(0, contentFlickable.contentHeight - contentFlickable.height)
+            contentFlickable.contentY = Math.max(0, Math.min(max, pos.y - 24))
+            rowFlash.x = pos.x - 6
+            rowFlash.y = pos.y - 4
+            rowFlash.width = row.width + 12
+            rowFlash.height = row.height + 8
+            rowFlashAnim.restart()
+        }
+    }
     property int selectedDeviceIndex: 0
     signal pairRequested
 
@@ -24,10 +101,11 @@ Item {
         { id: "notifications", title: qsTr("Notifications"), icon: Icons.bell, subtitle: qsTr("Do not disturb & app rules") },
         { id: "files_sync", title: qsTr("Files & Sync"), icon: Icons.folder, subtitle: qsTr("Folder sync, storage & recordings") },
         { id: "shortcuts", title: qsTr("Shortcuts & Rules"), icon: Icons.bolt, subtitle: qsTr("Hotkeys & automations") },
-        { id: "agents", title: qsTr("AI agents"), icon: Icons.terminal, subtitle: qsTr("Claude Code, Codex, Cursor & more") },
+        { id: "agents", title: qsTr("AI agents"), icon: Icons.terminal, subtitle: qsTr("Assistants that use your devices") },
         { id: "storage", title: qsTr("Storage & Privacy"), icon: Icons.clipboardList, subtitle: qsTr("History, caches & retention") },
         { id: "connection", title: qsTr("Connection & About"), icon: Icons.wifi, subtitle: qsTr("Doctor, Wake-on-LAN, API & version") },
-        { id: "support", title: qsTr("Support NectarLink"), icon: Icons.heart, subtitle: qsTr("Help keep it going") }
+        { id: "support", title: qsTr("Community"), icon: Icons.heart, subtitle: qsTr("Discord, news and support") },
+        { id: "report", title: qsTr("Report a problem"), icon: Icons.warning, subtitle: qsTr("Tell us what went wrong") }
     ]
 
     // The languages the app speaks besides the system's ({ code, name }).
@@ -187,7 +265,8 @@ Item {
             : Qt.platform.os === "osx" ? qsTr("Finder integration") : qsTr("File manager integration"),
         remote_input: qsTr("Remote mouse, keyboard & Deck"),
         commands: qsTr("Run Deck shell commands"),
-        remote_files: qsTr("Remote PC file access")
+        remote_files: qsTr("Remote PC file access"),
+        unlock: qsTr("Unlock this PC with the phone")
     })
 
     readonly property var toggleIcons: ({
@@ -210,14 +289,16 @@ Item {
         storage: Icons.folder,
         remote_input: Icons.deck,
         commands: Icons.terminal,
-        remote_files: Icons.globe
+        remote_files: Icons.globe,
+        unlock: Icons.lock
     })
 
     readonly property var toggleDescriptions: ({
         pc_mirror: qsTr("Allow this phone to view this PC's screen."),
         call_audio: qsTr("Move a call's sound to this PC: its speakers and microphone."),
         commands: qsTr("Only enable for a phone you trust."),
-        remote_files: qsTr("Allow this phone to browse and download shared PC files over mobile data.")
+        remote_files: qsTr("Allow this phone to browse and download shared PC files over mobile data."),
+        unlock: qsTr("Unlock the lock screen with your fingerprint on the phone. Off by default; asks for an administrator once.")
     })
 
     readonly property var toggleGroups: [
@@ -261,7 +342,9 @@ Item {
     readonly property var allGroupedKeys: [
         "notifications", "messages", "calls", "call_audio", "contacts",
         "clipboard", "files", "photos", "recordings", "storage", "remote_files",
-        "media", "toggles", "mirroring", "pc_mirror", "webcam", "pc_actions", "remote_input", "commands"
+        "media", "toggles", "mirroring", "pc_mirror", "webcam", "pc_actions", "remote_input", "commands",
+        // Its own row at the top of the card.
+        "unlock"
     ]
 
     FolderDialog {
@@ -274,7 +357,7 @@ Item {
     FolderDialog {
         id: folderSyncPcPicker
         title: qsTr("Sync into")
-        onAccepted: folderSyncSheet.pcFolder = Preferences.localFolder(selectedFolder.toString())
+        onAccepted: folderSyncSheet.pcBase = Preferences.localFolder(selectedFolder.toString())
     }
 
     FolderDialog {
@@ -490,6 +573,24 @@ Item {
         boundsBehavior: Flickable.StopAtBounds
         clip: true
 
+        // A found row flashes once (#522).
+        Rectangle {
+            id: rowFlash
+            parent: column
+            z: 10
+            radius: Theme.radiusMd
+            color: "transparent"
+            border.width: 2
+            border.color: Theme.primary
+            opacity: 0
+            SequentialAnimation {
+                id: rowFlashAnim
+                NumberAnimation { target: rowFlash; property: "opacity"; to: 1; duration: Theme.reduceMotion ? 0 : 120 }
+                PauseAnimation { duration: 900 }
+                NumberAnimation { target: rowFlash; property: "opacity"; to: 0; duration: Theme.reduceMotion ? 0 : 400 }
+            }
+        }
+
         Column {
             id: column
             width: Math.min(840, contentFlickable.width - Theme.contentPadding * 2)
@@ -515,6 +616,111 @@ Item {
                     to: 0
                     duration: 135
                     easing.type: Easing.OutCubic
+                }
+            }
+
+            // Search across every section (#522).
+            Rectangle {
+                id: searchBox
+                width: parent.width
+                height: 40
+                radius: Theme.graphite ? Theme.radiusSm : height / 2
+                color: Theme.graphite ? "transparent" : Theme.surfaceContainerHighest
+                border.width: searchInput.activeFocus ? 2 : 1
+                border.color: searchInput.activeFocus ? Theme.primary : Theme.outlineVariant
+                Icon {
+                    id: searchIconSettings
+                    anchors.left: parent.left
+                    anchors.leftMargin: 14
+                    anchors.verticalCenter: parent.verticalCenter
+                    width: 18; height: 18
+                    path: Icons.search
+                    color: Theme.surfaceContentVariant
+                }
+                TextInput {
+                    id: searchInput
+                    anchors.left: searchIconSettings.right
+                    anchors.leftMargin: 10
+                    anchors.right: parent.right
+                    anchors.rightMargin: 14
+                    anchors.verticalCenter: parent.verticalCenter
+                    font.family: Theme.fontUi
+                    font.pixelSize: 14
+                    color: Theme.surfaceContent
+                    selectionColor: Theme.primaryContainer
+                    selectedTextColor: Theme.primaryContainerContent
+                    clip: true
+                    Accessible.name: qsTr("Search settings")
+                    onTextChanged: page.searchQuery = text
+                    Keys.onReturnPressed: if (page.searchResults.length > 0) page.openResult(page.searchResults[0])
+                    Keys.onEnterPressed: if (page.searchResults.length > 0) page.openResult(page.searchResults[0])
+                    Keys.onEscapePressed: text = ""
+                    Txt {
+                        anchors.verticalCenter: parent.verticalCenter
+                        visible: searchInput.text.length === 0
+                        role: "body"
+                        muted: true
+                        text: qsTr("Search settings")
+                    }
+                }
+            }
+            Card {
+                width: parent.width
+                visible: page.searchQuery.trim().length > 0
+                Column {
+                    width: parent.width
+                    Txt {
+                        visible: page.searchResults.length === 0
+                        width: parent.width
+                        topPadding: 8
+                        bottomPadding: 8
+                        role: "body"
+                        muted: true
+                        text: qsTr("No setting matches \"%1\".").arg(page.searchQuery.trim())
+                    }
+                    Repeater {
+                        model: page.searchResults
+                        delegate: Rectangle {
+                            id: resultRow
+                            required property var modelData
+                            required property int index
+                            width: parent.width
+                            height: resultText.implicitHeight + 16
+                            radius: Theme.radiusMd
+                            color: resultMouse.containsMouse ? Theme.subtleFillSecondary : "transparent"
+                            activeFocusOnTab: true
+                            Accessible.role: Accessible.Button
+                            Accessible.name: modelData.title + ", " + page.sectionTitle(modelData.section)
+                            Keys.onReturnPressed: page.openResult(modelData)
+                            Keys.onSpacePressed: page.openResult(modelData)
+                            Column {
+                                id: resultText
+                                anchors.left: parent.left
+                                anchors.right: parent.right
+                                anchors.leftMargin: 8
+                                anchors.rightMargin: 8
+                                anchors.verticalCenter: parent.verticalCenter
+                                spacing: 2
+                                Txt { width: parent.width; role: "label"; text: resultRow.modelData.title; elide: Text.ElideRight }
+                                Txt {
+                                    width: parent.width
+                                    role: "caption"
+                                    muted: true
+                                    elide: Text.ElideRight
+                                    text: page.sectionTitle(resultRow.modelData.section)
+                                        + (resultRow.modelData.item && resultRow.modelData.description.length > 0
+                                           ? " · " + resultRow.modelData.description : "")
+                                }
+                            }
+                            MouseArea {
+                                id: resultMouse
+                                anchors.fill: parent
+                                hoverEnabled: true
+                                cursorShape: Qt.PointingHandCursor
+                                onClicked: page.openResult(resultRow.modelData)
+                            }
+                        }
+                    }
                 }
             }
 
@@ -549,6 +755,7 @@ Item {
             // 1. APPEARANCE
             // ================================================================
             Column {
+                readonly property string settingsSection: "appearance"
                 visible: page.currentSection === "appearance"
                 width: visible ? parent.width : 0
                 spacing: Theme.gutter
@@ -954,6 +1161,7 @@ Item {
             // 2. GENERAL
             // ================================================================
             Column {
+                readonly property string settingsSection: "general"
                 visible: page.currentSection === "general"
                 width: visible ? parent.width : 0
                 spacing: Theme.gutter
@@ -1048,6 +1256,24 @@ Item {
                                     checked: Preferences.closeToTray
                                     onToggled: (on) => Preferences.closeToTray = on
                                 }
+                            }
+                        }
+
+                        Divider { width: parent.width; visible: Qt.platform.os === "windows" }
+
+                        ListRow {
+                            width: parent.width
+                            visible: Qt.platform.os === "windows"
+                            iconPath: Icons.palette
+                            title: qsTr("Tray icon")
+                            description: qsTr("One color turns white or black to match the taskbar.")
+                            Segmented {
+                                options: [
+                                    { value: "colour", label: qsTr("Color") },
+                                    { value: "one", label: qsTr("One color") }
+                                ]
+                                value: Preferences.trayOneColour ? "one" : "colour"
+                                onPicked: (val) => Preferences.trayOneColour = val === "one"
                             }
                         }
 
@@ -1200,6 +1426,59 @@ Item {
                                     }
                                 }
                             }
+
+                            // Wayland puts windows where it likes: the pill is dragged there instead.
+                            Divider { width: parent.width; visible: islandPositionRow.visible }
+
+                            // #472: so it doesn't sit over another app's own bar.
+                            ListRow {
+                                id: islandPositionRow
+                                visible: !Qt.platform.pluginName.startsWith("wayland")
+                                width: parent.width
+                                title: qsTr("Island position")
+                                description: qsTr("Where the pill sits along the top of the screen.")
+                                Segmented {
+                                    options: [
+                                        { value: "left", label: qsTr("Left") },
+                                        { value: "center", label: qsTr("Center") },
+                                        { value: "right", label: qsTr("Right") }
+                                    ]
+                                    value: Preferences.nectarIslandPosition
+                                    onPicked: (val) => Preferences.nectarIslandPosition = val
+                                }
+                            }
+
+                            Divider { width: parent.width }
+
+                            // #325: dark always, or light when the app is.
+                            ListRow {
+                                width: parent.width
+                                title: qsTr("Island look")
+                                description: qsTr("Always dark, or light and dark with the app.")
+                                Segmented {
+                                    options: [
+                                        { value: "dark", label: qsTr("Dark") },
+                                        { value: "theme", label: qsTr("Like the app") }
+                                    ]
+                                    value: Preferences.nectarIslandLook
+                                    onPicked: (val) => Preferences.nectarIslandLook = val
+                                }
+                            }
+
+                            Divider { width: parent.width; visible: Preferences.nectarIslandMedia }
+
+                            // #472: Spotify, a browser, any player Windows' media controls know.
+                            ListRow {
+                                width: parent.width
+                                visible: Preferences.nectarIslandMedia
+                                title: qsTr("This PC's players too")
+                                description: qsTr("Also show music and videos playing on this PC. With more than one, a button switches between them.")
+                                Toggle {
+                                    label: qsTr("This PC's players too")
+                                    checked: Preferences.nectarIslandPcMedia
+                                    onToggled: (on) => Preferences.nectarIslandPcMedia = on
+                                }
+                            }
                         }
 
                         // Sub-row: Full charge alert target (100% or 80% Protect battery)
@@ -1208,6 +1487,20 @@ Item {
                             visible: Preferences.batteryAlerts
                             width: parent.width
                             spacing: 0
+
+                            Divider { width: parent.width }
+
+                            ListRow {
+                                width: parent.width
+                                iconPath: Icons.battery
+                                title: qsTr("Low battery at")
+                                description: qsTr("Alert once when a phone gets down to this level.")
+                                Segmented {
+                                    options: [5, 10, 15, 20, 30].map(v => ({ value: v, label: v + "%" }))
+                                    value: Preferences.batteryLowThreshold
+                                    onPicked: (val) => Preferences.batteryLowThreshold = val
+                                }
+                            }
 
                             Divider { width: parent.width }
 
@@ -1252,6 +1545,20 @@ Item {
                                 label: qsTr("Right-click is a long press")
                                 checked: Preferences.rightClickLongPress
                                 onToggled: (on) => Preferences.rightClickLongPress = on
+                            }
+                        }
+
+                        Divider { width: parent.width }
+
+                        ListRow {
+                            width: parent.width
+                            iconPath: Icons.eyeOff
+                            title: qsTr("Toolbar in mirroring and app windows")
+                            description: qsTr("Shows when the pointer is near the top of the window. Off, Ctrl+Shift+T in a window shows it again.")
+                            Toggle {
+                                label: qsTr("Toolbar in mirroring and app windows")
+                                checked: !Preferences.hideMirrorToolbar
+                                onToggled: (on) => Preferences.hideMirrorToolbar = !on
                             }
                         }
 
@@ -1366,6 +1673,7 @@ Item {
             // 3. DEVICES
             // ================================================================
             Column {
+                readonly property string settingsSection: "devices"
                 visible: page.currentSection === "devices"
                 width: visible ? parent.width : 0
                 spacing: Theme.gutter
@@ -1579,6 +1887,118 @@ Item {
                                     }
                                 }
                             }
+                            // The core offers this for phones with compatible biometric keys.
+                            ListRow {
+                                id: unlockRow
+                                readonly property var item: deviceCard.toggles.find(t => t.name === "unlock")
+                                width: parent.width
+                                visible: (Qt.platform.os === "windows" || Qt.platform.os === "linux") && item !== undefined
+                                iconPath: Icons.lock
+                                title: qsTr("Unlock this PC with the phone")
+                                description: page.toggleDescriptions.unlock
+                                Toggle {
+                                    label: qsTr("Unlock this PC with the phone")
+                                    checked: unlockRow.item !== undefined && unlockRow.item.on
+                                    onToggled: (on) => AppController.setDeviceToggle(deviceCard.deviceId, "unlock", on)
+                                }
+                            }
+                            // Unlock with phone (#36): set up with the Windows password once the switch is on.
+                            Column {
+                                id: unlockSetup
+                                readonly property bool switchOn: deviceCard.toggles.some(t => t.name === "unlock" && t.on)
+                                property bool done: switchOn && AppController.togglesRevision >= 0 && AppController.unlockSetUp(deviceCard.deviceId)
+                                property bool busy: false
+                                property string message: ""
+                                visible: Qt.platform.os === "windows" && switchOn
+                                width: parent.width
+                                // Lined up with the row's text above (icon 20 + 14).
+                                leftPadding: 34
+                                bottomPadding: 8
+                                spacing: 8
+                                Connections {
+                                    target: AppController
+                                    function onUnlockResult(device, result) {
+                                        if (device !== deviceCard.deviceId)
+                                            return
+                                        unlockSetup.busy = false
+                                        unlockPassword.text = ""
+                                        const messages = {
+                                            done: qsTr("Done. On the lock screen, pick Unlock with phone, then confirm on the phone."),
+                                            wrong_password: qsTr("That isn't this account's Windows password."),
+                                            declined: qsTr("Not confirmed on the phone."),
+                                            phone_away: qsTr("The phone isn't connected on this network."),
+                                            phone_cant: qsTr("Turn on Unlock this PC with your fingerprint for this PC on the phone too."),
+                                            failed: qsTr("Couldn't set it up. Try again."),
+                                            registered: "",
+                                            register_failed: qsTr("Windows didn't allow it. Turn it off and on to try again.")
+                                        }
+                                        unlockSetup.message = messages[result] !== undefined ? messages[result] : ""
+                                        unlockSetup.done = AppController.unlockSetUp(deviceCard.deviceId)
+                                    }
+                                }
+                                Txt {
+                                    width: parent.width - unlockSetup.leftPadding
+                                    wrapMode: Text.WordWrap
+                                    role: "bodySmall"
+                                    muted: true
+                                    text: unlockSetup.done
+                                        ? qsTr("Set up for this Windows account. Type the password again here if you change it.")
+                                        : qsTr("Type this account's Windows password once. It's kept locked with a key only the phone has, and the phone asks for your fingerprint every time.")
+                                }
+                                Row {
+                                    spacing: 8
+                                    Rectangle {
+                                        anchors.verticalCenter: parent.verticalCenter
+                                        width: 220
+                                        height: 32
+                                        radius: Theme.radiusSm
+                                        color: Theme.surfaceContainerHighest
+                                        border.width: unlockPassword.activeFocus ? 2 : 1
+                                        border.color: unlockPassword.activeFocus ? Theme.primary : Theme.outlineVariant
+                                        TextInput {
+                                            id: unlockPassword
+                                            anchors.fill: parent
+                                            anchors.leftMargin: 8
+                                            anchors.rightMargin: 8
+                                            verticalAlignment: TextInput.AlignVCenter
+                                            color: Theme.surfaceContent
+                                            selectionColor: Theme.primaryContainer
+                                            selectedTextColor: Theme.primaryContainerContent
+                                            font.pixelSize: 12
+                                            echoMode: TextInput.Password
+                                            passwordCharacter: "\u2022"
+                                            enabled: !unlockSetup.busy
+                                            Accessible.name: qsTr("Windows password")
+                                            onAccepted: unlockSetUpButton.clicked()
+                                            Txt {
+                                                anchors.verticalCenter: parent.verticalCenter
+                                                visible: unlockPassword.text.length === 0 && !unlockPassword.activeFocus
+                                                role: "bodySmall"
+                                                muted: true
+                                                text: qsTr("Windows password")
+                                            }
+                                        }
+                                    }
+                                    Button {
+                                        id: unlockSetUpButton
+                                        size: "sm"
+                                        text: unlockSetup.busy ? qsTr("Confirm on the phone…") : (unlockSetup.done ? qsTr("Update") : qsTr("Set up"))
+                                        enabled: !unlockSetup.busy && unlockPassword.text.length > 0
+                                        onClicked: {
+                                            unlockSetup.busy = true
+                                            unlockSetup.message = ""
+                                            AppController.setUpUnlock(deviceCard.deviceId, unlockPassword.text)
+                                        }
+                                    }
+                                }
+                                Txt {
+                                    visible: unlockSetup.message.length > 0
+                                    width: parent.width - unlockSetup.leftPadding
+                                    wrapMode: Text.WordWrap
+                                    role: "bodySmall"
+                                    text: unlockSetup.message
+                                }
+                            }
                             Repeater {
                                 model: page.toggleGroups
                                 delegate: Column {
@@ -1721,6 +2141,7 @@ Item {
                                     }
                                 }
                             }
+
                         }
                     }
                 }
@@ -1730,29 +2151,57 @@ Item {
             // 4. CAMERA & AUDIO
             // ================================================================
             Column {
+                readonly property string settingsSection: "camera_audio"
                 visible: page.currentSection === "camera_audio"
                 width: visible ? parent.width : 0
                 spacing: Theme.gutter
 
                 Card {
                     width: parent.width
-                    ListRow {
+                    Column {
                         width: parent.width
-                        iconPath: Icons.screenOff
-                        title: qsTr("Mirror quality")
-                        description: Preferences.mirrorQuality === "sharper"
-                            ? qsTr("The phone's full resolution. Uses more of its battery, and needs good Wi-Fi or USB and a GPU on this PC.")
-                            : Preferences.mirrorQuality === "smoother"
-                            ? qsTr("A softer picture that holds up better on weak Wi-Fi.")
-                            : qsTr("For the phone's screen and app windows, from the next time you open them.")
-                        Segmented {
-                            options: [
-                                { value: "balanced", label: qsTr("Balanced") },
-                                { value: "sharper", label: qsTr("Sharper") },
-                                { value: "smoother", label: qsTr("Smoother") }
-                            ]
-                            value: Preferences.mirrorQuality
-                            onPicked: (value) => Preferences.mirrorQuality = value
+                        ListRow {
+                            width: parent.width
+                            iconPath: Icons.screenOff
+                            title: qsTr("Mirror quality")
+                            description: Preferences.mirrorQuality === "sharper"
+                                ? qsTr("The phone's full resolution. Uses more of its battery, and needs good Wi-Fi or USB and a GPU on this PC.")
+                                : Preferences.mirrorQuality === "smoother"
+                                ? qsTr("A softer picture that holds up better on weak Wi-Fi.")
+                                : Preferences.mirrorQuality === "adaptive"
+                                ? qsTr("Starts at Balanced and lowers the picture while this PC can't keep up, then goes back up once it can.")
+                                : qsTr("For the phone's screen and app windows, from the next time you open them.")
+                            Segmented {
+                                options: [
+                                    { value: "balanced", label: qsTr("Balanced") },
+                                    { value: "sharper", label: qsTr("Sharper") },
+                                    { value: "smoother", label: qsTr("Smoother") },
+                                    { value: "adaptive", label: qsTr("Adaptive") }
+                                ]
+                                value: Preferences.mirrorQuality
+                                onPicked: (value) => Preferences.mirrorQuality = value
+                            }
+                        }
+                        Divider { width: parent.width }
+                        ListRow {
+                            width: parent.width
+                            iconPath: Icons.bolt
+                            title: qsTr("Frame rate")
+                            description: Preferences.mirrorFps > 60
+                                ? qsTr("Smoother motion where the phone's screen refreshes that fast. Uses more battery, Wi-Fi and PC.")
+                                : Preferences.mirrorFps < 60
+                                ? qsTr("Half the frames: easier on the phone's battery and weak Wi-Fi.")
+                                : qsTr("For the phone's screen and app windows, from the next time you open them.")
+                            Segmented {
+                                options: [
+                                    { value: "30", label: "30" },
+                                    { value: "60", label: "60" },
+                                    { value: "90", label: "90" },
+                                    { value: "120", label: "120" }
+                                ]
+                                value: String(Preferences.mirrorFps)
+                                onPicked: (value) => Preferences.mirrorFps = parseInt(value)
+                            }
                         }
                     }
                 }
@@ -1831,6 +2280,25 @@ Item {
                                 label: qsTr("Mute this PC while a phone watches")
                                 checked: Preferences.muteWhileWatched
                                 onToggled: (on) => Preferences.muteWhileWatched = on
+                            }
+                        }
+
+                        Divider { width: parent.width }
+
+                        // #321: more buffer survives a busy Wi-Fi, less is closer to live.
+                        ListRow {
+                            width: parent.width
+                            iconPath: Icons.speaker
+                            title: qsTr("Phone sound buffer")
+                            description: qsTr("If phone sound on this PC skips on a busy Wi-Fi, a bigger buffer smooths it out, with a little more delay.")
+                            Segmented {
+                                options: [
+                                    { value: 40, label: qsTr("Low") },
+                                    { value: 100, label: qsTr("Medium") },
+                                    { value: 200, label: qsTr("High") }
+                                ]
+                                value: Preferences.phoneSoundBufferMs
+                                onPicked: (val) => Preferences.phoneSoundBufferMs = val
                             }
                         }
 
@@ -2138,6 +2606,7 @@ Item {
             // 5. NOTIFICATIONS
             // ================================================================
             Column {
+                readonly property string settingsSection: "notifications"
                 visible: page.currentSection === "notifications"
                 width: visible ? parent.width : 0
                 spacing: Theme.gutter
@@ -2168,6 +2637,18 @@ Item {
                                 label: qsTr("Don't receive while this PC is locked")
                                 checked: Preferences.holdWhenLocked
                                 onToggled: (on) => Preferences.holdWhenLocked = on
+                            }
+                        }
+                        Divider { width: parent.width }
+                        ListRow {
+                            width: parent.width
+                            iconPath: Icons.pause
+                            title: qsTr("Keep pop-ups paused after a restart")
+                            description: qsTr("Pause pop-ups on Home stays on until you resume them, even when NectarLink or the PC restarts.")
+                            Toggle {
+                                label: qsTr("Keep pop-ups paused after a restart")
+                                checked: Preferences.keepPopupsPaused
+                                onToggled: (on) => Preferences.keepPopupsPaused = on
                             }
                         }
                         Divider { width: parent.width }
@@ -2302,6 +2783,7 @@ Item {
             // 6. FILES & SYNC
             // ================================================================
             Column {
+                readonly property string settingsSection: "files_sync"
                 visible: page.currentSection === "files_sync"
                 width: visible ? parent.width : 0
                 spacing: Theme.gutter
@@ -2599,6 +3081,14 @@ Item {
                                             anchors.verticalCenter: parent.verticalCenter
                                             variant: "text"
                                             size: "sm"
+                                            iconPath: Icons.edit
+                                            text: qsTr("Edit")
+                                            onClicked: folderSyncSheet.openToEdit(syncRuleDelegate.modelData)
+                                        }
+                                        Button {
+                                            anchors.verticalCenter: parent.verticalCenter
+                                            variant: "text"
+                                            size: "sm"
                                             iconPath: Icons.trash
                                             text: qsTr("Remove")
                                             onClicked: Preferences.removeFolderSyncRule(syncRuleDelegate.modelData.id)
@@ -2621,6 +3111,7 @@ Item {
             // 7. SHORTCUTS & RULES
             // ================================================================
             Column {
+                readonly property string settingsSection: "shortcuts"
                 visible: page.currentSection === "shortcuts"
                 width: visible ? parent.width : 0
                 spacing: Theme.gutter
@@ -3107,6 +3598,7 @@ Item {
             // 8. STORAGE & PRIVACY
             // ================================================================
             Column {
+                readonly property string settingsSection: "storage"
                 visible: page.currentSection === "storage"
                 width: visible ? parent.width : 0
                 spacing: Theme.gutter
@@ -3455,6 +3947,7 @@ Item {
             // AI AGENTS
             // ================================================================
             AgentsSection {
+                readonly property string settingsSection: "agents"
                 visible: page.currentSection === "agents"
                 width: visible ? parent.width : 0
             }
@@ -3463,6 +3956,7 @@ Item {
             // 9. CONNECTION & ABOUT
             // ================================================================
             Column {
+                readonly property string settingsSection: "connection"
                 visible: page.currentSection === "connection"
                 width: visible ? parent.width : 0
                 spacing: Theme.gutter
@@ -3623,6 +4117,20 @@ Item {
                                 }
                             }
                         }
+                        Divider { width: parent.width; visible: Preferences.localApiEnabled }
+                        ListRow {
+                            width: parent.width
+                            visible: Preferences.localApiEnabled
+                            iconPath: Icons.bell
+                            title: qsTr("Notifications and messages")
+                            description: qsTr("Tools using the API can also read your phones' notifications and conversations. Apps you hide stay hidden.")
+                            Toggle {
+                                anchors.verticalCenter: parent.verticalCenter
+                                label: qsTr("Notifications and messages")
+                                checked: Preferences.localApiPrivate
+                                onToggled: (on) => Preferences.localApiPrivate = on
+                            }
+                        }
                         Divider { width: parent.width }
                         ListRow {
                             width: parent.width
@@ -3676,6 +4184,27 @@ Item {
                                     text: qsTr("Open logs")
                                     onClicked: Qt.openUrlExternally(AppController.logsUrl())
                                 }
+                                Button {
+                                    anchors.verticalCenter: parent.verticalCenter
+                                    variant: "outline"
+                                    size: "sm"
+                                    iconPath: Icons.warning
+                                    text: qsTr("Report a problem")
+                                    onClicked: Report.open()
+                                }
+                            }
+                        }
+                        Divider { width: parent.width }
+                        ListRow {
+                            width: parent.width
+                            iconPath: Icons.whatsNew
+                            title: qsTr("What's new")
+                            description: qsTr("What changed since your last update.")
+                            Button {
+                                text: qsTr("Open")
+                                variant: "tonal"
+                                size: "sm"
+                                onClicked: AppController.openWhatsNew()
                             }
                         }
                         Divider { width: parent.width; visible: AppController.canUpdate }
@@ -3698,9 +4227,12 @@ Item {
                             visible: AppController.canUpdate
                             iconPath: Icons.moon
                             title: qsTr("Update channel")
-                            description: Preferences.updateChannel === "nightly"
-                                         ? qsTr("The newest build from every couple of hours, with the latest fixes and features, and sometimes new bugs. Back on Stable, this PC keeps its build until the next release is newer.")
-                                         : qsTr("Releases, tested and less often.")
+                            description: (Preferences.updateChannel === "nightly"
+                                          ? qsTr("The newest build from every couple of hours, with the latest fixes and features, and sometimes new bugs. Back on Stable, this PC keeps its build until the next release is newer.")
+                                          : qsTr("Releases, tested and less often."))
+                                         + (Preferences.updateChannelShared
+                                            ? " " + qsTr("It's the same for everyone who uses NectarLink on this PC.")
+                                            : "")
                             Segmented {
                                 options: [
                                     { value: "stable", label: qsTr("Stable") },
@@ -3761,10 +4293,84 @@ Item {
             }
 
             // ================================================================
-            // 10. SUPPORT
+            // 10. COMMUNITY (id "support", as links to it already say)
             // ================================================================
             Column {
+                readonly property string settingsSection: "support"
                 visible: page.currentSection === "support"
+                width: visible ? parent.width : 0
+                spacing: Theme.gutter
+
+                Card {
+                    width: parent.width
+                    Column {
+                        width: parent.width
+                        ListRow {
+                            width: parent.width
+                            iconPath: Icons.brandDiscord
+                            iconFilled: true
+                            title: qsTr("Discord")
+                            description: qsTr("Our server. Ask questions, share ideas and try new builds with others.")
+                            Button {
+                                objectName: "discordButton"
+                                variant: "tonal"
+                                size: "sm"
+                                text: qsTr("Open")
+                                onClicked: Links.open("discord")
+                            }
+                        }
+                        Divider { width: parent.width }
+                        ListRow {
+                            width: parent.width
+                            iconPath: Icons.brandX
+                            iconFilled: true
+                            title: "𝕏"
+                            description: qsTr("Follow me. I post what's coming to NectarLink and other things I make.")
+                            Button {
+                                variant: "tonal"
+                                size: "sm"
+                                text: qsTr("Open")
+                                onClicked: Links.open("x")
+                            }
+                        }
+                        Divider { width: parent.width }
+                        ListRow {
+                            width: parent.width
+                            iconPath: Icons.brandGitHub
+                            iconFilled: true
+                            title: qsTr("GitHub")
+                            description: qsTr("Source code, issues and releases.")
+                            Button {
+                                variant: "tonal"
+                                size: "sm"
+                                text: qsTr("Open")
+                                onClicked: Links.open("repo")
+                            }
+                        }
+                        Divider { width: parent.width }
+                        ListRow {
+                            width: parent.width
+                            iconPath: Icons.heart
+                            title: qsTr("Support NectarLink")
+                            description: qsTr("NectarLink is free and open source. If it makes your days a little easier, you can help keep it going. Thank you!")
+                            Button {
+                                objectName: "supportButton"
+                                variant: "tonal"
+                                size: "sm"
+                                text: qsTr("Support")
+                                onClicked: Links.open("donate")
+                            }
+                        }
+                    }
+                }
+            }
+
+            // ================================================================
+            // REPORT A PROBLEM
+            // ================================================================
+            Column {
+                readonly property string settingsSection: "report"
+                visible: page.currentSection === "report"
                 width: visible ? parent.width : 0
                 spacing: Theme.gutter
 
@@ -3772,15 +4378,14 @@ Item {
                     width: parent.width
                     ListRow {
                         width: parent.width
-                        iconPath: Icons.heart
-                        title: qsTr("Support NectarLink")
-                        description: qsTr("NectarLink is free and open source. If it makes your days a little easier, you can help keep it going. Thank you!")
+                        iconPath: Icons.warning
+                        title: qsTr("Report a problem")
+                        description: qsTr("Tell us what went wrong. You see the whole report before it goes anywhere.")
                         Button {
-                            objectName: "supportButton"
-                            variant: "tonal"
+                            variant: "fill"
                             size: "sm"
-                            text: qsTr("Support")
-                            onClicked: Qt.openUrlExternally("https://buymeacoffee.com/thtbee_")
+                            text: qsTr("Start")
+                            onClicked: Report.open()
                         }
                     }
                 }
@@ -3821,37 +4426,85 @@ Item {
     Sheet {
         id: folderSyncSheet
         property string phoneId
-        property string phoneFolder
-        property string pcFolder
+        // Editing this rule, or adding when empty (#491).
+        property string editId: ""
+        // Phone folders picked from the chips (several at once when adding),
+        // plus one typed in.
+        property var picked: []
+        property string typed: ""
+        // The PC folder the user chose; empty until then, when each phone
+        // folder gets its own suggested one.
+        property string pcBase: ""
+        // In the chosen folder, each phone folder gets a folder of its name (#491).
+        property bool keepNames: true
         property string mode: "one_way_phone_to_pc"
         property bool removeDeleted: false
-        // The PC folder follows the phone folder until the user picks one.
-        property bool pcChosen: false
         readonly property var common: ["DCIM/Camera", "Pictures/Screenshots", "Download", "Documents", "Music", "Movies", "Recordings"]
-        readonly property string tidyPhoneFolder: phoneFolder.split(/[\/\\]/).map(p => p.trim()).filter(p => p.length > 0 && p !== ".").join("/")
-        readonly property bool phoneFolderOk: tidyPhoneFolder.length > 0 && tidyPhoneFolder.split("/").indexOf("..") < 0
+        function tidy(folder) {
+            return folder.split(/[\/\\]/).map(p => p.trim()).filter(p => p.length > 0 && p !== ".").join("/")
+        }
+        function folderOk(folder) { return folder.length > 0 && folder.split("/").indexOf("..") < 0 }
+        readonly property var phoneFolders: {
+            const all = picked.slice()
+            const t = tidy(typed)
+            if (folderOk(t) && all.indexOf(t) < 0) all.push(t)
+            return all
+        }
+        // Where each phone folder goes on this PC.
+        function pcFolderFor(folder) {
+            if (pcBase.length === 0) return Preferences.suggestedSyncFolder(folder)
+            return keepNames ? Preferences.pcFolderKeepingName(pcBase, folder) : pcBase
+        }
+        readonly property bool ready: phoneFolders.length > 0
+            && phoneFolders.every(f => pcFolderFor(f).length > 0)
+            && (editId.length > 0 ? phoneFolders.length === 1 : true)
         cardWidth: 480
 
         function openFor(id) {
             phoneId = id
+            editId = ""
             mode = "one_way_phone_to_pc"
             removeDeleted = false
-            pcChosen = false
-            choosePhoneFolder("DCIM/Camera")
+            pcBase = ""
+            keepNames = true
+            picked = ["DCIM/Camera"]
+            typed = ""
+            phoneFolderInput.text = ""
             open()
         }
-        function choosePhoneFolder(folder) {
-            phoneFolder = folder
-            if (phoneFolderInput.text !== folder)
-                phoneFolderInput.text = folder
-            if (!pcChosen)
-                pcFolder = Preferences.suggestedSyncFolder(folder)
+        function openToEdit(rule) {
+            phoneId = rule.phoneId
+            editId = rule.id
+            mode = rule.mode
+            removeDeleted = Boolean(rule.removeDeleted)
+            picked = [rule.phoneFolder]
+            typed = ""
+            phoneFolderInput.text = ""
+            // Kept as it is: the chosen folder, exactly.
+            pcBase = rule.pcFolder
+            keepNames = false
+            open()
+        }
+        function togglePhoneFolder(folder) {
+            const at = picked.indexOf(folder)
+            if (editId.length > 0) {
+                picked = [folder]
+            } else if (at >= 0) {
+                picked = picked.filter(f => f !== folder)
+            } else {
+                picked = picked.concat([folder])
+            }
         }
 
         Column {
             width: parent.width
             spacing: 12
-            Txt { width: parent.width; text: qsTr("Sync a folder"); role: "headline"; wrapMode: Text.WordWrap }
+            Txt {
+                width: parent.width
+                text: folderSyncSheet.editId.length > 0 ? qsTr("Edit synced folder") : qsTr("Sync folders")
+                role: "headline"
+                wrapMode: Text.WordWrap
+            }
             Txt {
                 width: parent.width
                 wrapMode: Text.WordWrap
@@ -3870,8 +4523,8 @@ Item {
                         required property string modelData
                         text: modelData
                         interactive: true
-                        selected: folderSyncSheet.tidyPhoneFolder === modelData
-                        onClicked: folderSyncSheet.choosePhoneFolder(modelData)
+                        selected: folderSyncSheet.picked.indexOf(modelData) >= 0
+                        onClicked: folderSyncSheet.togglePhoneFolder(modelData)
                     }
                 }
             }
@@ -3891,8 +4544,20 @@ Item {
                     selectByMouse: true
                     clip: true
                     Accessible.role: Accessible.EditableText
-                    Accessible.name: qsTr("Folder on the phone")
-                    onTextEdited: folderSyncSheet.choosePhoneFolder(text)
+                    Accessible.name: qsTr("Another folder on the phone")
+                    onTextEdited: {
+                        folderSyncSheet.typed = text
+                        // Editing has one folder: what's typed replaces the chip.
+                        if (folderSyncSheet.editId.length > 0 && text.trim().length > 0)
+                            folderSyncSheet.picked = []
+                    }
+                    Txt {
+                        anchors.verticalCenter: parent.verticalCenter
+                        visible: phoneFolderInput.text.length === 0
+                        role: "body"
+                        muted: true
+                        text: qsTr("Another folder, like WhatsApp/Media")
+                    }
                 }
             }
 
@@ -3903,18 +4568,46 @@ Item {
                 Txt {
                     width: parent.width - choosePcFolder.width - 8
                     anchors.verticalCenter: parent.verticalCenter
-                    text: folderSyncSheet.pcFolder
+                    text: folderSyncSheet.pcBase.length > 0 ? folderSyncSheet.pcBase : qsTr("A folder of its own for each, in Pictures, Music, Videos or Documents")
                     elide: Text.ElideMiddle
+                    wrapMode: folderSyncSheet.pcBase.length > 0 ? Text.NoWrap : Text.WordWrap
                     role: "body"
+                    muted: folderSyncSheet.pcBase.length === 0
                 }
                 Button {
                     id: choosePcFolder
                     variant: "text"
                     size: "sm"
                     text: qsTr("Choose…")
-                    onClicked: {
-                        folderSyncSheet.pcChosen = true
-                        folderSyncPcPicker.open()
+                    onClicked: folderSyncPcPicker.open()
+                }
+            }
+            ListRow {
+                width: parent.width
+                visible: folderSyncSheet.pcBase.length > 0
+                title: qsTr("Keep each folder's name")
+                description: qsTr("Each phone folder goes into a folder of its own name in the one you chose, instead of straight into it.")
+                Toggle {
+                    label: qsTr("Keep each folder's name")
+                    checked: folderSyncSheet.keepNames
+                    onToggled: (on) => folderSyncSheet.keepNames = on
+                }
+            }
+            // Where each goes, when there's more than one or a name is added.
+            Column {
+                width: parent.width
+                spacing: 2
+                visible: folderSyncSheet.phoneFolders.length > 1
+                    || (folderSyncSheet.pcBase.length > 0 && folderSyncSheet.keepNames)
+                Repeater {
+                    model: folderSyncSheet.phoneFolders
+                    delegate: Txt {
+                        required property string modelData
+                        width: parent.width
+                        role: "caption"
+                        muted: true
+                        elide: Text.ElideMiddle
+                        text: modelData + "  →  " + folderSyncSheet.pcFolderFor(modelData)
                     }
                 }
             }
@@ -3959,13 +4652,22 @@ Item {
                 spacing: 10
                 Button { variant: "text"; text: qsTr("Cancel"); onClicked: folderSyncSheet.close() }
                 Button {
-                    text: qsTr("Add")
-                    enabled: folderSyncSheet.phoneFolderOk && folderSyncSheet.pcFolder.length > 0
+                    text: folderSyncSheet.editId.length > 0 ? qsTr("Save")
+                        : folderSyncSheet.phoneFolders.length > 1 ? qsTr("Add %1 folders").arg(folderSyncSheet.phoneFolders.length)
+                        : qsTr("Add")
+                    enabled: folderSyncSheet.ready
                     onClicked: {
-                        Preferences.addFolderSyncRule(folderSyncSheet.phoneId, folderSyncSheet.tidyPhoneFolder,
-                                                      folderSyncSheet.pcFolder, folderSyncSheet.mode,
-                                                      folderSyncSheet.removeDeleted)
-                        folderSyncSheet.close()
+                        const sheet = folderSyncSheet
+                        if (sheet.editId.length > 0) {
+                            const folder = sheet.phoneFolders[0]
+                            Preferences.updateFolderSyncRule(sheet.editId, folder, sheet.pcFolderFor(folder),
+                                                             sheet.mode, sheet.removeDeleted)
+                        } else {
+                            for (const folder of sheet.phoneFolders)
+                                Preferences.addFolderSyncRule(sheet.phoneId, folder, sheet.pcFolderFor(folder),
+                                                              sheet.mode, sheet.removeDeleted)
+                        }
+                        sheet.close()
                     }
                 }
             }

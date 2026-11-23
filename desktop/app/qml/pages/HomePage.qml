@@ -1578,60 +1578,7 @@ Item {
             }
 
             // ---- Transfers ----
-            Card {
-                width: parent.width
-                visible: TransferList.count > 0
-                Column {
-                    width: parent.width
-                    spacing: 4
-                    Item {
-                        width: parent.width
-                        height: Math.max(transfersHeader.height, clearTransfers.height)
-                        Txt {
-                            id: transfersHeader
-                            anchors.verticalCenter: parent.verticalCenter
-                            role: "label"
-                            muted: true
-                            text: qsTr("Transfers")
-                        }
-                        Row {
-                            anchors.right: parent.right
-                            anchors.verticalCenter: parent.verticalCenter
-                            spacing: 6
-                            Button {
-                                variant: "text"
-                                size: "sm"
-                                text: qsTr("Timeline")
-                                onClicked: AppController.currentPage = "timeline"
-                            }
-                            Button {
-                                id: clearTransfers
-                                visible: TransferList.count > TransferList.active
-                                variant: "text"
-                                size: "sm"
-                                text: qsTr("Clear finished")
-                                onClicked: TransferList.clearFinished()
-                            }
-                        }
-                    }
-                    Column {
-                        id: transferList
-                        width: parent.width
-                        move: Transition {
-                            enabled: !Theme.reduceMotion && !page.resizing
-                            NumberAnimation { properties: "y"; duration: 220; easing.type: Easing.OutCubic }
-                        }
-                        add: Transition {
-                            enabled: !Theme.reduceMotion && !page.resizing
-                            NumberAnimation { property: "opacity"; from: 0; to: 1; duration: 200 }
-                        }
-                        Repeater {
-                            model: TransferList
-                            delegate: TransferItem { width: transferList.width }
-                        }
-                    }
-                }
-            }
+            TransfersCard { width: parent.width }
 
             // ---- LocalSend nearby ----
             LocalSendCard {
@@ -1782,7 +1729,7 @@ Item {
                                 height: visible ? implicitHeight : 0
                                 canOpenApp: home.feature("mirroring.app_windows").state === "available" && app.length > 0
                                 onOpenAppRequested: Mirror.startApp(deviceId, app, appName.length > 0 ? appName : app)
-                                onOptionsRequested: appSheet.openFor(app, appName)
+                                onOptionsRequested: appSheet.openFor(app, appName, title, text)
                                 onImageClicked: (url) => imagePreviewSheet.openFor(url, title.length > 0 ? title : appName)
                             }
                         }
@@ -2668,10 +2615,15 @@ Item {
         property string app
         property string appName
         property string rule: "show"
+        // The notification whose menu was opened, to copy from (#526).
+        property string noteTitle
+        property string noteText
         cardWidth: 420
-        function openFor(app, name) {
+        function openFor(app, name, title, text) {
             appSheet.app = app
             appSheet.appName = name
+            appSheet.noteTitle = title || ""
+            appSheet.noteText = text || ""
             appSheet.rule = NotificationList.appRule(app)
             open()
         }
@@ -2679,6 +2631,27 @@ Item {
             width: parent.width
             spacing: 16
             Txt { width: parent.width; text: qsTr("%1 notifications").arg(appSheet.appName); role: "headline"; wrapMode: Text.WordWrap }
+            Flow {
+                width: parent.width
+                spacing: 8
+                visible: appSheet.noteText.length > 0 || appSheet.noteTitle.length > 0
+                Button {
+                    visible: appSheet.noteText.length > 0
+                    variant: "tonal"
+                    size: "sm"
+                    iconPath: Icons.copy
+                    text: qsTr("Copy text")
+                    onClicked: { NotificationList.copyText("", appSheet.noteText); appSheet.close() }
+                }
+                Button {
+                    visible: appSheet.noteTitle.length > 0 && appSheet.noteText.length > 0
+                    variant: "tonal"
+                    size: "sm"
+                    iconPath: Icons.copy
+                    text: qsTr("Copy title and text")
+                    onClicked: { NotificationList.copyText(appSheet.noteTitle, appSheet.noteText); appSheet.close() }
+                }
+            }
             Segmented {
                 options: [
                     { value: "show", label: qsTr("Show") },
@@ -3297,6 +3270,8 @@ Item {
                 : qsTr("Sync clipboard is off in Settings, so copies only go over with Send clipboard.")
         }
 
+        TransfersCard { width: parent.width }
+
         FileDialog {
             id: pcFilePicker
             title: qsTr("Send to %1").arg(pcHome.name)
@@ -3307,6 +3282,61 @@ Item {
             id: pcFolderPicker
             title: qsTr("Send a folder to %1").arg(pcHome.name)
             onAccepted: TransferList.send(pcHome.deviceId, [selectedFolder.toString()])
+        }
+    }
+
+    // Transfers are app-wide, so a phone's page and another PC's page show the same list.
+    component TransfersCard: Card {
+        visible: TransferList.count > 0
+        Column {
+            width: parent.width
+            spacing: 4
+            Item {
+                width: parent.width
+                height: Math.max(transfersHeader.height, clearTransfers.height)
+                Txt {
+                    id: transfersHeader
+                    anchors.verticalCenter: parent.verticalCenter
+                    role: "label"
+                    muted: true
+                    text: qsTr("Transfers")
+                }
+                Row {
+                    anchors.right: parent.right
+                    anchors.verticalCenter: parent.verticalCenter
+                    spacing: 6
+                    Button {
+                        variant: "text"
+                        size: "sm"
+                        text: qsTr("Timeline")
+                        onClicked: AppController.currentPage = "timeline"
+                    }
+                    Button {
+                        id: clearTransfers
+                        visible: TransferList.count > TransferList.active
+                        variant: "text"
+                        size: "sm"
+                        text: qsTr("Clear finished")
+                        onClicked: TransferList.clearFinished()
+                    }
+                }
+            }
+            Column {
+                id: transferList
+                width: parent.width
+                move: Transition {
+                    enabled: !Theme.reduceMotion && !page.resizing
+                    NumberAnimation { properties: "y"; duration: 220; easing.type: Easing.OutCubic }
+                }
+                add: Transition {
+                    enabled: !Theme.reduceMotion && !page.resizing
+                    NumberAnimation { property: "opacity"; from: 0; to: 1; duration: 200 }
+                }
+                Repeater {
+                    model: TransferList
+                    delegate: TransferItem { width: transferList.width }
+                }
+            }
         }
     }
 

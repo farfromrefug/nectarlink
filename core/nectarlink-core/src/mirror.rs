@@ -25,9 +25,10 @@ use iroh::endpoint::{RecvStream, SendStream, VarInt};
 use nectarlink_protocol::{
     DeviceId, Envelope, ErrorCode, PacketKind,
     messages::{
-        MirrorAudioConfig, MirrorConfig, MirrorInput, MirrorNotice, MirrorPower, MirrorResize, MirrorSession,
-        MirrorSound, MirrorStart, PhoneApp, PhoneApps, PointerAt, PointerEdge, PointerEnter, PointerMove,
-        PointerScreen, StreamHeader, mirror, types,
+        MirrorAudioConfig, MirrorConfig, MirrorDisplay, MirrorDisplays, MirrorInput, MirrorNotice,
+        MirrorPower, MirrorResize, MirrorRotate, MirrorSession, MirrorSound, MirrorStart, PhoneApp,
+        PhoneApps, PointerAt, PointerEdge, PointerEnter, PointerMove, PointerScreen, StreamHeader, mirror,
+        types,
     },
     read_video_packet, video_packet_header, write_frame,
 };
@@ -188,6 +189,14 @@ pub(crate) async fn resize(
     session.send(Envelope::new(types::MIRROR_RESIZE, &msg)?).await
 }
 
+/// Turns a mirrored phone's screen to landscape or portrait (#473; not answered).
+pub(crate) async fn rotate(shared: &Shared, session: &Session, landscape: bool) -> Result<()> {
+    if !shared.toggle_on(&session.peer, TOGGLE) {
+        return Err(Error::Denied);
+    }
+    session.send(Envelope::new(types::MIRROR_ROTATE, &MirrorRotate { landscape })?).await
+}
+
 /// Update `stay_awake` and `screen_off` on a phone while mirroring its screen (`session == 0`).
 pub(crate) async fn power(
     shared: &Shared,
@@ -300,6 +309,21 @@ pub(crate) async fn apps(shared: &Shared, session: &Session) -> Result<Vec<Phone
     }
     apps.sort_by_cached_key(|a| a.label.to_lowercase());
     Ok(apps)
+}
+
+/// A PC's screens, for picking the one to view; none from a PC that
+/// doesn't offer `mirror.displays` (it shares its main screen).
+pub(crate) async fn displays(shared: &Shared, session: &Session) -> Result<Vec<MirrorDisplay>> {
+    if !shared.offers(&session.peer, mirror::DISPLAYS)? {
+        return Ok(Vec::new());
+    }
+    let env = Envelope::new(types::MIRROR_DISPLAYS, &MirrorDisplays::default())?;
+    let answer: MirrorDisplays =
+        session.request(env, crate::session::REQUEST_TIMEOUT).await?.expect_body(types::MIRROR_DISPLAYS)?;
+    if !answer.is_valid() {
+        return Err(Error::Protocol("invalid display list".into()));
+    }
+    Ok(answer.displays)
 }
 
 /// A phone opened a video stream (its header already read). Its first
@@ -476,6 +500,25 @@ pub(crate) async fn handle(shared: &Arc<Shared>, session: &Arc<Session>, env: &E
             };
             session.send(reply.reply_to(env.id)).await?;
         }
+        types::MIRROR_DISPLAYS => {
+            // Only to a phone this PC shares its screen with.
+            let reply = if !is_local_desktop(shared) || !shared.we_offer(mirror::DISPLAYS) {
+                Envelope::error(ErrorCode::Unsupported, "this device doesn't list its screens")
+            } else if !pc_mirror_allowed(shared, &peer) {
+                Envelope::error(ErrorCode::Denied, "this PC doesn't share its screen with this device")
+            } else {
+                let mut displays =
+                    tokio::task::spawn_blocking(move || platform.mirror_displays()).await.unwrap_or_default();
+                displays.truncate(mirror::MAX_DISPLAYS);
+                let body = MirrorDisplays { displays };
+                if body.is_valid() {
+                    Envelope::new(types::MIRROR_DISPLAYS, &body)?
+                } else {
+                    Envelope::error(ErrorCode::Internal, "invalid display list")
+                }
+            };
+            session.send(reply.reply_to(env.id)).await?;
+        }
         types::MIRROR_START => {
             let options: MirrorStart = env.body()?;
             let desktop = is_local_desktop(shared);
@@ -576,6 +619,12 @@ pub(crate) async fn handle(shared: &Arc<Shared>, session: &Arc<Session>, env: &E
             let MirrorSound { on } = env.body()?;
             if shared.toggle_on(&peer, TOGGLE) && shared.we_offer(mirror::CAPTURE) {
                 tokio::task::spawn_blocking(move || platform.mirror_sound_requested(&peer, on));
+            }
+        }
+        types::MIRROR_ROTATE => {
+            let MirrorRotate { landscape } = env.body()?;
+            if shared.toggle_on(&peer, TOGGLE) && shared.we_offer(mirror::CAPTURE) {
+                tokio::task::spawn_blocking(move || platform.mirror_rotate_requested(&peer, landscape));
             }
         }
         types::MIRROR_POWER => {

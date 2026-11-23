@@ -244,6 +244,7 @@ impl Gateway {
             };
             let outcome = Err(err);
             self.audit(&record, &outcome);
+            self.host.agent_called();
             return outcome;
         };
         let mut record = Record {
@@ -258,6 +259,7 @@ impl Gateway {
         let outcome = self.run(&client, def, args, confirmation_id, &mut record).await;
         self.audit(&record, &outcome);
         self.store.touch(&client.id);
+        self.host.agent_called();
         outcome
     }
 
@@ -464,7 +466,7 @@ impl Gateway {
             duration_ms: r.started.elapsed().as_millis() as i64,
         };
         if let Err(e) = self.store.log(&row) {
-            tracing::warn!("agent activity not saved: {e}");
+            tracing::warn!(error = %e, "agent activity not saved");
         }
     }
 }

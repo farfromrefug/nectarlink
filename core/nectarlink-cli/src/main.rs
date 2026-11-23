@@ -2067,6 +2067,7 @@ impl Platform for TerminalPlatform {
                 outgoing: !incoming,
                 status: (!incoming).then(|| "sent".into()),
                 parts: Vec::new(),
+                sim: None,
             })
             .collect();
         messages.sort_by_key(|m| std::cmp::Reverse(m.date));
@@ -2183,6 +2184,21 @@ impl Platform for TerminalPlatform {
             ],
             default: None,
         })
+    }
+    /// The same two SIMs for texts, the second as the default (offer
+    /// `sms.sims` to use them).
+    fn sms_sims(&self) -> std::result::Result<nectarlink_core::CallSims, String> {
+        Ok(nectarlink_core::CallSims { default: Some("sim-2".into()), ..self.call_sims()? })
+    }
+    fn send_sms_on(
+        &self,
+        to: &[String],
+        body: &str,
+        attachments: &[SmsAttachment],
+        sim: &str,
+    ) -> std::result::Result<(), String> {
+        println!("A PC asked for this text on {sim}.");
+        self.send_sms_with_attachments(to, body, attachments)
     }
     fn call_dial_on(&self, number: &str, sim: &str) -> std::result::Result<(), String> {
         println!("A PC asked for this call on {sim}.");
@@ -3352,6 +3368,7 @@ async fn run(cli: &Cli, node: &Node) -> Result<()> {
                 screen_off: false,
                 watch: None,
                 sound_only: false,
+                display: None,
             };
             node.mirror_start(id, options).await.context("the phone didn't ask its user")?;
             println!(
@@ -3561,6 +3578,7 @@ async fn run(cli: &Cli, node: &Node) -> Result<()> {
                 screen_off: false,
                 watch: Some(player.clone()),
                 sound_only: false,
+                display: None,
             };
             node.mirror_start(id, options).await.context("the PC didn't stream it")?;
             println!("Watching {player}; recording for {seconds} s after the first frame.");

@@ -19,6 +19,17 @@ pub mod types {
     pub const EVENT_UPDATE: &str = "event.update";
     pub const DEVICE_RING: &str = "device.ring";
     pub const DEVICE_RING_STOPPED: &str = "device.ring_stopped";
+    pub const UNLOCK_ENROLL: &str = "unlock.enroll";
+    pub const UNLOCK_WRAPPED: &str = "unlock.wrapped";
+    pub const UNLOCK_REQUEST: &str = "unlock.request";
+    pub const UNLOCK_RELEASE: &str = "unlock.release";
+    pub const UNLOCK_FORGET: &str = "unlock.forget";
+    pub const LINUX_UNLOCK_ENROLL: &str = "unlock.linux.v1.enroll";
+    pub const LINUX_UNLOCK_ENROLLED: &str = "unlock.linux.v1.enrolled";
+    pub const LINUX_UNLOCK_SIGN: &str = "unlock.linux.v1.sign";
+    pub const LINUX_UNLOCK_SIGNED: &str = "unlock.linux.v1.signed";
+    pub const LINUX_UNLOCK_FORGET: &str = "unlock.linux.v1.forget";
+    pub const LINUX_UNLOCK_CANCEL: &str = "unlock.linux.v1.cancel";
 
     pub const PAIR_REQUEST: &str = "pair.request";
     pub const PAIR_ACCEPT: &str = "pair.accept";
@@ -76,9 +87,11 @@ pub mod types {
     pub const SMS_SEND: &str = "sms.send";
     pub const SMS_PART: &str = "sms.part";
     pub const SMS_CHANGED: &str = "sms.changed";
+    pub const SMS_SIMS: &str = "sms.sims";
     pub const MIRROR_START: &str = "mirror.start";
     pub const MIRROR_STOP: &str = "mirror.stop";
     pub const MIRROR_POWER: &str = "mirror.power";
+    pub const MIRROR_ROTATE: &str = "mirror.rotate";
     pub const MIRROR_SOUND: &str = "mirror.sound";
     /// Phone → PC: play my sound (#398). The PC starts its phone sound as
     /// if its user had turned it on; answered `ok`.
@@ -90,6 +103,8 @@ pub mod types {
     /// PC → phone: uninstall this app (`AppUninstall`); answered `ok` once it's gone.
     pub const MIRROR_APP_UNINSTALL: &str = "mirror.apps.uninstall";
     pub const MIRROR_NOTICE: &str = "mirror.notice";
+    /// Phone → PC: its screens (an empty `MirrorDisplays` asks; answered with one).
+    pub const MIRROR_DISPLAYS: &str = "mirror.displays";
     pub const POINTER_ENTER: &str = "pointer.enter";
     pub const POINTER_MOVE: &str = "pointer.move";
     pub const POINTER_WHERE: &str = "pointer.where";
@@ -117,6 +132,9 @@ pub mod types {
     pub const ELEVATED_USB_READY: &str = "elevated.usb.ready";
     pub const MIC_START: &str = "mic.start";
     pub const MIC_STOP: &str = "mic.stop";
+    pub const DIAG_ASK: &str = "diag.ask";
+    pub const DIAG_PART: &str = "diag.part";
+    pub const DIAG_LOG: &str = "diag.log";
     pub const WEBCAM_START: &str = "webcam.start";
     pub const WEBCAM_STOP: &str = "webcam.stop";
     pub const WEBCAM_KEYFRAME: &str = "webcam.keyframe";
@@ -1426,6 +1444,11 @@ pub mod mirror {
     pub const NOTICE_INPUT_BLOCKED: &str = "input_blocked";
     /// `mirror.notice`: the PC could not start or continue sharing its screen.
     pub const NOTICE_PC_CAPTURE_FAILED: &str = "pc_capture_failed";
+    /// Offered by PCs that list their screens (`mirror.displays`) and share
+    /// the one a phone picks (`MirrorStart::display`).
+    pub const DISPLAYS: &str = "mirror.displays";
+    /// Screens in a `mirror.displays` answer, at most.
+    pub const MAX_DISPLAYS: usize = 16;
 }
 
 /// Whether `name` looks like an Android package name.
@@ -1474,6 +1497,10 @@ pub struct MirrorStart {
     /// phone that offers [`mirror::SOUND`]). The PC plays it without a window.
     #[serde(default, skip_serializing_if = "std::ops::Not::not")]
     pub sound_only: bool,
+    /// Which of the PC's screens to share (an id from `mirror.displays`), sent
+    /// to a PC that offers [`mirror::DISPLAYS`]; its main one when `None`.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub display: Option<u32>,
 }
 
 impl MirrorStart {
@@ -1515,6 +1542,16 @@ pub struct MirrorPower {
     pub screen_off: bool,
 }
 
+/// Body of `mirror.rotate`: turn the mirrored phone's screen (`session ==
+/// SCREEN`) to landscape or back to portrait (#473). The phone keeps it there
+/// while it's mirrored, then lets its own rotation take over again. Phones
+/// from before this ignore it.
+#[derive(Debug, Clone, Copy, Default, PartialEq, Eq, Serialize, Deserialize)]
+pub struct MirrorRotate {
+    #[serde(default)]
+    pub landscape: bool,
+}
+
 /// Body of `mirror.sound`: send the phone's sound to the PC, or leave it on the
 /// phone, while mirroring its screen. Phones from before this ignore it.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
@@ -1542,6 +1579,37 @@ pub struct MirrorNotice {
 impl MirrorNotice {
     pub fn is_valid(&self) -> bool {
         (1..=32).contains(&self.code.len()) && self.code.bytes().all(|b| b.is_ascii_lowercase() || b == b'_')
+    }
+}
+
+/// One of a PC's screens (`mirror.displays`).
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+pub struct MirrorDisplay {
+    /// What `MirrorStart::display` names it by; stable while the PC's screens stay as they are.
+    pub id: u32,
+    /// Its size in pixels.
+    pub width: u32,
+    pub height: u32,
+    /// The PC's main screen.
+    #[serde(default)]
+    pub primary: bool,
+}
+
+/// Answer to `mirror.displays` (an empty body asks): the PC's screens, the
+/// main one first.
+#[derive(Debug, Clone, Default, PartialEq, Eq, Serialize, Deserialize)]
+pub struct MirrorDisplays {
+    #[serde(default)]
+    pub displays: Vec<MirrorDisplay>,
+}
+
+impl MirrorDisplays {
+    pub fn is_valid(&self) -> bool {
+        self.displays.len() <= mirror::MAX_DISPLAYS
+            && self
+                .displays
+                .iter()
+                .all(|d| d.width > 0 && d.height > 0 && d.width <= 65_536 && d.height <= 65_536)
     }
 }
 
@@ -2214,6 +2282,9 @@ pub mod sms {
     pub const SEND: &str = "sms.send";
     /// Offered by PCs that show text messages.
     pub const SHOW: &str = "sms.show";
+    /// Offered by phones that list the SIMs they text from (`sms.sims`) and
+    /// send on the one a PC picks (`sms.send`'s `sim`).
+    pub const SIMS: &str = "sms.sims";
     /// Most conversations or messages in one answer.
     pub const MAX_PAGE: u32 = 100;
     /// A text sent from a PC: at most this many bytes.
@@ -2293,6 +2364,10 @@ pub struct SmsMessage {
     pub status: Option<String>,
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
     pub parts: Vec<SmsPart>,
+    /// The SIM it came in on or went out from (an id from `sms.sims`), when
+    /// the phone knows.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub sim: Option<String>,
 }
 
 /// Never prints numbers or text (protocol v0 §11).
@@ -2380,6 +2455,10 @@ pub struct SmsSend {
     /// Optional image attachment(s) to send as MMS.
     #[serde(default, skip_serializing_if = "Vec::is_empty")]
     pub attachments: Vec<SmsAttachment>,
+    /// The SIM to send on (an id from `sms.sims`); the phone's default when
+    /// missing. Phones from before this send on their default.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub sim: Option<String>,
 }
 
 /// Never prints numbers or text (protocol v0 §11).
@@ -2389,13 +2468,15 @@ impl std::fmt::Debug for SmsSend {
             .field("to", &self.to.len())
             .field("bytes", &self.body.len())
             .field("attachments", &self.attachments.len())
+            .field("sim", &self.sim)
             .finish()
     }
 }
 
 impl SmsSend {
     pub fn is_valid(&self) -> bool {
-        (1..=sms::MAX_RECIPIENTS).contains(&self.to.len())
+        self.sim.as_deref().is_none_or(is_valid_sim_id)
+            && (1..=sms::MAX_RECIPIENTS).contains(&self.to.len())
             && self.to.iter().all(|a| (1..=64).contains(&a.trim().len()))
             && (!self.body.trim().is_empty() || !self.attachments.is_empty())
             && self.body.len() <= sms::MAX_SEND_BYTES
@@ -4728,8 +4809,486 @@ impl StorageChanged {
     }
 }
 
+// ---- Problem reports (docs/protocol/diag.md) ----
+
+pub mod diag {
+    /// Offered by devices that answer `diag.ask`.
+    pub const REPORT: &str = "diag.report";
+    /// Most log text in one `diag.log`.
+    pub const MAX_LOG_BYTES: usize = 24 * 1024;
+    /// Most log lines in one `diag.log`.
+    pub const MAX_LOG_LINES: usize = 400;
+    /// Most checks, facts or hardware lines in a part.
+    pub const MAX_ITEMS: usize = 32;
+    /// Most days of feature health in a part.
+    pub const MAX_DAYS: usize = 14;
+    /// Most crashes in a part.
+    pub const MAX_CRASHES: usize = 5;
+    /// Longest single text value in a part.
+    pub const MAX_TEXT: usize = 200;
+}
+
+/// Body of `diag.ask`: a paired device is making a problem report and asks
+/// for this device's part. `log` asks for the recent activity log too,
+/// which its user has to agree to on this device.
+#[derive(Debug, Clone, Default, PartialEq, Eq, Serialize, Deserialize)]
+pub struct DiagAsk {
+    #[serde(default)]
+    pub log: bool,
+    #[serde(default)]
+    pub just_now: bool,
+    /// Echoed as `diag.log`'s `ask`, so a log nobody asked for is dropped.
+    #[serde(default)]
+    pub nonce: u64,
+}
+
+/// What a device says about itself in a report: versions and hardware,
+/// never names.
+#[derive(Debug, Clone, Default, PartialEq, Eq, Serialize, Deserialize)]
+pub struct DiagFacts {
+    #[serde(default)]
+    pub app_version: String,
+    #[serde(default)]
+    pub channel: String,
+    #[serde(default)]
+    pub install: String,
+    #[serde(default)]
+    pub os: String,
+    #[serde(default)]
+    pub arch: String,
+    #[serde(default)]
+    pub hardware: Vec<String>,
+    /// `[name, value]`, from fixed lists.
+    #[serde(default)]
+    pub extra: Vec<(String, String)>,
+}
+
+/// One day of feature health: feature, then outcome code and count.
+#[derive(Debug, Clone, Default, PartialEq, Eq, Serialize, Deserialize)]
+pub struct DiagDay {
+    pub day: String,
+    pub counts: Vec<(String, Vec<(String, u32)>)>,
+}
+
+/// One crash: where in NectarLink's code, what kind, never values.
+#[derive(Debug, Clone, Default, PartialEq, Eq, Serialize, Deserialize)]
+pub struct DiagCrash {
+    pub sig: String,
+    pub kind: String,
+    pub location: String,
+    pub message: String,
+    pub version: String,
+    pub at: u64,
+}
+
+/// What became of the log a `diag.ask` asked for.
+#[derive(Debug, Clone, Copy, Default, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(rename_all = "snake_case")]
+pub enum DiagLogState {
+    /// Not asked for.
+    #[default]
+    NotAsked,
+    /// The user is being asked; `diag.log` follows with the answer.
+    Asking,
+    /// Asked too recently; not asked again.
+    Busy,
+    /// A state from a newer device.
+    #[serde(other)]
+    Unknown,
+}
+
+/// Answer to `diag.ask`.
+#[derive(Debug, Clone, Default, PartialEq, Eq, Serialize, Deserialize)]
+pub struct DiagPart {
+    pub facts: DiagFacts,
+    /// `[check, outcome]`.
+    #[serde(default)]
+    pub checks: Vec<(String, String)>,
+    #[serde(default)]
+    pub health: Vec<DiagDay>,
+    #[serde(default)]
+    pub crashes: Vec<DiagCrash>,
+    #[serde(default)]
+    pub log: DiagLogState,
+}
+
+impl DiagPart {
+    /// Within the limits in [`diag`], whatever the sender put in.
+    pub fn sanitized(mut self) -> DiagPart {
+        let cut = |s: &mut String| {
+            if let Some((at, _)) = s.char_indices().nth(diag::MAX_TEXT) {
+                s.truncate(at);
+            }
+        };
+        let f = &mut self.facts;
+        for s in [&mut f.app_version, &mut f.channel, &mut f.install, &mut f.os, &mut f.arch] {
+            cut(s);
+        }
+        f.hardware.truncate(diag::MAX_ITEMS);
+        f.hardware.iter_mut().for_each(cut);
+        f.extra.truncate(diag::MAX_ITEMS);
+        self.checks.truncate(diag::MAX_ITEMS);
+        for (name, value) in f.extra.iter_mut().chain(self.checks.iter_mut()) {
+            cut(name);
+            cut(value);
+        }
+        self.health.truncate(diag::MAX_DAYS);
+        for day in &mut self.health {
+            cut(&mut day.day);
+            day.counts.truncate(diag::MAX_ITEMS);
+            for (feature, codes) in &mut day.counts {
+                cut(feature);
+                codes.truncate(diag::MAX_ITEMS);
+                codes.iter_mut().for_each(|(code, _)| cut(code));
+            }
+        }
+        self.crashes.truncate(diag::MAX_CRASHES);
+        for c in &mut self.crashes {
+            for s in [&mut c.sig, &mut c.kind, &mut c.location, &mut c.message, &mut c.version] {
+                cut(s);
+            }
+        }
+        self
+    }
+}
+
+/// Body of `diag.log`: the answer to a `diag.ask` that asked for the log,
+/// once this device's user has answered. `ask` is that request's `nonce`.
+#[derive(Debug, Clone, Default, PartialEq, Eq, Serialize, Deserialize)]
+pub struct DiagLog {
+    pub ask: u64,
+    /// The user said no (or didn't answer in time).
+    #[serde(default, skip_serializing_if = "std::ops::Not::not")]
+    pub declined: bool,
+    #[serde(default)]
+    pub lines: Vec<String>,
+}
+
+impl DiagLog {
+    /// At most [`diag::MAX_LOG_LINES`] lines and [`diag::MAX_LOG_BYTES`],
+    /// newest kept, one line each.
+    pub fn sanitized(mut self) -> DiagLog {
+        let skip = self.lines.len().saturating_sub(diag::MAX_LOG_LINES);
+        self.lines.drain(..skip);
+        let mut total = 0;
+        let mut keep = Vec::new();
+        for line in self.lines.into_iter().rev() {
+            let line = line.replace(['\r', '\n'], " ");
+            total += line.len() + 1;
+            if total > diag::MAX_LOG_BYTES {
+                break;
+            }
+            keep.push(line);
+        }
+        keep.reverse();
+        self.lines = keep;
+        self
+    }
+}
+
+// ---- Unlock the PC with the phone (docs/protocol/unlock.md) ----
+
+pub mod unlock {
+    /// Offered by a phone that can hold a PC's key behind a strong biometric.
+    pub const CAP_KEY: &str = "unlock.key";
+    /// Offered by a PC that can unlock its locked session with a phone.
+    pub const CAP_PC: &str = "unlock.pc";
+    /// The per-device toggle on both sides, off by default.
+    pub const TOGGLE: &str = "unlock";
+    /// Bytes in the key `K`.
+    pub const KEY_LEN: usize = 32;
+    /// Bytes in a request ID.
+    pub const REQUEST_LEN: usize = 16;
+    /// Largest wrapped key accepted (AES-GCM of 32 bytes plus IV and tag fits
+    /// easily; room for a format byte).
+    pub const MAX_WRAPPED: usize = 256;
+    /// Longest PC or user name shown on the phone, in UTF-8 bytes.
+    pub const MAX_NAME: usize = 128;
+    /// Longest Windows security identifier (`S-1-5-21-…`).
+    pub const MAX_USER: usize = 184;
+
+    pub(crate) fn name_ok(s: &str) -> bool {
+        !s.is_empty() && s.len() <= MAX_NAME && !s.chars().any(char::is_control)
+    }
+
+    pub(crate) fn user_ok(s: &str) -> bool {
+        !s.is_empty() && s.len() <= MAX_USER && s.bytes().all(|b| b.is_ascii_alphanumeric() || b == b'-')
+    }
+
+    /// Whether `s` looks like a Windows security identifier.
+    pub fn user_ok_pub(s: &str) -> bool {
+        user_ok(s)
+    }
+}
+
+/// `unlock.enroll` (PC to phone): wrap `key` behind the phone owner's
+/// biometric for this PC and Windows user.
+#[derive(Clone, PartialEq, Eq, Serialize, Deserialize)]
+pub struct UnlockEnroll {
+    pub pc_name: String,
+    pub user_name: String,
+    /// The Windows user's security identifier.
+    pub user: String,
+    #[serde(with = "serde_bytes")]
+    pub key: Vec<u8>,
+}
+
+impl UnlockEnroll {
+    pub fn is_valid(&self) -> bool {
+        unlock::name_ok(&self.pc_name)
+            && unlock::name_ok(&self.user_name)
+            && unlock::user_ok(&self.user)
+            && self.key.len() == unlock::KEY_LEN
+    }
+}
+
+/// Never prints the key.
+impl std::fmt::Debug for UnlockEnroll {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        f.debug_struct("UnlockEnroll")
+            .field("pc_name", &self.pc_name)
+            .field("user_name", &self.user_name)
+            .field("user", &self.user)
+            .finish_non_exhaustive()
+    }
+}
+
+/// `unlock.wrapped` (phone to PC, the answer to `unlock.enroll`).
+#[derive(Clone, PartialEq, Eq, Serialize, Deserialize)]
+pub struct UnlockWrapped {
+    #[serde(with = "serde_bytes")]
+    pub wrapped: Vec<u8>,
+}
+
+impl UnlockWrapped {
+    pub fn is_valid(&self) -> bool {
+        !self.wrapped.is_empty() && self.wrapped.len() <= unlock::MAX_WRAPPED
+    }
+}
+
+impl std::fmt::Debug for UnlockWrapped {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        write!(f, "UnlockWrapped({} bytes)", self.wrapped.len())
+    }
+}
+
+/// `unlock.request` (PC to phone): someone at the locked PC asked to unlock it.
+#[derive(Clone, PartialEq, Eq, Serialize, Deserialize)]
+pub struct UnlockRequest {
+    #[serde(with = "serde_bytes")]
+    pub request: Vec<u8>,
+    pub pc_name: String,
+    pub user_name: String,
+    pub user: String,
+    #[serde(with = "serde_bytes")]
+    pub wrapped: Vec<u8>,
+}
+
+impl UnlockRequest {
+    pub fn is_valid(&self) -> bool {
+        self.request.len() == unlock::REQUEST_LEN
+            && unlock::name_ok(&self.pc_name)
+            && unlock::name_ok(&self.user_name)
+            && unlock::user_ok(&self.user)
+            && !self.wrapped.is_empty()
+            && self.wrapped.len() <= unlock::MAX_WRAPPED
+    }
+}
+
+impl std::fmt::Debug for UnlockRequest {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        f.debug_struct("UnlockRequest")
+            .field("pc_name", &self.pc_name)
+            .field("user_name", &self.user_name)
+            .field("user", &self.user)
+            .finish_non_exhaustive()
+    }
+}
+
+/// `unlock.release` (phone to PC, the answer to `unlock.request`): the
+/// unwrapped key, after the owner's biometric.
+#[derive(Clone, PartialEq, Eq, Serialize, Deserialize)]
+pub struct UnlockRelease {
+    #[serde(with = "serde_bytes")]
+    pub request: Vec<u8>,
+    #[serde(with = "serde_bytes")]
+    pub key: Vec<u8>,
+}
+
+impl UnlockRelease {
+    pub fn is_valid(&self) -> bool {
+        self.request.len() == unlock::REQUEST_LEN && self.key.len() == unlock::KEY_LEN
+    }
+}
+
+impl std::fmt::Debug for UnlockRelease {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        f.write_str("UnlockRelease")
+    }
+}
+
+/// `unlock.forget` (either way): drop what's kept for this pair, or only for
+/// `user`.
+#[derive(Debug, Clone, Default, PartialEq, Eq, Serialize, Deserialize)]
+pub struct UnlockForget {
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub user: Option<String>,
+}
+
+// ---- Linux session unlock (docs/protocol/linux-unlock.md) ----
+
+pub mod linux_unlock {
+    pub const CAP_PC: &str = "unlock.linux.pc";
+    pub const CAP_KEY: &str = "unlock.linux.key";
+    pub const DOMAIN: &[u8] = b"nectarlink/linux-unlock/v1\0";
+}
+
+#[derive(Clone, PartialEq, Eq, Serialize, Deserialize)]
+pub struct LinuxUnlockEnroll {
+    pub pc: DeviceId,
+    pub phone: DeviceId,
+    pub uid: u32,
+    pub user_name: String,
+}
+
+impl std::fmt::Debug for LinuxUnlockEnroll {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        f.debug_struct("LinuxUnlockEnroll").finish_non_exhaustive()
+    }
+}
+
+impl LinuxUnlockEnroll {
+    pub fn is_valid(&self) -> bool {
+        self.uid != 0 && unlock::name_ok(&self.user_name) && !self.user_name.trim().is_empty()
+    }
+}
+
+#[derive(Clone, PartialEq, Eq, Serialize, Deserialize)]
+pub struct LinuxUnlockEnrolled {
+    #[serde(with = "serde_bytes")]
+    pub public_key: Vec<u8>,
+}
+
+impl std::fmt::Debug for LinuxUnlockEnrolled {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        f.debug_struct("LinuxUnlockEnrolled").finish_non_exhaustive()
+    }
+}
+
+impl LinuxUnlockEnrolled {
+    /// Canonical uncompressed P-256 point encoding.
+    pub fn is_valid(&self) -> bool {
+        self.public_key.len() == 65 && self.public_key[0] == 0x04
+    }
+}
+
+#[derive(Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
+pub struct LinuxUnlockChallenge {
+    pub pc: DeviceId,
+    pub phone: DeviceId,
+    pub uid: u32,
+    #[serde(with = "serde_bytes")]
+    pub nonce: [u8; 32],
+}
+
+impl LinuxUnlockChallenge {
+    /// Canonical transcript for P-256/SHA-256, independent of the CBOR envelope.
+    pub fn signing_bytes(&self) -> Vec<u8> {
+        let mut bytes = Vec::with_capacity(linux_unlock::DOMAIN.len() + 100);
+        bytes.extend_from_slice(linux_unlock::DOMAIN);
+        bytes.extend_from_slice(self.pc.as_bytes());
+        bytes.extend_from_slice(self.phone.as_bytes());
+        bytes.extend_from_slice(&self.uid.to_be_bytes());
+        bytes.extend_from_slice(&self.nonce);
+        bytes
+    }
+}
+
+impl std::fmt::Debug for LinuxUnlockChallenge {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        f.debug_struct("LinuxUnlockChallenge").finish_non_exhaustive()
+    }
+}
+
+#[derive(Clone, PartialEq, Eq, Serialize, Deserialize)]
+pub struct LinuxUnlockSigned {
+    #[serde(with = "serde_bytes")]
+    pub signature: Vec<u8>,
+}
+
+impl std::fmt::Debug for LinuxUnlockSigned {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        f.debug_struct("LinuxUnlockSigned").finish_non_exhaustive()
+    }
+}
+
+impl LinuxUnlockSigned {
+    /// Size and tag for the DER SEQUENCE of two P-256 integers.
+    /// The PAM verifier checks the DER contents and the signature itself.
+    pub fn is_valid(&self) -> bool {
+        (8..=72).contains(&self.signature.len()) && self.signature[0] == 0x30
+    }
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
+#[serde(rename_all = "snake_case")]
+pub enum LinuxUnlockForget {
+    User { uid: u32 },
+    All,
+}
+
 #[cfg(test)]
 mod tests {
+    #[test]
+    fn linux_unlock_enrollment_requires_a_non_root_account() {
+        let request = LinuxUnlockEnroll {
+            pc: DeviceId([1; 32]),
+            phone: DeviceId([2; 32]),
+            uid: 0,
+            user_name: "root".into(),
+        };
+        assert!(!request.is_valid());
+        assert!(LinuxUnlockEnroll { uid: 1000, user_name: "bee".into(), ..request }.is_valid());
+    }
+
+    #[test]
+    fn linux_unlock_signs_the_fixed_v1_transcript() {
+        let challenge = LinuxUnlockChallenge {
+            pc: DeviceId([0x11; 32]),
+            phone: DeviceId([0xe2; 32]),
+            uid: 0x0102_0304,
+            nonce: [0xa3; 32],
+        };
+        let expected = b"nectarlink/linux-unlock/v1\0\
+            \x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\
+            \x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\x11\
+            \xe2\xe2\xe2\xe2\xe2\xe2\xe2\xe2\xe2\xe2\xe2\xe2\xe2\xe2\xe2\xe2\
+            \xe2\xe2\xe2\xe2\xe2\xe2\xe2\xe2\xe2\xe2\xe2\xe2\xe2\xe2\xe2\xe2\
+            \x01\x02\x03\x04\
+            \xa3\xa3\xa3\xa3\xa3\xa3\xa3\xa3\xa3\xa3\xa3\xa3\xa3\xa3\xa3\xa3\
+            \xa3\xa3\xa3\xa3\xa3\xa3\xa3\xa3\xa3\xa3\xa3\xa3\xa3\xa3\xa3\xa3";
+        assert_eq!(challenge.signing_bytes(), expected.as_slice());
+        let decoded: LinuxUnlockChallenge =
+            crate::Envelope::new(types::LINUX_UNLOCK_SIGN, &challenge).unwrap().body().unwrap();
+        assert_eq!(decoded, challenge);
+    }
+
+    #[test]
+    fn linux_unlock_rejects_a_challenge_with_a_short_nonce() {
+        #[derive(Serialize)]
+        struct ShortNonce {
+            pc: DeviceId,
+            phone: DeviceId,
+            uid: u32,
+            #[serde(with = "serde_bytes")]
+            nonce: [u8; 31],
+        }
+        let short = ShortNonce { pc: DeviceId([1; 32]), phone: DeviceId([2; 32]), uid: 1000, nonce: [3; 31] };
+        let envelope = crate::Envelope::new(types::LINUX_UNLOCK_SIGN, &short).unwrap();
+
+        assert!(envelope.body::<LinuxUnlockChallenge>().is_err());
+    }
+
     #[test]
     fn update_hints_take_known_channels_and_plain_versions_only() {
         let hint = |channel: &str, version: &str| {
@@ -4756,6 +5315,7 @@ mod tests {
             screen_off: false,
             watch: None,
             sound_only: true,
+            display: None,
         };
         assert!(sound.is_valid());
         assert!(!MirrorStart { audio: false, ..sound.clone() }.is_valid(), "the sound is the point");
@@ -5437,10 +5997,27 @@ mod tests {
 
     #[test]
     fn texts_to_send_are_checked() {
-        let send =
-            SmsSend { to: vec!["+15550100".into()], body: "On my way".into(), attachments: Vec::new() };
+        let send = SmsSend {
+            to: vec!["+15550100".into()],
+            body: "On my way".into(),
+            attachments: Vec::new(),
+            sim: None,
+        };
         assert!(send.is_valid());
         assert!(!format!("{send:?}").contains("way"));
+        // On a SIM the phone listed (#474); an empty or control-character id isn't one.
+        assert!(SmsSend { sim: Some("2".into()), ..send.clone() }.is_valid());
+        assert!(!SmsSend { sim: Some(String::new()), ..send.clone() }.is_valid());
+        assert!(!SmsSend { sim: Some("1\n".into()), ..send.clone() }.is_valid());
+        // A phone from before SIMs reads a PC's text with one as it always did.
+        let env = Envelope::new(types::SMS_SEND, &SmsSend { sim: Some("2".into()), ..send.clone() }).unwrap();
+        #[derive(Deserialize)]
+        struct Old {
+            to: Vec<String>,
+            body: String,
+        }
+        let old: Old = env.body().unwrap();
+        assert_eq!((old.to, old.body.as_str()), (send.to.clone(), "On my way"));
         assert!(!SmsSend { to: vec![], ..send.clone() }.is_valid());
         assert!(!SmsSend { body: "  ".into(), ..send.clone() }.is_valid());
         assert!(!SmsSend { body: "x".repeat(sms::MAX_SEND_BYTES + 1), ..send.clone() }.is_valid());
@@ -6084,6 +6661,7 @@ mod tests {
             screen_off: false,
             watch: Some("Chrome".into()),
             sound_only: false,
+            display: None,
         };
         assert!(screen.is_valid());
         // Watching is of the PC's screen session only, never with an app.
@@ -6094,6 +6672,18 @@ mod tests {
         assert!(!MirrorStart { watch: Some(String::new()), ..screen.clone() }.is_valid());
         // Older PCs and phones leave it out.
         let plain = MirrorStart { watch: None, ..screen };
+        // A screen of the PC to view travels as `display`; older PCs ignore it.
+        let on_second = MirrorStart { display: Some(1), ..plain.clone() };
+        assert!(on_second.is_valid());
+        let env = crate::Envelope::new(types::MIRROR_START, &on_second).unwrap();
+        assert_eq!(env.body::<MirrorStart>().unwrap().display, Some(1));
+        let many = MirrorDisplays {
+            displays: (0..=mirror::MAX_DISPLAYS as u32)
+                .map(|id| MirrorDisplay { id, width: 1920, height: 1080, primary: id == 0 })
+                .collect(),
+        };
+        assert!(!many.is_valid(), "at most MAX_DISPLAYS");
+        assert!(MirrorDisplays { displays: many.displays[..2].to_vec() }.is_valid());
         let mut bytes = Vec::new();
         ciborium::into_writer(&plain, &mut bytes).unwrap();
         let back: MirrorStart = ciborium::from_reader(bytes.as_slice()).unwrap();
@@ -6404,6 +6994,7 @@ mod tests {
                 4 => try_decode!(
                     MirrorStart,
                     MirrorPower,
+                    MirrorRotate,
                     MirrorSession,
                     MirrorResize,
                     PhoneApp,
@@ -6556,5 +7147,64 @@ mod tests {
         for code in ["", "Input_Blocked", "input blocked", &"a".repeat(33), "über"] {
             assert!(!MirrorNotice { session: 0, code: code.into() }.is_valid(), "{code}");
         }
+    }
+
+    #[test]
+    fn diag_parts_stay_within_limits() {
+        let long = "x".repeat(500);
+        let part = DiagPart {
+            facts: DiagFacts {
+                os: long.clone(),
+                hardware: vec![long.clone(); 50],
+                extra: vec![(long.clone(), long.clone()); 50],
+                ..DiagFacts::default()
+            },
+            checks: vec![("a".into(), "ok".into()); 40],
+            health: vec![DiagDay { day: "2026-11-20".into(), counts: vec![] }; 30],
+            crashes: vec![DiagCrash::default(); 9],
+            log: DiagLogState::Asking,
+        }
+        .sanitized();
+        assert_eq!(part.facts.os.chars().count(), diag::MAX_TEXT);
+        assert_eq!(part.facts.hardware.len(), diag::MAX_ITEMS);
+        assert!(part.facts.extra.iter().all(|(n, v)| n.len() == diag::MAX_TEXT && v.len() == diag::MAX_TEXT));
+        assert_eq!(part.checks.len(), diag::MAX_ITEMS);
+        assert_eq!(part.health.len(), diag::MAX_DAYS);
+        assert_eq!(part.crashes.len(), diag::MAX_CRASHES);
+
+        let log = DiagLog { ask: 7, declined: false, lines: vec!["line\nE forged".into(); 1000] }.sanitized();
+        assert!(log.lines.len() <= diag::MAX_LOG_LINES);
+        assert!(log.lines.iter().all(|l| !l.contains('\n')));
+        assert!(log.lines.iter().map(|l| l.len() + 1).sum::<usize>() <= diag::MAX_LOG_BYTES);
+    }
+
+    #[test]
+    fn diag_messages_round_trip_and_tolerate_newer_devices() {
+        #[derive(Serialize)]
+        struct Newer {
+            facts: NewerFacts,
+            log: &'static str,
+            later: u32,
+        }
+        #[derive(Serialize)]
+        struct NewerFacts {
+            app_version: &'static str,
+            future: u32,
+        }
+        let env = crate::Envelope::new(
+            types::DIAG_PART,
+            &Newer { facts: NewerFacts { app_version: "0.1.6", future: 1 }, log: "something_new", later: 2 },
+        )
+        .unwrap();
+        let part: DiagPart = env.body().unwrap();
+        assert_eq!(part.facts.app_version, "0.1.6");
+        assert_eq!(part.log, DiagLogState::Unknown);
+        #[derive(Serialize)]
+        struct Empty {}
+        let ask: DiagAsk = crate::Envelope::new(types::DIAG_ASK, &Empty {}).unwrap().body().unwrap();
+        assert_eq!(ask, DiagAsk { log: false, just_now: false, nonce: 0 });
+        let log = DiagLog { ask: 3, declined: true, lines: vec![] };
+        let back: DiagLog = crate::Envelope::new(types::DIAG_LOG, &log).unwrap().body().unwrap();
+        assert_eq!(back, log);
     }
 }

@@ -67,7 +67,7 @@ const EVENT_CAPACITY: usize = 2048;
 /// idle path every 5 s and drops one silent for 15 s), so a device that
 /// drops off shows as offline within ~15 s. Shorter kept the phone's Wi-Fi
 /// and CPU from ever sleeping on a connected phone.
-const KEEP_ALIVE_INTERVAL: Duration = Duration::from_secs(5);
+pub(crate) const KEEP_ALIVE_INTERVAL: Duration = Duration::from_secs(5);
 const IDLE_TIMEOUT: Duration = Duration::from_secs(15);
 /// How often this device asks the LAN who's there (mDNS). Answers to others'
 /// queries go out at once either way, so only a device showing a nearby list
@@ -91,6 +91,7 @@ const BASE_CAPABILITIES: &[&str] = &[
     "task.notify",
     nectarlink_protocol::messages::UPDATE_HINT,
     nectarlink_protocol::messages::mirror::PACE,
+    nectarlink_protocol::messages::diag::REPORT,
 ];
 
 /// This device's mutable description, sent to peers.
@@ -156,6 +157,8 @@ pub(crate) struct Shared {
     pub pairing: PairingState,
     pub cancel: CancellationToken,
     events: broadcast::Sender<NodeEvent>,
+    /// What an app that fell behind the events needs again (see [`crate::Resync`]).
+    latest: Mutex<crate::resync::LatestState>,
     sessions: Mutex<HashMap<DeviceId, Arc<Session>>>,
     links: Mutex<HashMap<DeviceId, LinkState>>,
     supervisors: Mutex<HashMap<DeviceId, Supervisor>>,
@@ -220,11 +223,19 @@ pub(crate) struct Shared {
     /// Stop signals for phone webcam streams arriving here, by phone.
     pub(crate) webcam_stops: Mutex<HashMap<DeviceId, Arc<tokio::sync::Notify>>>,
     /// Stop signals for phone microphone streams arriving here, by phone.
+    /// Problem-report requests in flight, both ways.
+    pub(crate) diag_asks: crate::diag_ask::State,
     pub(crate) mic_stops: Mutex<HashMap<DeviceId, Arc<tokio::sync::Notify>>>,
     /// Stop signals for a call's sound arriving here, by peer.
     pub(crate) call_audio_stops: Mutex<HashMap<DeviceId, Arc<tokio::sync::Notify>>>,
     /// Per-peer rate limiters and prompt state for remote input.
     pub(crate) remote: Mutex<crate::remote::RemoteState>,
+    /// This PC's unlock requests to phones and its record of failures (ADR 0009).
+    pub(crate) unlock_requests: Mutex<crate::unlock::Requests>,
+    /// Phone side: each PC's declined or unanswered unlock prompts, so a PC can't
+    /// keep asking this phone's owner.
+    pub(crate) unlock_prompts: Mutex<HashMap<DeviceId, crate::unlock::Requests>>,
+    pub(crate) linux_unlock_activity: crate::linux_unlock::Activity,
     /// Per-peer prompt state and open folders for the storage service.
     pub(crate) storage: Mutex<crate::storage::StorageState>,
     /// Encrypted-at-rest history of the last 50 clips exchanged with peers.
@@ -309,6 +320,8 @@ fn lock<T>(m: &Mutex<T>) -> std::sync::MutexGuard<'_, T> {
 
 impl Shared {
     pub fn emit(&self, event: NodeEvent) {
+        lock(&self.latest).note(&event);
+        crate::diag::health::observe(&event);
         // No subscribers is fine; events are a UI convenience.
         let _ = self.events.send(event);
     }
@@ -743,6 +756,29 @@ impl Shared {
             || lock(&self.lan_seen)
                 .get(peer)
                 .is_some_and(|(_, announced)| crate::session::is_lan_peer_ip(ip, announced))
+    }
+
+    /// Whether `ip` is the peer's address on this network, strictly enough to unlock a
+    /// PC with: a private, link-local or loopback address (never a tailnet or CGNAT
+    /// one), or one the peer announced over mDNS here that's also on one of this
+    /// device's own subnets. An address announced here once but reached later from
+    /// elsewhere (a phone's mobile data address) doesn't count.
+    pub(crate) fn is_unlock_local_ip(&self, peer: &DeviceId, ip: std::net::IpAddr) -> bool {
+        let ip = ip.to_canonical();
+        if crate::session::is_private_lan_ip(ip) {
+            return true;
+        }
+        if crate::session::is_tailnet_ip(ip) {
+            return false;
+        }
+        let announced = lock(&self.lan_seen)
+            .get(peer)
+            .is_some_and(|(_, addrs)| addrs.iter().any(|a| a.ip().to_canonical() == ip));
+        announced
+            && self.endpoint.addr().ip_addrs().any(|own| {
+                let own = own.ip().to_canonical();
+                !own.is_loopback() && crate::session::is_same_subnet(own, ip)
+            })
     }
 
     pub(crate) fn is_connection_allowed(&self, conn: &Connection) -> bool {
@@ -1240,7 +1276,11 @@ impl Shared {
         if reassigned_queue {
             self.emit(NodeEvent::QueueChanged);
         }
-        lock(&self.discovered).remove(&peer);
+        // The nearby list on either side would keep offering the device it
+        // just paired with until the mDNS entry expired (#514).
+        if lock(&self.discovered).remove(&peer).is_some() {
+            self.emit(NodeEvent::DiscoveryExpired(peer));
+        }
         self.start_supervisor(peer);
         self.queue_notify.notify_waiters();
         Ok(())
@@ -1249,6 +1289,13 @@ impl Shared {
     /// Removes a paired device locally (after we or the peer unpaired).
     pub async fn forget_peer(self: &Arc<Self>, peer: &DeviceId) -> Result<()> {
         let peer_name = self.peer_name(peer);
+        let linux_cleanup = self.linux_unlock_activity.begin_cleanup(*peer);
+        // Keys a phone kept to unlock that PC (ADR 0009). The PC's sealed
+        // passwords go with the device's row.
+        {
+            let (platform, pc) = (self.platform.clone(), *peer);
+            let _ = tokio::task::spawn_blocking(move || platform.unlock_forget(&pc, None)).await;
+        }
         let dropped_count = self
             .store
             .list_send_queue(Some(peer))
@@ -1286,6 +1333,13 @@ impl Shared {
         if let Some(session) = lock(&self.sessions).remove(peer) {
             session.close(CLOSE_NORMAL, b"unpaired");
         }
+        self.linux_unlock_activity.clear_failures(peer);
+        let (platform, pc) = (self.platform.clone(), *peer);
+        let _ = tokio::task::spawn_blocking(move || {
+            let _cleanup = linux_cleanup;
+            platform.linux_unlock_forget(&pc, None);
+        })
+        .await;
         lock(&self.links).remove(peer);
         lock(&self.lan_seen).remove(peer);
         lock(&self.dial_failures).remove(peer);
@@ -1954,6 +2008,7 @@ impl Node {
             pairing: PairingState::default(),
             cancel: CancellationToken::new(),
             events,
+            latest: Mutex::default(),
             sessions: Mutex::new(HashMap::new()),
             links: Mutex::new(HashMap::new()),
             supervisors: Mutex::new(HashMap::new()),
@@ -1989,8 +2044,12 @@ impl Node {
             watch_offers: Mutex::new(HashMap::new()),
             webcam_stops: Mutex::new(HashMap::new()),
             mic_stops: Mutex::new(HashMap::new()),
+            diag_asks: crate::diag_ask::State::default(),
             call_audio_stops: Mutex::new(HashMap::new()),
             remote: Mutex::new(Default::default()),
+            unlock_requests: Mutex::new(crate::unlock::Requests::new()),
+            unlock_prompts: Mutex::new(HashMap::new()),
+            linux_unlock_activity: crate::linux_unlock::Activity::default(),
             storage: Mutex::new(Default::default()),
             clipboard_history,
             last_clip_suggestion: Mutex::new(None),
@@ -2214,6 +2273,12 @@ impl Node {
         self.shared.events.subscribe()
     }
 
+    /// The latest transfer states, rings and pairing step, as events: for an
+    /// app that fell behind [`Node::events`], through [`crate::Resync`].
+    pub fn latest_state(&self) -> Vec<NodeEvent> {
+        lock(&self.shared.latest).snapshot()
+    }
+
     /// This device's direct addresses (for diagnostics and tests).
     pub async fn direct_addrs(&self) -> Vec<SocketAddr> {
         self.shared.direct_addrs().await
@@ -2383,6 +2448,30 @@ impl Node {
         self.shared.forget_peer(&peer).await
     }
 
+    /// Asks a paired device for its part of a problem report
+    /// (docs/protocol/diag.md). With `log`, its user is asked to share the
+    /// recent activity log too, which comes later as a `NodeEvent::DiagLog`.
+    pub async fn diag_ask(
+        &self,
+        peer: DeviceId,
+        log: bool,
+        just_now: bool,
+    ) -> Result<crate::diag_ask::PeerPart> {
+        let session = self.connected(&peer)?;
+        crate::diag_ask::ask(&self.shared, &session, log, just_now).await
+    }
+
+    /// This device's user answered `peer`'s request for the log.
+    pub async fn diag_log_answer(&self, peer: DeviceId, share: bool) -> Result<()> {
+        crate::diag_ask::answer_log(&self.shared, peer, share).await
+    }
+
+    /// Whether `peer` is still waiting for this device's user to answer its
+    /// request for the log.
+    pub fn diag_log_waiting(&self, peer: &DeviceId) -> bool {
+        crate::diag_ask::is_waiting(&self.shared, peer)
+    }
+
     /// Asks a device to start or stop ringing.
     pub async fn ring(&self, peer: DeviceId, on: bool) -> Result<()> {
         let session = self.connected(&peer)?;
@@ -2417,6 +2506,13 @@ impl Node {
             },
             (other, _) => other,
         }
+    }
+
+    /// How many heartbeat pings this device sent `peer` on the current
+    /// session (tests: a quiet healthy link sends none after the first).
+    #[doc(hidden)]
+    pub fn heartbeat_pings(&self, peer: &DeviceId) -> u64 {
+        self.connected(peer).map_or(0, |s| s.heartbeat_pings.load(std::sync::atomic::Ordering::Relaxed))
     }
 
     fn connected(&self, peer: &DeviceId) -> Result<Arc<Session>> {
@@ -2496,6 +2592,8 @@ impl Node {
         if !self.shared.store.is_paired(&peer)? {
             return Err(Error::NotPaired);
         }
+        let linux_cleanup = (toggle == crate::unlock::TOGGLE && !enabled)
+            .then(|| self.shared.linux_unlock_activity.begin_cleanup(peer));
         self.shared.store.set_toggle(&peer, toggle, enabled)?;
         self.shared.refresh_capabilities(&peer);
         if toggle == notifications::TOGGLE {
@@ -2517,6 +2615,28 @@ impl Node {
                     crate::actions::send_wake_info(&shared, &session).await;
                 }
                 shared.send_deck(&session).await;
+            });
+        }
+        if let Some(linux_cleanup) = linux_cleanup {
+            // Off on either side ends it: this side drops what it kept (the
+            // sealed password on a PC, the keys on a phone), and tells the other.
+            let shared = self.shared.clone();
+            self.shared.runtime.spawn(async move {
+                let _ = crate::unlock::forget(&shared, &peer, None).await;
+                let platform = shared.platform.clone();
+                let cleanup = linux_cleanup.clone();
+                let _ = tokio::task::spawn_blocking(move || {
+                    let _cleanup = cleanup;
+                    platform.unlock_forget(&peer, None);
+                    platform.linux_unlock_forget(&peer, None);
+                })
+                .await;
+                if let Some(session) = shared.session(&peer)
+                    && shared.we_offer(crate::linux_unlock::PC)
+                {
+                    let _ = crate::linux_unlock::forget(&session, None).await;
+                }
+                drop(linux_cleanup);
             });
         }
         if toggle == crate::storage::TOGGLE {
@@ -2955,6 +3075,26 @@ impl Node {
     /// turned the clipboard off for it, and [`Error::TooLarge`] beyond
     /// [`crate::CLIP_MAX_IMAGE_BYTES`].
     pub async fn send_clipboard_image(&self, peer: DeviceId, mime: String, bytes: Vec<u8>) -> Result<()> {
+        self.send_clipboard_image_inner(peer, mime, bytes, true).await
+    }
+
+    /// Sends an automatic clipboard image only over a live session.
+    pub async fn send_clipboard_image_live(
+        &self,
+        peer: DeviceId,
+        mime: String,
+        bytes: Vec<u8>,
+    ) -> Result<()> {
+        self.send_clipboard_image_inner(peer, mime, bytes, false).await
+    }
+
+    async fn send_clipboard_image_inner(
+        &self,
+        peer: DeviceId,
+        mime: String,
+        bytes: Vec<u8>,
+        queue_if_offline: bool,
+    ) -> Result<()> {
         let Some(peer_rec) = self.shared.store.get_peer(&peer)? else {
             return Err(Error::NotPaired);
         };
@@ -2970,6 +3110,10 @@ impl Node {
         }
         if !peer_rec.caps.is_empty() && !peer_rec.caps.iter().any(|c| c == "clip.image") {
             return Err(Error::Unsupported);
+        }
+        if !queue_if_offline {
+            let session = self.connected(&peer)?;
+            return crate::clipboard::send_image(&self.shared, &session, mime, bytes).await;
         }
         let has_queue = self.shared.store.has_active_queue_for_peer(&peer).unwrap_or(false);
         if !has_queue && let Some(session) = self.shared.session(&peer) {
@@ -3241,6 +3385,12 @@ impl Node {
         crate::mirror::power(&self.shared, &session, stay_awake, screen_off).await
     }
 
+    /// Turns a mirrored phone's screen to landscape or portrait (#473).
+    pub async fn mirror_rotate(&self, peer: DeviceId, landscape: bool) -> Result<()> {
+        let session = self.connected(&peer)?;
+        crate::mirror::rotate(&self.shared, &session, landscape).await
+    }
+
     /// Sends a mirrored phone's sound to this PC, or leaves it on the phone.
     pub async fn mirror_sound(&self, peer: DeviceId, on: bool) -> Result<()> {
         let session = self.connected(&peer)?;
@@ -3274,6 +3424,13 @@ impl Node {
     pub async fn mirror_notice(&self, peer: DeviceId, mirroring: u32, code: &str) -> Result<()> {
         let session = self.connected(&peer)?;
         crate::mirror::notice(&session, mirroring, code).await
+    }
+
+    /// A PC's screens, to pick the one to view (`MirrorStart::display`);
+    /// empty from a PC that only shares its main one.
+    pub async fn mirror_displays(&self, peer: DeviceId) -> Result<Vec<crate::MirrorDisplay>> {
+        let session = self.connected(&peer)?;
+        crate::mirror::displays(&self.shared, &session).await
     }
 
     /// The apps a phone can open in windows of their own (Elevated), by name.
@@ -3544,7 +3701,7 @@ impl Node {
     /// Sends a text through a paired phone.
     pub async fn sms_send(&self, peer: DeviceId, to: Vec<String>, body: String) -> Result<()> {
         let session = self.connected(&peer)?;
-        crate::sms::send(&self.shared, &session, to, body, Vec::new()).await
+        crate::sms::send(&self.shared, &session, to, body, Vec::new(), None).await
     }
 
     /// Sends a text (no attachments) through a paired phone.
@@ -3555,7 +3712,29 @@ impl Node {
         body: String,
     ) -> Result<()> {
         let session = self.connected(peer.borrow())?;
-        crate::sms::send(&self.shared, &session, to, body, Vec::new()).await
+        crate::sms::send(&self.shared, &session, to, body, Vec::new(), None).await
+    }
+
+    /// The SIMs a paired phone texts from (#474), to pick one for
+    /// [`send_sms_on`](Self::send_sms_on); none from a phone that doesn't
+    /// list them.
+    pub async fn sms_sims(&self, peer: DeviceId) -> Result<crate::CallSims> {
+        let session = self.connected(&peer)?;
+        crate::sms::sims(&self.shared, &session).await
+    }
+
+    /// Sends a text or MMS through a paired phone on the SIM `sim` (an id
+    /// from [`sms_sims`](Self::sms_sims)), or on its default when `None`.
+    pub async fn send_sms_on(
+        &self,
+        peer: DeviceId,
+        to: Vec<String>,
+        body: String,
+        attachments: Vec<crate::SmsAttachment>,
+        sim: Option<String>,
+    ) -> Result<()> {
+        let session = self.connected(&peer)?;
+        crate::sms::send(&self.shared, &session, to, body, attachments, sim).await
     }
 
     /// Sends a text or MMS with optional image attachments through a paired phone.
@@ -3567,7 +3746,7 @@ impl Node {
         attachments: Vec<crate::SmsAttachment>,
     ) -> Result<()> {
         let session = self.connected(peer.borrow())?;
-        crate::sms::send(&self.shared, &session, to, body, attachments).await
+        crate::sms::send(&self.shared, &session, to, body, attachments, None).await
     }
 
     /// Alias for [`Node::send_sms_with_attachments`].
@@ -3816,6 +3995,84 @@ impl Node {
     /// quiet after a restart, when it resumes.
     pub fn keep_transfer_quiet(&self, transfer_id: &str) {
         crate::transfer::mark_quiet_transfer(&self.shared, transfer_id);
+    }
+
+    // ---- Unlock the PC with the phone (ADR 0009, docs/protocol/unlock.md) ----
+
+    /// PC side: lets `phone` unlock this PC's locked session for the Windows
+    /// user `user` (a security identifier; `user_name` is what the phone
+    /// shows). The phone's owner agrees with a strong biometric. `password`
+    /// is kept only sealed under a key the phone holds. Needs the `unlock`
+    /// toggle on at both ends and a direct local connection.
+    pub async fn unlock_enroll(
+        &self,
+        phone: DeviceId,
+        user: &str,
+        user_name: &str,
+        password: crate::unlock::Secret,
+    ) -> Result<()> {
+        let session = self.connected(&phone)?;
+        crate::unlock::enroll(&self.shared, &session, user, user_name, &password).await
+    }
+
+    /// PC side: asks `phone` to release `user`'s password for one unlock. The
+    /// phone's owner confirms with their biometric. `Denied` when declined,
+    /// off, or locked out after repeated failures; `NotFound` when `user`
+    /// isn't enrolled or the phone's key is gone (enroll again).
+    pub async fn unlock_password(&self, phone: DeviceId, user: &str) -> Result<crate::unlock::Secret> {
+        let session = self.connected(&phone)?;
+        crate::unlock::password(&self.shared, &session, user).await
+    }
+
+    /// PC side: whether unlocking with a phone is locked out after repeated failures,
+    /// so the lock screen can say so rather than "not confirmed".
+    pub fn unlock_locked_out(&self) -> bool {
+        lock(&self.shared.unlock_requests).locked_out(std::time::Instant::now()).is_some()
+    }
+
+    /// Whether paired device `peer` offers `capability` (as last heard).
+    pub fn peer_offers(&self, peer: DeviceId, capability: &str) -> bool {
+        self.shared.offers(&peer, capability).unwrap_or(false)
+    }
+
+    /// PC side: the Windows users enrolled to unlock with `phone`, as
+    /// `(security identifier, name)`.
+    pub fn unlock_users(&self, phone: DeviceId) -> Result<Vec<(String, String)>> {
+        Ok(self.shared.store.unlock_entries(&phone)?.into_iter().map(|e| (e.user, e.user_name)).collect())
+    }
+
+    /// PC side: stops `user` (or everyone) unlocking with `phone`.
+    pub async fn unlock_forget(&self, phone: DeviceId, user: Option<&str>) -> Result<()> {
+        crate::unlock::forget(&self.shared, &phone, user).await
+    }
+
+    /// Enrolls a paired Android phone for this Linux account and returns its public key.
+    /// The administrator's PAM enrollment tool decides whether to trust the key.
+    pub async fn linux_unlock_enroll(&self, phone: DeviceId, uid: u32, user_name: &str) -> Result<Vec<u8>> {
+        let session = self.connected(&phone)?;
+        crate::linux_unlock::enroll(&self.shared, &session, uid, user_name).await
+    }
+
+    /// Asks the enrolled phone to sign one challenge. PAM independently verifies the signature.
+    pub async fn linux_unlock_sign(
+        &self,
+        challenge: nectarlink_protocol::LinuxUnlockChallenge,
+    ) -> Result<Vec<u8>> {
+        if challenge.pc != self.shared.id {
+            return Err(Error::Denied);
+        }
+        let session = self.connected(&challenge.phone)?;
+        crate::linux_unlock::sign(&self.shared, &session, challenge).await
+    }
+
+    /// Requests deletion of the phone's key. The PAM trust record is managed separately.
+    pub async fn linux_unlock_forget(&self, phone: DeviceId, uid: u32) -> Result<()> {
+        let session = self.connected(&phone)?;
+        if !self.shared.we_offer(crate::linux_unlock::PC) {
+            return Err(Error::Unsupported);
+        }
+        let _cleanup = self.shared.linux_unlock_activity.begin_cleanup(phone);
+        crate::linux_unlock::forget(&session, Some(uid)).await
     }
 
     // ---- Remote input (docs/protocol/remote.md) ----
