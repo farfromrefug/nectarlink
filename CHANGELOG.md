@@ -8,6 +8,9 @@ change things that need a step from you, and its notes say so.
 
 ### New
 
+- **Copy part of a notification.** A notification's **...** menu on the PC's Home shows its
+  whole text, and any part of it can be selected and copied with Ctrl+C. Thanks to
+  [@korry73](https://github.com/korry73) ([#526](https://github.com/thtbee/nectarlink/issues/526)).
 - **Report a problem.** **Settings › Connection & About › Report a problem** on the PC (and at
   the bottom of the Connection Doctor) puts what you say went wrong together with what helps
   find the cause: versions, the Doctor's checks, how features have been doing, recent crashes
@@ -277,7 +280,8 @@ change things that need a step from you, and its notes say so.
   Thanks to José María Garcia Dominguez, and to
   [@KevinL50-sysadmin](https://github.com/KevinL50-sysadmin) for review passes on it
   ([#348](https://github.com/thtbee/nectarlink/pull/348), [#402](https://github.com/thtbee/nectarlink/pull/402),
-  [#438](https://github.com/thtbee/nectarlink/pull/438), [#480](https://github.com/thtbee/nectarlink/pull/480)).
+  [#438](https://github.com/thtbee/nectarlink/pull/438), [#480](https://github.com/thtbee/nectarlink/pull/480),
+  [#547](https://github.com/thtbee/nectarlink/pull/547)).
 
 - **Vietnamese.** NectarLink speaks Tiếng Việt now: on the Android phone and
   the Windows PC, every screen is translated. Language (Settings › Appearance on the
@@ -479,6 +483,30 @@ change things that need a step from you, and its notes say so.
 
 ### Fixed
 
+- **Folder sync is quicker with many files.** Comparing a big folder no longer slows down
+  with the square of its file count. Thanks to [@aihehye](https://github.com/aihehye)
+  ([#537](https://github.com/thtbee/nectarlink/pull/537)).
+- **Sleep from the phone works on more laptops.** Laptops that sleep the Modern Standby way
+  ignored it; the screen now goes off as with the power button, and Windows takes them into
+  standby ([#542](https://github.com/thtbee/nectarlink/issues/542)).
+- **One NectarLink in the Start menu.** The helper that puts NectarLink in Windows' Share
+  menu no longer adds a second entry ([#544](https://github.com/thtbee/nectarlink/issues/544)).
+- **Showing the PC's screen no longer closes the app on Wayland.** Without GStreamer's
+  PipeWire plugin, a Wayland session fell back to X11 capture, which some compositors
+  answer with an error that ended the app. The phone now says sharing failed instead
+  ([#548](https://github.com/thtbee/nectarlink/issues/548)).
+- **The wireless debugging code shows during Do Not Disturb.** Elevated setup's code
+  notification can come through Do Not Disturb, and while it's on the app says to turn it
+  off until pairing is done ([#496](https://github.com/thtbee/nectarlink/issues/496)).
+- **The PC widget's Wake button fits a small widget** instead of being cut off at the bottom.
+- **Linux file pickers are the desktop's own.** Send files and the other file dialogs use the
+  desktop portal when no Qt theme is set, so COSMIC, GNOME and others show their usual picker
+  with sorting by date and size. Thanks to [@krakotay](https://github.com/krakotay)
+  ([#545](https://github.com/thtbee/nectarlink/pull/545)).
+- **Showing the PC's screen on Wayland is steadier.** Stopping it no longer panics during
+  cleanup, and when the OpenGL capture stalls or comes out black it tries the plain PipeWire
+  path again on a fresh connection. Thanks to [@krakotay](https://github.com/krakotay)
+  ([#540](https://github.com/thtbee/nectarlink/pull/540)).
 - **A phone app's shortcut can be taken away again.** Once an app has a shortcut, its menu
   on the PC's Apps page says **Remove from app menu** (Linux, where app menus have no way to
   delete an entry) or **Remove from desktop** (Windows). Thanks to
