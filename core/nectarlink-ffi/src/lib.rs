@@ -3623,6 +3623,9 @@ pub struct NodeOptions {
     pub power: PowerLevel,
     /// Allow connections through relays when away from home.
     pub away_mode: bool,
+    /// Connect only through a USB cable.
+    #[uniffi(default = false)]
+    pub usb_only: bool,
     /// Where received files are put once complete (the app then moves them
     /// where the user finds them).
     pub downloads_dir: String,
@@ -3762,6 +3765,7 @@ impl NectarlinkNode {
             NodeConfig::new(PathBuf::from(options.data_dir), options.device.into(), options.app_version);
         config.power = options.power.into();
         config.away_mode = options.away_mode;
+        config.usb_only = options.usb_only;
         config.downloads_dir = Some(PathBuf::from(options.downloads_dir));
         config.usb_port = options.usb_port;
         config.key_protector = Some(Arc::new(KeyProtectorAdapter(key_protector)));
@@ -4423,6 +4427,17 @@ impl NectarlinkNode {
         self.node.set_away_mode(enabled);
     }
 
+    /// Whether only USB connections are allowed.
+    pub fn usb_only(&self) -> bool {
+        self.node.usb_only()
+    }
+
+    /// Allows only connections through a USB cable (no Wi-Fi, mobile data,
+    /// relay or local discovery), or all the others again.
+    pub fn set_usb_only(&self, enabled: bool) {
+        self.node.set_usb_only(enabled);
+    }
+
     pub fn relay_snapshot(&self) -> RelaySnapshot {
         use core::relays::RelayRegion as Region;
         let snapshot = self.node.relay_snapshot();
@@ -4505,6 +4520,13 @@ impl NectarlinkNode {
         let id = parse_id(&id)?;
         let node = self.node.clone();
         self.run(async move { Ok(node.pc_power(id, core::PowerAction::Shutdown).await?) }).await
+    }
+
+    /// Restarts a paired PC (only one that offers `pc.power.restart`).
+    pub async fn pc_restart(&self, id: String) -> Result<()> {
+        let id = parse_id(&id)?;
+        let node = self.node.clone();
+        self.run(async move { Ok(node.pc_power(id, core::PowerAction::Restart).await?) }).await
     }
 
     /// Hibernates a paired PC (only one that offers `pc.power.hibernate`).

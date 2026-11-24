@@ -39,6 +39,11 @@ pub fn host() -> &'static CoreHost {
     HOST.get().expect("core host is started in main before Qt")
 }
 
+/// The running host, if it has been started (unit tests run without one).
+pub fn try_host() -> Option<&'static CoreHost> {
+    HOST.get()
+}
+
 /// The running host's data directory, if the host has been started.
 #[allow(dead_code)]
 pub fn try_data_dir() -> Option<&'static std::path::Path> {
@@ -154,6 +159,7 @@ pub fn compute_capabilities(
         }
         #[cfg(windows)]
         {
+            caps.push(nectarlink_core::PC_RESTART.into());
             caps.push(nectarlink_core::WEBCAM_VIRTUAL.into());
             if crate::webcam::supports_hevc() {
                 caps.push(nectarlink_core::WEBCAM_HEVC.into());

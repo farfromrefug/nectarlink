@@ -125,7 +125,8 @@
     <string name="elevated_pair_title">NectarLink mit Kabellosem Debugging koppeln</string>
     <string name="elevated_pair_text">Tippe in „Kabelloses Debugging“ auf „Gerät mit Kopplungscode koppeln“ und gib den Code anschließend hier ein.</string>
     <string name="elevated_pair_action">Code eingeben</string>
-    <string name="elevated_pair_collapsed">Zieh diese Mitteilung nach unten und tippe auf „Code eingeben“.</string>
+    <string name="elevated_pair_collapsed">Zieh diese Mitteilung nach unten (auf Xiaomi-Handys lange drücken) und tippe auf „Code eingeben“.</string>
+    <string name="elevated_pair_dnd">„Bitte nicht stören“ ist an, daher wird die Benachrichtigung für den Kopplungscode vielleicht nicht angezeigt. Schalte es aus, bis die Kopplung fertig ist.</string>
     <string name="elevated_pair_hint">6-stelliger Kopplungscode</string>
     <string name="elevated_pairing">Koppeln…</string>
     <string name="elevated_no_dialog">Der Kopplungscode wird nicht angezeigt. Tippe in „Kabelloses Debugging“ auf „Gerät mit Kopplungscode koppeln“ und gib ihn dann hier ein.</string>
@@ -307,6 +308,10 @@
     <string name="action_phone_sound_back">Ton wieder auf dem Smartphone abspielen</string>
     <string name="phone_sound_on_pc_off">%1$s spielt den Ton dieses Smartphones nicht ab. Schalte am PC unter Einstellungen › Geräte die Bildschirmspiegelung für dieses Smartphone ein.</string>
     <string name="action_shutdown_pc">Herunterfahren</string>
+    <string name="action_restart_pc">Neu starten</string>
+    <string name="restart_pc_title">%1$s neu starten?</string>
+    <string name="restart_pc_text">Windows schließt geöffnete Apps und startet neu. Eine App mit ungespeicherter Arbeit kann den Neustart verhindern.</string>
+    <string name="pc_restart_requested">Neustart für %1$s angefordert.</string>
     <string name="shutdown_pc_title">%1$s herunterfahren?</string>
     <string name="shutdown_pc_text">Geöffnete Apps werden geschlossen. Eine App mit ungespeicherter Arbeit kann es noch aufhalten.</string>
     <string name="action_wake_pc">Aufwecken</string>
@@ -349,6 +354,7 @@
         <item quantity="other">Mit %1$d PCs verbunden</item>
     </plurals>
     <string name="notification_waiting">Warte auf deinen PC</string>
+    <string name="notification_usb_only">Nur USB: warte auf ein Kabel</string>
     <string name="notification_waiting_network">Wartet auf WLAN, um deinen PC zu erreichen</string>
     <string name="reconnect_known_only_title">Nur in Netzwerken mit gefundenem PC</string>
     <string name="reconnect_known_only_body">Sucht nur in WLANs von selbst nach deinen PCs, in denen es schon einen erreicht hat. Anderswo kann ein PC das Handy trotzdem erreichen.</string>
@@ -1454,6 +1460,9 @@
     <string name="home_section_system">System &amp; Energie</string>
     <string name="settings_category_devices">Geräte</string>
     <string name="settings_category_features">Funktionen &amp; Daten</string>
+    <string name="settings_usb_only_title">Nur USB</string>
+    <string name="settings_usb_only_body">Nur über ein USB-Kabel mit PCs verbinden: kein WLAN, keine mobilen Daten, keine lokale Erkennung</string>
+    <string name="usb_only_tile_label">Nur USB</string>
     <string name="settings_theme_artwork_color">Farbe aus Mediencover</string>
     <string name="settings_mobile_data_body">Unterwegs ohne WLAN über LTE/5G oder Relay verbunden bleiben</string>
     <string name="settings_background_clipboard_title">Hintergrundzugriff auf Zwischenablage</string>
