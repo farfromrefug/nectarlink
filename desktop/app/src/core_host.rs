@@ -39,6 +39,11 @@ pub fn host() -> &'static CoreHost {
     HOST.get().expect("core host is started in main before Qt")
 }
 
+/// The running host, if it has been started (unit tests run without one).
+pub fn try_host() -> Option<&'static CoreHost> {
+    HOST.get()
+}
+
 /// The running host's data directory, if the host has been started.
 #[allow(dead_code)]
 pub fn try_data_dir() -> Option<&'static std::path::Path> {
@@ -458,6 +463,7 @@ fn dispatch(host: &CoreHost, event: &nectarlink_core::NodeEvent) {
     crate::continuity_camera::on_event(event);
     crate::calls::on_event(event);
     crate::messages::on_event(event);
+    crate::badges::on_event(event);
     crate::mirror::on_event(event);
     crate::pc_mirror::on_event(event);
     crate::remote::on_event(event);

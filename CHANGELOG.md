@@ -11,6 +11,14 @@ change things that need a step from you, and its notes say so.
 - **Copy part of a notification.** A notification's **...** menu on the PC's Home shows its
   whole text, and any part of it can be selected and copied with Ctrl+C. Thanks to
   [@korry73](https://github.com/korry73) ([#526](https://github.com/thtbee/nectarlink/issues/526)).
+- **The device you're on, and badges, on the PC's left rail.** The device the pages show sits
+  at the bottom of the rail, with a dot for whether it's connected; click it to pick another
+  (or pair a new one). **Messages** shows how many texts came in that you haven't read on the
+  PC, and **Calls** how many calls were missed. A conversation's texts stop counting when you
+  open it, and missed calls when you open **Calls**. When other devices have something waiting,
+  the device button shows their total, and the list that opens shows each device's own number. Only what arrives after a phone first
+  shows here counts, so a phone's older unread texts, which only its own messaging app can
+  clear, don't leave a number up.
 - **Report a problem.** **Settings › Connection & About › Report a problem** on the PC (and at
   the bottom of the Connection Doctor) puts what you say went wrong together with what helps
   find the cause: versions, the Doctor's checks, how features have been doing, recent crashes
@@ -483,6 +491,16 @@ change things that need a step from you, and its notes say so.
 
 ### Fixed
 
+- **HEIC photos show in the Photos viewer.** The PC can't read HEIC itself, so the viewer
+  stayed empty; it now shows the photo's preview and says that Open in Photos shows it in full
+  ([#559](https://github.com/thtbee/nectarlink/issues/559)).
+- **Unlock with phone asks the next phone.** With several phones set up, one that's
+  connected but away from the PC's network said "Not confirmed on the phone" and stopped
+  there; the PC now goes on to the next phone that's on the network
+  ([#535](https://github.com/thtbee/nectarlink/issues/535)).
+- **The PC's mouse goes over to phones on Android 13 and older.** The phone measured its
+  pointer from a status line only newer Android versions have, so the mouse came over for a
+  moment and went straight back ([#107](https://github.com/thtbee/nectarlink/issues/107)).
 - **Folder sync is quicker with many files.** Comparing a big folder no longer slows down
   with the square of its file count. Thanks to [@aihehye](https://github.com/aihehye)
   ([#537](https://github.com/thtbee/nectarlink/pull/537)).
@@ -507,6 +525,18 @@ change things that need a step from you, and its notes say so.
   cleanup, and when the OpenGL capture stalls or comes out black it tries the plain PipeWire
   path again on a fresh connection. Thanks to [@krakotay](https://github.com/krakotay)
   ([#540](https://github.com/thtbee/nectarlink/pull/540)).
+- **A text's notification opens the conversation.** Clicking a text message's notification on
+  the PC brings up NectarLink on that phone's Messages page, with the conversation open at the
+  message, ringed for a moment. This works wherever a notification reports its click: Windows
+  and Linux now, and macOS once its notifications do. Thanks to
+  [@farfromrefug](https://github.com/farfromrefug) ([#551](https://github.com/thtbee/nectarlink/pull/551)).
+- **Conversations open at the latest message**, every time: on the first sync, when you open
+  one again, and after you send a message, which no longer jumps somewhere else.
+- **Scrolling Messages follows the system's scroll speed on macOS**, for a mouse wheel as for a
+  trackpad. Qt dropped the speed and acceleration set in System Settings for a wheel, so
+  scrolling felt slow beside other apps.
+- **Copying a message or a phone number** from Messages or Calls says **Copied to clipboard.**
+
 - **A phone app's shortcut can be taken away again.** Once an app has a shortcut, its menu
   on the PC's Apps page says **Remove from app menu** (Linux, where app menus have no way to
   delete an entry) or **Remove from desktop** (Windows). Thanks to
