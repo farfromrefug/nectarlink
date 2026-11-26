@@ -104,6 +104,7 @@ Item {
         { id: "agents", title: qsTr("AI agents"), icon: Icons.terminal, subtitle: qsTr("Assistants that use your devices") },
         { id: "storage", title: qsTr("Storage & Privacy"), icon: Icons.clipboardList, subtitle: qsTr("History, caches & retention") },
         { id: "connection", title: qsTr("Connection & About"), icon: Icons.wifi, subtitle: qsTr("Doctor, Wake-on-LAN, API & version") },
+        { id: "updates", title: qsTr("Updates"), icon: Icons.download, subtitle: qsTr("Checks, channel & what's new") },
         { id: "support", title: qsTr("Community"), icon: Icons.heart, subtitle: qsTr("Discord, news and support") },
         { id: "report", title: qsTr("Report a problem"), icon: Icons.warning, subtitle: qsTr("Tell us what went wrong") }
     ]
@@ -502,21 +503,22 @@ Item {
         opacity: 0.6
     }
 
-    // ---- Compact Top Category Pill Bar (narrow windows < 680px) ----
-    Flickable {
+    // ---- Compact Top Category Pills (narrow windows < 680px) ----
+    // They wrap onto more lines rather than scroll sideways: a tiling window
+    // manager can make the window narrower than its minimum, and a sideways
+    // strip can't be scrolled with a mouse wheel, so the last pills were out
+    // of reach.
+    Item {
         id: compactCategoryBar
         visible: !page.wideLayout
         x: Theme.contentPadding
         y: 12
         width: parent.width - Theme.contentPadding * 2
-        height: 38
-        contentWidth: compactRow.width
-        boundsBehavior: Flickable.StopAtBounds
-        clip: true
+        height: compactRow.implicitHeight
 
-        Row {
+        Flow {
             id: compactRow
-            height: parent.height
+            width: parent.width
             spacing: 6
             Repeater {
                 model: page.categories
@@ -529,13 +531,23 @@ Item {
                         : Theme.surfaceContent
                     height: 34
                     width: compactTabRow.implicitWidth + 22
-                    anchors.verticalCenter: parent.verticalCenter
                     radius: Theme.pill(height)
+                    activeFocusOnTab: true
+                    Accessible.role: Accessible.PageTab
+                    Accessible.name: modelData.title
+                    Accessible.selected: selected
+                    Accessible.onPressAction: page.currentSection = modelData.id
+                    Keys.onPressed: (event) => {
+                        if (event.key === Qt.Key_Return || event.key === Qt.Key_Enter || event.key === Qt.Key_Space) {
+                            page.currentSection = compactTab.modelData.id
+                            event.accepted = true
+                        }
+                    }
                     color: selected
                         ? (Theme.graphite ? Theme.surfaceContent : Theme.secondaryContainer)
                         : Theme.surfaceContainerHigh
-                    border.width: Theme.graphite ? 1 : 0
-                    border.color: Theme.outlineVariant
+                    border.width: Theme.focusVisible(compactTab) ? 2 : (Theme.graphite ? 1 : 0)
+                    border.color: Theme.focusVisible(compactTab) ? Theme.primary : Theme.outlineVariant
                     Row {
                         id: compactTabRow
                         anchors.centerIn: parent
@@ -1259,14 +1271,16 @@ Item {
                             }
                         }
 
-                        Divider { width: parent.width; visible: Qt.platform.os === "windows" }
+                        Divider { width: parent.width; visible: Qt.platform.os !== "osx" }
 
                         ListRow {
                             width: parent.width
-                            visible: Qt.platform.os === "windows"
+                            visible: Qt.platform.os !== "osx"
                             iconPath: Icons.palette
                             title: qsTr("Tray icon")
-                            description: qsTr("One color turns white or black to match the taskbar.")
+                            description: Qt.platform.os === "windows"
+                                ? qsTr("One color turns white or black to match the taskbar.")
+                                : qsTr("One color takes the panel's colors where the desktop recolors tray icons, as KDE Plasma does.")
                             Segmented {
                                 options: [
                                     { value: "colour", label: qsTr("Color") },
@@ -1561,6 +1575,18 @@ Item {
                                 onToggled: (on) => Preferences.hideMirrorToolbar = !on
                             }
                         }
+                        ListRow {
+                            width: parent.width
+                            visible: !Preferences.hideMirrorToolbar
+                            iconPath: Icons.window
+                            title: qsTr("Toolbar beside the picture")
+                            description: qsTr("Gives the toolbar a strip of the window above or below the phone's picture, so it never covers the app. The window grows by its height.")
+                            Toggle {
+                                label: qsTr("Toolbar beside the picture")
+                                checked: Preferences.mirrorToolbarOutside
+                                onToggled: (on) => Preferences.mirrorToolbarOutside = on
+                            }
+                        }
 
                         Divider { width: parent.width }
 
@@ -1783,14 +1809,14 @@ Item {
                         visible: index === page.selectedDeviceIndex
                         width: visible ? column.width : 0
 
-                        // Another PC (#432): only its clipboard and files switches mean anything.
+                        // Another PC (#432): its clipboard and files switches, and remote input for its mouse and keyboard here.
                         readonly property bool isPc: kind === "desktop" || kind === "laptop"
                             || (kind === "unknown" && (os === "windows" || os === "macos" || os === "linux"))
 
                         // Re-read when toggles (and so capabilities) change.
                         readonly property var toggles: AppController.capsRevision >= 0 && AppController.togglesRevision >= 0
                                                        ? AppController.deviceToggles(deviceId)
-                                                             .filter(t => !isPc || t.name === "clipboard" || t.name === "files")
+                                                             .filter(t => !isPc || t.name === "clipboard" || t.name === "files" || t.name === "remote_input")
                                                        : []
 
                         Column {
@@ -1878,12 +1904,15 @@ Item {
                                 }
                             }
                             // The phone beside the PC: the mouse goes over the edge of the screen to it (#107).
+                            // Another PC too: its mouse and keyboard, over that edge (D432).
                             ListRow {
                                 width: parent.width
-                                visible: Qt.platform.os === "windows" && !deviceCard.isPc
+                                visible: Qt.platform.os === "windows"
                                 iconPath: Icons.desktop
                                 title: qsTr("Beside this PC")
-                                description: qsTr("Move the mouse past that edge of the screen to use it on this phone, and type there. Move it back, or press Ctrl+Alt+Esc, to return. Needs Elevated.")
+                                description: deviceCard.isPc
+                                    ? qsTr("Move the mouse past that edge of the screen to use it on that PC, and type there with this keyboard. Move it back, or press Ctrl+Alt+Esc, to return. That PC asks the first time, or turn on Remote mouse, keyboard & Deck for this PC there.")
+                                    : qsTr("Move the mouse past that edge of the screen to use it on this phone, and type there. Move it back, or press Ctrl+Alt+Esc, to return. Needs Elevated.")
                                 Segmented {
                                     options: [
                                         { value: "", label: qsTr("Off") },
@@ -2718,7 +2747,10 @@ Item {
                                 width: notifPairRow.colWidth
                                 iconPath: Icons.bell
                                 title: qsTr("Forward PC notifications")
-                                description: qsTr("Send PC alerts to phone while away.")
+                                // Other apps' notifications are only read on Linux (#604).
+                                description: Qt.platform.os === "linux"
+                                    ? qsTr("Send PC alerts to phone while away.")
+                                    : qsTr("Send your automations' alerts to the phone. Other apps' alerts are Linux only for now.")
                                 Toggle {
                                     label: qsTr("Forward PC notifications")
                                     checked: Preferences.forwardPcNotificationsToPhone
@@ -3640,6 +3672,19 @@ Item {
                             width: parent.width
                             visible: Qt.platform.os !== "osx"
                         }
+                        // The one call home that isn't asked for each time (#534).
+                        ListRow {
+                            width: parent.width
+                            iconPath: Icons.shield
+                            title: qsTr("Send an anonymous daily count")
+                            description: qsTr("Once a day: the app's version, the platform and model, and how often each feature worked or failed. No ID and nothing personal.")
+                            Toggle {
+                                label: qsTr("Send an anonymous daily count")
+                                checked: Preferences.dailyCount
+                                onToggled: (on) => Preferences.dailyCount = on
+                            }
+                        }
+                        Divider { width: parent.width }
 
                         // Row 1: Clipboard history | Notification history
                         Item {
@@ -4021,6 +4066,20 @@ Item {
                                 onToggled: function(v) { Preferences.usbDebugging = v }
                             }
                         }
+                        Divider { width: parent.width; visible: Qt.platform.os !== "osx" }
+                        // #313: a phone paired over Bluetooth stays reachable without Wi-Fi or data.
+                        ListRow {
+                            width: parent.width
+                            visible: Qt.platform.os !== "osx"
+                            iconPath: Icons.bluetooth
+                            title: qsTr("Bluetooth when there's no network")
+                            description: qsTr("A phone paired with this PC in Bluetooth settings stays connected without Wi-Fi or data, for notifications, texts, calls and the clipboard. Turn it on in the phone's Settings too.")
+                            Toggle {
+                                label: qsTr("Bluetooth when there's no network")
+                                checked: Preferences.bluetoothLink
+                                onToggled: function(v) { Preferences.bluetoothLink = v }
+                            }
+                        }
                         Divider { width: parent.width; visible: Qt.platform.os === "linux" }
                         ListRow {
                             width: parent.width
@@ -4152,9 +4211,87 @@ Item {
                             width: parent.width
                             iconPath: Icons.desktop
                             title: qsTr("NectarLink %1").arg(AppController.version)
+                            description: qsTr("This PC: %1").arg(AppController.deviceName)
+                            Row {
+                                spacing: 8
+                                Button {
+                                    anchors.verticalCenter: parent.verticalCenter
+                                    variant: "outline"
+                                    size: "sm"
+                                    iconPath: Icons.folder
+                                    text: qsTr("Open logs")
+                                    onClicked: Qt.openUrlExternally(AppController.logsUrl())
+                                }
+                                Button {
+                                    anchors.verticalCenter: parent.verticalCenter
+                                    variant: "outline"
+                                    size: "sm"
+                                    iconPath: Icons.warning
+                                    text: qsTr("Report a problem")
+                                    onClicked: Report.open()
+                                }
+                            }
+                        }
+                    }
+                }
+
+                Card {
+                    width: parent.width
+                    Column {
+                        width: parent.width
+                        ListRow {
+                            width: parent.width
+                            iconPath: Icons.compass
+                            title: qsTr("Setup walkthrough")
+                            description: qsTr("Re-open the setup guide.")
+                            Button {
+                                variant: "tonal"
+                                size: "sm"
+                                text: qsTr("Open")
+                                onClicked: Preferences.restartWalkthrough()
+                            }
+                        }
+                        Divider { width: parent.width }
+                        ListRow {
+                            width: parent.width
+                            iconPath: Icons.book
+                            title: qsTr("Features guide")
+                            description: qsTr("What each feature needs and where to find it.")
+                            Button {
+                                variant: "tonal"
+                                size: "sm"
+                                text: qsTr("Open")
+                                onClicked: AppController.currentPage = "guide"
+                            }
+                        }
+                    }
+                }
+            }
+
+            // ================================================================
+            // 10. UPDATES (#558)
+            // ================================================================
+            Column {
+                readonly property string settingsSection: "updates"
+                visible: page.currentSection === "updates"
+                width: visible ? parent.width : 0
+                spacing: Theme.gutter
+
+                Card {
+                    width: parent.width
+                    Column {
+                        width: parent.width
+                        ListRow {
+                            width: parent.width
+                            iconPath: Icons.download
+                            title: qsTr("NectarLink %1").arg(AppController.version)
                             description: AppController.updateStatus.length > 0
                                          ? AppController.updateStatus
-                                         : qsTr("This PC: %1").arg(AppController.deviceName)
+                                         : !AppController.canUpdate
+                                         ? qsTr("This copy doesn't update itself: it runs from its folder, or it's the Mac app, which doesn't yet.")
+                                         : AppController.updateCheckedAt > 0
+                                         ? qsTr("Last checked %1").arg(new Date(AppController.updateCheckedAt * 1000).toLocaleString(Qt.locale(), Locale.ShortFormat))
+                                         : qsTr("Not checked yet.")
                             Row {
                                 spacing: 8
                                 // The download's progress, or a spinner while its size isn't known.
@@ -4191,22 +4328,6 @@ Item {
                                           : qsTr("Check for updates")
                                     onClicked: AppController.updateVersion.length > 0
                                                ? AppController.installUpdate() : AppController.checkForUpdates()
-                                }
-                                Button {
-                                    anchors.verticalCenter: parent.verticalCenter
-                                    variant: "outline"
-                                    size: "sm"
-                                    iconPath: Icons.folder
-                                    text: qsTr("Open logs")
-                                    onClicked: Qt.openUrlExternally(AppController.logsUrl())
-                                }
-                                Button {
-                                    anchors.verticalCenter: parent.verticalCenter
-                                    variant: "outline"
-                                    size: "sm"
-                                    iconPath: Icons.warning
-                                    text: qsTr("Report a problem")
-                                    onClicked: Report.open()
                                 }
                             }
                         }
@@ -4274,42 +4395,10 @@ Item {
                         }
                     }
                 }
-
-                Card {
-                    width: parent.width
-                    Column {
-                        width: parent.width
-                        ListRow {
-                            width: parent.width
-                            iconPath: Icons.compass
-                            title: qsTr("Setup walkthrough")
-                            description: qsTr("Re-open the setup guide.")
-                            Button {
-                                variant: "tonal"
-                                size: "sm"
-                                text: qsTr("Open")
-                                onClicked: Preferences.restartWalkthrough()
-                            }
-                        }
-                        Divider { width: parent.width }
-                        ListRow {
-                            width: parent.width
-                            iconPath: Icons.book
-                            title: qsTr("Features guide")
-                            description: qsTr("What each feature needs and where to find it.")
-                            Button {
-                                variant: "tonal"
-                                size: "sm"
-                                text: qsTr("Open")
-                                onClicked: AppController.currentPage = "guide"
-                            }
-                        }
-                    }
-                }
             }
 
             // ================================================================
-            // 10. COMMUNITY (id "support", as links to it already say)
+            // 11. COMMUNITY (id "support", as links to it already say)
             // ================================================================
             Column {
                 readonly property string settingsSection: "support"
@@ -4392,16 +4481,32 @@ Item {
 
                 Card {
                     width: parent.width
-                    ListRow {
+                    Column {
                         width: parent.width
-                        iconPath: Icons.warning
-                        title: qsTr("Report a problem")
-                        description: qsTr("Tell us what went wrong. You see the whole report before it goes anywhere.")
-                        Button {
-                            variant: "fill"
-                            size: "sm"
-                            text: qsTr("Start")
-                            onClicked: Report.open()
+                        ListRow {
+                            width: parent.width
+                            iconPath: Icons.warning
+                            title: qsTr("Report a problem")
+                            description: qsTr("Tell us what went wrong. You see the whole report before it goes anywhere.")
+                            Button {
+                                variant: "fill"
+                                size: "sm"
+                                text: qsTr("Start")
+                                onClicked: Report.open()
+                            }
+                        }
+                        Divider { width: parent.width }
+                        ListRow {
+                            width: parent.width
+                            iconPath: Icons.messages
+                            title: qsTr("Your reports")
+                            description: qsTr("The reports you sent, the answers to them, and a place to reply without a GitHub account.")
+                            Button {
+                                variant: "tonal"
+                                size: "sm"
+                                text: qsTr("Open")
+                                onClicked: Report.openConversations("")
+                            }
                         }
                     }
                 }

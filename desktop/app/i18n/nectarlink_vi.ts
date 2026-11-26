@@ -1179,6 +1179,16 @@
         <source>Unknown caller</source>
         <translation>Người gọi không xác định</translation>
     </message>
+    <message>
+        <location filename="rust_strings.h" line="1"/>
+        <source>Windows keeps NectarLink off the microphone. Turn on Settings › Privacy &amp; security › Microphone › Let desktop apps access your microphone, then try again.</source>
+        <translation>Windows chặn NectarLink dùng micrô. Bật Cài đặt › Quyền riêng tư &amp; bảo mật › Micrô › Cho phép ứng dụng trên máy tính truy cập micrô của bạn, rồi thử lại.</translation>
+    </message>
+    <message>
+        <location filename="rust_strings.h" line="1"/>
+        <source>The PC&apos;s microphone couldn&apos;t be started. Pick another one in Settings › Camera &amp; Audio › Microphone for calls, or try again.</source>
+        <translation>Không khởi động được micrô của PC. Chọn micrô khác trong Cài đặt › Máy ảnh &amp; Âm thanh › Micrô cho cuộc gọi, hoặc thử lại.</translation>
+    </message>
 </context>
 <context>
     <name>CallsPage</name>
@@ -2230,6 +2240,51 @@
         <translation>Chọn một phím cho phím tắt.</translation>
     </message>
     <message>
+        <location filename="rust_strings.h" line="1"/>
+        <source>Asks on the phone first</source>
+        <translation>Hỏi trên điện thoại trước</translation>
+    </message>
+    <message>
+        <location filename="rust_strings.h" line="1"/>
+        <source>1 step</source>
+        <translation>1 bước</translation>
+    </message>
+    <message>
+        <location filename="rust_strings.h" line="1"/>
+        <source>%1 steps</source>
+        <translation>%1 bước</translation>
+    </message>
+    <message>
+        <location filename="rust_strings.h" line="1"/>
+        <source>Add the macro&apos;s steps.</source>
+        <translation>Hãy thêm các bước của macro.</translation>
+    </message>
+    <message>
+        <location filename="rust_strings.h" line="1"/>
+        <source>A macro can have up to %1 steps.</source>
+        <translation>Một macro có tối đa %1 bước.</translation>
+    </message>
+    <message>
+        <location filename="rust_strings.h" line="1"/>
+        <source>Step %1: %2</source>
+        <translation>Bước %1: %2</translation>
+    </message>
+    <message>
+        <location filename="rust_strings.h" line="1"/>
+        <source>Step %1: restart, shut down and macros can&apos;t be steps.</source>
+        <translation>Bước %1: khởi động lại, tắt máy và macro không thể là một bước.</translation>
+    </message>
+    <message>
+        <location filename="rust_strings.h" line="1"/>
+        <source>Step %1: wait at most 10 seconds.</source>
+        <translation>Bước %1: chờ tối đa 10 giây.</translation>
+    </message>
+    <message>
+        <location filename="rust_strings.h" line="1"/>
+        <source>A macro can wait 30 seconds in all.</source>
+        <translation>Một macro có thể chờ tổng cộng 30 giây.</translation>
+    </message>
+    <message>
         <location filename="rust_strings.h" line="192"/>
         <source>Choose an application (.exe or .lnk) on this PC.</source>
         <translation>Chọn một ứng dụng (.exe hoặc .lnk) trên PC này.</translation>
@@ -2293,6 +2348,46 @@
         <location filename="rust_strings.h" line="204"/>
         <source>Web address must start with http:// or https://.</source>
         <translation>Địa chỉ web phải bắt đầu bằng http:// hoặc https://.</translation>
+    </message>
+    <message>
+        <location filename="rust_strings.h" line="1"/>
+        <source>Choose what turning it on does, and what turning it off does.</source>
+        <translation>Chọn việc khi bật và việc khi tắt.</translation>
+    </message>
+    <message>
+        <location filename="rust_strings.h" line="1"/>
+        <source>%1: %2</source>
+        <translation>%1: %2</translation>
+    </message>
+    <message>
+        <location filename="rust_strings.h" line="1"/>
+        <source>%1: restart, shut down, macros and toggles can&apos;t be used here.</source>
+        <translation>%1: không dùng được khởi động lại, tắt máy, macro và bật/tắt ở đây.</translation>
+    </message>
+    <message>
+        <location filename="rust_strings.h" line="1"/>
+        <source>Turning on</source>
+        <translation>Khi bật</translation>
+    </message>
+    <message>
+        <location filename="rust_strings.h" line="1"/>
+        <source>Turning off</source>
+        <translation>Khi tắt</translation>
+    </message>
+    <message>
+        <location filename="rust_strings.h" line="1"/>
+        <source>On / off</source>
+        <translation>Bật / tắt</translation>
+    </message>
+    <message>
+        <location filename="rust_strings.h" line="1"/>
+        <source>On</source>
+        <translation>Bật</translation>
+    </message>
+    <message>
+        <location filename="rust_strings.h" line="1"/>
+        <source>Off</source>
+        <translation>Tắt</translation>
     </message>
 </context>
 <context>
@@ -2434,6 +2529,86 @@
         <location filename="../qml/pages/DeckPage.qml" line="112"/>
         <source>Run shell command</source>
         <translation>Chạy lệnh shell</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/DeckPage.qml" line="1"/>
+        <source>Macro (several actions)</source>
+        <translation>Macro (nhiều thao tác)</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/DeckPage.qml" line="1"/>
+        <source>Power</source>
+        <translation>Nguồn</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/DeckPage.qml" line="1"/>
+        <source>Restart PC</source>
+        <translation>Khởi động lại PC</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/DeckPage.qml" line="1"/>
+        <source>Shut down PC</source>
+        <translation>Tắt PC</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/DeckPage.qml" line="1"/>
+        <source>The steps run in order. Up to 16, with up to 10 seconds of waiting after each and 30 in all.</source>
+        <translation>Các bước chạy theo thứ tự. Tối đa 16 bước, chờ tối đa 10 giây sau mỗi bước và 30 giây tổng cộng.</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/DeckPage.qml" line="1"/>
+        <source>%1. %2</source>
+        <translation>%1. %2</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/DeckPage.qml" line="1"/>
+        <source>Move step up</source>
+        <translation>Chuyển bước lên</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/DeckPage.qml" line="1"/>
+        <source>Move step down</source>
+        <translation>Chuyển bước xuống</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/DeckPage.qml" line="1"/>
+        <source>Remove step</source>
+        <translation>Xóa bước</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/DeckPage.qml" line="1"/>
+        <source>Step %1 value</source>
+        <translation>Giá trị bước %1</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/DeckPage.qml" line="1"/>
+        <source>then wait</source>
+        <translation>rồi chờ</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/DeckPage.qml" line="1"/>
+        <source>seconds</source>
+        <translation>giây</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/DeckPage.qml" line="1"/>
+        <source>Seconds to wait after step %1</source>
+        <translation>Số giây chờ sau bước %1</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/DeckPage.qml" line="1"/>
+        <source>Add a step:</source>
+        <translation>Thêm một bước:</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/DeckPage.qml" line="1"/>
+        <source>Add another step:</source>
+        <translation>Thêm bước khác:</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/DeckPage.qml" line="1"/>
+        <source>The phone asks before it does it. Apps with unsaved work can still stop it.</source>
+        <translation>Điện thoại sẽ hỏi trước khi làm. Ứng dụng có dữ liệu chưa lưu vẫn có thể chặn việc này.</translation>
     </message>
     <message>
         <location filename="../qml/pages/DeckPage.qml" line="149"/>
@@ -2692,6 +2867,41 @@
         <location filename="../qml/pages/DeckPage.qml" line="1076"/>
         <source>Reset</source>
         <translation>Đặt lại</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/DeckPage.qml" line="1"/>
+        <source>On / off (two actions in turn)</source>
+        <translation>Bật / tắt (hai thao tác luân phiên)</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/DeckPage.qml" line="1"/>
+        <source>Each press runs one, then the other the next time. The tile on the phone shows whether it&apos;s on.</source>
+        <translation>Mỗi lần nhấn chạy một thao tác, lần sau chạy thao tác còn lại. Ô trên điện thoại cho biết đang bật hay không.</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/DeckPage.qml" line="1"/>
+        <source>Turning on: %1</source>
+        <translation>Khi bật: %1</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/DeckPage.qml" line="1"/>
+        <source>Turning off: %1</source>
+        <translation>Khi tắt: %1</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/DeckPage.qml" line="1"/>
+        <source>Choose another action</source>
+        <translation>Chọn thao tác khác</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/DeckPage.qml" line="1"/>
+        <source>Choose what turning it on does:</source>
+        <translation>Chọn việc khi bật:</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/DeckPage.qml" line="1"/>
+        <source>Choose what turning it off does:</source>
+        <translation>Chọn việc khi tắt:</translation>
     </message>
 </context>
 <context>
@@ -3084,6 +3294,11 @@
         <location filename="rust_strings.h" line="278"/>
         <source>just now</source>
         <translation>vừa xong</translation>
+    </message>
+    <message>
+        <location filename="rust_strings.h" line="1"/>
+        <source>Over Bluetooth</source>
+        <translation>Qua Bluetooth</translation>
     </message>
 </context>
 <context>
@@ -4115,7 +4330,7 @@
     <message>
         <location filename="rust_strings.h" line="309"/>
         <source>Local by default
-Your phone and PC talk directly over your local network or USB cable. When Connect over mobile data is on, encrypted traffic can use a relay when away from home. Automatic update checks contact GitHub Releases and can be turned off in Settings › Connection &amp; About › Check for updates.
+Your phone and PC talk directly over your local network or USB cable. When Connect over mobile data is on, encrypted traffic can use a relay when away from home. Automatic update checks contact GitHub Releases and can be turned off in Settings › Updates › Check for updates.
 
 End-to-end encrypted
 Every connection uses QUIC with TLS 1.3 and Ed25519 device certificates verified during pairing. Device keys are protected by Windows DPAPI and the Android Keystore.
@@ -4123,7 +4338,7 @@ Every connection uses QUIC with TLS 1.3 and Ed25519 device certificates verified
 Per-device sharing controls
 Sensitive capabilities such as Share PC folders, Remote input, and Reverse PC screen mirroring are turned off by default for each paired device until you turn them on.</source>
         <translation>Cục bộ theo mặc định
-Điện thoại và PC của bạn giao tiếp trực tiếp qua mạng cục bộ hoặc cáp USB. Khi bật Kết nối qua dữ liệu di động, lưu lượng được mã hóa có thể dùng máy chủ trung chuyển khi vắng nhà. Kiểm tra cập nhật tự động liên hệ với GitHub Releases và có thể tắt trong Cài đặt › Kết nối &amp; Giới thiệu › Kiểm tra cập nhật.
+Điện thoại và PC của bạn giao tiếp trực tiếp qua mạng cục bộ hoặc cáp USB. Khi bật Kết nối qua dữ liệu di động, lưu lượng được mã hóa có thể dùng máy chủ trung chuyển khi vắng nhà. Kiểm tra cập nhật tự động liên hệ với GitHub Releases và có thể tắt trong Cài đặt › Cập nhật › Kiểm tra cập nhật.
 
 Mã hóa đầu cuối
 Mọi kết nối đều dùng QUIC với TLS 1.3 và chứng chỉ thiết bị Ed25519 được xác minh trong quá trình ghép nối. Khóa thiết bị được bảo vệ bởi Windows DPAPI và Android Keystore.
@@ -5897,6 +6112,11 @@ Nó cần gì
         <location filename="../qml/pages/HomePage.qml" line="2807"/>
         <source>Set a custom name for this phone on your PC. Leave blank to use &quot;%1&quot;.</source>
         <translation>Đặt tên tùy chỉnh cho điện thoại này trên PC của bạn. Để trống để dùng &quot;%1&quot;.</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/HomePage.qml" line="1"/>
+        <source>Bluetooth: notifications, texts and calls</source>
+        <translation>Bluetooth: thông báo, tin nhắn và cuộc gọi</translation>
     </message>
 </context>
 <context>
@@ -8738,6 +8958,46 @@ Nó cần gì
         <source>Your report was closed</source>
         <translation>Báo cáo của bạn đã được đóng</translation>
     </message>
+    <message>
+        <location filename="rust_strings.h" line="1"/>
+        <source>Report #%1. Open it to read it.</source>
+        <translation>Báo cáo #%1. Mở để đọc.</translation>
+    </message>
+    <message>
+        <location filename="rust_strings.h" line="1"/>
+        <source>Reply</source>
+        <translation>Trả lời</translation>
+    </message>
+    <message>
+        <location filename="rust_strings.h" line="1"/>
+        <source>You</source>
+        <translation>Bạn</translation>
+    </message>
+    <message>
+        <location filename="rust_strings.h" line="1"/>
+        <source>Someone with the same problem</source>
+        <translation>Một người gặp cùng vấn đề</translation>
+    </message>
+    <message>
+        <location filename="rust_strings.h" line="1"/>
+        <source>Your reply wasn&apos;t sent</source>
+        <translation>Câu trả lời của bạn chưa được gửi</translation>
+    </message>
+    <message>
+        <location filename="rust_strings.h" line="1"/>
+        <source>That&apos;s the most replies for today. Try again tomorrow.</source>
+        <translation>Đã đạt số câu trả lời tối đa hôm nay. Hãy thử lại vào ngày mai.</translation>
+    </message>
+    <message>
+        <location filename="rust_strings.h" line="1"/>
+        <source>This report can&apos;t take replies any more.</source>
+        <translation>Báo cáo này không còn nhận câu trả lời.</translation>
+    </message>
+    <message>
+        <location filename="rust_strings.h" line="1"/>
+        <source>Check the connection, then send it again from Your reports.</source>
+        <translation>Hãy kiểm tra kết nối, rồi gửi lại từ Báo cáo của bạn.</translation>
+    </message>
 </context>
 <context>
     <name>ReportSheet</name>
@@ -8929,6 +9189,11 @@ Nó cần gì
         <location filename="../qml/components/ReportSheet.qml" line="349"/>
         <source>Send</source>
         <translation>Gửi</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/ReportSheet.qml" line="1"/>
+        <source>Your reports</source>
+        <translation>Báo cáo của bạn</translation>
     </message>
 </context>
 <context>
@@ -10022,6 +10287,11 @@ Nó cần gì
         <translation>Một màu sẽ thành trắng hoặc đen cho hợp với thanh tác vụ.</translation>
     </message>
     <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="1"/>
+        <source>One color takes the panel&apos;s colors where the desktop recolors tray icons, as KDE Plasma does.</source>
+        <translation>Một màu sẽ lấy màu của thanh bảng ở những màn hình nền tô lại màu biểu tượng khay, như KDE Plasma.</translation>
+    </message>
+    <message>
         <location filename="../qml/pages/SettingsPage.qml" line="1273"/>
         <source>One color</source>
         <translation>Một màu</translation>
@@ -10082,6 +10352,16 @@ Nó cần gì
         <location filename="../qml/pages/SettingsPage.qml" line="1559"/>
         <source>Toolbar in mirroring and app windows</source>
         <translation>Thanh công cụ trong phản chiếu và cửa sổ ứng dụng</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="1"/>
+        <source>Toolbar beside the picture</source>
+        <translation>Thanh công cụ bên cạnh hình</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="1"/>
+        <source>Gives the toolbar a strip of the window above or below the phone&apos;s picture, so it never covers the app. The window grows by its height.</source>
+        <translation>Dành cho thanh công cụ một dải riêng phía trên hoặc dưới hình của điện thoại, để nó không bao giờ che ứng dụng. Cửa sổ cao thêm đúng bằng dải đó.</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="1557"/>
@@ -10345,6 +10625,11 @@ Nó cần gì
         <location filename="../qml/pages/SettingsPage.qml" line="2706"/>
         <source>Send PC alerts to phone while away.</source>
         <translation>Gửi cảnh báo PC sang điện thoại khi bạn vắng mặt.</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="2734"/>
+        <source>Send your automations&apos; alerts to the phone. Other apps&apos; alerts are Linux only for now.</source>
+        <translation>Gửi cảnh báo từ các tự động hóa của bạn sang điện thoại. Cảnh báo của ứng dụng khác hiện chỉ có trên Linux.</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="2720"/>
@@ -10680,6 +10965,16 @@ Nó cần gì
         <location filename="../qml/pages/SettingsPage.qml" line="3619"/>
         <source>Sync copied passwords</source>
         <translation>Đồng bộ mật khẩu đã sao chép</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="3655"/>
+        <source>Send an anonymous daily count</source>
+        <translation>Gửi số đếm hằng ngày ẩn danh</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="3655"/>
+        <source>Once a day: the app&apos;s version, the platform and model, and how often each feature worked or failed. No ID and nothing personal.</source>
+        <translation>Mỗi ngày một lần: phiên bản ứng dụng, nền tảng và mẫu máy, và số lần mỗi tính năng hoạt động hoặc lỗi. Không có ID, không có gì cá nhân.</translation>
     </message>
     <message>
         <location filename="../qml/pages/SettingsPage.qml" line="3645"/>
@@ -11098,6 +11393,31 @@ Nó cần gì
         <translation>Tự động cài đặt cập nhật</translation>
     </message>
     <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="1"/>
+        <source>Updates</source>
+        <translation>Cập nhật</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="1"/>
+        <source>Checks, channel &amp; what&apos;s new</source>
+        <translation>Kiểm tra, kênh và tính năng mới</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="1"/>
+        <source>This copy doesn&apos;t update itself: it runs from its folder, or it&apos;s the Mac app, which doesn&apos;t yet.</source>
+        <translation>Bản này không tự cập nhật: nó chạy từ thư mục của nó, hoặc là ứng dụng Mac, vốn chưa hỗ trợ.</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="1"/>
+        <source>Last checked %1</source>
+        <translation>Kiểm tra lần cuối: %1</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="1"/>
+        <source>Not checked yet.</source>
+        <translation>Chưa kiểm tra.</translation>
+    </message>
+    <message>
         <location filename="../qml/pages/SettingsPage.qml" line="4253"/>
         <source>When nobody is using the PC and nothing is in progress.</source>
         <translation>Khi không có ai đang dùng PC và không có gì đang tiến hành.</translation>
@@ -11435,6 +11755,28 @@ Nó cần gì
         <location filename="../qml/pages/SettingsPage.qml" line="1515"/>
         <source>80% (Protect battery)</source>
         <translation>80% (Bảo vệ pin)</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="1"/>
+        <source>Your reports</source>
+        <translation>Báo cáo của bạn</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="1"/>
+        <source>The reports you sent, the answers to them, and a place to reply without a GitHub account.</source>
+        <translation>Các báo cáo bạn đã gửi, phản hồi cho chúng và nơi để trả lời mà không cần tài khoản GitHub.</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="1"/>
+        <source>Move the mouse past that edge of the screen to use it on that PC, and type there with this keyboard. Move it back, or press Ctrl+Alt+Esc, to return. That PC asks the first time, or turn on Remote mouse, keyboard &amp; Deck for this PC there.</source>
+        <translation>Đưa chuột vượt qua cạnh màn hình đó để dùng chuột trên PC kia và gõ ở đó bằng bàn phím này. Đưa chuột trở lại hoặc nhấn Ctrl+Alt+Esc để quay về. PC kia sẽ hỏi lần đầu, hoặc bật Chuột, bàn phím và Deck từ xa cho PC này ở đó.</translation>
+        <source>Bluetooth when there&apos;s no network</source>
+        <translation>Bluetooth khi không có mạng</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="1"/>
+        <source>A phone paired with this PC in Bluetooth settings stays connected without Wi-Fi or data, for notifications, texts, calls and the clipboard. Turn it on in the phone&apos;s Settings too.</source>
+        <translation>Điện thoại đã ghép nối với máy tính này trong cài đặt Bluetooth vẫn kết nối khi không có Wi-Fi hay dữ liệu, cho thông báo, tin nhắn, cuộc gọi và bộ nhớ tạm. Hãy bật cả trong cài đặt của điện thoại.</translation>
     </message>
 </context>
 <context>
@@ -13197,6 +13539,129 @@ Nó cần gì
         <location filename="../qml/components/WhatsNewPanel.qml" line="231"/>
         <source>Release notes on GitHub</source>
         <translation>Ghi chú phát hành trên GitHub</translation>
+    </message>
+</context>
+<context>
+    <name>YourReportsSheet</name>
+    <message>
+        <location filename="../qml/components/YourReportsSheet.qml" line="1"/>
+        <source>NectarLink</source>
+        <translation>NectarLink</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/YourReportsSheet.qml" line="1"/>
+        <source>You</source>
+        <translation>Bạn</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/YourReportsSheet.qml" line="1"/>
+        <source>Someone with the same problem</source>
+        <translation>Một người gặp cùng vấn đề</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/YourReportsSheet.qml" line="1"/>
+        <source>Your reports</source>
+        <translation>Báo cáo của bạn</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/YourReportsSheet.qml" line="1"/>
+        <source>Check for answers</source>
+        <translation>Kiểm tra phản hồi</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/YourReportsSheet.qml" line="1"/>
+        <source>Reports sent from NectarLink stay here for 30 days, with the answers to them. You can reply from here without a GitHub account. Replies are public on GitHub, like the report.</source>
+        <translation>Báo cáo gửi từ NectarLink được giữ ở đây 30 ngày, cùng các phản hồi. Bạn có thể trả lời từ đây mà không cần tài khoản GitHub. Câu trả lời được công khai trên GitHub, giống như báo cáo.</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/YourReportsSheet.qml" line="1"/>
+        <source>No reports sent from this PC yet.</source>
+        <translation>Chưa có báo cáo nào được gửi từ PC này.</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/YourReportsSheet.qml" line="1"/>
+        <source>Report #%1 · closed</source>
+        <translation>Báo cáo #%1 · đã đóng</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/YourReportsSheet.qml" line="1"/>
+        <source>Report #%1</source>
+        <translation>Báo cáo #%1</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/YourReportsSheet.qml" line="1"/>
+        <source>Waiting to be filed</source>
+        <translation>Đang chờ được tạo</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/YourReportsSheet.qml" line="1"/>
+        <source>Sent %1</source>
+        <translation>Đã gửi %1</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/YourReportsSheet.qml" line="1"/>
+        <source>On GitHub</source>
+        <translation>Trên GitHub</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/YourReportsSheet.qml" line="1"/>
+        <source>No answers yet. You&apos;ll get a notification when there is one.</source>
+        <translation>Chưa có phản hồi. Bạn sẽ nhận thông báo khi có.</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/YourReportsSheet.qml" line="1"/>
+        <source>The answers couldn&apos;t be loaded. Check the connection and try again.</source>
+        <translation>Không tải được phản hồi. Hãy kiểm tra kết nối rồi thử lại.</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/YourReportsSheet.qml" line="1"/>
+        <source>This report was sent before replies from NectarLink, so answer it on GitHub.</source>
+        <translation>Báo cáo này được gửi trước khi có tính năng trả lời từ NectarLink, nên hãy trả lời trên GitHub.</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/YourReportsSheet.qml" line="1"/>
+        <source>Reply</source>
+        <translation>Trả lời</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/YourReportsSheet.qml" line="1"/>
+        <source>Reply to report %1</source>
+        <translation>Trả lời báo cáo %1</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/YourReportsSheet.qml" line="1"/>
+        <source>Sending</source>
+        <translation>Đang gửi</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/YourReportsSheet.qml" line="1"/>
+        <source>Sent. It&apos;s on the report now.</source>
+        <translation>Đã gửi. Câu trả lời đã có trong báo cáo.</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/YourReportsSheet.qml" line="1"/>
+        <source>That&apos;s the most replies for today. Try again tomorrow.</source>
+        <translation>Đã đạt số câu trả lời tối đa hôm nay. Hãy thử lại vào ngày mai.</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/YourReportsSheet.qml" line="1"/>
+        <source>It couldn&apos;t be sent. Check the connection and try again.</source>
+        <translation>Không gửi được. Hãy kiểm tra kết nối rồi thử lại.</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/YourReportsSheet.qml" line="1"/>
+        <source>This report can&apos;t take replies any more.</source>
+        <translation>Báo cáo này không còn nhận câu trả lời.</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/YourReportsSheet.qml" line="1"/>
+        <source>Send</source>
+        <translation>Gửi</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/YourReportsSheet.qml" line="1"/>
+        <source>Close</source>
+        <translation>Đóng</translation>
     </message>
 </context>
 </TS>

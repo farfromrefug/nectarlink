@@ -664,6 +664,10 @@ pub struct Settings {
     pub mirror_toolbar_bottom: bool,
     #[serde(default)]
     pub mirror_toolbar_left: bool,
+    /// That toolbar gets a strip of the window to itself, above or below the
+    /// picture, instead of floating over it (#549).
+    #[serde(default)]
+    pub mirror_toolbar_outside: bool,
     /// No pop-ups for phone notifications while this PC is locked.
     #[serde(default, alias = "quiet_when_locked")]
     pub quiet_when_locked: bool,
@@ -679,6 +683,9 @@ pub struct Settings {
     /// Install a newer release by itself at a quiet moment (with `auto_update`).
     #[serde(alias = "install_updates")]
     pub install_updates: bool,
+    /// Send the anonymous daily count to the report service (#534).
+    #[serde(alias = "daily_count")]
+    pub daily_count: bool,
     /// Which builds to update to: "stable", "nightly", or empty to follow
     /// the installed build's own channel.
     #[serde(alias = "update_channel")]
@@ -806,6 +813,9 @@ pub struct Settings {
     /// Use phones' USB debugging (adb) for USB features; off, never ask (#439).
     #[serde(default = "default_true", alias = "usb_debugging")]
     pub usb_debugging: bool,
+    /// Reach paired phones over Bluetooth when nothing else does (#313).
+    #[serde(default)]
+    pub bluetooth_link: bool,
     /// How many days notification history is kept: 1, 3, 7 or 30 (#442).
     #[serde(default = "default_history_days", alias = "notification_history_days")]
     pub notification_history_days: u32,
@@ -988,11 +998,13 @@ impl Default for Settings {
             hide_mirror_toolbar: false,
             mirror_toolbar_bottom: false,
             mirror_toolbar_left: false,
+            mirror_toolbar_outside: false,
             quiet_when_locked: false,
             hold_when_locked: false,
             send_to_menu: true,
             auto_update: true,
             install_updates: true,
+            daily_count: true,
             update_channel: String::new(),
             battery_alerts: true,
             battery_full_threshold: default_battery_full_threshold(),
@@ -1031,6 +1043,7 @@ impl Default for Settings {
             keep_popups_paused: false,
             popups_paused: false,
             usb_debugging: true,
+            bluetooth_link: false,
             notification_history_days: 1,
             mirror_quality: String::new(),
             mirror_fps: 60,
@@ -1109,7 +1122,7 @@ impl Settings {
     }
 
     pub fn apply_runtime(&self) {
-        #[cfg(windows)]
+        #[cfg(any(windows, target_os = "linux"))]
         crate::win::tray::set_one_colour(self.tray_one_colour);
         set_clipboard_auto_copy_received_files(self.clipboard_auto_copy_received_files);
         set_open_shared_files(self.open_shared_files);
@@ -1117,6 +1130,7 @@ impl Settings {
         set_sync_passwords(self.sync_passwords);
         set_keep_popups_paused(self.keep_popups_paused);
         set_usb_debugging(self.usb_debugging);
+        crate::win::bluetooth_link::set_enabled(self.bluetooth_link);
         crate::state::set_history_days(self.notification_history_days);
         set_mirror_quality(&self.mirror_quality);
         set_mirror_fps(self.mirror_fps);
@@ -1348,11 +1362,13 @@ mod tests {
             hide_mirror_toolbar: true,
             mirror_toolbar_bottom: true,
             mirror_toolbar_left: true,
+            mirror_toolbar_outside: true,
             quiet_when_locked: true,
             hold_when_locked: true,
             send_to_menu: false,
             auto_update: false,
             install_updates: false,
+            daily_count: false,
             update_channel: "nightly".into(),
             battery_alerts: false,
             battery_full_threshold: 80,
@@ -1394,6 +1410,7 @@ mod tests {
             keep_popups_paused: true,
             popups_paused: true,
             usb_debugging: false,
+            bluetooth_link: true,
             notification_history_days: 7,
             mirror_quality: "sharper".into(),
             mirror_fps: 120,

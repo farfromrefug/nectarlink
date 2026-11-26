@@ -186,7 +186,7 @@ in light and dark. In English, German, Turkish, Simplified Chinese, Brazilian Po
   until you allow them.
 - **The only internet traffic** is the update check against GitHub (which you
   can turn off), an anonymous daily count (app version, platform and device
-  model, no ID), problem reports you choose to send, and, if you turn it on,
+  model, no ID, which you can turn off), problem reports you choose to send, and, if you turn it on,
   **Connect over mobile data**, which relays encrypted traffic it can't read.
   Voice typing uses your phone's own speech recognizer, which may use its
   provider's servers.
@@ -315,6 +315,21 @@ bash desktop/packaging/macos/build-dmg.sh   # macOS: dist/Nectarlink-<version>-m
 
 Releases are built by CI from a `v*` tag; see
 [docs/technical/releasing.md](docs/technical/releasing.md).
+
+### Building the macOS app
+
+Checked on Intel Macs (a 2019 MacBook Pro) with Qt 6.12.1 from the Qt online installer.
+Run the exports in the same Terminal tab as the build: a new tab forgets them, and
+`build-dmg.sh` then fails with "macdeployqt not found".
+
+```sh
+export PATH="$HOME/Qt/6.12.1/macos/bin:$PATH"
+export QT_ROOT_DIR="$HOME/Qt/6.12.1/macos"
+git clone https://github.com/thtbee/nectarlink.git
+cd nectarlink
+cargo run -p nectarlink-desktop                # run it
+./desktop/packaging/macos/build-dmg.sh         # dist/Nectarlink-<version>-macos-<arch>.dmg
+```
 
 ### With Nix
 

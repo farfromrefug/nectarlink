@@ -150,6 +150,7 @@ fun SettingsScreen(
     onToggleLocalSend: (Boolean) -> Unit = {},
     onToggleAwayMode: (Boolean) -> Unit = {},
     onToggleUsbOnly: (Boolean) -> Unit = {},
+    onToggleBluetoothLink: (Boolean) -> Unit = {},
     onOpenRelaySettings: () -> Unit = {},
     onOpenWalkthrough: () -> Unit = {},
     onOpenFeaturesGuide: () -> Unit = {},
@@ -813,6 +814,38 @@ fun SettingsScreen(
                         )
                     }
                     SettingRowDivider()
+                    // A PC reaches the phone over Bluetooth when nothing else does (#313).
+                    val bluetoothTitle = stringResource(R.string.settings_bluetooth_link_title)
+                    val askBluetooth = rememberLauncherForActivityResult(ActivityResultContracts.RequestPermission()) { granted ->
+                        if (granted) onToggleBluetoothLink(true)
+                    }
+                    val bluetoothContext = LocalContext.current
+                    Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.fillMaxWidth()) {
+                        Column(Modifier.weight(1f).padding(end = 12.dp)) {
+                            Text(bluetoothTitle, style = MaterialTheme.typography.titleSmall)
+                            Text(
+                                stringResource(R.string.settings_bluetooth_link_body),
+                                style = MaterialTheme.typography.bodySmall,
+                                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                            )
+                        }
+                        Switch(
+                            checked = state.bluetoothLink,
+                            onCheckedChange = { on ->
+                                val permission = app.nectarlink.android.bluetooth.BluetoothLink.permission
+                                if (on && permission != null &&
+                                    !app.nectarlink.android.bluetooth.BluetoothLink.hasPermission(bluetoothContext)
+                                ) {
+                                    askBluetooth.launch(permission)
+                                } else {
+                                    onToggleBluetoothLink(on)
+                                }
+                            },
+                            colors = app.nectarlink.android.ui.theme.nectarSwitchColors(),
+                            modifier = Modifier.semantics { contentDescription = bluetoothTitle },
+                        )
+                    }
+                    SettingRowDivider()
                     ReconnectSettings()
                 }
             }
@@ -1316,6 +1349,8 @@ fun SettingsScreen(
                     SettingRowDivider()
                     Text(stringResource(R.string.about_version, BuildConfig.VERSION_NAME), style = MaterialTheme.typography.bodyMedium)
                     CheckForUpdates(updater)
+                    SettingRowDivider()
+                    DailyCountRow()
                 }
             }
             // Community: Discord, news, the code and support, side by side.
@@ -2322,3 +2357,28 @@ internal fun Choice(options: List<Pair<String, String>>, selected: String, onSel
     }
 }
 
+
+/** The anonymous daily count, on by default; off sends nothing (#534). */
+@Composable
+private fun DailyCountRow() {
+    val context = LocalContext.current
+    var on by remember { mutableStateOf(app.nectarlink.android.diag.Reports.dailyCountOn(context)) }
+    Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.fillMaxWidth()) {
+        Column(Modifier.weight(1f).padding(end = 12.dp)) {
+            Text(stringResource(R.string.settings_daily_count_title), style = MaterialTheme.typography.titleSmall)
+            Text(
+                stringResource(R.string.settings_daily_count_body),
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+            )
+        }
+        Switch(
+            checked = on,
+            onCheckedChange = {
+                on = it
+                app.nectarlink.android.diag.Reports.setDailyCount(context, it)
+            },
+            colors = app.nectarlink.android.ui.theme.nectarSwitchColors(),
+        )
+    }
+}

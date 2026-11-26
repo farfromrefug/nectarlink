@@ -124,6 +124,9 @@ pub enum Link {
         relayed: bool,
         #[uniffi(default = false)]
         usb: bool,
+        /// Over Bluetooth: only light messages go over it.
+        #[uniffi(default = false)]
+        bluetooth: bool,
         rtt_ms: u32,
     },
 }
@@ -930,6 +933,12 @@ pub struct DeckState {
     pub muted: bool,
     pub mic_muted: Option<bool>,
     pub output_devices: Vec<AudioOutputDevice>,
+    /// The `toggle` tiles that are on, by ID (#640).
+    pub toggles_on: Vec<String>,
+    /// Whether the PC's Wi-Fi is on; `None` when it has none or can't tell (#636).
+    pub wifi: Option<bool>,
+    /// Whether the PC's Bluetooth is on; `None` when it has none or can't tell (#636).
+    pub bluetooth: Option<bool>,
 }
 
 impl From<core::DeckState> for DeckState {
@@ -940,6 +949,9 @@ impl From<core::DeckState> for DeckState {
             muted: s.muted,
             mic_muted: s.mic_muted,
             output_devices: s.output_devices.into_iter().map(Into::into).collect(),
+            toggles_on: s.toggles_on,
+            wifi: s.wifi,
+            bluetooth: s.bluetooth,
         }
     }
 }
@@ -1166,6 +1178,12 @@ pub enum MirrorSendResult {
 /// This phone's screen (or its sound) going to one PC.
 #[derive(Debug, uniffi::Object)]
 pub struct MirrorStream(core::MirrorStream);
+
+/// The RFCOMM service UUID NectarLink listens on.
+#[uniffi::export]
+pub fn bluetooth_service_uuid() -> String {
+    core::bluetooth::SERVICE_UUID.to_owned()
+}
 
 #[uniffi::export]
 impl MirrorStream {
@@ -2129,6 +2147,7 @@ impl From<LinkState> for Link {
             LinkState::Online { path, rtt_ms } => Link::Online {
                 relayed: path == ConnectionPath::Relay,
                 usb: path == ConnectionPath::Usb,
+                bluetooth: path == ConnectionPath::Bluetooth,
                 rtt_ms,
             },
         }
@@ -2638,6 +2657,14 @@ pub enum UnlockRefusal {
     /// The key is gone (a fingerprint was added, or app data cleared).
     #[error("key gone")]
     KeyGone,
+}
+
+// An exception in the app's answer: declined, so nothing it keeps is undone.
+impl From<uniffi::UnexpectedUniFFICallbackError> for UnlockRefusal {
+    fn from(e: uniffi::UnexpectedUniFFICallbackError) -> Self {
+        tracing::warn!(reason = %e.reason, "the app failed answering an unlock");
+        UnlockRefusal::Declined
+    }
 }
 
 impl From<UnlockRefusal> for core::unlock::KeyRefusal {
@@ -3847,6 +3874,12 @@ impl NectarlinkNode {
         self.node.device_id().to_string()
     }
 
+    /// Opens (once) the loopback port each incoming Bluetooth link is piped
+    /// into, and returns it.
+    pub fn start_bluetooth_listener(&self) -> Option<u16> {
+        self.node.start_bluetooth_listener()
+    }
+
     /// Stops networking and tells connected devices.
     pub async fn shutdown(&self) {
         let node = self.node.clone();
@@ -4512,6 +4545,13 @@ impl NectarlinkNode {
             .collect()
     }
 
+    /// Requests an unlock prompt for an already signed-in, locked Windows session.
+    pub async fn unlock_from_phone(&self, id: String) -> Result<()> {
+        let id = parse_id(&id)?;
+        let node = self.node.clone();
+        self.run(async move { Ok(node.unlock_from_phone(id).await?) }).await
+    }
+
     /// Locks a paired PC (`sleep`: puts it to sleep instead).
     pub async fn pc_power(&self, id: String, sleep: bool) -> Result<()> {
         let id = parse_id(&id)?;
@@ -4652,6 +4692,32 @@ impl NectarlinkNode {
         .await
     }
 
+    /// Sends a touchpad gesture to a paired PC that offers `input.gestures`:
+    /// `"search"`, `"notifications"`, `"task_view"`, `"show_desktop"`,
+    /// `"switcher_next"`, `"switcher_previous"`, `"switcher_done"`,
+    /// `"desktop_next"`, `"desktop_previous"`, `"zoom_in"` or `"zoom_out"`.
+    pub async fn remote_gesture(&self, id: String, gesture: String) -> Result<()> {
+        let id = parse_id(&id)?;
+        use core::TouchGesture as G;
+        let gesture = match gesture.as_str() {
+            "search" => G::Search,
+            "notifications" => G::Notifications,
+            "task_view" => G::TaskView,
+            "show_desktop" => G::ShowDesktop,
+            "switcher_next" => G::SwitcherNext,
+            "switcher_previous" => G::SwitcherPrevious,
+            "switcher_done" => G::SwitcherDone,
+            "desktop_next" => G::DesktopNext,
+            "desktop_previous" => G::DesktopPrevious,
+            "zoom_in" => G::ZoomIn,
+            "zoom_out" => G::ZoomOut,
+            _ => return Err(NectarlinkError::Internal { reason: format!("invalid gesture: {gesture}") }),
+        };
+        let node = self.node.clone();
+        self.run(async move { Ok(node.remote_input(id, core::RemoteInput::Gesture { gesture }).await?) })
+            .await
+    }
+
     /// Sends a presentation slide command (`"next"`, `"previous"`, `"start"`,
     /// `"stop"` or `"black"`) to a paired PC.
     pub async fn remote_slide(&self, id: String, action: String) -> Result<()> {
@@ -4741,6 +4807,14 @@ impl NectarlinkNode {
         let id = parse_id(&id)?;
         let node = self.node.clone();
         self.run(async move { Ok(node.set_pc_audio(id, volume, muted).await?) }).await
+    }
+
+    /// Asks a paired PC to turn its Wi-Fi and/or Bluetooth on or off
+    /// (`pc.radio.set`, #636).
+    pub async fn set_pc_radio(&self, id: String, wifi: Option<bool>, bluetooth: Option<bool>) -> Result<()> {
+        let id = parse_id(&id)?;
+        let node = self.node.clone();
+        self.run(async move { Ok(node.set_pc_radio(id, wifi, bluetooth).await?) }).await
     }
 
     /// Asks a paired PC to make one of its audio outputs (by its `id` in
@@ -5692,17 +5766,25 @@ pub struct OutgoingReport {
     /// Sent as `X-Proof`.
     pub proof: String,
     pub at: u64,
+    /// Kept on the phone to reply from the app; never sent.
+    pub reply_key: String,
 }
 
 impl From<core::diag::send::Outgoing> for OutgoingReport {
     fn from(o: core::diag::send::Outgoing) -> Self {
-        OutgoingReport { rid: o.rid, body: o.body, proof: o.proof, at: o.at }
+        OutgoingReport { rid: o.rid, body: o.body, proof: o.proof, at: o.at, reply_key: o.reply_key }
     }
 }
 
 impl From<OutgoingReport> for core::diag::send::Outgoing {
     fn from(o: OutgoingReport) -> Self {
-        core::diag::send::Outgoing { rid: o.rid, body: o.body, proof: o.proof, at: o.at }
+        core::diag::send::Outgoing {
+            rid: o.rid,
+            body: o.body,
+            proof: o.proof,
+            at: o.at,
+            reply_key: o.reply_key,
+        }
     }
 }
 
@@ -5751,11 +5833,7 @@ pub fn report_answer(outgoing: OutgoingReport, status: u16, body: Vec<u8>, follo
         if !follow {
             return;
         }
-        send::remember(
-            &dir,
-            Sent { rid: outgoing.rid.clone(), issue, at: outgoing.at, comments: 0, closed: false },
-            now_secs(),
-        );
+        send::remember(&dir, Sent::from_outgoing(&outgoing, issue), now_secs());
     };
     match answer {
         Answer::Filed { issue } => {
@@ -5939,6 +6017,140 @@ pub fn report_queued_answer(rid: String, status: u16, body: Vec<u8>) {
         Answer::Refused => send::forget(&dir, &rid),
         _ => {}
     }
+}
+
+/// A sent report in "Your reports": the answers on it are read with
+/// [`report_thread`] from `comments_url`.
+#[derive(Debug, Clone, PartialEq, Eq, uniffi::Record)]
+pub struct ReportConversation {
+    pub rid: String,
+    /// Its issue; none while it waits in the service's queue.
+    pub issue: Option<u64>,
+    /// When it was sent, in seconds since 1970.
+    pub at: u64,
+    pub closed: bool,
+    /// Whether the person can reply from the app (sent with a reply key, and filed).
+    pub can_reply: bool,
+    /// GitHub's public API address for its comments.
+    pub comments_url: Option<String>,
+}
+
+/// The reports this phone sent and still follows, newest first.
+#[uniffi::export]
+pub fn report_conversations() -> Vec<ReportConversation> {
+    let mut all: Vec<ReportConversation> = core::diag::send::sent(&diag_dir(), now_secs())
+        .into_iter()
+        .map(|s| ReportConversation {
+            can_reply: s.can_reply(),
+            comments_url: s.issue.map(core::diag::send::comments_api_url),
+            rid: s.rid,
+            issue: s.issue,
+            at: s.at,
+            closed: s.closed,
+        })
+        .collect();
+    all.reverse();
+    all
+}
+
+/// One answer on a report's issue.
+#[derive(Debug, Clone, PartialEq, Eq, uniffi::Record)]
+pub struct ReportAnswer {
+    /// `team`, `you`, `other` (someone else who sent the same crash) or `someone`.
+    pub who: String,
+    /// The GitHub login, for `someone`.
+    pub login: String,
+    pub text: String,
+    /// When, as GitHub gives it (`2026-11-25T17:14:26Z`).
+    pub at: String,
+}
+
+fn answers(entries: Vec<core::diag::send::ThreadEntry>) -> Vec<ReportAnswer> {
+    use core::diag::send::Who;
+    entries
+        .into_iter()
+        .map(|e| {
+            let (who, login) = match e.who {
+                Who::Team => ("team", String::new()),
+                Who::You => ("you", String::new()),
+                Who::OtherReporter => ("other", String::new()),
+                Who::Someone(login) => ("someone", login),
+            };
+            ReportAnswer { who: who.into(), login, text: e.text, at: e.at }
+        })
+        .collect()
+}
+
+/// The answers on report `rid`'s issue, from GitHub's answer (`status`,
+/// `body`) for its `comments_url`; none when GitHub didn't answer.
+#[uniffi::export]
+pub fn report_thread(rid: String, status: u16, body: Vec<u8>) -> Option<Vec<ReportAnswer>> {
+    core::diag::send::read_thread(&rid, status, &body).map(answers)
+}
+
+/// The newest answer from anyone but the person, for a notification.
+#[uniffi::export]
+pub fn report_latest_answer(rid: String, status: u16, body: Vec<u8>) -> Option<ReportAnswer> {
+    let entries = core::diag::send::read_thread(&rid, status, &body)?;
+    let latest = core::diag::send::latest_answer(&entries)?.clone();
+    answers(vec![latest]).pop()
+}
+
+/// A reply ready to POST to `url` as `application/json`, with `X-Proof`.
+#[derive(Debug, Clone, PartialEq, Eq, uniffi::Record)]
+pub struct ReportReplyRequest {
+    pub url: String,
+    pub body: String,
+    pub proof: String,
+}
+
+/// Builds a reply to report `rid` (about a second: off the main thread);
+/// none when it can't take one or `text` is empty or too long.
+#[uniffi::export]
+pub fn report_reply_request(rid: String, text: String) -> Option<ReportReplyRequest> {
+    let sent = core::diag::send::sent(&diag_dir(), now_secs()).into_iter().find(|s| s.rid == rid)?;
+    core::diag::send::reply_request(&sent, &text, now_secs()).map(|r| ReportReplyRequest {
+        url: r.url,
+        body: r.body,
+        proof: r.proof,
+    })
+}
+
+/// What the service said to a reply.
+#[derive(Debug, Clone, Copy, PartialEq, Eq, uniffi::Enum)]
+pub enum ReportReplyOutcome {
+    Sent,
+    Limited,
+    Later,
+    Refused,
+}
+
+/// Reads the service's answer to a reply (`0` when it couldn't be reached).
+#[uniffi::export]
+pub fn report_reply_answer(status: u16) -> ReportReplyOutcome {
+    use core::diag::send::ReplyAnswer;
+    match ReplyAnswer::read(status) {
+        ReplyAnswer::Sent => ReportReplyOutcome::Sent,
+        ReplyAnswer::Limited => ReportReplyOutcome::Limited,
+        ReplyAnswer::Later => ReportReplyOutcome::Later,
+        ReplyAnswer::Refused => ReportReplyOutcome::Refused,
+    }
+}
+
+/// The person's reply to `rid` went: it isn't news at the next check.
+#[uniffi::export]
+pub fn report_reply_sent(rid: String) {
+    let dir = diag_dir();
+    if let Some(sent) = core::diag::send::sent(&dir, now_secs()).into_iter().find(|s| s.rid == rid) {
+        let comments = sent.comments + 1;
+        core::diag::send::remember(&dir, core::diag::send::Sent { comments, ..sent }, now_secs());
+    }
+}
+
+/// Longest reply, in characters.
+#[uniffi::export]
+pub fn report_reply_max_chars() -> u32 {
+    core::diag::send::MAX_REPLY_CHARS as u32
 }
 
 #[cfg(test)]

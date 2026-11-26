@@ -153,6 +153,12 @@ pub fn compute_capabilities(
         caps.push(nectarlink_core::STORAGE_WRITE.into());
         caps.push(nectarlink_core::DECK_ACTIONS.into());
         caps.push(nectarlink_core::PC_AUDIO.into());
+        // Wi-Fi and Bluetooth for phones, where there are any (#636).
+        if crate::win::radios::available() {
+            caps.push(nectarlink_core::PC_RADIOS.into());
+        }
+        // Another PC's mouse, over the edge of its screen (D432).
+        caps.push(nectarlink_core::MIRROR_POINTER.into());
         caps.push(nectarlink_core::PC_SHUTDOWN.into());
         // Only while hibernation is on: Windows can turn it off (#355).
         if crate::win::shell::can_hibernate() {
@@ -226,6 +232,7 @@ pub fn compute_capabilities(
         if crate::gamepad::is_supported() {
             caps.push(nectarlink_core::INPUT_GAMEPAD.into());
         }
+        caps.push(nectarlink_core::INPUT_GESTURES.into());
     }
     if crate::win::vcam::is_registered() {
         caps.push(nectarlink_core::WEBCAM_ADDON_VCAM.into());
@@ -234,6 +241,7 @@ pub fn compute_capabilities(
     #[cfg(windows)]
     if crate::win::unlock::is_registered() {
         caps.push(nectarlink_core::unlock::PC.into());
+        caps.push(nectarlink_core::unlock::FROM_PHONE.into());
         crate::win::unlock::serve();
     }
     #[cfg(target_os = "linux")]
@@ -309,6 +317,7 @@ async fn run(data_dir: PathBuf, platform: Arc<dyn Platform>) {
         node.update_power(nectarlink_core::PowerLevel::Basic, post_start_caps).await;
     }
     node.set_wake_info(wake.info.clone()).await;
+    crate::pc_battery::spawn(node.clone());
     // Subscribe before reading the initial state so no event is missed.
     let mut events = node.events();
     let devices = node.paired_devices().unwrap_or_else(|e| {
@@ -337,6 +346,9 @@ async fn run(data_dir: PathBuf, platform: Arc<dyn Platform>) {
         max_entries: nectarlink_core::DEFAULT_TIMELINE_MAX_ENTRIES,
     });
     let _ = host.node.set(node);
+    // Existing phone enrollment can only be read after the node is published.
+    #[cfg(windows)]
+    crate::win::unlock::serve();
     #[cfg(windows)]
     if !post_start_has_hevc {
         spawn(async move {

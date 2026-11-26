@@ -36,6 +36,7 @@
     <string name="link_online_rtt">Bağlı · %1$d ms</string>
     <string name="link_usb">USB ile bağlı</string>
     <string name="link_usb_rtt">USB ile bağlı · %1$d ms</string>
+    <string name="link_bluetooth">Bluetooth ile</string>
     <string name="link_away">Uzaktan bağlı</string>
     <string name="link_connecting">Bağlanılıyor…</string>
     <string name="link_offline_seen">Çevrimdışı · son görülme %1$s</string>
@@ -302,6 +303,8 @@
     <string name="update_current_version">NectarLink %1$s sürümü yüklü.</string>
     <string name="update_check_failed">Güncellemeler denetlenemedi. İnternet bağlantınızı kontrol edin.</string>
     <string name="action_lock_pc">Bilgisayarı kilitle</string>
+    <string name="action_unlock_pc">Bilgisayarın kilidini aç</string>
+    <string name="pc_unlock_unavailable">Bilgisayarı kilitle, ardından iki cihaz da aynı ağa bağlıyken tekrar dene.</string>
     <string name="action_sleep_pc">Uyut</string>
     <string name="action_hibernate_pc">Hazırda beklet</string>
     <string name="action_phone_sound_on_pc">Telefon sesini bilgisayarda çal</string>
@@ -1464,6 +1467,8 @@
     <string name="usb_only_tile_label">Yalnızca USB</string>
     <string name="settings_theme_artwork_color">Medya kapak görseli rengi</string>
     <string name="settings_mobile_data_body">Wi-Fi\'dan uzaktayken LTE/5G veya aktarma sunucusu üzerinden bağlı kalın</string>
+    <string name="settings_bluetooth_link_title">Ağ yokken Bluetooth</string>
+    <string name="settings_bluetooth_link_body">Bluetooth ayarlarında bu telefonla eşlenen bir bilgisayar, Wi-Fi veya veri olmadan bildirimler, mesajlar, aramalar ve pano için bağlı kalır</string>
     <string name="settings_background_clipboard_title">Arka planda pano erişimi</string>
     <string name="settings_guide_card_body">Tüm özelliklere göz atın, gereksinimleri canlı olarak kontrol edin veya doğrudan kontrollerine gidin.</string>
     <string name="settings_walkthrough_body">İzinler, eşleştirme ve yetki düzeyleri için kurulum rehberini yeniden açın.</string>
@@ -1605,7 +1610,6 @@
     <string name="channel_report_replies">Raporlarına gelen yanıtlar</string>
     <string name="report_reply_title">Raporuna bir yanıt var</string>
     <string name="report_closed_title">Raporun kapatıldı</string>
-    <string name="report_notice_text">Rapor #%1$d. GitHub\'da okumak için dokun.</string>
     <string name="crash_card_sent">Teşekkürler, çökme raporu gönderildi</string>
     <string name="crash_card_title">NectarLink beklenmedik şekilde kapandı</string>
     <string name="crash_card_failed">Çökme raporu gönderilemedi. Başka bir yolla göndermek için Önce bak\'ı kullan.</string>
@@ -1642,6 +1646,53 @@
     <string name="community_invite_text">NectarLink’i yapan ve kullananlarla sorular, fikirler ve erken sürümler.</string>
     <string name="community_invite_join">Discord’a katıl</string>
     <string name="community_invite_later">Şimdi değil</string>
+    <string name="settings_daily_count_title">Anonim günlük sayım gönder</string>
+    <string name="settings_daily_count_body">Günde bir kez: uygulama sürümü, platform ve model ile her özelliğin kaç kez çalıştığı ya da başarısız olduğu. Kimlik yok, kişisel bir şey yok.</string>
+    <string name="deck_confirm_restart_title">%1$s yeniden başlatılsın mı?</string>
+    <string name="deck_confirm_shut_down_title">%1$s kapatılsın mı?</string>
+    <string name="deck_confirm_power_text">Kaydedilmemiş işi olan uygulamalar bunu hâlâ durdurabilir.</string>
+    <string name="deck_confirm_restart">Yeniden başlat</string>
+    <string name="deck_confirm_shut_down">Kapat</string>
+    <string name="deck_default_restart">Yeniden başlat</string>
+    <string name="deck_default_shut_down">Kapat</string>
+    <string name="deck_default_macro">Makro</string>
+    <string name="report_answer_line">%1$s: %2$s</string>
+    <string name="report_notice_open_text">Rapor #%1$d. Okumak için dokunun.</string>
+    <string name="report_reply_action">Yanıtla</string>
+    <string name="report_reply_hint">Yanıtınız</string>
+    <string name="report_who_you">Siz</string>
+    <string name="report_who_other">Aynı sorunu yaşayan biri</string>
+    <string name="report_reply_not_sent">Yanıtınız gönderilmedi</string>
+    <string name="report_reply_limited">Bugünkü yanıt sınırına ulaşıldı. Yarın yeniden deneyin.</string>
+    <string name="report_reply_refused">Bu rapor artık yanıt kabul etmiyor.</string>
+    <string name="report_reply_later">Gönderilemedi. Bağlantıyı denetleyip yeniden deneyin.</string>
+    <string name="your_reports_title">Raporlarınız</string>
+    <string name="your_reports_check">Yanıtları denetle</string>
+    <string name="your_reports_intro">NectarLink\'ten gönderilen raporlar, yanıtlarıyla birlikte 30 gün burada kalır. Buradan GitHub hesabı olmadan yanıt verebilirsiniz. Yanıtlar, rapor gibi GitHub\'da herkese açıktır.</string>
+    <string name="your_reports_none">Bu telefondan henüz rapor gönderilmedi.</string>
+    <string name="your_reports_waiting">Kaydedilmeyi bekliyor</string>
+    <string name="your_reports_closed">Rapor #%1$d · kapatıldı</string>
+    <string name="your_reports_number">Rapor #%1$d</string>
+    <string name="your_reports_sent">%1$s tarihinde gönderildi</string>
+    <string name="your_reports_on_github">GitHub\'da</string>
+    <string name="your_reports_load_failed">Yanıtlar yüklenemedi. Bağlantıyı denetleyip yeniden deneyin.</string>
+    <string name="your_reports_no_answers">Henüz yanıt yok. Bir yanıt geldiğinde bildirim alacaksınız.</string>
+    <string name="your_reports_reply_on_github">Bu rapor NectarLink\'ten yanıt verme özelliğinden önce gönderildi, bu yüzden GitHub\'da yanıtlayın.</string>
+    <string name="your_reports_reply_sent">Gönderildi. Artık raporda.</string>
+    <string name="your_reports_sending">Gönderiliyor</string>
+    <string name="your_reports_send">Gönder</string>
+    <string name="deck_on">Açık</string>
+    <string name="deck_off">Kapalı</string>
+    <string name="media_center_title">Şimdi çalıyor</string>
+    <string name="media_center_on_phone">bu telefon</string>
+    <string name="media_center_page">%2$d içinden %1$d</string>
+    <string name="media_center_phone_volume">Telefon ses düzeyi</string>
+    <string name="media_center_output">Nerede çalacağını seç</string>
+    <string name="pc_radio_wifi">Wi-Fi</string>
+    <string name="pc_radio_bluetooth">Bluetooth</string>
+    <string name="pc_radio_wifi_off_title">%1$s cihazının Wi-Fi\'ı kapatılsın mı?</string>
+    <string name="pc_radio_wifi_off_text">Bu telefon bilgisayara Wi-Fi ile bağlanıyorsa bağlantı kopar ve Wi-Fi\'ı bilgisayardan yeniden açmanız gerekir.</string>
+    <string name="pc_radio_wifi_off_confirm">Kapat</string>
 </resources>
 
 

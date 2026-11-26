@@ -236,6 +236,11 @@ pub trait Platform: Send + Sync + 'static {
         Err("this device has no clipboard".into())
     }
 
+    /// Requests a fresh biometric prompt for an already locked, signed-in session.
+    fn unlock_from_phone(&self, _phone: crate::DeviceId) -> bool {
+        false
+    }
+
     /// Lock or sleep this PC (a paired phone asked). Runs after the phone
     /// got its answer. `Err` holds a reason for logs.
     fn power(&self, _action: crate::actions::PowerAction) -> Result<(), String> {
@@ -659,6 +664,17 @@ pub trait Platform: Send + Sync + 'static {
         _muted: Option<bool>,
     ) -> Result<(), String> {
         Err("this device has no PC audio controls".into())
+    }
+
+    /// Turn this PC's Wi-Fi and/or Bluetooth on or off (`pc.radio.set`,
+    /// #636). The per-device permission has been checked.
+    fn set_pc_radio(
+        &self,
+        _from: &nectarlink_protocol::DeviceId,
+        _wifi: Option<bool>,
+        _bluetooth: Option<bool>,
+    ) -> Result<(), String> {
+        Err("this device can't switch its radios".into())
     }
 
     /// Make `id`, one of this PC's `output_devices`, the default audio output

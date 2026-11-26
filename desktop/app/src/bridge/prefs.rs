@@ -78,6 +78,7 @@ pub mod qobject {
         /// Where that toolbar sits: dragged to a corner of the window.
         #[qproperty(bool, mirror_toolbar_bottom)]
         #[qproperty(bool, mirror_toolbar_left)]
+        #[qproperty(bool, mirror_toolbar_outside)]
         /// No pop-ups for phone notifications while this PC is locked.
         #[qproperty(bool, quiet_when_locked)]
         #[qproperty(bool, hold_when_locked)]
@@ -89,6 +90,8 @@ pub mod qobject {
         #[qproperty(bool, auto_update)]
         /// Install a newer release by itself at a quiet moment.
         #[qproperty(bool, install_updates)]
+        /// Send the anonymous daily count.
+        #[qproperty(bool, daily_count)]
         /// The update channel: "stable" or "nightly" (the build's own when unset).
         #[qproperty(QString, update_channel)]
         /// Whether the channel is this PC's, for every account on it (Windows'
@@ -143,6 +146,8 @@ pub mod qobject {
         #[qproperty(bool, keep_popups_paused, cxx_name = "keepPopupsPaused")]
         /// Use phones' USB debugging for USB features (#439); applies on restart.
         #[qproperty(bool, usb_debugging)]
+        /// Reach paired phones over Bluetooth when nothing else does.
+        #[qproperty(bool, bluetooth_link)]
         /// How many days notification history is kept: 1, 3, 7 or 30 (#442).
         #[qproperty(i32, notification_history_days)]
         #[qproperty(QString, mirror_quality)]
@@ -419,12 +424,14 @@ pub struct PreferencesRust {
     hide_mirror_toolbar: bool,
     mirror_toolbar_bottom: bool,
     mirror_toolbar_left: bool,
+    mirror_toolbar_outside: bool,
     quiet_when_locked: bool,
     hold_when_locked: bool,
     send_to_menu: bool,
     start_with_windows: bool,
     auto_update: bool,
     install_updates: bool,
+    daily_count: bool,
     update_channel: QString,
     update_channel_shared: bool,
     battery_alerts: bool,
@@ -453,6 +460,7 @@ pub struct PreferencesRust {
     sync_passwords: bool,
     keep_popups_paused: bool,
     usb_debugging: bool,
+    bluetooth_link: bool,
     notification_history_days: i32,
     mirror_quality: QString,
     mirror_fps: i32,
@@ -537,6 +545,7 @@ impl cxx_qt::Initialize for qobject::Preferences {
         self.as_mut().set_hide_mirror_toolbar(settings.hide_mirror_toolbar);
         self.as_mut().set_mirror_toolbar_bottom(settings.mirror_toolbar_bottom);
         self.as_mut().set_mirror_toolbar_left(settings.mirror_toolbar_left);
+        self.as_mut().set_mirror_toolbar_outside(settings.mirror_toolbar_outside);
         self.as_mut().set_quiet_when_locked(settings.quiet_when_locked);
         crate::notifications::set_quiet_when_locked(settings.quiet_when_locked);
         self.as_mut().set_hold_when_locked(settings.hold_when_locked);
@@ -544,6 +553,7 @@ impl cxx_qt::Initialize for qobject::Preferences {
         self.as_mut().set_send_to_menu(settings.send_to_menu);
         self.as_mut().set_auto_update(settings.auto_update);
         self.as_mut().set_install_updates(settings.install_updates);
+        self.as_mut().set_daily_count(settings.daily_count);
         // Shown as the channel in use, whether picked or the build's own.
         let channel =
             crate::version::Channel::parse(&settings.update_channel).unwrap_or_else(crate::updater::channel);
@@ -581,6 +591,7 @@ impl cxx_qt::Initialize for qobject::Preferences {
         self.as_mut().set_sync_passwords(settings.sync_passwords);
         self.as_mut().set_keep_popups_paused(settings.keep_popups_paused);
         self.as_mut().set_usb_debugging(settings.usb_debugging);
+        self.as_mut().set_bluetooth_link(settings.bluetooth_link);
         self.as_mut().set_notification_history_days(settings.notification_history_days as i32);
         self.as_mut().set_mirror_quality(QString::from(crate::settings::mirror_quality().name()));
         self.as_mut().set_mirror_fps(crate::settings::sane_mirror_fps(settings.mirror_fps) as i32);
@@ -644,7 +655,7 @@ impl cxx_qt::Initialize for qobject::Preferences {
         self.as_mut().on_close_to_tray_changed(|p| p.save()).release();
         self.as_mut()
             .on_tray_one_colour_changed(|p| {
-                #[cfg(windows)]
+                #[cfg(any(windows, target_os = "linux"))]
                 crate::win::tray::set_one_colour(p.tray_one_colour);
                 p.save();
             })
@@ -714,6 +725,7 @@ impl cxx_qt::Initialize for qobject::Preferences {
         self.as_mut().on_hide_mirror_toolbar_changed(|p| p.save()).release();
         self.as_mut().on_mirror_toolbar_bottom_changed(|p| p.save()).release();
         self.as_mut().on_mirror_toolbar_left_changed(|p| p.save()).release();
+        self.as_mut().on_mirror_toolbar_outside_changed(|p| p.save()).release();
         self.as_mut()
             .on_sync_dnd_changed(|p| {
                 crate::notifications::set_sync_dnd(p.sync_dnd);
@@ -729,6 +741,12 @@ impl cxx_qt::Initialize for qobject::Preferences {
         self.as_mut()
             .on_auto_update_changed(|p| {
                 crate::updater::set_auto(p.auto_update);
+                p.save();
+            })
+            .release();
+        self.as_mut()
+            .on_daily_count_changed(|p| {
+                crate::bridge::report::set_daily_count(p.daily_count);
                 p.save();
             })
             .release();
@@ -938,6 +956,7 @@ impl cxx_qt::Initialize for qobject::Preferences {
             .release();
         // Saved for the next start: the core reads it once (#439).
         self.as_mut().on_usb_debugging_changed(|p| p.save()).release();
+        self.as_mut().on_bluetooth_link_changed(|p| p.save()).release();
         self.as_mut()
             .on_notification_history_days_changed(|p| {
                 crate::state::set_history_days(u32::try_from(p.notification_history_days).unwrap_or(1));
@@ -1433,11 +1452,13 @@ impl qobject::Preferences {
             hide_mirror_toolbar: p.hide_mirror_toolbar,
             mirror_toolbar_bottom: p.mirror_toolbar_bottom,
             mirror_toolbar_left: p.mirror_toolbar_left,
+            mirror_toolbar_outside: p.mirror_toolbar_outside,
             quiet_when_locked: p.quiet_when_locked,
             hold_when_locked: p.hold_when_locked,
             send_to_menu: p.send_to_menu,
             auto_update: p.auto_update,
             install_updates: p.install_updates,
+            daily_count: p.daily_count,
             update_channel: String::from(&p.update_channel),
             battery_alerts: p.battery_alerts,
             battery_full_threshold: p.battery_full_threshold.clamp(50, 100) as u8,
@@ -1479,6 +1500,7 @@ impl qobject::Preferences {
             keep_popups_paused: p.keep_popups_paused,
             popups_paused: p.keep_popups_paused && crate::notifications::paused(),
             usb_debugging: p.usb_debugging,
+            bluetooth_link: p.bluetooth_link,
             notification_history_days: u32::try_from(p.notification_history_days).unwrap_or(1),
             mirror_quality: String::from(&p.mirror_quality),
             mirror_fps: crate::settings::sane_mirror_fps(u32::try_from(p.mirror_fps).unwrap_or(60)),

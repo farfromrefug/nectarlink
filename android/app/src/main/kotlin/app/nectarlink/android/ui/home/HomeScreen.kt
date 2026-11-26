@@ -185,6 +185,7 @@ fun HomeScreen(
     onPairNew: () -> Unit,
     onRefresh: () -> Unit,
     onPower: (pcId: String, sleep: Boolean) -> Unit,
+    onUnlock: (pcId: String) -> Unit,
     onHibernate: (pcId: String) -> Unit,
     onShutdown: (pcId: String) -> Unit = {},
     onRestart: (pcId: String) -> Unit,
@@ -226,6 +227,7 @@ fun HomeScreen(
     onClearTimeline: () -> Unit = {},
     onResendTimelineEntry: (entry: TimelineEntry) -> Unit = {},
     onSetPcAudio: (pcId: String, volume: Int?, muted: Boolean?) -> Unit = { _, _, _ -> },
+    onSetPcRadio: (pcId: String, wifi: Boolean?, bluetooth: Boolean?) -> Unit = { _, _, _ -> },
     onStopKeyboardFromPc: (pcId: String) -> Unit = {},
     onListPcFiles: (pcId: String, path: String, onResult: (PcFolder) -> Unit) -> Unit = { _, _, onResult ->
         onResult(PcFolder(emptyList()))
@@ -693,6 +695,34 @@ fun HomeScreen(
                 )
             }
         }
+        // Everything that plays, on the PCs and here (#536). A single PC player
+        // is already on its PC's card, so this shows for two or more, or the phone's own.
+        item(key = "media_center", contentType = "media_center") {
+            val context = LocalContext.current
+            val core = remember(context) { (context.applicationContext as? NectarlinkApplication)?.core }
+            if (core != null) {
+                val pcPlayers by core.pcMedia.all.collectAsStateWithLifecycle()
+                val phonePlayers by core.phoneMedia.players.collectAsStateWithLifecycle()
+                val entries = remember(pcPlayers, phonePlayers, state.devices) {
+                    mediaEntries(pcPlayers, phonePlayers, state.devices.associate { it.id to it.deckState })
+                }
+                if (entries.size > 1 || entries.any { it is MediaEntry.OnPhone }) {
+                    MediaCenterCard(
+                        entries = entries,
+                        onPcCommand = { pc, player, action, position ->
+                            if (action == app.nectarlink.core.MediaAction.SEEK && position != null) {
+                                core.pcMedia.seek(pc, player, position.toLong())
+                            } else {
+                                core.pcMedia.command(pc, player, action)
+                            }
+                        },
+                        onPhoneCommand = { player, action, position -> core.phoneMedia.control(player, action, position) },
+                        onSetPcAudio = onSetPcAudio,
+                        onPickPcOutput = core::setPcAudioOutput,
+                    )
+                }
+            }
+        }
         items(state.devices.filter { !it.isAndroid }, key = { it.id }, contentType = { "pc_card" }) { device ->
             Box(
                 modifier = Modifier.guideHighlightRing(
@@ -707,6 +737,7 @@ fun HomeScreen(
                     onSendFiles = onSendFiles,
                     onSendFolder = onSendFolder,
                     onPower = onPower,
+                    onUnlock = onUnlock,
                     onHibernate = onHibernate,
                     onShutdown = onShutdown,
                     onRestart = onRestart,
@@ -721,6 +752,7 @@ fun HomeScreen(
                     onRecord = onRecord,
                     onWebcam = onWebcam,
                     onSetPcAudio = onSetPcAudio,
+                    onSetPcRadio = onSetPcRadio,
                     onBrowsePcFiles = { browseFilesPcId = it },
                     micOn = micStreamingTo == device.id,
                     onToggleMic = { on -> if (on) onStartMic(device.id) else onStopMic() },
@@ -1511,6 +1543,7 @@ private fun PcCard(
     onSendFiles: (String, List<Uri>) -> Unit,
     onSendFolder: (String, Uri) -> Unit,
     onPower: (String, Boolean) -> Unit,
+    onUnlock: (String) -> Unit,
     onHibernate: (String) -> Unit,
     onShutdown: (String) -> Unit,
     onRestart: (String) -> Unit,
@@ -1524,6 +1557,7 @@ private fun PcCard(
     onRecord: (String) -> Unit,
     onWebcam: (String) -> Unit,
     onSetPcAudio: (String, Int?, Boolean?) -> Unit,
+    onSetPcRadio: (String, Boolean?, Boolean?) -> Unit,
     onBrowsePcFiles: (String) -> Unit = {},
     onDesk: (String) -> Unit = {},
     /** Whether this phone's microphone streams to this PC now. */
@@ -1866,6 +1900,12 @@ private fun PcCard(
                         micOn = micOn,
                         onToggleMic = onToggleMic,
                     )
+                    // The PC's Wi-Fi and Bluetooth (#636).
+                    PcRadioSwitches(
+                        pcName = device.name,
+                        state = deckState,
+                        onSet = { wifi, bluetooth -> onSetPcRadio(device.id, wifi, bluetooth) },
+                    )
                     // The phone's sound on the PC, started from here (#398) and
                     // brought back to the phone from the same button (#521).
                     if (device.has("mirroring.sound_from_phone") || soundOnPcNow) {
@@ -1924,6 +1964,18 @@ private fun PcCard(
                         )
                         Spacer(Modifier.width(6.dp))
                         ButtonLabel(stringResource(if (ringing) R.string.action_stop_ringing else R.string.action_ring_pc))
+                    }
+                }
+                if (device.has("device.unlock_from_phone") && device.unlockEnabled) {
+                    OutlinedButton(
+                        contentPadding = CardButtonPadding,
+                        enabled = device.online,
+                        colors = outlined,
+                        border = outline,
+                        onClick = { onUnlock(device.id) },
+                        modifier = Modifier.fillMaxWidth(),
+                    ) {
+                        ButtonLabel(stringResource(R.string.action_unlock_pc))
                     }
                 }
                 if (device.has("device.pc_actions")) {
@@ -3197,6 +3249,7 @@ private fun TransferRow(
 private fun linkText(link: Link): String = when (link) {
     is Link.Online -> when {
         link.relayed -> stringResource(R.string.link_away)
+        link.bluetooth -> stringResource(R.string.link_bluetooth)
         link.usb -> if (link.rttMs >= 1u) stringResource(R.string.link_usb_rtt, link.rttMs.toInt()) else stringResource(R.string.link_usb)
         link.rttMs >= 1u -> stringResource(R.string.link_online_rtt, link.rttMs.toInt())
         else -> stringResource(R.string.link_online)

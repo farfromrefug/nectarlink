@@ -62,8 +62,10 @@ static const char *const nectarlink_rust_strings[] = {
     QT_TRANSLATE_NOOP("Calls", "No microphone on this PC to talk with."), // desktop/app/src/call_audio.rs
     QT_TRANSLATE_NOOP("Calls", "On a call with %1"), // desktop/app/src/calls.rs
     QT_TRANSLATE_NOOP("Calls", "That call is over."), // desktop/app/src/call_audio.rs
+    QT_TRANSLATE_NOOP("Calls", "The PC's microphone couldn't be started. Pick another one in Settings › Camera & Audio › Microphone for calls, or try again."), // desktop/app/src/call_audio.rs
     QT_TRANSLATE_NOOP("Calls", "This phone doesn't let NectarLink reach its calls' sound."), // desktop/app/src/call_audio.rs
     QT_TRANSLATE_NOOP("Calls", "Unknown caller"), // desktop/app/src/bridge/calls.rs
+    QT_TRANSLATE_NOOP("Calls", "Windows keeps NectarLink off the microphone. Turn on Settings › Privacy & security › Microphone › Let desktop apps access your microphone, then try again."), // desktop/app/src/call_audio.rs
     QT_TRANSLATE_NOOP("Clipboard", "Copied from %1"), // desktop/app/src/clipboard.rs
     QT_TRANSLATE_NOOP("Clipboard", "Copied from %1."), // desktop/app/src/clipboard.rs
     QT_TRANSLATE_NOOP("Clipboard", "Copied to clipboard"), // desktop/app/src/clipboard.rs
@@ -186,10 +188,19 @@ static const char *const nectarlink_rust_strings[] = {
     QT_TRANSLATE_NOOP("ContinuityCamera", "Scan a document on %1…"), // desktop/app/src/continuity_camera.rs
     QT_TRANSLATE_NOOP("ContinuityCamera", "Take a photo on %1…"), // desktop/app/src/continuity_camera.rs
     QT_TRANSLATE_NOOP("CoreHost", "Dropped %1 queued item(s) for %2 (device unpaired)."), // desktop/app/src/core_host.rs
+    QT_TRANSLATE_NOOP("Deck", "%1 steps"), // desktop/app/src/bridge/deck.rs
+    QT_TRANSLATE_NOOP("Deck", "%1: %2"), // desktop/app/src/deck.rs
+    QT_TRANSLATE_NOOP("Deck", "%1: restart, shut down, macros and toggles can't be used here."), // desktop/app/src/deck.rs
+    QT_TRANSLATE_NOOP("Deck", "1 step"), // desktop/app/src/bridge/deck.rs
+    QT_TRANSLATE_NOOP("Deck", "A macro can have up to %1 steps."), // desktop/app/src/deck.rs
+    QT_TRANSLATE_NOOP("Deck", "A macro can wait 30 seconds in all."), // desktop/app/src/deck.rs
+    QT_TRANSLATE_NOOP("Deck", "Add the macro's steps."), // desktop/app/src/deck.rs
     QT_TRANSLATE_NOOP("Deck", "Alt + Tab"), // desktop/app/src/bridge/deck.rs
     QT_TRANSLATE_NOOP("Deck", "Application path must end with .exe or .lnk."), // desktop/app/src/deck.rs
+    QT_TRANSLATE_NOOP("Deck", "Asks on the phone first"), // desktop/app/src/bridge/deck.rs
     QT_TRANSLATE_NOOP("Deck", "Choose a key for the shortcut."), // desktop/app/src/deck.rs
     QT_TRANSLATE_NOOP("Deck", "Choose an application (.exe or .lnk) on this PC."), // desktop/app/src/deck.rs
+    QT_TRANSLATE_NOOP("Deck", "Choose what turning it on does, and what turning it off does."), // desktop/app/src/deck.rs
     QT_TRANSLATE_NOOP("Deck", "Enter a command to run on this PC."), // desktop/app/src/deck.rs
     QT_TRANSLATE_NOOP("Deck", "Enter an application path (/usr/bin/..., .desktop, or .AppImage)."), // desktop/app/src/deck.rs
     QT_TRANSLATE_NOOP("Deck", "Enter an http:// or https:// web address."), // desktop/app/src/deck.rs
@@ -197,9 +208,17 @@ static const char *const nectarlink_rust_strings[] = {
     QT_TRANSLATE_NOOP("Deck", "Invalid action configuration."), // desktop/app/src/deck.rs
     QT_TRANSLATE_NOOP("Deck", "Invalid tile properties."), // desktop/app/src/deck.rs
     QT_TRANSLATE_NOOP("Deck", "Media key"), // desktop/app/src/bridge/deck.rs
+    QT_TRANSLATE_NOOP("Deck", "Off"), // desktop/app/src/bridge/deck.rs
+    QT_TRANSLATE_NOOP("Deck", "On"), // desktop/app/src/bridge/deck.rs
+    QT_TRANSLATE_NOOP("Deck", "On / off"), // desktop/app/src/bridge/deck.rs
     QT_TRANSLATE_NOOP("Deck", "Page not found."), // desktop/app/src/deck.rs
+    QT_TRANSLATE_NOOP("Deck", "Step %1: %2"), // desktop/app/src/deck.rs
+    QT_TRANSLATE_NOOP("Deck", "Step %1: restart, shut down and macros can't be steps."), // desktop/app/src/deck.rs
+    QT_TRANSLATE_NOOP("Deck", "Step %1: wait at most 10 seconds."), // desktop/app/src/deck.rs
     QT_TRANSLATE_NOOP("Deck", "This page already has the maximum number of tiles (24)."), // desktop/app/src/deck.rs
     QT_TRANSLATE_NOOP("Deck", "Tile not found."), // desktop/app/src/deck.rs
+    QT_TRANSLATE_NOOP("Deck", "Turning off"), // desktop/app/src/deck.rs
+    QT_TRANSLATE_NOOP("Deck", "Turning on"), // desktop/app/src/deck.rs
     QT_TRANSLATE_NOOP("Deck", "Use a single key (a-z, 0-9, f1-f12, enter, tab, space, escape, arrows, etc.)."), // desktop/app/src/deck.rs
     QT_TRANSLATE_NOOP("Deck", "Web address must start with http:// or https://."), // desktop/app/src/deck.rs
     QT_TRANSLATE_NOOP("Doctor", "%1 Open NectarLink on the phone and keep both on the same network. If the phone asks to run in the background, allow it."), // desktop/app/src/doctor.rs
@@ -244,6 +263,7 @@ static const char *const nectarlink_rust_strings[] = {
     QT_TRANSLATE_NOOP("Doctor", "On public networks Windows keeps other devices from finding this PC. If it's your home or work network, set it to Private."), // desktop/app/src/doctor.rs
     QT_TRANSLATE_NOOP("Doctor", "On public networks the firewall keeps other devices from finding this PC. If it's your home or work network, open network settings and set its firewall zone to Home or Trusted."), // desktop/app/src/doctor.rs
     QT_TRANSLATE_NOOP("Doctor", "On this network"), // desktop/app/src/doctor.rs
+    QT_TRANSLATE_NOOP("Doctor", "Over Bluetooth"), // desktop/app/src/doctor.rs
     QT_TRANSLATE_NOOP("Doctor", "Phone as webcam is ready"), // desktop/app/src/linux/doctor.rs
     QT_TRANSLATE_NOOP("Doctor", "Phone as webcam needs one more step"), // desktop/app/src/linux/doctor.rs
     QT_TRANSLATE_NOOP("Doctor", "Phone storage can open in your file manager"), // desktop/app/src/linux/doctor.rs
@@ -306,7 +326,7 @@ static const char *const nectarlink_rust_strings[] = {
     QT_TRANSLATE_NOOP("Guide", "If your phone and PC do not see each other:\n\n1. Open Connection Doctor from Settings › Connection & About or the Command Palette.\n2. Check that your Wi-Fi network profile in Windows is set to Private rather than Public, or click Fix in Connection Doctor to allow NectarLink through Windows Firewall.\n3. Verify that both devices are on the same subnet and that guest Wi-Fi client isolation is turned off on your router.\n4. You can also connect over a USB cable with USB debugging enabled; NectarLink automatically sets up a local tunnel."), // desktop/app/src/bridge/app.rs
     QT_TRANSLATE_NOOP("Guide", "Install and first-time setup"), // desktop/app/src/bridge/app.rs
     QT_TRANSLATE_NOOP("Guide", "Local HTTP API"), // desktop/app/src/bridge/app.rs
-    QT_TRANSLATE_NOOP("Guide", "Local by default\nYour phone and PC talk directly over your local network or USB cable. When Connect over mobile data is on, encrypted traffic can use a relay when away from home. Automatic update checks contact GitHub Releases and can be turned off in Settings › Connection & About › Check for updates.\n\nEnd-to-end encrypted\nEvery connection uses QUIC with TLS 1.3 and Ed25519 device certificates verified during pairing. Device keys are protected by Windows DPAPI and the Android Keystore.\n\nPer-device sharing controls\nSensitive capabilities such as Share PC folders, Remote input, and Reverse PC screen mirroring are turned off by default for each paired device until you turn them on."), // desktop/app/src/bridge/app.rs
+    QT_TRANSLATE_NOOP("Guide", "Local by default\nYour phone and PC talk directly over your local network or USB cable. When Connect over mobile data is on, encrypted traffic can use a relay when away from home. Automatic update checks contact GitHub Releases and can be turned off in Settings › Updates › Check for updates.\n\nEnd-to-end encrypted\nEvery connection uses QUIC with TLS 1.3 and Ed25519 device certificates verified during pairing. Device keys are protected by Windows DPAPI and the Android Keystore.\n\nPer-device sharing controls\nSensitive capabilities such as Share PC folders, Remote input, and Reverse PC screen mirroring are turned off by default for each paired device until you turn them on."), // desktop/app/src/bridge/app.rs
     QT_TRANSLATE_NOOP("Guide", "LocalSend"), // desktop/app/src/bridge/app.rs
     QT_TRANSLATE_NOOP("Guide", "Messages"), // desktop/app/src/bridge/app.rs
     QT_TRANSLATE_NOOP("Guide", "Most NectarLink features work in Standard mode with regular Android permissions. Two optional modes unlock deeper system integration:\n\nElevated mode (Wireless debugging or root)\n- Captures the phone screen without showing the Android cast confirmation prompt every time.\n- Streams individual phone apps in separate desktop windows (virtual displays).\n- Controls additional system quick toggles.\n\nAssist mode (Android Accessibility Service)\n- Injects mouse clicks, scrolling, and touch gestures when you control your phone from your PC.\n- NectarLink never reads screen text or logs keystrokes through the Accessibility service."), // desktop/app/src/bridge/app.rs
@@ -488,12 +508,19 @@ static const char *const nectarlink_rust_strings[] = {
     QT_TRANSLATE_NOOP("Prefs", "Connected to OBS."), // desktop/app/src/bridge/prefs.rs
     QT_TRANSLATE_NOOP("Recordings", "Recording from %1 saved"), // desktop/app/src/recordings.rs
     QT_TRANSLATE_NOOP("ReportRequests", "%1 asks for this PC's log"), // desktop/app/src/report_requests.rs
+    QT_TRANSLATE_NOOP("ReportRequests", "Check the connection, then send it again from Your reports."), // desktop/app/src/report_requests.rs
     QT_TRANSLATE_NOOP("ReportRequests", "Don't share"), // desktop/app/src/report_requests.rs
     QT_TRANSLATE_NOOP("ReportRequests", "For a problem report you're making. The log has no names, messages, files, numbers or addresses. You see the whole report before it's sent."), // desktop/app/src/report_requests.rs
-    QT_TRANSLATE_NOOP("ReportRequests", "Report #%1. Open it to read it on GitHub."), // desktop/app/src/report_requests.rs
+    QT_TRANSLATE_NOOP("ReportRequests", "Reply"), // desktop/app/src/report_requests.rs
+    QT_TRANSLATE_NOOP("ReportRequests", "Report #%1. Open it to read it."), // desktop/app/src/report_requests.rs
     QT_TRANSLATE_NOOP("ReportRequests", "Share"), // desktop/app/src/report_requests.rs
+    QT_TRANSLATE_NOOP("ReportRequests", "Someone with the same problem"), // desktop/app/src/report_requests.rs
+    QT_TRANSLATE_NOOP("ReportRequests", "That's the most replies for today. Try again tomorrow."), // desktop/app/src/report_requests.rs
     QT_TRANSLATE_NOOP("ReportRequests", "There's a reply to your report"), // desktop/app/src/report_requests.rs
+    QT_TRANSLATE_NOOP("ReportRequests", "This report can't take replies any more."), // desktop/app/src/report_requests.rs
+    QT_TRANSLATE_NOOP("ReportRequests", "You"), // desktop/app/src/report_requests.rs
     QT_TRANSLATE_NOOP("ReportRequests", "Your phone"), // desktop/app/src/report_requests.rs
+    QT_TRANSLATE_NOOP("ReportRequests", "Your reply wasn't sent"), // desktop/app/src/report_requests.rs
     QT_TRANSLATE_NOOP("ReportRequests", "Your report was closed"), // desktop/app/src/report_requests.rs
     QT_TRANSLATE_NOOP("SendTo", "Copied to your phone's clipboard."), // desktop/app/src/send_to.rs
     QT_TRANSLATE_NOOP("SendTo", "Couldn't reach %1."), // desktop/app/src/send_to.rs
