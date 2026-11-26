@@ -118,6 +118,10 @@ jobs:
           security set-keychain-settings -lut 21600 "$keychain"
           security unlock-keychain -p "$password" "$keychain"
           security import "$RUNNER_TEMP/certificate.p12" -P "$APPLE_DEV_CERT_PASSWORD" -A -t cert -f pkcs12 -k "$keychain"
+          # The intermediate that issued Apple Development certificates: without
+          # it in the keychain the identity isn't valid (the runner has no copy).
+          curl -fsSL https://www.apple.com/certificateauthority/AppleWWDRCAG3.cer -o "$RUNNER_TEMP/wwdr.cer"
+          security import "$RUNNER_TEMP/wwdr.cer" -k "$keychain" -T /usr/bin/codesign
           security set-key-partition-list -S apple-tool:,apple: -k "$password" "$keychain" > /dev/null
           security list-keychains -d user -s "$keychain" $(security list-keychains -d user | tr -d '"')
           echo "$APPLE_DEV_PROFILE" | base64 --decode > "$RUNNER_TEMP/host.provisionprofile"
@@ -136,6 +140,8 @@ jobs:
           if [ -z "$identity" ]; then
             echo "::error::the certificate in APPLE_DEV_CERT_P12 isn't one the provisioning profile was made for. It holds:"
             printf '%s\n' "$identities"
+            echo "Without the validity check:"
+            security find-identity -p codesigning "$keychain"
             exit 1
           fi
           echo "Signing with $(printf '%s\n' "$identities" | grep "$identity")"
@@ -151,7 +157,7 @@ jobs:
         if: always()
         run: |
           security delete-keychain "$RUNNER_TEMP/signing.keychain-db" || true
-          rm -f "$RUNNER_TEMP/certificate.p12" "$RUNNER_TEMP/host.provisionprofile" "$RUNNER_TEMP/profile.plist"
+          rm -f "$RUNNER_TEMP/certificate.p12" "$RUNNER_TEMP/host.provisionprofile" "$RUNNER_TEMP/profile.plist" "$RUNNER_TEMP/wwdr.cer"
       - uses: actions/upload-artifact@v7
         with:
           name: macos
