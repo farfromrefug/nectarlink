@@ -3,7 +3,9 @@
 # (Actions > Personal build > Run workflow > pick the branch). Just the Android
 # app and the macOS one, as artifacts: no release, no feed, no checks on the
 # other platforms. The phone app is signed with the key in ANDROID_KEYSTORE,
-# the Mac app ad-hoc (right-click > Open, or `xattr -cr` it).
+# the Mac app with an Apple Development certificate and profile when
+# APPLE_DEV_* are set (needed for the virtual camera), else ad-hoc. Neither is
+# notarized: `xattr -cr` the app after downloading it.
 name: Personal build
 
 on:
@@ -81,6 +83,10 @@ jobs:
     name: macOS DMG (Apple silicon)
     if: inputs.macos
     runs-on: macos-latest
+    env:
+      APPLE_DEV_CERT_P12: ${{ secrets.APPLE_DEV_CERT_P12 }}
+      APPLE_DEV_CERT_PASSWORD: ${{ secrets.APPLE_DEV_CERT_PASSWORD }}
+      APPLE_DEV_PROFILE: ${{ secrets.APPLE_DEV_PROFILE }}
     steps:
       - uses: actions/checkout@v7
       - name: Install the pinned Rust toolchain
@@ -97,8 +103,42 @@ jobs:
           arch: clang_64
           cache: true
           aqtsource: git+https://github.com/miurahr/aqtinstall.git@5a49f2b391ae8ee1d3c0dd87f8b33c1d49a4deb7
+      # The phone-as-webcam camera extension only installs from an app signed
+      # with a certificate and a provisioning profile that carry the System
+      # Extension entitlement. An Apple Development certificate and its
+      # profile do for a Mac registered in the profile (no notarization).
+      # Without the three secrets the DMG is ad-hoc signed: no virtual camera.
+      - name: Import the signing certificate and profile
+        if: env.APPLE_DEV_CERT_P12 != '' && env.APPLE_DEV_PROFILE != ''
+        run: |
+          keychain="$RUNNER_TEMP/signing.keychain-db"
+          password=$(uuidgen)
+          echo "$APPLE_DEV_CERT_P12" | base64 --decode > "$RUNNER_TEMP/certificate.p12"
+          security create-keychain -p "$password" "$keychain"
+          security set-keychain-settings -lut 21600 "$keychain"
+          security unlock-keychain -p "$password" "$keychain"
+          security import "$RUNNER_TEMP/certificate.p12" -P "$APPLE_DEV_CERT_PASSWORD" -A -t cert -f pkcs12 -k "$keychain"
+          security set-key-partition-list -S apple-tool:,apple: -k "$password" "$keychain" > /dev/null
+          security list-keychains -d user -s "$keychain" $(security list-keychains -d user | tr -d '"')
+          identity=$(security find-identity -v -p codesigning "$keychain" | awk '/Apple Development|Developer ID Application/ { print $2; exit }')
+          if [ -z "$identity" ]; then
+            echo "::error::the certificate isn't an Apple Development or Developer ID Application one"
+            exit 1
+          fi
+          echo "$APPLE_DEV_PROFILE" | base64 --decode > "$RUNNER_TEMP/host.provisionprofile"
+          {
+            echo "SIGN_IDENTITY=$identity"
+            echo "KEYCHAIN_PATH=$keychain"
+            echo "HOST_PROVISIONING_PROFILE=$RUNNER_TEMP/host.provisionprofile"
+            echo "REQUIRE_VCAM=1"
+          } >> "$GITHUB_ENV"
       - name: Build and package the DMG
         run: ARCH=arm64 bash desktop/packaging/macos/build-dmg.sh
+      - name: Remove the signing keychain and key
+        if: always()
+        run: |
+          security delete-keychain "$RUNNER_TEMP/signing.keychain-db" || true
+          rm -f "$RUNNER_TEMP/certificate.p12" "$RUNNER_TEMP/host.provisionprofile"
       - uses: actions/upload-artifact@v7
         with:
           name: macos
