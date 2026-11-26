@@ -120,12 +120,25 @@ jobs:
           security import "$RUNNER_TEMP/certificate.p12" -P "$APPLE_DEV_CERT_PASSWORD" -A -t cert -f pkcs12 -k "$keychain"
           security set-key-partition-list -S apple-tool:,apple: -k "$password" "$keychain" > /dev/null
           security list-keychains -d user -s "$keychain" $(security list-keychains -d user | tr -d '"')
-          identity=$(security find-identity -v -p codesigning "$keychain" | awk '/Apple Development|Developer ID Application/ { print $2; exit }')
+          echo "$APPLE_DEV_PROFILE" | base64 --decode > "$RUNNER_TEMP/host.provisionprofile"
+          # The app must be signed with a certificate the profile lists, or
+          # macOS kills it at launch: take the identity whose SHA-1 is one of
+          # the profile's.
+          security cms -D -i "$RUNNER_TEMP/host.provisionprofile" > "$RUNNER_TEMP/profile.plist"
+          count=$(plutil -extract DeveloperCertificates raw "$RUNNER_TEMP/profile.plist")
+          identities=$(security find-identity -v -p codesigning "$keychain")
+          identity=""
+          for i in $(seq 0 $((count - 1))); do
+            sha=$(plutil -extract "DeveloperCertificates.$i" raw "$RUNNER_TEMP/profile.plist" | base64 --decode \
+              | openssl x509 -inform der -noout -fingerprint -sha1 | cut -d= -f2 | tr -d ':')
+            if printf '%s\n' "$identities" | grep -q "$sha"; then identity="$sha"; break; fi
+          done
           if [ -z "$identity" ]; then
-            echo "::error::the certificate isn't an Apple Development or Developer ID Application one"
+            echo "::error::the certificate in APPLE_DEV_CERT_P12 isn't one the provisioning profile was made for. It holds:"
+            printf '%s\n' "$identities"
             exit 1
           fi
-          echo "$APPLE_DEV_PROFILE" | base64 --decode > "$RUNNER_TEMP/host.provisionprofile"
+          echo "Signing with $(printf '%s\n' "$identities" | grep "$identity")"
           {
             echo "SIGN_IDENTITY=$identity"
             echo "KEYCHAIN_PATH=$keychain"
@@ -138,7 +151,7 @@ jobs:
         if: always()
         run: |
           security delete-keychain "$RUNNER_TEMP/signing.keychain-db" || true
-          rm -f "$RUNNER_TEMP/certificate.p12" "$RUNNER_TEMP/host.provisionprofile"
+          rm -f "$RUNNER_TEMP/certificate.p12" "$RUNNER_TEMP/host.provisionprofile" "$RUNNER_TEMP/profile.plist"
       - uses: actions/upload-artifact@v7
         with:
           name: macos
