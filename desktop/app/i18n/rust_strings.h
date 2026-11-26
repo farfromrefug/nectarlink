@@ -233,7 +233,7 @@ static const char *const nectarlink_rust_strings[] = {
     QT_TRANSLATE_NOOP("Doctor", "%1 minutes ago"), // desktop/app/src/doctor.rs
     QT_TRANSLATE_NOOP("Doctor", "%1 · %2 ms"), // desktop/app/src/doctor.rs
     QT_TRANSLATE_NOOP("Doctor", "A USB cable needs adb"), // desktop/app/src/doctor.rs
-    QT_TRANSLATE_NOOP("Doctor", "A VPN is on"), // desktop/app/src/doctor.rs
+    QT_TRANSLATE_NOOP("Doctor", "A VPN is on: %1"), // desktop/app/src/doctor.rs
     QT_TRANSLATE_NOOP("Doctor", "A firewall rule blocks incoming NectarLink connections. Allow it, and your phone can connect."), // desktop/app/src/doctor.rs
     QT_TRANSLATE_NOOP("Doctor", "Calls and alerts can't play sound yet"), // desktop/app/src/linux/doctor.rs
     QT_TRANSLATE_NOOP("Doctor", "Connect it to the same Wi-Fi or wired network as your phone."), // desktop/app/src/doctor.rs
@@ -405,6 +405,7 @@ static const char *const nectarlink_rust_strings[] = {
     QT_TRANSLATE_NOOP("Mirror", "Mirror recording"), // desktop/app/src/mirror.rs
     QT_TRANSLATE_NOOP("Mirror", "Mirror screenshot"), // desktop/app/src/mirror.rs
     QT_TRANSLATE_NOOP("Mirror", "Mirroring is turned off for this phone."), // desktop/app/src/mirror.rs
+    QT_TRANSLATE_NOOP("Mirror", "Open"), // desktop/app/src/mirror.rs
     QT_TRANSLATE_NOOP("Mirror", "Recording from %1, saved in Downloads/Nectarlink"), // desktop/app/src/mirror.rs
     QT_TRANSLATE_NOOP("Mirror", "Recording from %1, saved in Downloads\\Nectarlink"), // desktop/app/src/mirror.rs
     QT_TRANSLATE_NOOP("Mirror", "Saved %1"), // desktop/app/src/mirror.rs
@@ -506,7 +507,9 @@ static const char *const nectarlink_rust_strings[] = {
     QT_TRANSLATE_NOOP("PlayOnPhone", "Tap the notification on %1 to watch."), // desktop/app/src/play_on_phone.rs
     QT_TRANSLATE_NOOP("PlayOnPhone", "Update NectarLink on %1 to play on it."), // desktop/app/src/play_on_phone.rs
     QT_TRANSLATE_NOOP("Prefs", "Connected to OBS."), // desktop/app/src/bridge/prefs.rs
+    QT_TRANSLATE_NOOP("Recordings", "Open"), // desktop/app/src/recordings.rs
     QT_TRANSLATE_NOOP("Recordings", "Recording from %1 saved"), // desktop/app/src/recordings.rs
+    QT_TRANSLATE_NOOP("Recordings", "Show in folder"), // desktop/app/src/recordings.rs
     QT_TRANSLATE_NOOP("ReportRequests", "%1 asks for this PC's log"), // desktop/app/src/report_requests.rs
     QT_TRANSLATE_NOOP("ReportRequests", "Check the connection, then send it again from Your reports."), // desktop/app/src/report_requests.rs
     QT_TRANSLATE_NOOP("ReportRequests", "Don't share"), // desktop/app/src/report_requests.rs
@@ -584,6 +587,8 @@ static const char *const nectarlink_rust_strings[] = {
     QT_TRANSLATE_NOOP("Transfers", "From %1, opened from Downloads\\Nectarlink"), // desktop/app/src/transfers.rs
     QT_TRANSLATE_NOOP("Transfers", "From %1, saved in Downloads\\Nectarlink"), // desktop/app/src/transfers.rs
     QT_TRANSLATE_NOOP("Transfers", "Nearby device"), // desktop/app/src/transfers.rs
+    QT_TRANSLATE_NOOP("Transfers", "Open"), // desktop/app/src/transfers.rs
+    QT_TRANSLATE_NOOP("Transfers", "Show in folder"), // desktop/app/src/transfers.rs
     QT_TRANSLATE_NOOP("Transfers", "That's too many files to send at once."), // desktop/app/src/transfers.rs
     QT_TRANSLATE_NOOP("Transfers", "There's nothing to send in there."), // desktop/app/src/transfers.rs
     QT_TRANSLATE_NOOP("Unlock", "Set up unlocking with %1 again"), // desktop/app/src/win/unlock.rs

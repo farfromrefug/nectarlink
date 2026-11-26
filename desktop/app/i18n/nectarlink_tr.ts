@@ -3000,11 +3000,6 @@
         <translation>USB kablosu için adb gerekir</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="217"/>
-        <source>A VPN is on</source>
-        <translation>VPN açık</translation>
-    </message>
-    <message>
         <location filename="rust_strings.h" line="218"/>
         <source>A firewall rule blocks incoming NectarLink connections. Allow it, and your phone can connect.</source>
         <translation>Bir güvenlik duvarı kuralı gelen NectarLink bağlantılarını engelliyor. İzin verirseniz telefonunuz bağlanabilir.</translation>
@@ -3314,6 +3309,11 @@
         <location filename="rust_strings.h" line="1"/>
         <source>Over Bluetooth</source>
         <translation>Bluetooth üzerinden</translation>
+    </message>
+    <message>
+        <location filename="rust_strings.h" line="1"/>
+        <source>A VPN is on: %1</source>
+        <translation>VPN açık: %1</translation>
     </message>
 </context>
 <context>
@@ -7165,6 +7165,11 @@ Neler gerekir
         <source>Wait for the screen to appear first.</source>
         <translation>Önce ekranın görünmesini bekleyin.</translation>
     </message>
+    <message>
+        <location filename="rust_strings.h" line="1"/>
+        <source>Open</source>
+        <translation>Aç</translation>
+    </message>
 </context>
 <context>
     <name>MirrorWindow</name>
@@ -8766,6 +8771,16 @@ Neler gerekir
         <location filename="rust_strings.h" line="489"/>
         <source>Recording from %1 saved</source>
         <translation>%1 kaydı kaydedildi</translation>
+    </message>
+    <message>
+        <location filename="rust_strings.h" line="1"/>
+        <source>Open</source>
+        <translation>Aç</translation>
+    </message>
+    <message>
+        <location filename="rust_strings.h" line="1"/>
+        <source>Show in folder</source>
+        <translation>Klasörde göster</translation>
     </message>
 </context>
 <context>
@@ -12863,6 +12878,16 @@ Neler gerekir
         <location filename="rust_strings.h" line="561"/>
         <source>There&apos;s nothing to send in there.</source>
         <translation>Orada gönderilecek bir şey yok.</translation>
+    </message>
+    <message>
+        <location filename="rust_strings.h" line="1"/>
+        <source>Open</source>
+        <translation>Aç</translation>
+    </message>
+    <message>
+        <location filename="rust_strings.h" line="1"/>
+        <source>Show in folder</source>
+        <translation>Klasörde göster</translation>
     </message>
 </context>
 <context>

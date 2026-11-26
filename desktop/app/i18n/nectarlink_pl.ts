@@ -3000,11 +3000,6 @@
         <translation>Połączenie kablem USB wymaga adb</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="217"/>
-        <source>A VPN is on</source>
-        <translation>VPN jest włączony</translation>
-    </message>
-    <message>
         <location filename="rust_strings.h" line="218"/>
         <source>A firewall rule blocks incoming NectarLink connections. Allow it, and your phone can connect.</source>
         <translation>Reguła zapory blokuje przychodzące połączenia NectarLink. Zezwól na nie, aby telefon mógł się połączyć.</translation>
@@ -3314,6 +3309,11 @@
         <location filename="rust_strings.h" line="1"/>
         <source>Over Bluetooth</source>
         <translation>Przez Bluetooth</translation>
+    </message>
+    <message>
+        <location filename="rust_strings.h" line="1"/>
+        <source>A VPN is on: %1</source>
+        <translation>VPN jest włączony: %1</translation>
     </message>
 </context>
 <context>
@@ -7177,6 +7177,11 @@ Wymagania
         <source>Wait for the screen to appear first.</source>
         <translation>Poczekaj, aż pojawi się obraz ekranu.</translation>
     </message>
+    <message>
+        <location filename="rust_strings.h" line="1"/>
+        <source>Open</source>
+        <translation>Otwórz</translation>
+    </message>
 </context>
 <context>
     <name>MirrorWindow</name>
@@ -8780,6 +8785,16 @@ Wymagania
         <location filename="rust_strings.h" line="489"/>
         <source>Recording from %1 saved</source>
         <translation>Zapisano nagranie z %1</translation>
+    </message>
+    <message>
+        <location filename="rust_strings.h" line="1"/>
+        <source>Open</source>
+        <translation>Otwórz</translation>
+    </message>
+    <message>
+        <location filename="rust_strings.h" line="1"/>
+        <source>Show in folder</source>
+        <translation>Pokaż w folderze</translation>
     </message>
 </context>
 <context>
@@ -12881,6 +12896,16 @@ Wymagania
         <location filename="rust_strings.h" line="561"/>
         <source>There&apos;s nothing to send in there.</source>
         <translation>Nie ma tam nic do wysłania.</translation>
+    </message>
+    <message>
+        <location filename="rust_strings.h" line="1"/>
+        <source>Open</source>
+        <translation>Otwórz</translation>
+    </message>
+    <message>
+        <location filename="rust_strings.h" line="1"/>
+        <source>Show in folder</source>
+        <translation>Pokaż w folderze</translation>
     </message>
 </context>
 <context>

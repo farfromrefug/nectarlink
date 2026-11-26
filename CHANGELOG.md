@@ -600,6 +600,35 @@ change things that need a step from you, and its notes say so.
 
 ### Fixed
 
+- **Clicking Play on a phone video in Photos more than once downloads it once.** The button shows
+  that it's fetching and waits. Thanks to [@SolomonNumb1](https://github.com/SolomonNumb1)
+  ([#666](https://github.com/thtbee/nectarlink/pull/666)).
+- **The mouse no longer gets lost on the phone with Beside this PC.** It stays on the PC while a
+  game or other app is in full screen or holds the cursor, so pushing against the edge in a game
+  doesn't take the mouse and keyboard away. Going back, the PC checks with the phone as the mouse
+  heads for the PC, so it comes back as soon as the phone's pointer reaches that edge rather than
+  some way past it, and if the phone's pointer doesn't move, the mouse comes back instead of staying
+  lost there.
+- **Sending to a LocalSend device no longer says it's offline.** It wasn't a paired device, so the
+  PC and the phone said "offline, will send when it's back" though the files were going out.
+- **A phone's music no longer comes back to the phones from a Windows PC.** The PC shows a phone's
+  media in Windows' media controls, and could then send it on to phones as if it played on the PC,
+  showing on the phone that plays it and on any other. Thanks to
+  [@FlootingDream](https://github.com/FlootingDream) ([#653](https://github.com/thtbee/nectarlink/issues/653)).
+- **The phone's hotspot switch works from the PC with Elevated** on current Android. It tried
+  shell commands that Android doesn't have, so nothing happened; it now asks Android's tethering
+  service, as Settings does. Thanks to [@johnzhang0707](https://github.com/johnzhang0707)
+  ([#615](https://github.com/thtbee/nectarlink/issues/615)).
+- **The phone's check for banking apps keeps its slow pace once the screen turns off**, instead
+  of looking once more straight away after a recent unlock. Thanks to
+  [@aihehye](https://github.com/aihehye) ([#592](https://github.com/thtbee/nectarlink/pull/592)).
+- **The PC's Doctor no longer warns about a VPN for Windows' own tunnels** (Teredo,
+  IP-HTTPS, 6to4, ISATAP) or a PPPoE internet connection, and when it does warn, it names the
+  adapter it means. Thanks to [@Tuna321](https://github.com/Tuna321)
+  ([#662](https://github.com/thtbee/nectarlink/issues/662)).
+- **The Open and Show in folder buttons on the PC's notifications are in your language** for
+  received files, recordings and screenshots, not always in English. Thanks to
+  [@yiriyangguang](https://github.com/yiriyangguang) ([#659](https://github.com/thtbee/nectarlink/issues/659)).
 - **What's new on the phone no longer closes the app** when two lines of the notes read the
   same ([#594](https://github.com/thtbee/nectarlink/issues/594)).
 - **A failure in one of the phone's answers to the PC no longer takes the connection down.**

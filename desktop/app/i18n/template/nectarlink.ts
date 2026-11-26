@@ -2917,11 +2917,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../rust_strings.h" line="217"/>
-        <source>A VPN is on</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../rust_strings.h" line="218"/>
         <source>A firewall rule blocks incoming NectarLink connections. Allow it, and your phone can connect.</source>
         <translation type="unfinished"></translation>
@@ -3229,6 +3224,11 @@
     <message>
         <location filename="../rust_strings.h" line="1"/>
         <source>Over Bluetooth</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../rust_strings.h" line="1"/>
+        <source>A VPN is on: %1</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -6804,6 +6804,11 @@ What it needs
         <source>Wait for the screen to appear first.</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="../rust_strings.h" line="1"/>
+        <source>Open</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>MirrorWindow</name>
@@ -8392,6 +8397,16 @@ What it needs
     <message>
         <location filename="../rust_strings.h" line="489"/>
         <source>Recording from %1 saved</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../rust_strings.h" line="1"/>
+        <source>Open</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../rust_strings.h" line="1"/>
+        <source>Show in folder</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -12440,6 +12455,16 @@ What it needs
     <message>
         <location filename="../rust_strings.h" line="561"/>
         <source>There&apos;s nothing to send in there.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../rust_strings.h" line="1"/>
+        <source>Open</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../rust_strings.h" line="1"/>
+        <source>Show in folder</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

@@ -3000,11 +3000,6 @@
         <translation>USB 数据线连接需要 adb</translation>
     </message>
     <message>
-        <location filename="rust_strings.h" line="217"/>
-        <source>A VPN is on</source>
-        <translation>VPN 已开启</translation>
-    </message>
-    <message>
         <location filename="rust_strings.h" line="218"/>
         <source>A firewall rule blocks incoming NectarLink connections. Allow it, and your phone can connect.</source>
         <translation>一条防火墙规则阻止了传入的 NectarLink 连接。允许后，手机即可连接。</translation>
@@ -3314,6 +3309,11 @@
         <location filename="rust_strings.h" line="1"/>
         <source>Over Bluetooth</source>
         <translation>通过蓝牙</translation>
+    </message>
+    <message>
+        <location filename="rust_strings.h" line="1"/>
+        <source>A VPN is on: %1</source>
+        <translation>VPN 已开启：%1</translation>
     </message>
 </context>
 <context>
@@ -7169,6 +7169,11 @@ What it needs
         <source>Wait for the screen to appear first.</source>
         <translation>请等待屏幕先显示出来。</translation>
     </message>
+    <message>
+        <location filename="rust_strings.h" line="1"/>
+        <source>Open</source>
+        <translation>打开</translation>
+    </message>
 </context>
 <context>
     <name>MirrorWindow</name>
@@ -8770,6 +8775,16 @@ What it needs
         <location filename="rust_strings.h" line="489"/>
         <source>Recording from %1 saved</source>
         <translation>已保存来自 %1 的录音</translation>
+    </message>
+    <message>
+        <location filename="rust_strings.h" line="1"/>
+        <source>Open</source>
+        <translation>打开</translation>
+    </message>
+    <message>
+        <location filename="rust_strings.h" line="1"/>
+        <source>Show in folder</source>
+        <translation>在文件夹中显示</translation>
     </message>
 </context>
 <context>
@@ -12871,6 +12886,16 @@ What it needs
         <location filename="rust_strings.h" line="561"/>
         <source>There&apos;s nothing to send in there.</source>
         <translation>那里没有可发送的内容。</translation>
+    </message>
+    <message>
+        <location filename="rust_strings.h" line="1"/>
+        <source>Open</source>
+        <translation>打开</translation>
+    </message>
+    <message>
+        <location filename="rust_strings.h" line="1"/>
+        <source>Show in folder</source>
+        <translation>在文件夹中显示</translation>
     </message>
 </context>
 <context>
