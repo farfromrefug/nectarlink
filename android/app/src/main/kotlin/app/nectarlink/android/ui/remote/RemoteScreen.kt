@@ -143,7 +143,9 @@ fun RemoteScreen(
 
     // Keep the phone's screen on while controlling the PC (for a while after each
     // touch), and release any held laser/button when leaving.
-    app.nectarlink.android.ui.KeepScreenOn(device.online && app.nectarlink.android.ui.rememberTouchedRecently())
+    // Called every time, not behind `&&` (see DeckScreen).
+    val touched = app.nectarlink.android.ui.rememberTouchedRecently()
+    app.nectarlink.android.ui.KeepScreenOn(device.online && touched)
     DisposableEffect(view, device.id) {
         onDispose {
             core.remoteLaser(device.id, false)
@@ -256,7 +258,8 @@ fun RemoteScreen(
                 maxFontSize = MaterialTheme.typography.labelLarge.fontSize,
                 stepSize = 0.5.sp,
             )
-            SingleChoiceSegmentedButtonRow(Modifier.fillMaxWidth()) {
+            // Another phone or tablet (#651) has the touchpad and keyboard only.
+            if (!device.isAndroid) SingleChoiceSegmentedButtonRow(Modifier.fillMaxWidth()) {
                 SegmentedButton(
                     selected = mode == RemoteMode.Touchpad,
                     onClick = { mode = RemoteMode.Touchpad },
@@ -327,7 +330,10 @@ fun RemoteScreen(
                 )
                 access == Core.RemoteAccess.Unsupported -> StatusBanner(
                     title = null,
-                    text = stringResource(R.string.remote_unsupported_text, device.name),
+                    text = stringResource(
+                        if (device.isAndroid) R.string.remote_unsupported_device_text else R.string.remote_unsupported_text,
+                        device.name,
+                    ),
                 )
             }
         }

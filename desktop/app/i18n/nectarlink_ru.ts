@@ -6459,6 +6459,21 @@ What it needs
         <source>This feature is turned off for this phone in Settings › Devices.</source>
         <translation>Эта функция выключена для этого телефона в Настройки › Устройства.</translation>
     </message>
+    <message>
+        <location filename="../qml/components/LockChip.qml" line="32"/>
+        <source>Needs Windows 11</source>
+        <translation>Нужна Windows 11</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/LockChip.qml" line="32"/>
+        <source>Needs a newer Windows</source>
+        <translation>Нужна более новая Windows</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/LockChip.qml" line="34"/>
+        <source>Needs Android %1</source>
+        <translation>Нужен Android %1</translation>
+    </message>
 </context>
 <context>
     <name>MainWindow</name>
@@ -6641,6 +6656,20 @@ What it needs
         <location filename="../qml/MainWindow.qml" line="1263"/>
         <source>Paste into active window</source>
         <translation>Вставить в активное окно</translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../qml/MainWindow.qml" line="1"/>
+        <source>Device: %1. Switch device, %n new on the others</source>
+        <translation>
+            <numerusform>Устройство: %1. Сменить устройство, на других %n новое</numerusform>
+            <numerusform>Устройство: %1. Сменить устройство, на других %n новых</numerusform>
+            <numerusform>Устройство: %1. Сменить устройство, на других %n новых</numerusform>
+        </translation>
+    </message>
+    <message>
+        <location filename="../qml/MainWindow.qml" line="1"/>
+        <source>Device: %1. Switch device</source>
+        <translation>Устройство: %1. Сменить устройство</translation>
     </message>
 </context>
 <context>
@@ -7636,6 +7665,11 @@ What it needs
         <location filename="../qml/components/NowPlaying.qml" line="825"/>
         <source>PC speaker</source>
         <translation>Динамик ПК</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/NowPlaying.qml" line="1"/>
+        <source>Time shown: %1. Click to switch</source>
+        <translation>Показано время: %1. Нажмите, чтобы переключить</translation>
     </message>
 </context>
 <context>
@@ -11795,6 +11829,9 @@ What it needs
         <location filename="../qml/pages/SettingsPage.qml" line="1"/>
         <source>Move the mouse past that edge of the screen to use it on that PC, and type there with this keyboard. Move it back, or press Ctrl+Alt+Esc, to return. That PC asks the first time, or turn on Remote mouse, keyboard &amp; Deck for this PC there.</source>
         <translation>Уведите мышь за этот край экрана, чтобы управлять тем ПК и печатать там с этой клавиатуры. Вернуться можно, уведя мышь обратно, или клавишами Ctrl+Alt+Esc. Тот ПК спросит в первый раз, или включите там «Удалённая мышь, клавиатура и Deck» для этого ПК.</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="1"/>
         <source>Bluetooth when there&apos;s no network</source>
         <translation>Bluetooth, когда нет сети</translation>
     </message>
@@ -11802,6 +11839,51 @@ What it needs
         <location filename="../qml/pages/SettingsPage.qml" line="1"/>
         <source>A phone paired with this PC in Bluetooth settings stays connected without Wi-Fi or data, for notifications, texts, calls and the clipboard. Turn it on in the phone&apos;s Settings too.</source>
         <translation>Телефон, сопряжённый с этим ПК в настройках Bluetooth, остаётся на связи без Wi-Fi и мобильных данных: уведомления, SMS, звонки и буфер обмена. Включите это и в настройках телефона.</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="1"/>
+        <source>This PC&apos;s name</source>
+        <translation>Имя этого ПК</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="1"/>
+        <source>How this PC shows on your phones and other PCs. Leave it empty to use the computer&apos;s name, %1.</source>
+        <translation>Как этот ПК отображается на ваших телефонах и других ПК. Оставьте пустым, чтобы использовать имя компьютера, %1.</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="1"/>
+        <source>Now playing time</source>
+        <translation>Время в «Сейчас играет»</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="1"/>
+        <source>What the time on the right of Now playing on Home shows. Clicking it there switches too.</source>
+        <translation>Что показывает время справа в «Сейчас играет» на главной. Нажатие на него там тоже переключает.</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="1"/>
+        <source>Remaining</source>
+        <translation>Осталось</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="1"/>
+        <source>Total</source>
+        <translation>Всего</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="1"/>
+        <source>Both</source>
+        <translation>Оба</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="1"/>
+        <source>Mark texts read on the phone</source>
+        <translation>Отмечать сообщения прочитанными на телефоне</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/SettingsPage.qml" line="1"/>
+        <source>Reading a conversation here marks it read on the phone too, in its messaging app.</source>
+        <translation>Разговор, прочитанный здесь, отмечается прочитанным и на телефоне, в его приложении сообщений.</translation>
     </message>
 </context>
 <context>
@@ -13697,6 +13779,53 @@ What it needs
         <location filename="../qml/components/YourReportsSheet.qml" line="1"/>
         <source>Close</source>
         <translation>Закрыть</translation>
+    </message>
+</context>
+<context>
+    <name>NewPill</name>
+    <message>
+        <location filename="../qml/components/NewPill.qml" line="1"/>
+        <source>New</source>
+        <translation>Новое</translation>
+    </message>
+</context>
+<context>
+    <name>DeviceMenu</name>
+    <message>
+        <location filename="../qml/components/DeviceMenu.qml" line="1"/>
+        <source>Devices</source>
+        <translation>Устройства</translation>
+    </message>
+    <message>
+        <location filename="../qml/components/DeviceMenu.qml" line="1"/>
+        <source>offline</source>
+        <translation>не в сети</translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../qml/components/DeviceMenu.qml" line="1"/>
+        <source>%n new</source>
+        <translation>
+            <numerusform>%n новое</numerusform>
+            <numerusform>%n новых</numerusform>
+            <numerusform>%n новых</numerusform>
+        </translation>
+    </message>
+    <message>
+        <location filename="../qml/components/DeviceMenu.qml" line="1"/>
+        <source>Pair a new device</source>
+        <translation>Связать новое устройство</translation>
+    </message>
+</context>
+<context>
+    <name>NavItem</name>
+    <message numerus="yes">
+        <location filename="../qml/components/NavItem.qml" line="1"/>
+        <source>%1, %n new</source>
+        <translation>
+            <numerusform>%1, %n новое</numerusform>
+            <numerusform>%1, %n новых</numerusform>
+            <numerusform>%1, %n новых</numerusform>
+        </translation>
     </message>
 </context>
 </TS>

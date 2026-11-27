@@ -22,6 +22,33 @@ change things that need a step from you, and its notes say so.
   bar icon; opening it from there, or a ringing call, brings the Dock icon back. The menu bar
   icon is now one color, white or black to match the menu bar, as the Mac's own icons are;
   **Tray icon** in Settings › General turns the color tile back on.
+- **Unlock KDE Plasma with the phone.** On Linux, NectarLink's PAM module can now run in the
+  lock screen's `kde-fingerprint` service, so the phone asks for your fingerprint each time the
+  PC locks and unlocks it when you approve. It's one line in `/etc/pam.d/kde-fingerprint`; see
+  [Unlock a Linux session with your Android fingerprint](docs/guide/linux-phone-unlock.md#kde-plasma).
+- **The AppImage tells AppImage managers where its updates are.** It carries update information
+  for AppImageUpdate, and each release comes with a `.zsync` file, so tools like AppManager and
+  AppImageUpdate find and download only what changed. Releases follow releases; Nightlies keep
+  updating through NectarLink itself. Thanks to [@xmha97](https://github.com/xmha97) and [@shuvashish76](https://github.com/shuvashish76)
+  ([#672](https://github.com/thtbee/nectarlink/issues/672)).
+- **Swipe between your devices on the phone's Home.** With two or more paired devices, their cards
+  sit side by side, PCs first: swipe to go from one to the next, with dots for where you are.
+  Thanks to [@kedar284](https://github.com/kedar284) ([#651](https://github.com/thtbee/nectarlink/issues/651)).
+- **Use your phone as a touchpad and keyboard for your tablet.** A paired tablet (or another phone)
+  with Elevated shows **Control** on its card on the phone's Home: the touchpad moves a pointer on
+  the tablet, clicks and scrolls, and the keyboard types there, any language and emoji included.
+  The tablet asks the first time; **Let it control this device** in its Settings › Devices turns
+  it off again. Thanks to [@kedar284](https://github.com/kedar284) ([#651](https://github.com/thtbee/nectarlink/issues/651)).
+- **New settings say so.** After an update, the settings it added have a **New** pill, and so
+  does their section in the PC's Settings, until you've looked at that section. A new install
+  starts without them. Thanks to [@jed84](https://github.com/jed84) ([#656](https://github.com/thtbee/nectarlink/issues/656)).
+- **Give your PC and phone a name of their own.** In Settings › General on the PC (**This PC's
+  name**) and Settings › Devices on the phone (**This phone's name**). Paired devices show it at once;
+  leave it empty to go back to the computer's or Android's name. Thanks to
+  [@zubair1511983](https://github.com/zubair1511983) ([#648](https://github.com/thtbee/nectarlink/issues/648)).
+- **Now playing shows the time you want.** The time on the right of Now playing on the PC's Home
+  can show what's left, the whole length, or both: click it to switch, or pick in Settings ›
+  General. Thanks to [@jed84](https://github.com/jed84) ([#658](https://github.com/thtbee/nectarlink/issues/658)).
 - **One mouse and keyboard for two PCs.** Set another paired PC **Beside this PC** on the left
   or right, and the mouse goes over that edge of the screen onto it, with the keyboard typing
   there, no phone needed. The other PC asks first. From Windows, to Windows or Linux. Thanks to
@@ -614,6 +641,25 @@ change things that need a step from you, and its notes say so.
 
 ### Fixed
 
+- **The PC's device menu and a few settings are translated again.** The device switcher on the left
+  rail, Mark texts read on the phone, the Beside this PC hint and Bluetooth when there's no network
+  showed in English in every language.
+- **A feature Windows 10 can't run says it needs Windows 11** instead of only *Unavailable*, such
+  as Phone as webcam, and one that needs a newer Android says which version.
+- **The phone's volume buttons work for the phone while it plays something itself,** with
+  **Volume buttons control your PC** on and the PC playing too. They went to the PC, so the phone's
+  own volume couldn't be changed. Thanks to [@Deliond](https://github.com/Deliond)
+  ([#643](https://github.com/thtbee/nectarlink/issues/643)).
+- **Copy and paste on the phone works with Elevated on** for phones where it pasted nothing in
+  every app (a Xiaomi with HyperOS). Elevated only watches the clipboard while some device takes
+  the phone's copies by itself, so with **Share my clipboard with it** off for every device, it
+  doesn't touch the clipboard. Thanks to [@golip37](https://github.com/golip37)
+  ([#655](https://github.com/thtbee/nectarlink/issues/655)).
+- **A crash that could close the app on Deck** (likeliest as the PC connected or the phone was
+  plugged in) is fixed, along with the same mistake on Desk clock and Control PC. Thanks to
+  everyone who sent the report
+  ([#550](https://github.com/thtbee/nectarlink/issues/550), [#589](https://github.com/thtbee/nectarlink/issues/589),
+  [#671](https://github.com/thtbee/nectarlink/issues/671)).
 - **Clicking Play on a phone video in Photos more than once downloads it once.** The button shows
   that it's fetching and waits. Thanks to [@SolomonNumb1](https://github.com/SolomonNumb1)
   ([#666](https://github.com/thtbee/nectarlink/pull/666)).
