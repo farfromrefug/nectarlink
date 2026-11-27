@@ -454,6 +454,7 @@ fn main() {
         build_macos_audio_loopback();
         build_macos_notifications();
         build_macos_sysext();
+        build_macos_window();
         println!("cargo:rustc-link-lib=framework=AppKit");
         println!("cargo:rustc-link-lib=framework=Security");
         println!("cargo:rustc-link-lib=framework=SystemExtensions");
@@ -514,6 +515,15 @@ fn build_macos_sysext() {
         .flag("-fobjc-arc")
         .flag("-std=c++17")
         .compile("nectarlink_mac_sysext");
+}
+
+fn build_macos_window() {
+    println!("cargo::rerun-if-changed=cpp/mac_window.mm");
+    cc::Build::new()
+        .file("cpp/mac_window.mm")
+        .flag("-fobjc-arc")
+        .flag("-std=c++17")
+        .compile("nectarlink_mac_window");
 }
 
 fn build_macos_audio_loopback() {

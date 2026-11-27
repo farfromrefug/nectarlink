@@ -8,6 +8,10 @@ change things that need a step from you, and its notes say so.
 
 ### New
 
+- **Nectar Island on the Mac.** The pill for calls, transfers and new notifications sits just
+  below the menu bar, on every Space, and stays when another app is in front or NectarLink has no
+  window open. It doesn't show over full-screen apps.
+- **Swipe between your devices on the phone's Home.** With two or more paired devices, their cards
 - **Talk on a phone call through the Mac.** The **On PC** button on a call now works on macOS as
   on Windows: the other party plays on the Mac's sound output, headphones included, and the Mac's
   microphone goes into the call. macOS asks once to let NectarLink use the microphone. Pick the
