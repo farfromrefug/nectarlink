@@ -639,6 +639,9 @@ pub struct Settings {
     /// on macOS.
     #[serde(default = "default_tray_one_colour", alias = "tray_one_colour")]
     pub tray_one_colour: bool,
+    /// Log more: the USB cable, the connection and the call's sound, for chasing a problem.
+    #[serde(default, alias = "detailed_log")]
+    pub detailed_log: bool,
     /// Send what's copied on this PC to connected phones.
     #[serde(alias = "auto_clipboard", alias = "clipboard_sync")]
     pub auto_clipboard: bool,
@@ -1009,6 +1012,7 @@ impl Default for Settings {
             comb_motion: true,
             close_to_tray: default_close_to_tray(),
             tray_one_colour: default_tray_one_colour(),
+            detailed_log: false,
             auto_clipboard: true,
             clipboard_history: true,
             suggest_clipboard_actions: true,
@@ -1377,6 +1381,7 @@ mod tests {
             comb_motion: false,
             close_to_tray: false,
             tray_one_colour: true,
+            detailed_log: true,
             auto_clipboard: false,
             clipboard_history: false,
             suggest_clipboard_actions: false,
