@@ -8,6 +8,13 @@ change things that need a step from you, and its notes say so.
 
 ### New
 
+- **Attach a photo or file from the phone to a text.** The attach button in Messages now asks
+  where from: **From this computer** opens the file dialog as before, **From the phone** opens a
+  picker with a **Photos** tab (the phone's gallery, newest first, with thumbnails) and a **Files**
+  tab (its folders). The one you pick is brought to the PC and staged exactly like a file chosen
+  here. It needs the phone's photos, or its storage turned on for this PC; the entry is missing
+  otherwise. A picture too big for a message (a phone photo, mostly) is now shrunk to fit one,
+  from the phone or from this PC, instead of being refused.
 - **Nectar Island on the Mac.** The pill for calls, transfers and new notifications sits just
   below the menu bar, on every Space, and stays when another app is in front or NectarLink has no
   window open. It doesn't show over full-screen apps.
