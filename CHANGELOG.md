@@ -8,6 +8,12 @@ change things that need a step from you, and its notes say so.
 
 ### New
 
+- **A detailed log and a log viewer, to find out why something doesn't connect.** In **Settings ›
+  Connection & About**, **Detailed log** also logs what the USB cable, the connection and a
+  call's sound do, step by step, and **View the log** shows the end of the log as it goes, with a
+  filter box, **Copy** and **Open folder**. The log stays free of names, numbers, messages, files
+  and addresses. A phone on a cable that adb shows but NectarLink doesn't reconnect to can now be
+  followed from the plug to the tunnel's hello.
 - **Nectar Island on the Mac.** The pill for calls, transfers and new notifications sits just
   below the menu bar, on every Space, and stays when another app is in front or NectarLink has no
   window open. It doesn't show over full-screen apps.
