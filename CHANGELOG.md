@@ -8,6 +8,14 @@ change things that need a step from you, and its notes say so.
 
 ### New
 
+- **The Mac's Contacts, next to the phone's.** A new **Also use the Mac's Contacts** setting
+  (macOS asks once) adds the people only the Mac knows. A caller, a text or a call-log entry the
+  phone has no name for shows the name and picture of the matching Mac contact, in the call
+  notification, on Home and in Nectar Island, which now shows the caller's picture; the dialer and
+  the new-message box list both together, one person once. The phone's own contacts stay asked of
+  the phone, and conversations and the call log now pick up a contact added on the phone as soon
+  as the phone says so. A new message's **To** field also finds a contact by digits however
+  they're typed (`06 12`, `+33 6 12`).
 - **Nectar Island on the Mac.** The pill for calls, transfers and new notifications sits just
   below the menu bar, on every Space, and stays when another app is in front or NectarLink has no
   window open. It doesn't show over full-screen apps.
