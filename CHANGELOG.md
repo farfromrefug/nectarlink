@@ -8,6 +8,10 @@ change things that need a step from you, and its notes say so.
 
 ### New
 
+- **A phone on a cable comes back sooner after its connection stalls.** When the session over the
+  USB cable stopped answering, the cable's tunnel itself was left open, and the PC kept dialing
+  into it for a minute or more, or for good, while adb still showed the phone. The tunnel is now
+  closed with the dead session, and a new one opens within seconds.
 - **Nectar Island on the Mac.** The pill for calls, transfers and new notifications sits just
   below the menu bar, on every Space, and stays when another app is in front or NectarLink has no
   window open. It doesn't show over full-screen apps.
