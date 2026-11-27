@@ -465,6 +465,7 @@ fn main() {
         println!("cargo:rustc-link-lib=framework=CoreMedia");
         println!("cargo:rustc-link-lib=framework=Foundation");
         println!("cargo:rustc-link-lib=framework=UserNotifications");
+        println!("cargo:rustc-link-lib=framework=AVFoundation");
     }
     println!("cargo:rerun-if-changed=cpp/app_helpers.h");
     println!("cargo:rerun-if-changed=cpp/app_helpers.cpp");

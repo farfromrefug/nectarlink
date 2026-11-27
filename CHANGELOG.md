@@ -8,6 +8,11 @@ change things that need a step from you, and its notes say so.
 
 ### New
 
+- **Talk on a phone call through the Mac.** The **On PC** button on a call now works on macOS as
+  on Windows: the other party plays on the Mac's sound output, headphones included, and the Mac's
+  microphone goes into the call. macOS asks once to let NectarLink use the microphone. Pick the
+  microphone in Settings › Camera & Audio. Needs Elevated on an Android 13 or newer phone, as
+  on Windows.
 - **The Mac app lives in the menu bar when its window is closed.** With **Stay in system tray**
   on, closing the window also takes NectarLink out of the Dock and Cmd+Tab, leaving the menu
   bar icon; opening it from there, or a ringing call, brings the Dock icon back. The menu bar
