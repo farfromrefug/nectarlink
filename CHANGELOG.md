@@ -8,6 +8,11 @@ change things that need a step from you, and its notes say so.
 
 ### New
 
+- **The Mac app lives in the menu bar when its window is closed.** With **Stay in system tray**
+  on, closing the window also takes NectarLink out of the Dock and Cmd+Tab, leaving the menu
+  bar icon; opening it from there, or a ringing call, brings the Dock icon back. The menu bar
+  icon is now one color, white or black to match the menu bar, as the Mac's own icons are;
+  **Tray icon** in Settings › General turns the color tile back on.
 - **One mouse and keyboard for two PCs.** Set another paired PC **Beside this PC** on the left
   or right, and the mouse goes over that edge of the screen onto it, with the keyboard typing
   there, no phone needed. The other PC asks first. From Windows, to Windows or Linux. Thanks to
