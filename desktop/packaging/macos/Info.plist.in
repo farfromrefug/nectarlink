@@ -32,5 +32,7 @@
     <string>NectarLink uses Bluetooth to discover nearby paired devices.</string>
     <key>NSMicrophoneUsageDescription</key>
     <string>NectarLink records the Mac's microphone when you talk on a phone call through the Mac.</string>
+    <key>NSContactsUsageDescription</key>
+    <string>NectarLink shows your Mac's contacts, next to your phone's, when you write a message or a call comes in.</string>
 </dict>
 </plist>

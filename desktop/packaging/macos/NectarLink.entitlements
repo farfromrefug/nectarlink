@@ -10,5 +10,8 @@
 	<!-- The microphone, for a phone call's sound on the Mac, under the hardened runtime. -->
 	<key>com.apple.security.device.audio-input</key>
 	<true/>
+	<!-- The Mac's Contacts, for names and pictures next to the phone's, under the hardened runtime. -->
+	<key>com.apple.security.personal-information.addressbook</key>
+	<true/>
 </dict>
 </plist>
